@@ -11,27 +11,32 @@ const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const history = useNavigate();
 
-const [jwt] = useState('');
+function handleToken(token) { //토큰을 로컬에 저장하는 함수
+  localStorage.setItem('token', token);
+}
 
+// 로그인 버튼을 눌렀을 때 호출되는 함수
+async function handleLogin() {
+  try {
+    const response = await axios.post('/api/login', { 
+      username: username,
+      password: password,
+     });
 
+    const { token } = response.data;
+    handleToken(token);
 
-
-const handleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post('/api/login', {
-        username: username,
-        password: password,
-      });
-      if (response.status === 200) {
-        // 로그인 성공 후 페이지 이동
-        
-        history.push('/dashboard');
-      }
-    } catch (error) {
-      console.error(error);
+    if (response.ok) {
+      const { token } = await response.json();
+      handleLogin(token);
+      history.push('/dashboard');
     }
+
+  } catch (error) {
+    console.error(error);
   }
+}
+
 
 return(
     <div style={

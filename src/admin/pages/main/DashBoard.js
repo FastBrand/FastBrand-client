@@ -1,13 +1,15 @@
 import DashboardForm from "../../compoents/dashboardForm/DashboardForm";
 import SideNavbarForm from "../../compoents/sideNavbarForm/SideNavbarForm"
 import './Dashboard.css'
-import Analytics from "../../compoents/dashboardForm/GoogleAnalytics";
 
 function DashBoard(){
     return(
-        <div>
-    <Analytics /> 
-        </div>
+    <div>
+    <SideNavbarForm/>
+    <div className="dashboard" style={{marginTop:'202px', marginLeft:'202px'}}>
+    <DashboardForm/>
+    </div>
+    </div>
     );
 }
 export default DashBoard;
