@@ -1,24 +1,25 @@
-.faqTitle{
-    font-size:35px;
-    font-weight: 500;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
-  .faq::before{
-    opacity: 0.5;
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: -1;
-  }
+.faqTitle {
+  font-size: 35px;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
 
-  .faq{
-    text-align: center;
-    font-family:'Pretendard';
-    position: relative;
-     z-index: 1;
-  }
+.faq::before {
+  opacity: 0.5;
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
+}
+
+.faq {
+  text-align: center;
+  font-family: "Pretendard";
+  position: relative;
+  z-index: 1;
+}
