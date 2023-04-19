@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 function Faq() {
   return (
     <div>
-      <Navbar backgroundColor="rgb(255 255 255 / 0.8)" borderBottom={true} />
+      <Navbar backgroundColor={true} borderBottom={true} />
       <FaqForm />
     </div>
   );
