@@ -2,25 +2,36 @@ import { TextField, Button } from '@material-ui/core';
 import { Box } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginForm(){
 
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
+const history = useNavigate();
 
-const handleLogin = () => {
-    axios.post('http://localhost:8080/login', {
-      username: username,
-      password: password
-    })
-    .then((response) => {
-      console.log({username});
-      console.log(response);
-    })
-    .catch((error) => {
+const [jwt] = useState('');
+
+
+
+
+const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('/api/login', {
+        username: username,
+        password: password,
+      });
+      if (response.status === 200) {
+        // 로그인 성공 후 페이지 이동
+        
+        history.push('/dashboard');
+      }
+    } catch (error) {
       console.error(error);
-    });
-  };
+    }
+  }
 
 return(
     <div style={

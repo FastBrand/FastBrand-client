@@ -8,7 +8,10 @@ import {
   CustomLabel,
 } from "./TrademarkFormStyle";
 import { useState } from "react";
+
 const TrademarkForm = () => {
+
+  
   const [trademarkName, setTrademarkName] = useState("");
   const [trademarkDescription, setTrademarkDescription] = useState("");
   const [trademarkImage, setTrademarkImage] = useState(null);
@@ -25,6 +28,7 @@ const TrademarkForm = () => {
     setTrademarkImage(event.target.files[0]);
     // console.log(trademarkImage);
   };
+
 
   return (
     <form>

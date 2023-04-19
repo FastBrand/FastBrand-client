@@ -6,6 +6,7 @@ import { useState } from "react";
 import "./Navbar.scss";
 import logoImg from "../../assets/images/logo/복합.svg";
 
+
 const Navbar = ({ backgroundColor, borderBottom }) => {
   const [open, setOpen] = useState(false);
 
@@ -142,7 +143,8 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
               <NavLink>절차안내</NavLink>
               <NavLink>회사소개</NavLink>
               <NavLink to="/faq">고객문의</NavLink>
-              <NavLink to="/director">관리자(임시)</NavLink>
+              <NavLink to="/login">관리자(로그인)</NavLink>
+              <NavLink to="/dashboard">관리자(대시보드)</NavLink>
             </NavbarLinksBox>
           </Box>
         </Box>
