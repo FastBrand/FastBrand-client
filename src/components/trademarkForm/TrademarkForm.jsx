@@ -7,27 +7,43 @@ import {
   Wrapper,
   CustomLabel,
 } from "./TrademarkFormStyle";
-import { useState } from "react";
-const TrademarkForm = () => {
-  const [trademarkName, setTrademarkName] = useState("");
-  const [trademarkDescription, setTrademarkDescription] = useState("");
-  const [trademarkImage, setTrademarkImage] = useState(null);
+import { useState, useEffect } from "react";
 
-  const handleTrademarkNameChange = (event) => {
-    setTrademarkName(event.target.value);
+const TrademarkForm = ({ onTrademarkDataChange }) => {
+  const [trademarkData, setTrademarkData] = useState({
+    brand_name: "",
+    description: "",
+    image: "",
+  });
+
+  useEffect(() => {
+    onTrademarkDataChange(trademarkData);
+  }, [trademarkData, onTrademarkDataChange]);
+
+  const handleInputChange = (event, field) => {
+    const value = event.target.value;
+    setTrademarkData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
   };
 
-  const handleTrademarkDescriptionChange = (event) => {
-    setTrademarkDescription(event.target.value);
-  };
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
 
-  const handleTrademarkImageChange = (event) => {
-    setTrademarkImage(event.target.files[0]);
-    // console.log(trademarkImage);
-  };
+    const formData = new FormData();
+    formData.append("image", file);
 
+    // FormData 객체에 파일이 제대로 첨부되었는지 확인
+    console.log(formData.get("image"));
+
+    setTrademarkData((prevData) => ({
+      ...prevData,
+      image: formData,
+    }));
+  };
   return (
-    <form>
+    <>
       <FormContainer>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -43,8 +59,8 @@ const TrademarkForm = () => {
               label="상표명"
               variant="standard"
               sx={{ mb: "3rem" }}
-              value={trademarkName}
-              onChange={handleTrademarkNameChange}
+              value={trademarkData.trademarkName}
+              onChange={(event) => handleInputChange(event, "brand_name")}
             />
           </Grid>
           <Grid item xs={12}>
@@ -54,8 +70,8 @@ const TrademarkForm = () => {
               id="trademarkDescription"
               label="상표에 대한 설명을 간단하게 작성해주세요"
               variant="standard"
-              value={trademarkDescription}
-              onChange={handleTrademarkDescriptionChange}
+              value={trademarkData.trademarkDescription}
+              onChange={(event) => handleInputChange(event, "description")}
             />
           </Grid>
         </Grid>
@@ -66,13 +82,14 @@ const TrademarkForm = () => {
           accept="image/*"
           id="fileUpload"
           type="file"
-          onChange={handleTrademarkImageChange}
+          onChange={(event) => handleImageChange(event)}
         />
         <label className="fileLabel" htmlFor="fileUpload">
           파일 첨부
         </label>
       </Wrapper>
-    </form>
+    </>
   );
 };
+
 export default TrademarkForm;

@@ -1,39 +1,30 @@
 import { TextField, Grid } from "@mui/material";
 import React from "react";
-import { useState } from "react";
-const PersonalForm = () => {
-  const [applicantKoreanName, setApplicantKoreanName] = useState("");
-  const [applicantEnglishName, setApplicantEnglishName] = useState("");
-  const [
-    applicantResidentRegistrationNumber,
-    setApplicantResidentRegistrationNumber,
-  ] = useState("");
-  const [applicantEMail, setApplicantEMail] = useState("");
-  const [applicantPhone, setApplicantPhone] = useState("");
-  const [applicantLandlinePhone, setApplicantLandlinePhone] = useState("");
+import { useState, useEffect } from "react";
+const PersonalForm = ({ onPersonalChange }) => {
+  const [personalData, setPersonalData] = useState({
+    personalName_kor: "",
+    personalName_eng: "",
+    personalSsn: "",
+    personalEmail: "",
+    personalMobile: "",
+    personalPhone: "",
+    personalAddress: "",
+    personalDetail: "",
+    personalZipcode: "",
+    personalAgreement: "",
+  });
 
-  const handleApplicantKoreanName = (event) => {
-    setApplicantKoreanName(event.target.value);
-  };
+  useEffect(() => {
+    onPersonalChange(personalData);
+  }, [personalData, onPersonalChange]);
 
-  const handleApplicantEnglishName = (event) => {
-    setApplicantEnglishName(event.target.value);
-  };
-
-  const handleApplicantResidentRegistrationNumber = (event) => {
-    setApplicantResidentRegistrationNumber(event.target.value);
-  };
-
-  const handleApplicantEMail = (event) => {
-    setApplicantEMail(event.target.value);
-  };
-
-  const handleApplicantPhone = (event) => {
-    setApplicantPhone(event.target.value);
-  };
-
-  const handleApplicantLandlinePhone = (event) => {
-    setApplicantLandlinePhone(event.target.value);
+  const handleInputChange = (event, field) => {
+    const value = event.target.value;
+    setPersonalData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
   };
 
   return (
@@ -42,12 +33,12 @@ const PersonalForm = () => {
         <TextField
           required
           fullWidth
-          id="applicantKoreanName"
+          id="personalName_kor"
           label="성명(한글)"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={applicantKoreanName}
-          onChange={handleApplicantKoreanName}
+          value={personalData.personalName_kor}
+          onChange={(event) => handleInputChange(event, "personalName_kor")}
         />
       </Grid>
       <Grid item xs={6}>
@@ -58,55 +49,55 @@ const PersonalForm = () => {
           label="성명(영어)"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={applicantEnglishName}
-          onChange={handleApplicantEnglishName}
+          value={personalData.personalName_eng}
+          onChange={(event) => handleInputChange(event, "personalName_eng")}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
           required
           fullWidth
-          id="applicantResidentRegistrationNumber"
+          id="personalSsn"
           label="주민번호"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={applicantResidentRegistrationNumber}
-          onChange={handleApplicantResidentRegistrationNumber}
+          value={personalData.personalSsn}
+          onChange={(event) => handleInputChange(event, "personalSsn")}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
           required
           fullWidth
-          id="applicantEMail"
+          id="personalEmail"
           label="이메일"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={applicantEMail}
-          onChange={handleApplicantEMail}
+          value={personalData.personalEmail}
+          onChange={(event) => handleInputChange(event, "personalEmail")}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
           required
           fullWidth
-          id="applicantPhone"
+          id="personalMobile"
           label="휴대전화"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={applicantPhone}
-          onChange={handleApplicantPhone}
+          value={personalData.personalMobile}
+          onChange={(event) => handleInputChange(event, "personalMobile")}
         />
       </Grid>
       <Grid item xs={6}>
         <TextField
           fullWidth
-          id="applicantLandlinePhone"
+          id="personalPhone"
           label="유선전화"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={applicantLandlinePhone}
-          onChange={handleApplicantLandlinePhone}
+          value={personalData.personalPhone}
+          onChange={(event) => handleInputChange(event, "personalPhone")}
         />
       </Grid>
     </Grid>
