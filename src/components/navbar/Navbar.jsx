@@ -3,7 +3,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import "./Navbar.scss";
 import logoImg from "../../assets/images/logo/복합.svg";
 
 const Navbar = ({ backgroundColor, borderBottom }) => {
@@ -36,7 +35,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     textDecoration: "none",
     transition: "0.5s",
     "&:hover": {
-      color: "white",
+      // color: "white",
     },
   }));
 
@@ -53,7 +52,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   const CustomMenuIcon = styled(MenuIcon)(({ theme }) => ({
     cursor: "pointer",
     color: "#CBA585",
-    fontSize: "2.5rem",
+    fontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.8rem",
     },
@@ -81,16 +80,15 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     left: "0",
     right: "0",
     display: "flex",
-    height: "80px",
+    height: "100px",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: theme.spacing(2),
   }));
 
   const NavbarLogo = styled("img")(({ theme }) => ({
     cursor: "pointer",
-    height: "90px",
-    width: "90px",
+    height: "85px",
+    width: "85px",
     marginRight: theme.spacing(5),
   }));
 
@@ -102,9 +100,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     cursor: "pointer",
     textDecoration: "none",
     marginRight: "1rem",
-    borderRadius: "3px",
+    boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
     border: "2px solid #CBA585",
-    padding: "13px 15px",
+    padding: "11px 15px",
     transition: "0.2s",
 
     "&:hover": {
@@ -115,7 +113,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
 
   return (
     <NavbarWrapper
-      backgroundColor={backgroundColor}
+      backgroundColor={backgroundColor ? "white" : "transparent"}
       // borderBottom={borderBottom ? "1px solid #eee" : "none"}
       // backgroundColor="white"
     >

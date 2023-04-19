@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <BackgroundBox>
       <Container>
-        <Navbar backgroundColor="transparent" borderBottom={false} />
+        <Navbar backgroundColor={false} borderBottom={false} />
         <CustomBox>
           <Box>
             <Title variant="h1">
