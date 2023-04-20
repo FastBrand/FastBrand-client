@@ -8,6 +8,7 @@ const ManagerForm = ({ onManagerChange }) => {
     email: "",
     mobile: "",
     phone: "",
+    acc_num: "999", // 계좌번호할거면 은행명도 있어야하지 않나
   });
 
   useEffect(() => {
