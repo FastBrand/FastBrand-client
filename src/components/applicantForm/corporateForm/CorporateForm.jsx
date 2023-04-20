@@ -5,20 +5,20 @@ import { useState, useEffect } from "react";
 
 const CorporateForm = ({ onCorporateChange }) => {
   const [corporateData, setCorporateData] = useState({
-    corporateNname_kor: "",
-    corporateName_eng: "",
-    corporateBrn: "",
-    corporateCrn: "",
+    name_kor: "",
+    name_eng: "",
+    brn: "",
+    crn: "",
     corporateName: "",
-    corporateSsn: "",
+    ssn: "",
     corporateMobile: "",
     corporatePhone: "",
     corporateEmail: "",
-    corporateSeal: "",
-    corporateAddress: "",
-    corporateDetail: "",
-    corporateZipcode: "",
-    corporateAgreement: "",
+    seal: "seal",
+    address: "address",
+    detail: "detail",
+    zipcode: "zipcode",
+    agreement: "동의",
   });
 
   useEffect(() => {
@@ -37,12 +37,12 @@ const CorporateForm = ({ onCorporateChange }) => {
     const file = event.target.files[0];
 
     const formData = new FormData();
-    formData.append("corporateSeal", file);
+    formData.append("seal", file);
 
     // FormData 객체에 파일이 제대로 첨부되었는지 확인
-    console.log(formData.get("corporateSeal"));
+    console.log(formData.get("seal"));
 
-    setCorporateData((prevData) => ({ ...prevData, corporateSeal: formData }));
+    setCorporateData((prevData) => ({ ...prevData, seal: formData }));
   };
   console.log(corporateData);
   return (
@@ -53,11 +53,11 @@ const CorporateForm = ({ onCorporateChange }) => {
             required
             fullWidth
             sx={{ mb: "3rem" }}
-            id="corporateNname_kor"
+            id="corporateName_kor"
             label="법인명(한글)"
             variant="standard"
-            value={corporateData.corporateNname_kor}
-            onChange={(event) => handleInputChange(event, "corporateNname_kor")}
+            value={corporateData.name_kor}
+            onChange={(event) => handleInputChange(event, "name_kor")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -68,8 +68,8 @@ const CorporateForm = ({ onCorporateChange }) => {
             id="corporateName_eng"
             label="법인명(영어)"
             variant="standard"
-            value={corporateData.corporateName_eng}
-            onChange={(event) => handleInputChange(event, "corporateName_eng")}
+            value={corporateData.name_eng}
+            onChange={(event) => handleInputChange(event, "name_eng")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -80,8 +80,8 @@ const CorporateForm = ({ onCorporateChange }) => {
             id="corporateBrn"
             label="사업자 등록번호"
             variant="standard"
-            value={corporateData.corporateBrn}
-            onChange={(event) => handleInputChange(event, "corporateBrn")}
+            value={corporateData.brn}
+            onChange={(event) => handleInputChange(event, "brn")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -92,8 +92,8 @@ const CorporateForm = ({ onCorporateChange }) => {
             id="corporateCrn"
             label="법인 등록번호"
             variant="standard"
-            value={corporateData.corporateCrn}
-            onChange={(event) => handleInputChange(event, "corporateCrn")}
+            value={corporateData.crn}
+            onChange={(event) => handleInputChange(event, "crn")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -116,8 +116,8 @@ const CorporateForm = ({ onCorporateChange }) => {
             id="corporateSsn"
             label="대표자 주민등록번호"
             variant="standard"
-            value={corporateData.corporateSsn}
-            onChange={(event) => handleInputChange(event, "corporateSsn")}
+            value={corporateData.ssn}
+            onChange={(event) => handleInputChange(event, "ssn")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -182,7 +182,7 @@ const CorporateForm = ({ onCorporateChange }) => {
             id="corporateAddress"
             label="주소"
             variant="standard"
-            // value={corporateData.corporateAddress}
+            // value={corporateData.address}
             // onChange={handleInputChange}
           />
         </Grid>
