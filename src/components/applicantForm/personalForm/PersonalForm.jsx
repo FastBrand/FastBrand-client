@@ -3,16 +3,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 const PersonalForm = ({ onPersonalChange }) => {
   const [personalData, setPersonalData] = useState({
-    personalName_kor: "",
-    personalName_eng: "",
-    personalSsn: "",
+    name_kor: "",
+    name_eng: "",
+    ssn: "",
     personalEmail: "",
     personalMobile: "",
     personalPhone: "",
-    personalAddress: "",
-    personalDetail: "",
-    personalZipcode: "",
-    personalAgreement: "",
+    address: "주소",
+    detail: "상세주소",
+    zipcode: "우편번호",
+    agreement: "동의",
   });
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const PersonalForm = ({ onPersonalChange }) => {
           variant="standard"
           sx={{ mb: "3rem" }}
           value={personalData.personalName_kor}
-          onChange={(event) => handleInputChange(event, "personalName_kor")}
+          onChange={(event) => handleInputChange(event, "name_kor")}
         />
       </Grid>
       <Grid item xs={6}>
@@ -49,8 +49,8 @@ const PersonalForm = ({ onPersonalChange }) => {
           label="성명(영어)"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={personalData.personalName_eng}
-          onChange={(event) => handleInputChange(event, "personalName_eng")}
+          value={personalData.name_eng}
+          onChange={(event) => handleInputChange(event, "name_eng")}
         />
       </Grid>
       <Grid item xs={6}>
@@ -61,8 +61,8 @@ const PersonalForm = ({ onPersonalChange }) => {
           label="주민번호"
           variant="standard"
           sx={{ mb: "3rem" }}
-          value={personalData.personalSsn}
-          onChange={(event) => handleInputChange(event, "personalSsn")}
+          value={personalData.ssn}
+          onChange={(event) => handleInputChange(event, "ssn")}
         />
       </Grid>
       <Grid item xs={6}>
