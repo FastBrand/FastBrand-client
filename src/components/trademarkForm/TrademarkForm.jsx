@@ -13,7 +13,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
   const [trademarkData, setTrademarkData] = useState({
     brand_name: "",
     description: "",
-    image: "",
+    image: "image",
   });
 
   useEffect(() => {
