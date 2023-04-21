@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Box, Grid, Paper } from '@material-ui/core';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,7 +27,9 @@ const data = [
   { name: '7월', uv: 3490, pv: 4300, amt: 2100 },
 ];
 
+
 function DashboardForm(){
+
 const classes = useStyles();
   return (
     <div className={classes.root}>
