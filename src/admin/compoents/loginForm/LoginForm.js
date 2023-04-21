@@ -9,33 +9,25 @@ function LoginForm(){
 
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
-const history = useNavigate();
+const navigate = useNavigate(); // useNavigate hook 사용
 
-function handleToken(token) { //토큰을 로컬에 저장하는 함수
-  localStorage.setItem('token', token);
-}
-
-// 로그인 버튼을 눌렀을 때 호출되는 함수
-async function handleLogin() {
-  try {
-    const response = await axios.post('/api/login', { 
-      username: username,
-      password: password,
-     });
-
-    const { token } = response.data;
-    handleToken(token);
-
-    if (response.ok) {
-      const { token } = await response.json();
-      handleLogin(token);
-      history.push('/dashboard');
-    }
-
-  } catch (error) {
+const handleLogin = () => {
+  axios.post('http://localhost:8080/login', {
+    username: username,
+    password: password
+  })
+  .then((response) => {
+    const token = response.data.accessToken; // JWT 토큰 추출
+    console.log({ username });
+    console.log(response);
+    // 토큰 저장
+    localStorage.setItem('token', token);
+    navigate('/dashboard'); // 로그인 성공 시 다른 URL로 이동
+  })
+  .catch((error) => {
     console.error(error);
-  }
-}
+  });
+};
 
 
 return(
