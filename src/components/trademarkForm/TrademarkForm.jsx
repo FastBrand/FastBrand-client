@@ -42,6 +42,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
       image: formData,
     }));
   };
+  
   return (
     <>
       <FormContainer>

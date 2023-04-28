@@ -18,6 +18,12 @@ function DomesticMark() {
   const [applicantData, setApplicantData] = useState({});
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
 
+  const [selectedMark, setSelectedMark] = useState('국내출원');
+
+  const handleSelectedMark = (selectedMark) => {
+
+  };
+  
   const markSelectData = {
     type: "국내",
   };
@@ -107,11 +113,11 @@ function DomesticMark() {
       <MarkSelectForm />
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
-      <ManagerForm onManagerChange={setManagerData} />
-      <NationSelectForm />
-      <ApplicantForm
-        onApplicantChange={setApplicantData}
-        onApplicantTypeChange={setApplicantType}
+     <ManagerForm onManagerChange={setManagerData} />
+     <NationSelectForm />
+     <ApplicantForm
+      onApplicantChange={setApplicantData}
+      onApplicantTypeChange={setApplicantType}
       />
       <Button onClick={handleSubmit} variant="contained">
         신청하기
