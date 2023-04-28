@@ -1,5 +1,4 @@
 import Modal from '@mui/material/Modal';
-import { makeStyles } from '@mui/styles';
 import {Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
 import { Container, fontSize, margin } from '@mui/system';
 import Box from '@mui/material/Box';
@@ -8,43 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField'; 
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import nationData from './NationData.json';
 import "./NationSelectForm.css";
-
-
-
-const useStyles = makeStyles({
-  nationButton: {
-    fontSize: '16px',
-    fontWeight: 400,
-    marginLeft: '30px',
-    borderRadius: '50px',
-    backgroundColor: 'transparent',
-    color: 'black',
-    width: '120px',
-    height: '48px',
-    padding: '8px 16px',
-    border: '0.5px solid #2F2E41',
-  },
-  confirmButtonTable: {
-    marginRight: '30px',
-    borderRadius: '50px',
-    width: '120px',
-    height: '48px',
-    padding: '8px 16px',
-    fontWeight: '400',
-    fontSize: '16px',
-    border: '0.5px solid #CBA585',
-  },
-  confirmButtonTablePositive: {
-    backgroundColor: '#CBA585',
-    color: 'white',
-  },
-  confirmButtonTableNegative: {
-    backgroundColor: '#FFFFFF',
-    color: '#CBA585',
-  },
-});
 
 function NationSelectedBox({ country }){ //국가선택창 또는 검색 버튼에서 국가 선택시 밑에 추가됨.
 return(
@@ -55,8 +18,6 @@ return(
 }
 
 function NationSelectForm() { //국가선택 컴포넌트
-  const classes = useStyles();
-  const [selectedCountries, setSelectedCountries] = useState([]);
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(''); // 입력어를 state로 관리
   const [boxes, setBoxes] = useState([]);
@@ -83,22 +44,9 @@ function NationSelectForm() { //국가선택 컴포넌트
     setSearchValue(event.target.value);
   };
 
-
-
-  const handleSelectCountry = (i, j) => {
-    setSelectedCountries(prevSelected => {
-      const newSelected = [...prevSelected];
-      const countryName = nationData[i]?.CountryNameKR[j];
-      if (newSelected.includes(countryName)) {
-        return newSelected.filter(name => name !== countryName);
-      } else {
-        return [...newSelected, countryName];
-      }
-    });
-  };
-  
-
-
+  const handleSelectCountry = () => { //국가선택팝업창에서 국가 버튼을 눌렀을 때 
+    
+  }
 
   return (
     <div style={{margin: "100px 230px", flexWrap: "wrap", justifyContent: "center" }}>
@@ -109,21 +57,15 @@ function NationSelectForm() { //국가선택 컴포넌트
         <TextField id="standard-basic" label="국가명" variant="standard" style={{width:'400px', maxWidth: '100%'}}
          value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
 
-        <Button        
-        className={classes.nationButton}
-        variant="outlined"
-        onClick={handleSearch}
-        >
-        검색
-        </Button>
+        <Button className="nationButton" variant="outlined" onClick={handleSearch} sx={{
+          fontSize:'16px', fontWeight:'400', marginLeft:'30px',borderRadius:'50px',
+          backgroundColor:'transparent', color:'black', width:'120px', height:'48px',
+          padding:'8px 16px', border: '0.5px solid #2F2E41'}}>검색</Button>
 
-        <Button 
-        className={classes.nationButton}
-        variant="outlined"
-        onClick={handleOpen}
-        >
-        국가선택
-        </Button>
+            <Button className="nationButton" variant="outlined" onClick={handleOpen} sx={{
+          fontSize:'16px', fontWeight:'400', marginLeft:'30px',borderRadius:'50px',
+          backgroundColor:'transparent', color:'black', width:'120px', height:'48px',
+          padding:'8px 16px', border: '0.5px solid #2F2E41'}}>국가선택</Button>
 
       <div>{boxes}</div>
 
@@ -179,45 +121,25 @@ function NationSelectForm() { //국가선택 컴포넌트
                 {i === 16 && (
                   <TableCell className="contentName_row" rowSpan={4} style={{color:"white", fontSize:'20px', fontWeight:'400', textAlign:'center'}}> 아프리카 </TableCell>
                 )}
-                {[...Array(5)].map((_, j) => {
-                const countryName = nationData[i]?.CountryNameKR[j];
-                return (
-                  <TableCell key={`${i}-${j}`}>
-                    <Button className='nationButton_table' variant="outlined" color="primary" onClick={() => handleSelectCountry(i, j)} sx={{
-                      fontSize: '12px', fontWeight: '400px', marginLeft: '5px', borderRadius: '40px',
-                      borderRadius: '40px', border: '0.5px solid #2F2E41', backgroundColor: 'transparent',
-                      color: 'black', width: '100px', height: '35px', padding: '4px'
-                    }}>
-                      {countryName}
-                      </Button>
-                  </TableCell>
-                );
-              })}
-          </TableRow>
-          ))}
+                    {[...Array(5)].map((_, j) => (                      
+                      <TableCell key={`${i}-${j}`}>
+                        <Button className='nationButton_table' variant="outlined" color="primary" onClick={() => handleSelectCountry(i, j)} sx={{
+                          fontSize:'12px', fontWeight:'400px', marginLeft:'5px', borderRadius:'40px',
+                          borderRadius:'40px', border:'0.5px solid #2F2E41', backgroundColor:'transparent',
+                          color:'black', width:'100px', height:'35px', padding:'4px'
+                        }}>선택</Button>
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: '25px',
-            marginLeft: '50px'
-            }}>
-          <Button
-          className={`${classes.confirmButtonTable} ${classes.confirmButtonTablePositive}`}
-          variant="outlined"
-          onClick={handleClose}
-          >확인
-          </Button>
-          <Button
-          className={`${classes.confirmButtonTable} ${classes.confirmButtonTableNegative}`}
-          variant="outlined"
-          onClick={handleClose}
-          >
-          취소
-          </Button>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px', marginLeft: '50px' }}>
+          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{
+            marginRight:'30px', backgroundColor:'#CBA585', color:'white', border:'0.5px solid #CBA585', borderRadius:'50px', width:'120px', height:'48', padding:'8px 16px'}}>확인</Button>
+          <Button className='confireButton_table' variant="outlined" onClick={handleClose} style={{
+            marginRight:'30px', backgroundColor:'#FFFFFF', color:'#CBA585', border:'0.5px solid #CBA585', borderRadius:'50px', width:'120px', height:'48', padding:'8px 16px'}}>취소</Button>
           </div>
         </Box>
       </Modal>

@@ -61,8 +61,8 @@ function MarkSelectForm(){ //상표패키지선택 컴포넌트
 
 const [selectedMark, setSelectedMark] = useState("국내출원");
 
-const handleMarkClick = () => { //패키지 타입,인덱스 상태 저장
-    setSelectedMark(markData.type);
+const handleMarkClick = (type) => { //패키지 타입,인덱스 상태 저장
+    setSelectedMark(type);
   };
 
 let [markData] = useState(markType_data) //상표패키지 데이터
@@ -72,11 +72,14 @@ return(
   <Container sx={{paddingTop:'100px'}}>
   <div className="littleTitle01">01. 상표유형을 선택해주세요.</div>
   <Grid container spacing={3} style={{textAlign:'center', margin:"30px 0 0 0"}}>        
-    <Grid item xs={4}> <MarkAreaCard markData={markData[0]} onClick={handleMarkClick} selectedMark={selectedMark}  /> </Grid>
-    <Grid item xs={4}> <MarkAreaCard markData={markData[1]} onClick={handleMarkClick} selectedMark={selectedMark}  /> </Grid>
-    <Grid item xs={4}> <MarkAreaCard markData={markData[2]} onClick={handleMarkClick} selectedMark={selectedMark}  /> </Grid> 
+    <Grid item xs={4}> <MarkAreaCard markData={markData[0]} onClick={handleMarkClick} selectedMark={selectedMark}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[1]} onClick={handleMarkClick} selectedMark={selectedMark}/> </Grid>
+    <Grid item xs={4}> <MarkAreaCard markData={markData[2]} onClick={handleMarkClick} selectedMark={selectedMark}/> </Grid> 
   </Grid>                        
   </Container>
+
+  {selectedMark === "국내출원" ? <div>국내랜더링</div> : <div>해외랜더링</div>}
+
 </div>
 );
 }
