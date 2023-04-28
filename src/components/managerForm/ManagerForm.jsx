@@ -1,27 +1,26 @@
+import React, { useState, useEffect } from "react";
 import { TextField, Grid } from "@mui/material";
-import { useState } from "react";
 import { CustomTypo, FormContainer } from "./ManagerFormStyle";
 
-const ManagerForm = () => {
-  const [managerName, setManagerName] = useState("");
-  const [managerEMail, setManagerEMail] = useState("");
-  const [managerPhone, setManagerPhone] = useState("");
-  const [managerLandlinePhone, setManagerLandlinePhone] = useState("");
+const ManagerForm = ({ onManagerChange }) => {
+  const [managerData, setManagerData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    phone: "",
+    acc_num: "999", // 계좌번호할거면 은행명도 있어야하지 않나
+  });
 
-  const handleManagerNameChange = (event) => {
-    setManagerName(event.target.value);
-  };
+  useEffect(() => {
+    onManagerChange(managerData);
+  }, [managerData, onManagerChange]);
 
-  const handleManagerEMailChange = (event) => {
-    setManagerEMail(event.target.value);
-  };
-
-  const handleManagerPhoneChange = (event) => {
-    setManagerPhone(event.target.value);
-  };
-
-  const handleManagerLandlinePhoneChange = (event) => {
-    setManagerLandlinePhone(event.target.value);
+  const handleInputChange = (event, field) => {
+    const value = event.target.value;
+    setManagerData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
   };
 
   return (
@@ -38,8 +37,8 @@ const ManagerForm = () => {
             label="성명"
             variant="standard"
             sx={{ mb: "3rem" }}
-            value={managerName}
-            onChange={handleManagerNameChange}
+            value={managerData.name}
+            onChange={(event) => handleInputChange(event, "name")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -50,8 +49,8 @@ const ManagerForm = () => {
             label="이메일"
             variant="standard"
             sx={{ mb: "3rem" }}
-            value={managerEMail}
-            onChange={handleManagerEMailChange}
+            value={managerData.email}
+            onChange={(event) => handleInputChange(event, "email")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -62,8 +61,8 @@ const ManagerForm = () => {
             label="휴대전화"
             variant="standard"
             sx={{ mb: "3rem" }}
-            value={managerPhone}
-            onChange={handleManagerPhoneChange}
+            value={managerData.mobile}
+            onChange={(event) => handleInputChange(event, "mobile")}
           />
         </Grid>
         <Grid item xs={6}>
@@ -73,12 +72,13 @@ const ManagerForm = () => {
             label="유선전화"
             variant="standard"
             sx={{ mb: "3rem" }}
-            value={managerLandlinePhone}
-            onChange={handleManagerLandlinePhoneChange}
+            value={managerData.phone}
+            onChange={(event) => handleInputChange(event, "phone")}
           />
         </Grid>
       </Grid>
     </FormContainer>
   );
 };
+
 export default ManagerForm;

@@ -1,12 +1,12 @@
 import Navbar from "../../components/navbar/Navbar";
-import PriceForm from "../../components/priceForm/PriceForm";
+import LoginForm from "../../components/directorForm/LoginForm";
 
-function Price() {
+function Director() {
   return (
     <div>
       <Navbar backgroundColor={true} borderBottom={true} />
-      <PriceForm />
+      <LoginForm />
     </div>
   );
 }
-export default Price;
+export default Director;

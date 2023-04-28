@@ -1,75 +1,77 @@
 import React, { useState, useEffect } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Navbar from "../navbar/Navbar";
+import { styled } from "@mui/material/styles";
 import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
   Typography,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Navbar from "../../components/navbar/Navbar";
-import { makeStyles } from "@material-ui/core/styles";
+} from "@mui/material";
 import "./FaqForm.css";
-import Footer from "../../components/footer/Footer";
-import axios from 'axios';
+import Footer from "../footer/Footer";
+import axios from "axios";
 
+const StyledAccordion = styled(Accordion)(({ theme }) => ({
+  "&:not(:last-child)": {
+    borderBottom: 0,
+  },
+  "&:before": {
+    display: "none",
+  },
+  margin: "auto",
+  width: "70%",
+  marginBottom: theme.spacing(15),
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "70%",
-    margin: "0 auto",
-    marginBottom: theme.spacing(15),
-  },
-  accordion: {
-    "&:not(:last-child)": {
-      borderBottom: 0,
-    },
-    "&:before": {
-      display: "none",
-    },
-    "&$expanded": {
-      margin: "auto",
-    },
-  },
-  expanded: {},
-  accordionSummary: {
-    backgroundColor: "#F5F5F5",
-    marginBottom: theme.spacing(2),
-    minHeight: 64,
-    "&$expanded": {
-      minHeight: 64,
-    },
-  },
-  expandIcon: {
-    color: "#000",
-    fontSize: "1.5rem",
-    marginRight: theme.spacing(1),
-    transition: "transform 0.3s ease-in-out",
-    "&$expanded": {
-      transform: "rotate(180deg)",
-    },
-  },
-  accordionDetails: {
-    backgroundColor: "#F5F5F5",
-    padding: theme.spacing(2),
-  },
-  question: {
-    fontWeight: "bold",
-    fontSize: "1.2rem",
-    fontFamily: "Arial",
-  },
-  answer: {
-    fontSize: "1rem",
-    fontFamily: "Arial",
+  ".Mui-expanded": {
+    margin: "auto",
   },
 }));
 
+const StyledAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
+  backgroundColor: "#F5F5F5",
+  marginBottom: theme.spacing(2),
+  minHeight: 64,
+
+  "& .Mui-expanded": {
+    minHeight: 64,
+  },
+
+  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+    transform: "rotate(180deg)",
+  },
+}));
+
+const StyledExpandMoreIcon = styled(ExpandMoreIcon)(({ theme }) => ({
+  color: "#000",
+  fontSize: "1.5rem",
+  marginRight: theme.spacing(1),
+  transition: "transform 0.3s ease-in-out",
+}));
+
+const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
+  backgroundColor: "#F5F5F5",
+  padding: theme.spacing(2),
+}));
+
+const StyledQuestion = styled(Typography)(({ theme }) => ({
+  fontWeight: "bold",
+  fontSize: "1.2rem",
+  fontFamily: "Pretendard",
+}));
+
+const StyledAnswer = styled(Typography)(({ theme }) => ({
+  fontSize: "1rem",
+  fontFamily: "Pretendard",
+}));
+
 const FaqForm = () => {
-  const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
   const [faqData, setFaqData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/faq")
+    axios
+      .get("http://localhost:8080/api/faq")
       .then((response) => {
         setFaqData(response.data);
       })
@@ -84,7 +86,7 @@ const FaqForm = () => {
 
   return (
     <div className="faq">
-      <div className={classes.root}>
+      <StyledAccordion expanded={expanded} onChange={handleChange}>
         <Navbar />
         <br />
         <br />
@@ -93,38 +95,23 @@ const FaqForm = () => {
         <br />
         <div className="faqTitle">FAQ</div>
         {faqData.map((faq, index) => (
-          <Accordion
-            key={index}
-            className={classes.accordion}
-            classes={{
-              expanded: classes.expanded,
-            }}
-            expanded={expanded === `panel${index}`}
-            onChange={handleChange(`panel${index}`)}
-          >
-            <AccordionSummary
-              className={classes.accordionSummary}
-              classes={{
-                expandIcon: classes.expandIcon,
-                expanded: classes.expanded,
-              }}
-              expandIcon={<ExpandMoreIcon />}
+          <div key={index}>
+            <StyledAccordionSummary
+              expandIcon={<StyledExpandMoreIcon />}
               aria-controls={`panel${index}-content`}
               id={`panel${index}-header`}
             >
-              <Typography variant="h6" className={classes.question}>
-                Q. {faq.title}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography className={classes.answer}>
-                &nbsp;&nbsp;&nbsp;{faq.content}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
+              <StyledQuestion variant="h6">Q. {faq.title}</StyledQuestion>
+            </StyledAccordionSummary>
+            <StyledAccordionDetails>
+              <StyledAnswer>&nbsp;&nbsp;&nbsp;{faq.content}</StyledAnswer>
+            </StyledAccordionDetails>
+          </div>
         ))}
-      </div>
+      </StyledAccordion>
+      <Footer />
     </div>
   );
 };
+
 export default FaqForm;

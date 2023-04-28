@@ -1,6 +1,6 @@
 import { ToggleButton, Tooltip } from "@mui/material";
 import { CustomTypo, FormContainer } from "./ClassificationFormStyle";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const classifications = [
   { id: 1, name: "1류", description: "화학제품, 비료, 코팅제, 비닐" },
@@ -176,21 +176,31 @@ const classifications = [
   },
 ];
 
-const ClassificationForm = () => {
+const ClassificationForm = ({ onClassificationataChange }) => {
   const [selectedClassifications, setSelectedClassifications] = useState([]);
+  const [classificationData, setClassificationData] = useState({
+    sector: "",
+  });
 
   const handleClassificationClick = (classificationId) => {
-    if (selectedClassifications.includes(classificationId)) {
-      setSelectedClassifications(
-        selectedClassifications.filter((id) => id !== classificationId)
-      );
-    } else {
-      setSelectedClassifications([
-        ...selectedClassifications,
-        classificationId,
-      ]);
-    }
+    setSelectedClassifications((prevSelected) => {
+      let newSelectedClassifications = prevSelected.includes(classificationId)
+        ? prevSelected.filter((id) => id !== classificationId)
+        : [...prevSelected, classificationId];
+      return newSelectedClassifications;
+    });
   };
+
+  useEffect(() => {
+    const selectedNames = selectedClassifications
+      .map((id) => classifications.find((c) => c.id === id).name)
+      .join(", ");
+    setClassificationData({ sector: selectedNames });
+  }, [selectedClassifications]);
+
+  useEffect(() => {
+    onClassificationataChange(classificationData);
+  }, [classificationData, onClassificationataChange]);
 
   return (
     <FormContainer>
