@@ -43,48 +43,13 @@ function DomesticMark() {
       user: { ...managerData },
     };
 
-    // 테스트용 데이터
-    const data2 = {
-      mark: {
-        brand_name: "123",
-        description: "123",
-        image: "123",
-        sector: "123",
-        type: "123",
-        poc: "personal",
-        country: "123",
-        madrid: "123",
-        direct: "123",
-        status: "123",
-      },
-      personal: {
-        name_kor: "456",
-        name_eng: "456",
-        ssn: "456",
-        personalEmail: "aaa@aaa.com",
-        personalMobile: "456",
-        personalPhone: "456",
-        address: "456",
-        detail: "456",
-        zipcode: "456",
-        agreement: "456",
-      },
-      user: {
-        name: "999",
-        email: "aaa@bb.com",
-        mobile: "999",
-        phone: "999",
-        acc_num: "999",
-      },
-    };
-    console.log(data);
     const endpoint =
       applicantType.poc === "personal"
         ? "http://localhost:8080/api/register/personal"
         : "http://localhost:8080/api/register/corporate";
 
     const JSONData = JSON.stringify(data);
-    console.log(JSONData);
+    // console.log(JSONData);
 
     axios
       .post(endpoint, JSONData, {
@@ -96,7 +61,6 @@ function DomesticMark() {
         console.log(response);
       })
       .catch((error) => {
-        console.log("에러");
         console.log(error);
       });
   };
