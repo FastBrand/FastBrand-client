@@ -1,9 +1,11 @@
-import { TextField, Grid, Button } from "@mui/material";
+import { TextField, Grid, Button, Dialog } from "@mui/material";
+import DaumPostcode from "react-daum-postcode";
 import { Wrapper, Label, CustomTypo } from "./CorporateFormStyle";
 import React from "react";
 import { useState, useEffect } from "react";
 
 const CorporateForm = ({ onCorporateChange }) => {
+  const [isDaumPostcodeOpen, setIsDaumPostcodeOpen] = useState(false);
   const [corporateData, setCorporateData] = useState({
     name_kor: "",
     name_eng: "",
@@ -14,10 +16,10 @@ const CorporateForm = ({ onCorporateChange }) => {
     corporateMobile: "",
     corporatePhone: "",
     corporateEmail: "",
-    seal: "seal",
-    address: "address",
-    detail: "detail",
-    zipcode: "zipcode",
+    seal: "seal", // 법인 인감 파일
+    address: "", // 주소
+    detail: "", // 상세주소
+    zipcode: "", // 우편번호
     agreement: "동의",
   });
 
@@ -43,6 +45,14 @@ const CorporateForm = ({ onCorporateChange }) => {
     console.log(formData.get("seal"));
 
     setCorporateData((prevData) => ({ ...prevData, seal: formData }));
+  };
+
+  const handleComplete = (data) => {
+    setCorporateData((prevData) => ({
+      ...prevData,
+      address: data.address,
+      zipcode: data.zonecode,
+    }));
   };
   console.log(corporateData);
   return (
@@ -171,37 +181,62 @@ const CorporateForm = ({ onCorporateChange }) => {
         </label>
       </Wrapper>
       <Grid container spacing={1} sx={{ padding: "100px 230px" }}>
-        <CustomTypo sx={{ mb: "3rem" }}>
-          06. 법인 등본상 주소를 입력해주세요
-        </CustomTypo>
+        <Grid item xs={12}>
+          <CustomTypo sx={{ mb: "3rem" }}>
+            06. 법인 등본상 주소를 입력해주세요
+          </CustomTypo>
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            controlled="true"
+            required
+            fullWidth
+            sx={{ mb: "3rem" }}
+            id="corporateZipcode"
+            label="우편번호"
+            variant="standard"
+            value={corporateData.zipcode}
+            onChange={(event) => handleInputChange(event, "zipcode")}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Button
+            variant="contained"
+            onClick={() => {
+              setIsDaumPostcodeOpen(true);
+            }}
+          >
+            주소검색
+          </Button>
+          {isDaumPostcodeOpen && <DaumPostcode onComplete={handleComplete} />}
+        </Grid>
         <Grid item xs={8}>
           <TextField
+            controlled="true"
             required
             fullWidth
             sx={{ mb: "3rem" }}
             id="corporateAddress"
             label="주소"
             variant="standard"
-            // value={corporateData.address}
-            // onChange={handleInputChange}
+            value={corporateData.address}
+            onChange={(event) => handleInputChange(event, "address")}
           />
         </Grid>
+        <Grid item xs={4}></Grid>
         <Grid item xs={4}>
-          <Button variant="contained">주소검색</Button>
-        </Grid>
-        <Grid item xs={8}>
           <TextField
+            controlled="true"
             required
             fullWidth
             sx={{ mb: "3rem" }}
             id="corporateDetail"
             label="상세주소"
             variant="standard"
-            // value={corporateData.corporateDetail}
-            // onChange={handleInputChange}
+            value={corporateData.detail}
+            onChange={(event) => handleInputChange(event, "detail")}
           />
         </Grid>
-        <Grid item xs={8}></Grid>
       </Grid>
     </form>
   );
