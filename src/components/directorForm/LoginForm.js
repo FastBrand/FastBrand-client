@@ -1,33 +1,25 @@
-import { TextField, Button } from '@material-ui/core';
-import { Box } from '@mui/material';
-import axios from 'axios';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { TextField, Button, Box } from "@mui/material";
+import axios from "axios";
+import { useState } from "react";
 
 function LoginForm() {
-const [username, setUsername] = useState('');
-const [password, setPassword] = useState('');
-const navigate = useNavigate(); // useNavigate hook 사용
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-const handleLogin = () => {
-  axios.post('http://localhost:8080/login', {
-    username: username,
-    password: password
-  })
-  .then((response) => {
-    const token = response.data.accessToken; // JWT 토큰 추출
-    console.log({ username });
-    console.log(response);
-    // 토큰 저장
-    localStorage.setItem('token', token);
-    navigate('/dashboard'); // 로그인 성공 시 다른 URL로 이동
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-};
-
+  const handleLogin = () => {
+    axios
+      .post("http://localhost:8080/login", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log({ username });
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <div

@@ -14,7 +14,6 @@ function PriceForm() {
     "해외출원 상표등록",
     "국내+해외출원 상표등록",
   ]);
-  
   return (
     <div className="priceInfo">
       <br />
