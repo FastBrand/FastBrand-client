@@ -1,4 +1,4 @@
-import { ToggleButton, Tooltip } from "@mui/material";
+import { ToggleButton, Tooltip, Typography } from "@mui/material";
 import { CustomTypo, FormContainer } from "./ClassificationFormStyle";
 import React, { useState, useEffect } from "react";
 
@@ -209,7 +209,15 @@ const ClassificationForm = ({ onClassificationataChange }) => {
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}
       >
         {classifications.map((classification) => (
-          <Tooltip key={classification.id} title={classification.description}>
+          <Tooltip
+            arrow
+            key={classification.id}
+            title={
+              <Typography sx={{ fontSize: 15, fontFamily: "Pretendard" }}>
+                {classification.description}
+              </Typography>
+            }
+          >
             <ToggleButton
               value={classification.id}
               selected={selectedClassifications.includes(classification.id)}
