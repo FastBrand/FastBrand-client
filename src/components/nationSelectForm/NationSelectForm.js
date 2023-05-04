@@ -33,8 +33,9 @@ const NationButton = styled(Button)({
     boxShadow: 'none',
     backgroundColor: '#3E3E3F',
     borderColor: 'none',
-  }
+  },
 });
+
 
 const NationButton_table = styled(Button)({
   fontSize:'12px', 
@@ -47,26 +48,22 @@ const NationButton_table = styled(Button)({
   color:'black', 
   width:'100px', height:'35px', padding:'4px',
   '&:hover': {
-    backgroundColor: '#3E3E3F',
+    backgroundColor: '#CBA585',
     color: 'white',
-    borderColor: '#3E3E3F',
+    borderColor: '#CBA585',
     boxShadow: 'none',
   },
   '&:active': {
     boxShadow: 'none',
-    backgroundColor: '#3E3E3F',
-    borderColor: 'none',
-  }
+    backgroundColor: '#CBA585',
+    borderColor: '#CBA585',
+  },
+  '&.selected': {
+    backgroundColor: '#CBA585',
+    color: 'white',
+  },
 });
 
-const continentMap = {}; // 대륙 정보를 저장할 객체
-for (const [country, info] of Object.entries(nation_data)) {
-  const continent = info.continent;
-  if (!continentMap[continent]) {
-    continentMap[continent] = []; // 대륙이 처음 등장하면 배열을 생성
-  }
-  continentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
-}
 
 function NationSelectedBox({ country }){ //국가선택창 또는 검색 버튼에서 국가 선택시 밑에 추가됨.
 return(
@@ -80,6 +77,7 @@ function NationSelectForm() { //국가선택 컴포넌트
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(''); // 입력어를 state로 관리
   const [boxes, setBoxes] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useState({}); //선택된 국가들
 
   const handleOpen = () => { //모달창 오픈
     setOpen(true);
@@ -103,8 +101,24 @@ function NationSelectForm() { //국가선택 컴포넌트
     setSearchValue(event.target.value);
   };
 
-  const handleSelectCountry = () => { //국가선택팝업창에서 국가 버튼을 눌렀을 때 
-    
+  const handleSelectCountry = (i, j, country) => {
+    const newSelectedCountries = { ...selectedCountries }; // 기존 선택한 국가들을 복사
+    if (newSelectedCountries[country]) {
+      delete newSelectedCountries[country]; // 이미 선택한 국가를 다시 클릭하면 선택을 취소
+    } else {
+      newSelectedCountries[country] = true; // 새로운 국가를 선택하면 선택한 국가들에 추가
+    }
+    setSelectedCountries(newSelectedCountries); // 선택한 국가들을 state에 저장
+    console.log(selectedCountries)
+  };
+
+  const continentMap = {}; // 대륙 정보를 저장할 객체
+  for (const [country, info] of Object.entries(nation_data)) {
+    const continent = info.continent;
+    if (!continentMap[continent]) {
+      continentMap[continent] = []; // 대륙이 처음 등장하면 배열을 생성
+    }
+    continentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
   }
 
   return (
@@ -117,9 +131,8 @@ function NationSelectForm() { //국가선택 컴포넌트
         style={{width:'400px', maxWidth: '100%'}}
         value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
 
-        <NationButton variant="outlined" onClick={handleSearch}>검색</NationButton>
+        <NationButton variant="outlined" onClick={handleSearch}>입력</NationButton>
         <NationButton variant="outlined" onClick={handleOpen}>국가선택</NationButton>
-        
         <div>{boxes}</div>
 
       <Modal
@@ -165,7 +178,10 @@ function NationSelectForm() { //국가선택 컴포넌트
                 <TableRow key={`row-${i}`} sx={{ display: 'flex', flexWrap: 'wrap' }}>
                   {countries.slice(i * 4, (i + 1) * 4).map((country, j) => (
                     <TableCell key={`${continent}-${country}`}>
-                      <NationButton_table variant="outlined" onClick={() => handleSelectCountry(i, j)}>
+                      <NationButton_table variant="outlined"
+                        onClick={() => handleSelectCountry(i, j, country)}
+                        className={selectedCountries[country] ? 'selected' : ''
+                            }>
                         {country}
                       </NationButton_table>
                     </TableCell>
