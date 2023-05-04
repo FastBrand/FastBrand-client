@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import "./NationSelectForm.css";
+import nation_data from './NationData.json';
 
 
 const NationButton = styled(Button)({
@@ -58,6 +59,15 @@ const NationButton_table = styled(Button)({
   }
 });
 
+const continentMap = {}; // 대륙 정보를 저장할 객체
+for (const [country, info] of Object.entries(nation_data)) {
+  const continent = info.continent;
+  if (!continentMap[continent]) {
+    continentMap[continent] = []; // 대륙이 처음 등장하면 배열을 생성
+  }
+  continentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
+}
+
 function NationSelectedBox({ country }){ //국가선택창 또는 검색 버튼에서 국가 선택시 밑에 추가됨.
 return(
   <Box className="nationBox_selected">
@@ -70,7 +80,6 @@ function NationSelectForm() { //국가선택 컴포넌트
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(''); // 입력어를 state로 관리
   const [boxes, setBoxes] = useState([]);
-
 
   const handleOpen = () => { //모달창 오픈
     setOpen(true);
@@ -110,7 +119,7 @@ function NationSelectForm() { //국가선택 컴포넌트
 
         <NationButton variant="outlined" onClick={handleSearch}>검색</NationButton>
         <NationButton variant="outlined" onClick={handleOpen}>국가선택</NationButton>
-
+        
         <div>{boxes}</div>
 
       <Modal
@@ -142,41 +151,33 @@ function NationSelectForm() { //국가선택 컴포넌트
           </Box>
           <h2 id="modal-title">국가 선택</h2>
           <p id="modal-description">다중선택이 가능하며 스크롤해서 선택해주세요.</p>
-          <TableContainer style={{ width: '800px', height: '800px' }}> 
-            <Table style={{ width: '100%', height: '100%' }}>
-              <TableBody sx={{overflow:'auto'}}>
-                {[...Array(20)].map((_, i) => (
-                  <TableRow key={i}>
-                {i === 0 && (
-                  <TableCell id="contentName_row" rowSpan={2}> 주요국가 </TableCell>
-                )}
-                {i === 2 && (
-                  <TableCell id="contentName_row" rowSpan={5}> 아시아 </TableCell>
-                )}
-                 {i === 7 && (
-                  <TableCell id="contentName_row" rowSpan={1}> 북미 </TableCell>
-                )}
-                 {i === 8 && (
-                  <TableCell id="contentName_row" rowSpan={4}> 남미 </TableCell>
-                )}
-                 {i === 12 && (
-                  <TableCell id="contentName_row" rowSpan={4}> 유럽 </TableCell>
-                )} 
-                {i === 16 && (
-                  <TableCell id="contentName_row" rowSpan={4}> 아프리카 </TableCell>
-                )}
-                    {[...Array(5)].map((_, j) => (                      
-                      <TableCell key={`${i}-${j}`}>
-                        <NationButton_table variant="outlined" color="primary" onClick={() => handleSelectCountry(i, j)}>
-                        선택
-                        </NationButton_table>
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+
+          <TableContainer style={{ width: '800px', height: '800px' }}>
+        <Table style={{ width: '100%', height: '100%' }}>
+          {Object.entries(continentMap).map(([continent, countries]) => (
+            <TableBody key={continent} sx={{ overflow: 'auto' }}>
+              <TableRow>
+                <TableCell id="contentName_row" rowSpan={Math.ceil(countries.length / 1)}>
+                  {continent}
+                </TableCell>
+              </TableRow>
+              {Array.from({ length: Math.ceil(countries.length / 4) }).map((_, i) => (
+                <TableRow key={`row-${i}`} sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                  {countries.slice(i * 4, (i + 1) * 4).map((country, j) => (
+                    <TableCell key={`${continent}-${country}`}>
+                      <NationButton_table variant="outlined" onClick={() => handleSelectCountry(i, j)}>
+                        {country}
+                      </NationButton_table>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          ))}
+        </Table>
+      </TableContainer>
+      
+
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px', marginLeft: '50px' }}>
           <Button id='confireButton_table' variant="outlined" onClick={handleClose} style={{marginRight:'30px', backgroundColor:'#CBA585', color:'white'}}>확인</Button>
           <Button id='confireButton_table' variant="outlined" onClick={handleClose}>취소</Button>
