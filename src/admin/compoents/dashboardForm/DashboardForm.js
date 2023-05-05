@@ -30,7 +30,7 @@ const data = [
 function DashboardForm(){
   const classes = useStyles();
  
-  const [visitorCount, setVisitorCount] = useState([]);
+  const [visitorCount, setVisitorCount] = useState([]); //일일 방문자 수
 
   useEffect(() => {
     axios.get('http://localhost:8080/api/week')
