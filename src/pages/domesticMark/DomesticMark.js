@@ -115,9 +115,11 @@ function DomesticMark() {
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
       />
-      <Button onClick={handleSubmit} variant="contained">
-        신청하기
+      <div>
+      <Button id="submitButton" onClick={handleSubmit} variant="contained">
+        견적보기
       </Button>
+      </div>
     </div>
   );
 }

@@ -157,7 +157,7 @@ function NationSelectForm({onSelectedCountries}) { //국가선택 컴포넌트
         <NationButton variant="outlined" onClick={handleOpen}>국가선택</NationButton>
         
         <div className="boxContainer">
-        {boxes.map((country, index) => (
+        {boxes.map((country, index) => ( //국가버튼 선택시에 밑에 추가되는 상자들 표시
           <Box key={index}>
             {country}
           </Box>
@@ -223,10 +223,13 @@ function NationSelectForm({onSelectedCountries}) { //국가선택 컴포넌트
       </TableContainer>
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px', marginLeft: '50px' }}>
-          <Button id='confireButton_table' variant="outlined" onClick={handleConfirm} style={{
+          <Button id='confireButton_table'
+            variant="outlined"
+            onClick={handleConfirm} style={{
             marginRight:'30px',
             backgroundColor:'#CBA585',
-            color:'white'}}
+            color:'white'
+          }}
             >확인
             </Button>
           <Button id='confireButton_table' variant="outlined" onClick={handleClose}>취소</Button>
