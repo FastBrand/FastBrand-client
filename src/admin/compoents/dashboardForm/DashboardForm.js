@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Box, Grid, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,7 +28,18 @@ const data = [
 ];
 
 function DashboardForm(){
-const classes = useStyles();
+  const classes = useStyles();
+ 
+  const [visitorCount, setVisitorCount] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/week')
+      .then(response => {
+        const myData = response.data;
+        setVisitorCount(myData);
+      });
+  }, []);
+
   return (
     <div className={classes.root}>
     <Paper className={classes.paper}>
@@ -39,6 +52,7 @@ const classes = useStyles();
       <Tooltip />
       <Legend />
     </LineChart>
+    {visitorCount}
     </Paper>
     </div>
   );

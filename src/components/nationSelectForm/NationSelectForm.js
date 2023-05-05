@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField'; 
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "./NationSelectForm.css";
 import nation_data from './NationData.json';
 
@@ -61,6 +61,7 @@ const NationButton_table = styled(Button)({
   '&.selected': {
     backgroundColor: '#CBA585',
     color: 'white',
+    borderColor: '#CBA585'
   },
 });
 
@@ -73,43 +74,60 @@ return(
 )
 }
 
-function NationSelectForm() { //국가선택 컴포넌트
+function NationSelectForm({onSelectedCountries}) { //국가선택 컴포넌트
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState(''); // 입력어를 state로 관리
   const [boxes, setBoxes] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState({}); //선택된 국가들
+
+  useEffect(() => {
+    onSelectedCountries(selectedCountries);
+  }, [selectedCountries, onSelectedCountries]);
 
   const handleOpen = () => { //모달창 오픈
     setOpen(true);
   };
 
   const handleClose = () => { //모달창 닫기
+    const selected = Object.keys(selectedCountries);
+    console.log(selected);
+    const newBoxes = selected.map((c) => (
+      <Box country={c} key={c} />
+    ));
+    setBoxes([...boxes, newBoxes]);
+    setSelectedCountries(selectedCountries); // 선택된 국가들을 업데이트
+    console.log("모달창 닫기");
     setOpen(false);
   };
 
-  const handleSearch = () => { // 검색 버튼 클릭 시 검색어에 해당하는 박스 추가 로직
-    const newBox = 
-    <Box className="nationBox_selected"> {searchValue} 
-    <IconButton onClick={handleClose}><CloseIcon /></IconButton>
-    </Box>;
-    setBoxes([...boxes, newBox]);
-    console.log(searchValue);
-  };
+  // const handleSearch = () => { // 검색 버튼 클릭 시 검색어에 해당하는 박스 추가 로직
+  //   const newBox = 
+  //   <Box className="nationBox_selected"> {searchValue} 
+  //   <IconButton onClick={handleClose}><CloseIcon /></IconButton>
+  //   </Box>;
+  //   setBoxes([...boxes, newBox]);
+  //   console.log(searchValue);
+  // };
 
-  const handleInput = (event) => {
-    // TextField에 입력된 값을 검색어 state에 저장
-    setSearchValue(event.target.value);
-  };
+  // const handleInput = (event) => {
+  //   // TextField에 입력된 값을 검색어 state에 저장
+  //   setSearchValue(event.target.value);
+  // };
 
-  const handleSelectCountry = (i, j, country) => {
-    const newSelectedCountries = { ...selectedCountries }; // 기존 선택한 국가들을 복사
+ 
+  const handleSelectCountry = (i, j, country) => { //모달창 국가명버튼 클릭 시 상자생성
+    const newSelectedCountries = { ...selectedCountries };
     if (newSelectedCountries[country]) {
-      delete newSelectedCountries[country]; // 이미 선택한 국가를 다시 클릭하면 선택을 취소
+      delete newSelectedCountries[country];
     } else {
-      newSelectedCountries[country] = true; // 새로운 국가를 선택하면 선택한 국가들에 추가
+      newSelectedCountries[country] = true;
     }
-    setSelectedCountries(newSelectedCountries); // 선택한 국가들을 state에 저장
-    console.log(selectedCountries)
+    setSelectedCountries(newSelectedCountries);
+  
+    const newBoxes = Object.keys(newSelectedCountries).map((c) => (
+      <NationSelectedBox country={c} key={c} />
+    ));
+    setBoxes(newBoxes);
   };
 
   const continentMap = {}; // 대륙 정보를 저장할 객체
@@ -121,6 +139,11 @@ function NationSelectForm() { //국가선택 컴포넌트
     continentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
   }
 
+  const handleConfirm = () => { //확인버튼을 눌렀을 때
+    console.log("확인버튼");
+    handleClose();
+  };
+
   return (
     <div style={{margin: "100px 230px", flexWrap: "wrap", justifyContent: "center" }}>
       <br/><br/><br/>
@@ -130,11 +153,17 @@ function NationSelectForm() { //국가선택 컴포넌트
         <TextField id="standard-basic" label="국가명" variant="standard"
         style={{width:'400px', maxWidth: '100%'}}
         value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
-
-        <NationButton variant="outlined" onClick={handleSearch}>입력</NationButton>
+      
         <NationButton variant="outlined" onClick={handleOpen}>국가선택</NationButton>
-        <div>{boxes}</div>
-
+        
+        <div className="boxContainer">
+        {boxes.map((country, index) => (
+          <Box key={index}>
+            {country}
+          </Box>
+        ))}
+        </div>
+        
       <Modal
         open={open}
         onClose={handleClose}
@@ -192,10 +221,14 @@ function NationSelectForm() { //국가선택 컴포넌트
           ))}
         </Table>
       </TableContainer>
-      
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px', marginLeft: '50px' }}>
-          <Button id='confireButton_table' variant="outlined" onClick={handleClose} style={{marginRight:'30px', backgroundColor:'#CBA585', color:'white'}}>확인</Button>
+          <Button id='confireButton_table' variant="outlined" onClick={handleConfirm} style={{
+            marginRight:'30px',
+            backgroundColor:'#CBA585',
+            color:'white'}}
+            >확인
+            </Button>
           <Button id='confireButton_table' variant="outlined" onClick={handleClose}>취소</Button>
           </div>
         </Box>

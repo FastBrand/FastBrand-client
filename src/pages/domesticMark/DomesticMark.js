@@ -17,6 +17,7 @@ function DomesticMark() {
   const [managerData, setManagerData] = useState({});
   const [applicantData, setApplicantData] = useState({});
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
+  const [countriesData, setcountriesData] = useState({}); 
 
   const markSelectData = {
     type: "국내",
@@ -28,6 +29,7 @@ function DomesticMark() {
     direct: "각국출원",
     status: "진행상태",
   };
+
   const handleSubmit = () => {
     const data = {
       mark: {
@@ -35,7 +37,7 @@ function DomesticMark() {
         ...classificationData,
         ...markSelectData,
         ...applicantType,
-        ...nationData,
+        ...countriesData,
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
@@ -108,7 +110,7 @@ function DomesticMark() {
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-      <NationSelectForm />
+      <NationSelectForm onSelectedCountries={setcountriesData}/>
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
