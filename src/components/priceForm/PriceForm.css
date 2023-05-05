@@ -7,7 +7,7 @@
 
 .priceInfo::before {
   background-image: url("../../assets/images/비용안내.jpeg");
-  opacity: 0.5;
+  opacity: 0.6;
   content: "";
   position: absolute;
   width: 100vw;
@@ -26,12 +26,9 @@
   margin-bottom: 50px;
 }
 
-#applicationButton {
-  background-color: #cba585;
-}
-
 #priceNum {
-  margin-top: 5;
+  margin-top: 5px;
+  margin-bottom: 60px;
   text-align: left;
   font-weight: 800;
 }
@@ -44,7 +41,7 @@
 }
 
 #priceNotice01 {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 600;
   margin-top: 2px;
   margin-bottom: 0;
@@ -56,7 +53,7 @@
   font-weight: 400;
   margin-top: 10px;
   text-align: left;
-  min-height: 35vh;
+  height: 230px;
   margin-bottom: 30px;
 }
 

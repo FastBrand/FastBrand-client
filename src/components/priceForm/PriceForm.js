@@ -22,7 +22,7 @@ function PriceForm() {
       <Navbar backgroundColor={true} borderBottom={true} />
       </div>
     <div className="priceInfo">
-      <br/>
+      <br/><br/><br/>
       <div className="priceTitle">비용안내</div>
       <Container>
         <Grid container spacing={3}>
