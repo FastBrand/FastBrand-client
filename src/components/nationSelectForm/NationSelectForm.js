@@ -194,7 +194,7 @@ function NationSelectForm({onSelectedCountries}) { //국가선택 컴포넌트
           <h2 id="modal-title">국가 선택</h2>
           <p id="modal-description">다중선택이 가능하며 스크롤해서 선택해주세요.</p>
 
-          <TableContainer style={{ width: '800px', height: '800px' }}>
+          <TableContainer style={{ width: '800px', maxHeight: '60vh' }}>
         <Table style={{ width: '100%', height: '100%' }}>
           {Object.entries(continentMap).map(([continent, countries]) => (
             <TableBody key={continent} sx={{ overflow: 'auto' }}>
