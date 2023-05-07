@@ -15,8 +15,15 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '20px',
     border: '0.5px solid #000',
   },
+  tooltip: {
+    backgroundColor: '#3E3E3F',
+    borderColor: '#CBA585',
+    color: '#CBA585',
+    padding: '3px',
+    fontSize: '13px'
+  },
   paper: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(3),
     width: 850,
     display: 'flex',
     justifyContent: 'left',
@@ -36,7 +43,24 @@ const useStyles = makeStyles((theme) => ({
     textDecorationColor: '#CBA585',
     textUnderlineOffset: '5px',
   },
+
 }));
+
+function CustomTooltip({ active, payload, label }) {
+  const classes = useStyles();
+
+  if (active && payload && payload.length) {
+    return (
+      <div className={classes.tooltip}>
+        <p>{`날짜: ${label}`}</p>
+        <p>{`방문자: ${payload[0].value}`}</p>
+      </div>
+    );
+  }
+
+  return null;
+}
+
 
 function getRecentWeek() {
   const today = new Date();
@@ -83,7 +107,7 @@ function DashboardForm() {
           <YAxis stroke='#FFFFFF' tickFormatter={integerFormatter} />
           <CartesianGrid stroke="#FFFFFF" strokeDasharray="1 1" />
           <Bar dataKey="visitor" fill="#CBA585" />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           <Legend />
         </BarChart>
       </Paper>
