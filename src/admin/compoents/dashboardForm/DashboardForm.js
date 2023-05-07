@@ -1,61 +1,87 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper } from '@material-ui/core';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(4),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }));
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    width: 850,
+    display: 'flex',
+    justifyContent: 'left',
+    alignItems: 'left',
+    margin: '0 auto',
+    textAlign: 'left',
+    color: '#FFFFFF',
+    backgroundColor: '#3E3E3F',
+  },
+  text01: {
+    marginTop: '10px',
+    marginLeft: '170px',
+    marginBottom: '30px',
+    fontSize: '30px',
+    fontWeight: 400,
+    textDecoration: 'underline',
+    textDecorationColor: '#CBA585',
+    textUnderlineOffset: '5px',
+  }
+}));
 
+function getRecentWeek() {
+  const today = new Date();
+  const recentWeek = [];
 
-const data = [
-  { name: '1월', uv: 4000, pv: 2400, amt: 2400 },
-  { name: '2월', uv: 3000, pv: 1398, amt: 2210 },
-  { name: '3월', uv: 2000, pv: 9800, amt: 2290 },
-  { name: '4월', uv: 2780, pv: 3908, amt: 2000 },
-  { name: '5월', uv: 1890, pv: 4800, amt: 2181 },
-  { name: '6월', uv: 2390, pv: 3800, amt: 2500 },
-  { name: '7월', uv: 3490, pv: 4300, amt: 2100 },
-];
+  for (let i = 0; i < 7; i++) {
+    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
+    const dateString = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+    recentWeek.push(dateString);
+  }
 
-function DashboardForm(){
+  return recentWeek.reverse();
+}
+
+function DashboardForm() {
   const classes = useStyles();
- 
-  const [visitorCount, setVisitorCount] = useState([]); //일일 방문자 수
+
+  const [visitorCount, setVisitorCount] = useState([]); // 일일 방문자 수
+  const recentWeek = getRecentWeek(); // 최근 일주일
+  const [chartData, setChartData] = useState([]); // 차트 데이터
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/week')
-      .then(response => {
-        const myData = response.data;
-        setVisitorCount(myData);
+    axios.get('http://localhost:8080/api/dashboard').then((response) => {
+      const myData = response.data;
+      setVisitorCount(myData);
+
+      const updatedChartData = recentWeek.map((date, index) => {
+        return { name: date, visitor: myData[index] };
       });
+
+      setChartData(updatedChartData);
+    });
   }, []);
+
+  const integerFormatter = (value) => Math.floor(value);
 
   return (
     <div className={classes.root}>
-    <Paper className={classes.paper}>
-    <LineChart width={800} height={500} data={data}>
-      <XAxis dataKey="name" />
-      <YAxis />
-      <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-      <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      <Tooltip />
-      <Legend />
-    </LineChart>
-    {visitorCount}
-    </Paper>
+      <Typography className={classes.text01}>최근 일주일간 방문자 통계</Typography>
+      <Paper className={classes.paper}>     
+        <BarChart width={750} height={500} data={chartData}>
+          <XAxis stroke='#FFFFFF' dataKey="name" />
+          <YAxis stroke='#FFFFFF' tickFormatter={integerFormatter} />
+          <CartesianGrid stroke="#FFFFFF" strokeDasharray="1 1" />
+          <Bar dataKey="visitor" fill="#CBA585" />
+          <Tooltip />
+          <Legend />
+        </BarChart>
+      </Paper>
     </div>
   );
-};
-export default DashboardForm;
+}
 
+export default DashboardForm;

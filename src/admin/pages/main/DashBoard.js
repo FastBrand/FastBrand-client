@@ -6,7 +6,7 @@ function DashBoard(){
     return(
     <div>
     <SideNavbarForm/>
-    <div className="dashboard" style={{marginTop:'202px', marginLeft:'202px'}}>
+    <div className="dashboard" style={{ marginTop:'90px',marginLeft:'202px'}}>
     <DashboardForm/>
     </div>
     </div>
