@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
+import { Paper, Box } from '@material-ui/core';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import axios from 'axios';
 import { Typography } from '@material-ui/core';
@@ -9,27 +9,33 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
+  box:{
     padding: theme.spacing(2),
+    marginLeft: '20px',
+    marginRight: '20px',
+    border: '0.5px solid #000',
+  },
+  paper: {
+    padding: theme.spacing(1),
     width: 850,
     display: 'flex',
     justifyContent: 'left',
     alignItems: 'left',
-    margin: '0 auto',
+    marginLeft: '20px',
     textAlign: 'left',
     color: '#FFFFFF',
     backgroundColor: '#3E3E3F',
   },
   text01: {
     marginTop: '10px',
-    marginLeft: '170px',
+    marginLeft: '20px',
     marginBottom: '30px',
     fontSize: '30px',
     fontWeight: 400,
     textDecoration: 'underline',
     textDecorationColor: '#CBA585',
     textUnderlineOffset: '5px',
-  }
+  },
 }));
 
 function getRecentWeek() {
@@ -69,6 +75,7 @@ function DashboardForm() {
 
   return (
     <div className={classes.root}>
+      <Box className={classes.box}>
       <Typography className={classes.text01}>최근 일주일간 방문자 통계</Typography>
       <Paper className={classes.paper}>     
         <BarChart width={750} height={500} data={chartData}>
@@ -80,6 +87,7 @@ function DashboardForm() {
           <Legend />
         </BarChart>
       </Paper>
+      </Box>
     </div>
   );
 }
