@@ -76,7 +76,7 @@ function SideNavbarForm() {
             </ListItemIcon>
             <ListItemText primary="상품목록 관리" />
           </ListItem>
-          <ListItem button component={NavLink} to="/faq" onClick={handleListItemClick}>
+          <ListItem button component={NavLink} to="/faqAdmin" onClick={handleListItemClick}>
             <ListItemIcon className={classes.icon}>
               <BookOutlinedIcon />
             </ListItemIcon>
