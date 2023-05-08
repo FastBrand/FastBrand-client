@@ -6,6 +6,7 @@ import ClassificationForm from "../../components/classificationForm/Classificati
 import ApplicantForm from "../../components/applicantForm/ApplicantForm";
 import "./DomesticMark.css";
 import ManagerForm from "../../components/managerForm/ManagerForm";
+import TopButton from "../../components/topButton/TopButton";
 import Footer from "../../components/footer/Footer";
 import { Button } from "@mui/material";
 import { useState } from "react";
@@ -17,7 +18,7 @@ function DomesticMark() {
   const [managerData, setManagerData] = useState({});
   const [applicantData, setApplicantData] = useState({});
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
-  const [countriesData, setcountriesData] = useState({}); 
+  const [countriesData, setcountriesData] = useState({});
 
   const markSelectData = {
     type: "국내",
@@ -74,16 +75,15 @@ function DomesticMark() {
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-      <NationSelectForm onSelectedCountries={setcountriesData}/>
+      <NationSelectForm onSelectedCountries={setcountriesData} />
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
       />
-      <div>
       <Button id="submitButton" onClick={handleSubmit} variant="contained">
         견적보기
       </Button>
-      </div>
+      <TopButton />
     </div>
   );
 }
