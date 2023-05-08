@@ -1,19 +1,18 @@
-.markPage{
-    font-family: "Pretendard";
+.markPage {
+  font-family: "Pretendard";
 }
 
-#submitButton{
-    font-size: 24px;
-    font-weight: 400;
-    background-color: transparent;
-    color: #CBA585;
-    border-radius: 50px;
-    border: 1.5px solid #CBA585;
-    width: 230px;
-    height: 70px;
-    padding: 8px 16px;
-    display: block;
-    margin: auto;
-    margin-bottom: 100px;
-    box-shadow: none;
+#submitButton {
+  font-family: "Pretendard";
+  font-size: 20px;
+  font-weight: 400;
+  background-color: transparent;
+  color: #cba585;
+  border-radius: 50px;
+  border: 2px solid #cba585;
+  padding: 8px 40px;
+  display: flex;
+  margin: auto;
+  margin-bottom: 100px;
+  box-shadow: none;
 }
