@@ -1,0 +1,425 @@
+
+  {
+    "한국": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "중국": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "미국": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "유럽공동체": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "일본": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "호주": {
+      "continent": "오세아니아",
+      "madrid" : "마드리드"
+    },
+    "베트남": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "인도": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "필리핀": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "아프리카연합": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "영국": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "대만": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "아랍에미리트": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "방글라데시": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "아르메니아": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "앙골라": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "아르헨티나": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "오스트리아":{
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "캐나다": {
+      "continent": "북미",
+      "madrid" : "마드리드"
+    },
+    "스위스": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "칠레": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "벨기에": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "불가리아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "바레인": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "브루나이": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "볼리비아": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "브라질": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "베네룩스": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "체코": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "독일": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "덴마크": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "도미니카": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "콜럼비아": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "코스타리카": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "프랑스": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "가나": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "크로아티아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "아이티": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "헝가리": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "그리스": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "과테말라": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "홍콩": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "온두라스": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "인도네시아": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "아일랜드": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "이스라엘": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "스페인": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "에티오피아": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "핀란드": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "피지": {
+      "continent": "오세아니아",
+      "madrid" : "마드리드"
+    },
+    "에콰도르": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "에스토니아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "이집트": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "남아프리카공화국": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "세르비아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "사우디아라비아": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "러시아": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "태국": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "터키": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "우루과이": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "우즈베키스탄": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "베네수엘라": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "우크라이나": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "싱가포르": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "슬로베니아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "슬로바키아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "쿠웨이트": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "카자흐스탄": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "라오스": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "레바논": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "스리랑카": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "캄보디아": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "케냐": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "자메이카": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "요르단": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "리투아니아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "룩셈부르크": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "모나코": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "리비아": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "모로코": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "이라크": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "아이슬란드": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "이탈리아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "파나마": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "페루": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "포르투갈": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "팔레스타인": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "파키스탄": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "푸에르토리코": {
+      "continent": "북미",
+      "madrid" : "마드리드"
+    },
+    "파라과이": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "카타르": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "네덜란드": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "네팔": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "루마니아": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "노르웨이": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    },
+    "뉴질랜드": {
+      "continent": "오세아니아",
+      "madrid" : "마드리드"
+    },
+    "모잠비크": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "멕시코": {
+      "continent": "중남미",
+      "madrid" : "마드리드"
+    },
+    "미얀마": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "몽골": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "나이지리아": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "쿠바": {
+      "continent": "아프리카",
+      "madrid" : "마드리드"
+    },
+    "말레이시아": {
+      "continent": "아시아",
+      "madrid" : "마드리드"
+    },
+    "오만": {
+      "continent": "중동",
+      "madrid" : "마드리드"
+    },
+    "스웨덴": {
+      "continent": "유럽",
+      "madrid" : "마드리드"
+    }   
+
+  }
+  
