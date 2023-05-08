@@ -135,6 +135,17 @@ const PersonalForm = ({ onPersonalChange }) => {
           onClick={() => {
             setOpen(true);
           }}
+          sx={{
+            borderRadius: "30px",
+            backgroundColor: "#d9d9d9",
+            color: "black",
+            fontFamily: "Pretendard",
+            boxShadow: "none",
+            "&:hover": {
+              backgroundColor: "#d9d9d9",
+              color: "black",
+            },
+          }}
         >
           우편번호찾기
         </Button>

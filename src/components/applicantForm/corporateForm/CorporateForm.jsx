@@ -54,7 +54,10 @@ const CorporateForm = ({ onCorporateChange }) => {
       zipcode: data.zonecode,
     }));
   };
-  console.log(corporateData);
+
+  const handleDaumPostcodeClose = () => {
+    setIsDaumPostcodeOpen(false);
+  };
   return (
     <form>
       <Grid container spacing={2} sx={{ mb: "3rem", padding: "0 230px" }}>
@@ -186,7 +189,7 @@ const CorporateForm = ({ onCorporateChange }) => {
             06. 법인 등본상 주소를 입력해주세요
           </CustomTypo>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <TextField
             controlled="true"
             required
@@ -205,12 +208,29 @@ const CorporateForm = ({ onCorporateChange }) => {
             onClick={() => {
               setIsDaumPostcodeOpen(true);
             }}
+            sx={{
+              borderRadius: "30px",
+              backgroundColor: "#d9d9d9",
+              color: "black",
+              fontFamily: "Pretendard",
+              boxShadow: "none",
+              "&:hover": {
+                backgroundColor: "#d9d9d9",
+                color: "black",
+              },
+            }}
           >
-            주소검색
+            우편번호찾기
           </Button>
-          {isDaumPostcodeOpen && <DaumPostcode onComplete={handleComplete} />}
+          <Dialog
+            open={isDaumPostcodeOpen}
+            onClose={handleDaumPostcodeClose}
+            sx={{ "& .MuiDialog-paper": { width: "600px" } }}
+          >
+            <DaumPostcode onComplete={handleComplete} />
+          </Dialog>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12}>
           <TextField
             controlled="true"
             required
@@ -223,8 +243,7 @@ const CorporateForm = ({ onCorporateChange }) => {
             onChange={(event) => handleInputChange(event, "address")}
           />
         </Grid>
-        <Grid item xs={4}></Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <TextField
             controlled="true"
             required
