@@ -1,14 +1,20 @@
 import { TextField, Button } from '@material-ui/core';
-import { Box } from '@mui/material';
+import { Box, Snackbar, Backdrop, makeStyles } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 function LoginForm() {
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
+const [loginFailed, setLoginFailed] = useState(false);
 const navigate = useNavigate(); // useNavigate hook 사용
+
+const handleKeyPress = (event) => {
+  if (event.key === 'Enter') {
+    handleLogin();
+  }
+};
 
 const handleLogin = () => {
   axios.post('http://localhost:8080/login', {
@@ -25,9 +31,16 @@ const handleLogin = () => {
   })
   .catch((error) => {
     console.error(error);
+    setLoginFailed(true); // 로그인 실패 상태를 true로 변경
   });
 };
 
+const handleCloseSnackbar = (event, reason) => {
+  if (reason === 'clickaway') {
+    return;
+  }
+  setLoginFailed(false);
+};
 
   return (
     <div
@@ -45,6 +58,7 @@ const handleLogin = () => {
             variant="outlined"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+            onKeyPress={handleKeyPress}
           />
         </div>
         <div style={{ marginTop: "20px" }}>
@@ -55,6 +69,7 @@ const handleLogin = () => {
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            onKeyPress={handleKeyPress}
           />
         </div>
         <div style={{ marginTop: "25px" }}>
@@ -71,6 +86,43 @@ const handleLogin = () => {
           </Button>
         </div>
       </Box>
+    <Backdrop
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+        color: "#fff",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+      }}
+      open={loginFailed}
+      onClick={handleCloseSnackbar}
+    >
+      <Snackbar
+        open={loginFailed}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        message="로그인 실패"
+        action={
+          <Button
+          color="secondary"
+          size="small"
+          onClick={handleCloseSnackbar}>
+            닫기
+          </Button>
+        }
+        sx={{
+          position: "fixed",
+          top: "70%",
+          left: "50%",
+          height: "300px", // 너비를 3배 늘림
+          justifyContent: "center", // 내용을 가운데 정렬
+        }}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center"
+        }}
+      />
+    </Backdrop>
+      
+    
     </div>
   );
 }
