@@ -34,7 +34,6 @@ const ApplicantForm = ({ onApplicantChange, onApplicantTypeChange }) => {
     const dataToSave =
       applicantType.poc === "personal" ? personalData : corporateData;
     setApplicantData({ ...dataToSave });
-    console.log(dataToSave);
   }, [applicantType, personalData, corporateData]);
 
   useEffect(() => {

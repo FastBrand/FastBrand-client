@@ -1,7 +1,9 @@
-import { TextField, Grid } from "@mui/material";
+import { TextField, Grid, Button, Dialog } from "@mui/material";
+import DaumPostcode from "react-daum-postcode";
 import React from "react";
 import { useState, useEffect } from "react";
 const PersonalForm = ({ onPersonalChange }) => {
+  const [open, setOpen] = useState(false);
   const [personalData, setPersonalData] = useState({
     name_kor: "",
     name_eng: "",
@@ -9,9 +11,9 @@ const PersonalForm = ({ onPersonalChange }) => {
     personalEmail: "",
     personalMobile: "",
     personalPhone: "",
-    address: "주소",
-    detail: "상세주소",
-    zipcode: "우편번호",
+    address: "",
+    detail: "",
+    zipcode: "",
     agreement: "동의",
   });
 
@@ -19,12 +21,26 @@ const PersonalForm = ({ onPersonalChange }) => {
     onPersonalChange(personalData);
   }, [personalData, onPersonalChange]);
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleInputChange = (event, field) => {
     const value = event.target.value;
     setPersonalData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
+  };
+  const handleComplete = (data) => {
+    setPersonalData((prevData) => ({
+      ...prevData,
+      address: `${data.address} ${
+        data.buildingName ? `(${data.buildingName})` : ""
+      }`,
+      zipcode: data.zonecode,
+    }));
+    setOpen(false);
   };
 
   return (
@@ -100,6 +116,73 @@ const PersonalForm = ({ onPersonalChange }) => {
           onChange={(event) => handleInputChange(event, "personalPhone")}
         />
       </Grid>
+      <Grid item xs={6}>
+        <TextField
+          controlled="true"
+          required
+          fullWidth
+          sx={{ mb: "1rem" }}
+          id="personalZipcode"
+          label="우편번호"
+          variant="standard"
+          value={personalData.zipcode}
+          onChange={(event) => handleInputChange(event, "zipcode")}
+        />
+      </Grid>
+      <Grid item xs={4}>
+        <Button
+          variant="contained"
+          onClick={() => {
+            setOpen(true);
+          }}
+          sx={{
+            borderRadius: "30px",
+            backgroundColor: "#d9d9d9",
+            color: "black",
+            fontFamily: "Pretendard",
+            boxShadow: "none",
+            "&:hover": {
+              backgroundColor: "#d9d9d9",
+              color: "black",
+            },
+          }}
+        >
+          우편번호찾기
+        </Button>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          sx={{ "& .MuiDialog-paper": { width: "600px" } }}
+        >
+          <DaumPostcode onComplete={handleComplete} />
+        </Dialog>
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
+          controlled="true"
+          required
+          fullWidth
+          sx={{ mb: "1rem" }}
+          id="personalAddress"
+          label="주소"
+          variant="standard"
+          value={personalData.address}
+          onChange={(event) => handleInputChange(event, "address")}
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <TextField
+          controlled="true"
+          required
+          fullWidth
+          id="personalDetail"
+          label="상세주소"
+          variant="standard"
+          value={personalData.detail}
+          onChange={(event) => handleInputChange(event, "detail")}
+        />
+      </Grid>
+      <Grid></Grid>
     </Grid>
   );
 };
