@@ -1,5 +1,6 @@
 import DashboardForm from "../../compoents/dashboardForm/DashboardForm";
 import SideNavbarForm from "../../compoents/sideNavbarForm/SideNavbarForm"
+import './Dashboard.css'
 
 function DashBoard(){
     return(
