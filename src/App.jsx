@@ -5,7 +5,8 @@ import DomesticMark from "./pages/domesticMark/DomesticMark";
 import Faq from "./pages/faq/Faq";
 import Director from "./pages/director/Director";
 import DashBoard from "./admin/pages/main/DashBoard";
-import FaqAdmin from "./admin/pages/faq/Faq";
+import FaqBoard from "./admin/pages/main/FaqBoard";
+import MarkBoard from "./admin/pages/main/MarkBoard";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 
@@ -19,7 +20,8 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/director" element={<Director />} />
         <Route path="/dashboard" element={<DashBoard/>} />
-        <Route path="/faqAdmin" element={<FaqAdmin/>} />
+        <Route path="/faqBoard" element={<FaqBoard/>} />
+        <Route path="/markBoard" element={<MarkBoard/>} />
       </Routes>
     </div>
   );
