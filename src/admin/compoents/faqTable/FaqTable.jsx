@@ -21,25 +21,13 @@ import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 
 const FaqTable = () => {
-  const [faq, setFaq] = useState([
-    {
-      id: 1,
-      question: "상표등록신청을 하면 답이 오는 데까지 얼마나 걸리나요?",
-      answer: "답변입니다룽",
-    },
-    {
-      id: 2,
-      question: "상표등록신청을 하면 답이 오는 데까지 얼마나 걸리나요?",
-      answer: "답변입표등록신청을 하면 답이 오는 데까지 얼마나 걸리나니다룽",
-    },
-  ]);
   const [faqData, setFaqData] = useState([]);
   const [isDeleteDialogOpen, setOpenDeleteDialog] = useState(false);
   const [isEditDialogOpen, setOpenEditDialog] = useState(false);
   const [isAddDialogOpen, setOpenAddDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  useEffect(() => {
+  const hanldeUpdate = () => {
     axios
       .get("http://localhost:8080/api/faq")
       .then((response) => {
@@ -48,6 +36,9 @@ const FaqTable = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+  useEffect(() => {
+    hanldeUpdate();
   }, []);
 
   const handleDeleteClick = (faq) => {
@@ -63,9 +54,6 @@ const FaqTable = () => {
   const handleAddClick = () => {
     setOpenAddDialog(true);
   };
-
-  const handleEditDialogSave = () => {};
-  const handleDeleteDialogSave = () => {};
 
   return (
     <Box>
@@ -102,10 +90,10 @@ const FaqTable = () => {
               <TableRow key={faq.id}>
                 <TableCell align="center">{faq.id}</TableCell>
                 <TableCell align="left" style={{ maxWidth: 400 }}>
-                  {faq.question}
+                  {faq.title}
                 </TableCell>
                 <TableCell align="left" style={{ maxWidth: 700 }}>
-                  {faq.answer}
+                  {faq.content}
                 </TableCell>
                 <TableCell>
                   <IconButton onClick={() => handleEditClick(faq)}>
@@ -116,30 +104,35 @@ const FaqTable = () => {
                   <IconButton onClick={() => handleDeleteClick(faq)}>
                     <DeleteIcon />
                   </IconButton>
-                  <DeleteDialog
-                    open={isDeleteDialogOpen}
-                    handleSave={handleDeleteDialogSave}
-                    handleClose={() => setOpenDeleteDialog(false)}
-                    selectedRow={selectedRow}
-                  />
-
-                  <EditDialog
-                    open={isEditDialogOpen}
-                    handleClose={() => setOpenEditDialog(false)}
-                    handleSave={handleEditDialogSave}
-                    selectedRow={selectedRow}
-                  />
-                  <AddDialog
-                    open={isAddDialogOpen}
-                    handleClose={() => setOpenAddDialog(false)}
-                    handleSave={handleEditDialogSave}
-                  />
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      {isDeleteDialogOpen && (
+        <DeleteDialog
+          open={isDeleteDialogOpen}
+          hanldeUpdate={hanldeUpdate}
+          handleClose={() => setOpenDeleteDialog(false)}
+          selectedRow={selectedRow}
+        />
+      )}
+      {isEditDialogOpen && (
+        <EditDialog
+          open={isEditDialogOpen}
+          handleClose={() => setOpenEditDialog(false)}
+          hanldeUpdate={hanldeUpdate}
+          selectedRow={selectedRow}
+        />
+      )}
+      {isAddDialogOpen && (
+        <AddDialog
+          open={isAddDialogOpen}
+          handleClose={() => setOpenAddDialog(false)}
+          hanldeUpdate={hanldeUpdate}
+        />
+      )}
     </Box>
   );
 };

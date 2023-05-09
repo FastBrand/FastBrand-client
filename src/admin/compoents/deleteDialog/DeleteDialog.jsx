@@ -6,13 +6,20 @@ import {
   Button,
   DialogContentText,
 } from "@mui/material";
+import axios from "axios";
 
-const DeleteDialog = ({ open, handleClose, selectedRow, handleSave }) => {
+const DeleteDialog = ({ open, handleClose, selectedRow, hanldeUpdate }) => {
   const handleDeleteClick = () => {
     const idToDelete = selectedRow.id;
-    handleClose();
-    handleSave(idToDelete);
-    console.log(idToDelete);
+    axios
+      .delete(`http://localhost:8080/api/faq/${idToDelete}`) // faq delete api
+      .then((response) => {
+        hanldeUpdate();
+        handleClose();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
