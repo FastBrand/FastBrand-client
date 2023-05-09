@@ -4,40 +4,35 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  DialogContentText,
   TextField,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 
-const EditDialog = ({ open, handleSave, handleClose, selectedRow }) => {
-  useEffect(() => {
-    if (selectedRow) {
-      setQuestion(selectedRow.question);
-      setAnswer(selectedRow.answer);
-    }
-  }, [selectedRow]);
-
-  const [question, setQuestion] = useState(
-    selectedRow ? selectedRow.question : ""
-  );
-  const [answer, setAnswer] = useState(
-    selectedRow ? selectedRow.answer : "null"
-  );
-
+const EditDialog = ({ open, hanldeUpdate, handleClose, selectedRow }) => {
+  const [FAQ, setFAQ] = useState({
+    title: selectedRow.title,
+    content: selectedRow.content,
+  });
   const hanldeQuestionChange = (event) => {
-    setQuestion(event.target.value);
+    setFAQ({ ...FAQ, title: event.target.value });
   };
 
   const hanldeAnswerChange = (event) => {
-    setAnswer(event.target.value);
+    setFAQ({ ...FAQ, content: event.target.value });
   };
   const handleConfirm = () => {
-    handleClose();
-    handleSave(selectedRow);
+    axios
+      .patch(`http://localhost:8080/api/faq/${selectedRow.id}`, FAQ) // faq delete api
+      .then((response) => {
+        hanldeUpdate();
+        handleClose();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
-  const handleCancle = () => {
-    setQuestion(selectedRow ? selectedRow.question : "");
-    setAnswer(selectedRow ? selectedRow.answer : "null");
+  const handleCancel = () => {
     handleClose();
   };
   return (
@@ -50,7 +45,7 @@ const EditDialog = ({ open, handleSave, handleClose, selectedRow }) => {
           margin="dense"
           fullWidth
           multiline
-          value={question}
+          value={FAQ.title}
           onChange={hanldeQuestionChange}
         />
         <TextField
@@ -59,12 +54,12 @@ const EditDialog = ({ open, handleSave, handleClose, selectedRow }) => {
           margin="dense"
           fullWidth
           multiline
-          value={answer}
+          value={FAQ.content}
           onChange={hanldeAnswerChange}
           minRows={10}
         />
         <DialogActions style={{ paddingRight: 0 }}>
-          <Button onClick={handleCancle} variant="outlined">
+          <Button onClick={handleCancel} variant="outlined">
             취소
           </Button>
           <Button onClick={handleConfirm} variant="outlined">
