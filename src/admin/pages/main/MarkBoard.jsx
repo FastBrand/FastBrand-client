@@ -5,7 +5,7 @@ function MarkBoard(){
     return(
     <div>
     <SideNavbarForm/>
-    <div className="markboard" style={{ marginTop:'120px',marginLeft:'320px'}}>
+    <div className="markboard" style={{ marginTop:'120px',marginLeft:'400px'}}>
     <MarkInfo/>
     </div>
     </div>

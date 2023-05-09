@@ -5,7 +5,7 @@ function FaqBoard(){
     return(
     <div>
     <SideNavbarForm/>
-    <div className="faqboard" style={{ marginTop:'120px',marginLeft:'320px'}}>
+    <div className="faqboard" style={{ marginTop:'120px',marginLeft:'400px'}}>
     <FaqTable/>
     </div>
     </div>
