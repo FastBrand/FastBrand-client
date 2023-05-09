@@ -33,7 +33,7 @@ function MarkInfo() {
   
             return {
               id: id,  
-              name: brand_name,
+              brand_name: brand_name,
               poc: poc,
               type: type,
               name: name,
@@ -69,7 +69,7 @@ function MarkInfo() {
             {trademarks.slice(pagesVisited, pagesVisited + itemsPerPage).map((trademark) => (
               <TableRow key={trademark.id}>
                 <TableCell align="center">{trademark.id}</TableCell>
-                <TableCell align="center">{trademark.name}</TableCell>
+                <TableCell align="center">{trademark.brand_name}</TableCell>
                 <TableCell align="center">{trademark.type}</TableCell>
                 <TableCell align="center">{trademark.poc}</TableCell>
                 <TableCell align="center">{trademark.name}</TableCell>
