@@ -1,6 +1,6 @@
 import Modal from '@mui/material/Modal';
 import {Table, TableBody, TableCell, TableContainer, TableRow} from '@mui/material';
-import { Container, fontSize, margin } from '@mui/system';
+import { Container } from '@mui/system';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
