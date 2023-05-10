@@ -1,9 +1,11 @@
 import { Box, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import MenuDrawer from "../menuDrawer/MenuDrawer";
 import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logoImg from "../../assets/images/logo/복합.svg";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Navbar = ({ backgroundColor, borderBottom }) => {
   const [open, setOpen] = useState(false);
@@ -18,13 +20,6 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
 
     setOpen(open);
   };
-
-  const menuItems = [
-    { text: "비용안내", link: "/price" },
-    { text: "절차안내", link: "/procedure" },
-    { text: "회사안내", link: "/about" },
-    { text: "고객문의", link: "/faq" },
-  ];
 
   const NavLink = styled(Link)(({ theme }) => ({
     fontSize: "16px",
@@ -102,6 +97,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     marginRight: "1rem",
     boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
     border: "2px solid #CBA585",
+    borderRadius: "5px",
     padding: "11px 15px",
     transition: "0.2s",
 
@@ -138,9 +134,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
             <NavbarLinksBox>
               <NavLink to="/price">비용안내</NavLink>
               <NavLink>절차안내</NavLink>
-              <NavLink to='/companyInfo'>회사소개</NavLink>
+              <NavLink to="/companyInfo">회사소개</NavLink>
               <NavLink to="/faq">고객문의</NavLink>
-              <NavLink to="/director">관리자(임시)</NavLink>
+              {/* <NavLink to="/director">관리자(임시)</NavLink> */}
             </NavbarLinksBox>
           </Box>
         </Box>
@@ -154,15 +150,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
         >
           <ButtonLink to="/domesticMark">상표등록 신청하기</ButtonLink>
           <CustomMenuIcon onClick={toggleDrawer(true)} />
-          <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-            <List>
-              {menuItems.map((item, index) => (
-                <ListItem key={index} component={Link} to={item.link}>
-                  <ListItemText primary={item.text} />
-                </ListItem>
-              ))}
-            </List>
-          </Drawer>
+          {open && (
+            <MenuDrawer open={open} toggleDrawer={() => setOpen(false)} />
+          )}
         </Box>
       </NavbarContainer>
     </NavbarWrapper>

@@ -38,7 +38,7 @@ export const ButtonLink = styled(Link)(({ theme }) => ({
   justifyContent: "center",
   transition: "0.5s",
   backgroundSize: "200% auto",
-  borderRadius: "3px",
+  borderRadius: "5px",
   fontSize: "18px",
   color: "white",
   fontWeight: "600",
