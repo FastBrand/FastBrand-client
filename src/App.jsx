@@ -5,10 +5,10 @@ import DomesticMark from "./pages/domesticMark/DomesticMark";
 import Faq from "./pages/faq/Faq";
 import Director from "./pages/director/Director";
 import DashBoard from "./admin/pages/main/DashBoard";
-import FaqAdmin from "./admin/pages/faq/Faq";
-import CompanyInfo from "./pages/companyInfo/CompanyInfo";
+import FaqBoard from "./admin/pages/main/FaqBoard";
+import MarkBoard from "./admin/pages/main/MarkBoard";
+import CompanyInfoForm from "./components/companyInfoForm/CompanyInfoForm";
 import { Route, Routes } from "react-router-dom";
-import "./App.scss";
 
 function App() {
   return (
@@ -20,8 +20,9 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/director" element={<Director />} />
         <Route path="/dashboard" element={<DashBoard/>} />
-        <Route path="/faqAdmin" element={<FaqAdmin/>} />
-        <Route path="/companyInfo" element={<CompanyInfo/>}/>
+        <Route path="/faqBoard" element={<FaqBoard/>} />
+        <Route path="/markBoard" element={<MarkBoard/>} />
+        <Route path="/companyinfo" element={<CompanyInfoForm/>} />
       </Routes>
     </div>
   );
