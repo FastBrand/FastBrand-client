@@ -90,6 +90,8 @@ function NationSelectForm({onSelectedCountries}) { //국가선택 컴포넌트
 
   const handleClose = () => { //모달창 닫기
     const selected = Object.keys(selectedCountries);
+    const selectedCountriesArray = selected.map((country) => [country, nation_data[country].madrid]);
+    onSelectedCountries(selectedCountriesArray);
     console.log(selected);
     const newBoxes = selected.map((c) => (
       <Box country={c} key={c} />

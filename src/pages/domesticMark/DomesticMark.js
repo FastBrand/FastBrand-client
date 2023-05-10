@@ -6,8 +6,8 @@ import ClassificationForm from "../../components/classificationForm/Classificati
 import ApplicantForm from "../../components/applicantForm/ApplicantForm";
 import ManagerForm from "../../components/managerForm/ManagerForm";
 import TopButton from "../../components/topButton/TopButton";
-import { Button, Modal, Box, IconButton, Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import CheckModal from "../../components/CheckModal/CheckModal";
+import { Button } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
 import { useState } from "react";
 import axios from "axios";
@@ -17,50 +17,7 @@ const useStyles = makeStyles((theme)=>({
   root:{
     fontFamily: "Pretendard",
   },
-  modalBox:{
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    border: '1px solid #000',
-    boxShadow: 18,
-    p: 8,
-    overflow: 'auto',
-    width: '600px',
-    height: '700px',
-    backgroundColor:'#3E3E3F',
-  },
-  modalClose:{
-    position: 'absolute',
-    top: '5px',
-    right: '5px',
-  },
-  checkText01:{
-    fontSize: '32px',
-    fontWeight: 500,
-    color: 'white',
-    textAlign: 'center',
-    marginTop: '25px',
-    marginBottom: '5px',
-  },
-  minicheckText01:{
-    textAlign: 'center',
-    color: '#cba585',
-    fontWeight: 200,
-  },
-  checkText02:{
-    marginLeft: '18px',
-    marginRight: '20px',
-    fontSize: '20px',
-    fontWeight: 400,
-    marginTop: '40px',
-    color: 'white',
-    textAlign: 'left',
-    borderBottom: '2px solid white',
-  },
 }))
-
-
 
 
 function DomesticMark() {
@@ -70,51 +27,23 @@ function DomesticMark() {
   const [applicantData, setApplicantData] = useState({});
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [countriesData, setcountriesData] = useState({});
+
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
   const classes = useStyles();
-
-  const CheckModal = () => {
-    return (
-      <Modal open={modalOpen} onClose={handleCloseModal}>
-        <Box className={classes.modalBox}>
-          <Box className={classes.modalClose} >
-          <IconButton onClick={handleCloseModal}>
-            <CloseIcon sx={{color:'white'}} />
-          </IconButton>
-          </Box>
-          <div className={classes.checkText01}>견적 내용</div>
-          <p className={classes.minicheckText01}>※ 결제는 견적을 변리사무소 메일로 발송하고 입력하신 메일로 연락드린 후에 진행됩니다.</p>
-          <div className={classes.checkText02}>{markSelectData.type} 패키지</div>
-          <div className={classes.checkText02}>VAT</div>
-          <div className={classes.checkText02}>특허청 관납료</div>
-          <div className={classes.checkText02}>상표명</div>
-          <div className={classes.checkText02}>출원인 성명</div>
-          <div className={classes.checkText02}>담당자 성명</div>
-          <Button id="submitButton02"
-          onClick={handleSubmit}
-          variant="contained">
-          견적발송
-          </Button>
-          </Box>
-      </Modal>
-    );
-  };
 
   const handleCloseModal = () => {
     setModalOpen(false);
   };
 
-
-  const markSelectData = {
+  const markSelectData = { //더미데이터
     type: "국내",
   };
 
-  const nationData = {
-    country: "대한민국",
-    madrid: "마드리드",
-    direct: "각국출원",
-    status: "진행상태",
+  const nationData = { //국가 데이터 (진짜씀)
+    country: countriesData,
   };
+  const nationDataArray = Object.values(nationData.country);
+  const nationDataString = nationDataArray.join(', ');
 
   const handleSubmit = () => {
     const data = {
@@ -123,7 +52,10 @@ function DomesticMark() {
         ...classificationData,
         ...markSelectData,
         ...applicantType,
-        ...countriesData,
+        country: nationDataString,
+        madrid: "111",
+        direct: "111",
+        status: "111"
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
@@ -137,21 +69,24 @@ function DomesticMark() {
         : "http://localhost:8080/api/register/corporate";
 
     const JSONData = JSON.stringify(data);
-    // console.log(JSONData);
+    //console.log(JSONData);
 
     axios
       .post(endpoint, JSONData, {
         headers: {
           "Content-Type": "application/json",
-        },
-      } 
-      )
+        },}) 
       .then((response) => {
         console.log(response);
+        console.log("성공");
       })
       .catch((error) => {
         console.log(error);
+        console.log("실패");
+        console.log(data);
+        console.log(JSONData);
       });
+
   };
 
   return (
@@ -174,7 +109,11 @@ function DomesticMark() {
         견적보기
       </Button>
       <TopButton />
-      <CheckModal/>
+      <CheckModal
+        open={modalOpen}
+        handleClose={handleCloseModal}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }

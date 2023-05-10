@@ -6,6 +6,7 @@ import Faq from "./pages/faq/Faq";
 import Director from "./pages/director/Director";
 import DashBoard from "./admin/pages/main/DashBoard";
 import FaqAdmin from "./admin/pages/faq/Faq";
+import CompanyInfo from "./pages/companyInfo/CompanyInfo";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/director" element={<Director />} />
         <Route path="/dashboard" element={<DashBoard/>} />
         <Route path="/faqAdmin" element={<FaqAdmin/>} />
+        <Route path="/companyInfo" element={<CompanyInfo/>}/>
       </Routes>
     </div>
   );

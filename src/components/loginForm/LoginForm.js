@@ -19,7 +19,7 @@ const handleKeyPress = (event) => {
 const handleLogin = () => {
   axios.post('http://localhost:8080/login', {
     username: username,
-    password: password
+    password: password,
   })
   .then((response) => {
     const token = response.data.accessToken; // JWT 토큰 추출

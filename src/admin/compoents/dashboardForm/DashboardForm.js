@@ -109,13 +109,22 @@ function DashboardForm() {
       <Typography className={classes.text01}>최근 일주일간 방문자 통계</Typography>
       <Paper className={classes.paper}>     
       {loading ? (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "500px", width: "800px" }}>
+        <div style={{ 
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "500px",
+          width: "800px" 
+          }}>
           <CircularProgress color="inherit" size={80} />
         </div>
       ) : (
         <BarChart width={750} height={500} data={chartData}>
           <XAxis stroke='#FFFFFF' dataKey="name" />
-          <YAxis stroke='#FFFFFF' tickFormatter={integerFormatter} domain={[0, 100]} ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} />
+          <YAxis stroke='#FFFFFF'
+          tickFormatter={integerFormatter}
+          domain={[0, 100]}
+          ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} />
           <CartesianGrid stroke="#FFFFFF" strokeDasharray="1 1" />
           <Bar dataKey="visitor" fill="#CBA585" />
           <Tooltip content={<CustomTooltip />} />
