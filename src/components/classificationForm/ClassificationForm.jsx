@@ -230,7 +230,7 @@ const ClassificationForm = ({ onClassificationataChange }) => {
                 fontFamily: "Pretendard",
                 width: "7rem",
                 margin: "0.8rem 0.5rem",
-                borderRadius: "0px",
+                borderRadius: "5px",
                 fontSize: "18px",
                 backgroundColor: selectedClassifications.includes(
                   classification.id
