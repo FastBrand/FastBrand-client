@@ -4,7 +4,8 @@ import {
   CustomBox,
   CustomCloseIcon,
 } from "./MenuDrawerStyles";
-import { List, ListItemText, Link } from "@mui/material";
+import { List, ListItemText } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const menuItems = [
   { text: "비용안내", link: "/price" },
