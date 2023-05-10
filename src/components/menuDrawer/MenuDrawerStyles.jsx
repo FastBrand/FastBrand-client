@@ -40,8 +40,8 @@ export const CustomBox = styled(Box)(({ theme }) => ({
 
 export const CustomCloseIcon = styled(CloseIcon)(({ theme }) => ({
   position: "absolute",
-  top: "1.5rem",
-  right: "1.5rem",
+  top: "2rem",
+  right: "2rem",
   fontSize: "2rem",
   "&:hover": {
     cursor: "pointer",
