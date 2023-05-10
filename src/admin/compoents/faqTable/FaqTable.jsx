@@ -67,7 +67,7 @@ const FaqTable = () => {
       <TableContainer component={Paper} sx={{ width: "80%" }}>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow sx={{ background: "#9E9E9F" }}>
               <TableCell align="center">
                 <b>No</b>
               </TableCell>

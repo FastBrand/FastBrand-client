@@ -70,13 +70,13 @@ function SideNavbarForm() {
             </ListItemIcon>
             <ListItemText primary="대시보드" />
           </ListItem>
-          <ListItem button component={NavLink} to="/productList" onClick={handleListItemClick}>
+          <ListItem button component={NavLink} to="/markBoard" onClick={handleListItemClick}>
             <ListItemIcon className={classes.icon}>
               <MessageOutlinedIcon/>
             </ListItemIcon>
             <ListItemText primary="상품목록 관리" />
           </ListItem>
-          <ListItem button component={NavLink} to="/faqAdmin" onClick={handleListItemClick}>
+          <ListItem button component={NavLink} to="/faqBoard" onClick={handleListItemClick}>
             <ListItemIcon className={classes.icon}>
               <BookOutlinedIcon />
             </ListItemIcon>
