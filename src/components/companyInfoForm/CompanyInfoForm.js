@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography, Button, Box} from '@material-ui/core';
 import companyImage from '../../assets/images/skyline.jpeg';
-import MuiImage from 'material-ui-image';
 import Navbar from '../navbar/Navbar';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#141221',
   },
   sectionTitle03: {
-    color:'#cba585',
+    color:'#f3eae8',
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
@@ -55,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block' 
   },
   gridBox: {
-    border:"2px solid #e2e2e2",
+    border:"2px solid #cba585",
     marginLeft: '100px',
     marginRight: '100px',
     paddingTop: '20px'

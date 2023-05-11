@@ -15,17 +15,22 @@ import "./MarkSelectForm.css";
 function MarkAreaCard(props) { //상표유형 카드 컴포넌트
   const [isSelected, setIsSelected] = useState(false); //카드가 선택됐는지 판단하는 state
 
-  const handleClick = () => { //카드의 패키지를 상태를 전달;
+  const handleClick = () => {
     props.onClick(props.markData.type);
-    console.log(props.markData.type);
-    setIsSelected(!isSelected);
+    setIsSelected(true); // 선택된 상태로 설정합니다.
   };
 
   useEffect(() => {
     if (props.selectedMark !== props.markData.type) {
-      setIsSelected(false); // 선택된 카드가 아닐 때 상태 초기화
+      setIsSelected(false);
     }
   }, [props.selectedMark]);
+
+  useEffect(() => {
+    if (props.selectedMark === props.markData.type) {
+      setIsSelected(true);
+    }
+  }, [props.selectedMark, props.markData.type]);
 
   return (
     <Card sx={{ minWidth: 250, minHeight:380, alignItems: "center", 
@@ -57,7 +62,7 @@ function MarkAreaCard(props) { //상표유형 카드 컴포넌트
   );
 }
 
-function MarkSelectForm(){ //상표패키지선택 컴포넌트
+function MarkSelectForm({onSelectedMark}){ //상표패키지선택 컴포넌트
 
 const [selectedMark, setSelectedMark] = useState("국내출원");
 
@@ -66,6 +71,11 @@ const handleMarkClick = (type) => { //패키지 타입,인덱스 상태 저장
   };
 
 let [markData] = useState(markType_data) //상표패키지 데이터
+
+useEffect(() => {
+  onSelectedMark(selectedMark);
+
+}, [selectedMark,  onSelectedMark]);
 
 return(
   <div className="markType">
@@ -78,8 +88,7 @@ return(
   </Grid>                        
   </Container>
 
-  {selectedMark === "국내출원" ? <div>국내랜더링</div> : <div>해외랜더링</div>}
-
+  
 </div>
 );
 }
