@@ -4,11 +4,15 @@ import { Drawer, ListItem, Box } from "@mui/material";
 
 export const CustomDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
-    padding: "70px 0px 300px 50px", // top right bottom left
-    width: "500px",
+    padding: "70px 0px 0px 50px", // top right bottom left
+    width: "450px",
     boxSizing: "border-box",
-    height: "100%",
-    overflow: "auto",
+  },
+  [theme.breakpoints.down("sm")]: {
+    "& .MuiDrawer-paper": {
+      width: "100%",
+      padding: "70px 10px 0px 50px",
+    },
   },
 }));
 
@@ -18,24 +22,22 @@ export const CustomListItem = styled(ListItem)(({ theme }) => ({
   fontFamily: "Pretendard",
   transition: "0.4s",
   paddingLeft: 0,
-  paddingTop: theme.spacing(1),
-  paddingBottom: theme.spacing(1),
+  paddingTop: theme.spacing(2),
   "&:hover": {
     cursor: "pointer",
     color: "#CBA585",
   },
   "& .MuiListItemText-primary": {
-    fontSize: "50px",
+    fontSize: "45px",
     fontFamily: "Pretendard",
-    fontWeight: 600,
+    fontWeight: 700,
   },
 }));
 
 export const CustomBox = styled(Box)(({ theme }) => ({
   fontFamily: "Pretendard",
+  paddingTop: "8em",
   fontSize: "16px",
-  position: "absolute",
-  bottom: "50px",
 }));
 
 export const CustomCloseIcon = styled(CloseIcon)(({ theme }) => ({
