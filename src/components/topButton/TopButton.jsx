@@ -4,8 +4,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 const StyledFab = styled(Fab)({
   position: "fixed",
-  bottom: "2rem",
-  right: "2rem",
+  bottom: "1.5rem",
+  right: "1.5rem",
   backgroundColor: "#CBA585",
   "&:hover": {
     backgroundColor: "#CBA585",
