@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Typography } from "@mui/material";
+import { Typography, Container } from "@mui/material";
 
 export const CustomTypo = styled(Typography)({
   fontFamily: "Pretendard",
@@ -7,8 +7,8 @@ export const CustomTypo = styled(Typography)({
   fontSize: "46px",
 });
 
-export const FormContainer = styled("div")(({ theme }) => ({
-  margin: "100px 230px",
+export const FormContainer = styled(Container)(({ theme }) => ({
+  padding: "100px 230px",
 }));
 
 export const Wrapper = styled("div")(({ theme }) => ({

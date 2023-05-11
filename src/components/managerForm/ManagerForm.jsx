@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Grid } from "@mui/material";
-import { CustomTypo, FormContainer } from "./ManagerFormStyle";
+import { CustomTypo, FormContainer } from "../../styles/FormStyles";
 
 const ManagerForm = ({ onManagerChange }) => {
   const [managerData, setManagerData] = useState({
@@ -24,10 +24,8 @@ const ManagerForm = ({ onManagerChange }) => {
   };
 
   return (
-    <FormContainer>
-      <CustomTypo sx={{ mb: "3rem" }}>
-        03. 담당자 정보를 입력해주세요
-      </CustomTypo>
+    <FormContainer sx={{ pb: 0 }}>
+      <CustomTypo>04. 담당자 정보를 입력해주세요</CustomTypo>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <TextField
