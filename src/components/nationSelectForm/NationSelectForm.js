@@ -11,7 +11,6 @@ import { useState, useEffect } from 'react';
 import "./NationSelectForm.css";
 import nation_data from './NationData.json';
 
-
 const NationButton = styled(Button)({
   fontSize: '16px',
   fontWeight: 400,
