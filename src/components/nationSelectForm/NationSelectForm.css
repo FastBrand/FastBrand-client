@@ -1,69 +1,69 @@
-.littleTitle02{
-    font-size: 48px;
-    text-align: left;
-    font-weight: 600;
-    color: #FFFFFF;
+.littleTitle02 {
+  font-size: 48px;
+  text-align: left;
+  font-weight: 600;
+  color: #ffffff;
 }
 
-.littleInfo{
-    font-size: 16px;
-    text-align: left;
-    font-weight: 300;
-    color: #000000;
-    margin-bottom: 50px;
+.littleInfo {
+  font-size: 16px;
+  text-align: left;
+  font-weight: 300;
+  color: #000000;
+  margin-bottom: 50px;
 }
 
 .boxContainer {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
 
 #contentName_row {
-    background-color: #3E3E3F;
-    font-size: 20px;
-    font-weight: 400;
-    text-align: center;
-    color: white;
+  background-color: #3e3e3f;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  color: white;
 }
 
-#nationButton{
-    font-size: 16px;
-    font-weight: 400;
-    margin-left: 30px;
-    border-radius: 50px;
-    border: 0.5px solid #2F2E41;
-    background-color: transparent;
-    color: black; 
-    width: 120px;
-    height: 48px;
-    padding: 8px 16px;
+#nationButton {
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 30px;
+  border-radius: 50px;
+  border: 0.5px solid #2f2e41;
+  background-color: transparent;
+  color: black;
+  width: 120px;
+  height: 48px;
+  padding: 8px 16px;
 }
-.nationButton_table{
-    font-size: 12px;
-    font-weight: 400;
-    margin-left: 5px;
-    border-radius: 40px;
-    border: 0.5px solid #2F2E41;
-    background-color: transparent;
-    color: black; 
-    width: 100px;
-    height: 35px;
-    padding: 4px 8px;
+.nationButton_table {
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 5px;
+  border-radius: 40px;
+  border: 0.5px solid #2f2e41;
+  background-color: transparent;
+  color: black;
+  width: 100px;
+  height: 35px;
+  padding: 4px 8px;
 }
 
-.nationBox_selected{
-    background-color: #CBA585;
-    color: white;
-    border-radius: 30px;
-    border: 0.2px solid #CBA585;
-    width: 120px;
-    height: 25px;
-    margin-top: 10px;
-    margin-left: 5px;
-    text-align: center;
-    padding: 8px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+.nationBox_selected {
+  background-color: #cba585;
+  color: white;
+  border-radius: 30px;
+  border: 0.2px solid #cba585;
+  width: 120px;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 5px;
+  text-align: center;
+  padding: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 .nationBox_selected02 {
     background-color: #857770;
@@ -79,15 +79,15 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
-#confireButton_table{
-    font-size: 16px;
-    font-weight: 400;
-    border-radius: 50px;
-    border: 0.5px solid #CBA585;
-    background-color: white;
-    color: #CBA585; 
-    width: 120px;
-    height: 48px;
-    padding: 8px 16px;
+#confireButton_table {
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 50px;
+  border: 0.5px solid #cba585;
+  background-color: white;
+  color: #cba585;
+  width: 120px;
+  height: 48px;
+  padding: 8px 16px;
 }
 

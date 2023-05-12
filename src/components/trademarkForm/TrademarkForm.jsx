@@ -5,8 +5,8 @@ import {
   CustomTypo,
   FormContainer,
   Wrapper,
-  CustomLabel,
-} from "./TrademarkFormStyle";
+  FileLabel,
+} from "../../styles/FormStyles";
 import { useState, useEffect } from "react";
 
 const TrademarkForm = ({ onTrademarkDataChange }) => {
@@ -15,6 +15,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
     description: "",
     image: "image",
   });
+  const [fileName, setFileName] = useState("");
 
   useEffect(() => {
     onTrademarkDataChange(trademarkData);
@@ -31,16 +32,18 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
 
-    const formData = new FormData();
-    formData.append("image", file);
-
+    // const formData = new FormData();
+    // formData.append("image", file);
     // FormData 객체에 파일이 제대로 첨부되었는지 확인
-    console.log(formData.get("image"));
+    // console.log(formData.get("image"));
 
     setTrademarkData((prevData) => ({
       ...prevData,
-      image: formData,
+      image: file.name,
     }));
+    console.log(file.name);
+    // console.log(trademarkData);
+    // setFileName(file.name);
   };
   return (
     <>
@@ -77,7 +80,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
         </Grid>
       </FormContainer>
       <Wrapper>
-        <CustomLabel>상표이미지가 있다면 파일을 첨부해주세요</CustomLabel>
+        <FileLabel>상표이미지가 있다면 파일을 첨부해주세요</FileLabel>
         <input
           accept="image/*"
           id="fileUpload"

@@ -4,7 +4,7 @@ import {
   CustomBox,
   CustomCloseIcon,
 } from "./MenuDrawerStyles";
-import { List, ListItemText } from "@mui/material";
+import { List, ListItemText, Grid, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const menuItems = [
@@ -30,12 +30,23 @@ const MenuDrawer = ({ open, toggleDrawer }) => {
           </CustomListItem>
         ))}
       </List>
-      <CustomBox sx={{ fontFamily: "Pretendard" }}>
-        고객센터 : 02-553-1246 (무료상표출원상담)
-        <br />
-        핸드폰 : 010-4006-5236
-        <br />
-        이메일 : mark@wonjon.com
+      <CustomBox>
+        <Grid container>
+          <Grid item xs={2}>
+            <Box style={{ fontWeight: 800 }}>
+              <Box>고객센터</Box>
+              <Box>핸드폰</Box>
+              <Box>이메일</Box>
+            </Box>
+          </Grid>
+          <Grid item xs={10}>
+            <Box>
+              <Box>02-553-1246 (무료상표출원상담)</Box>
+              <Box>010-4006-5236</Box>
+              <Box>mark@wonjon.com</Box>
+            </Box>
+          </Grid>
+        </Grid>
       </CustomBox>
     </CustomDrawer>
   );

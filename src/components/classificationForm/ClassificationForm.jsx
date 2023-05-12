@@ -1,5 +1,5 @@
 import { ToggleButton, Tooltip, Typography } from "@mui/material";
-import { CustomTypo, FormContainer } from "./ClassificationFormStyle";
+import { CustomTypo, FormContainer } from "../../styles/FormStyles";
 import React, { useState, useEffect } from "react";
 
 const classifications = [
@@ -203,8 +203,8 @@ const ClassificationForm = ({ onClassificationataChange }) => {
   }, [classificationData, onClassificationataChange]);
 
   return (
-    <FormContainer>
-      <CustomTypo sx={{ mb: "3rem" }}>03. 분류를 선택해주세요</CustomTypo>
+    <FormContainer sx={{ pb: 0 }}>
+      <CustomTypo>03. 분류를 선택해주세요</CustomTypo>
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}
       >
