@@ -5,7 +5,6 @@ import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import logoImg from "../../assets/images/logo/복합.svg";
-import CloseIcon from "@mui/icons-material/Close";
 
 const Navbar = ({ backgroundColor, borderBottom }) => {
   const [open, setOpen] = useState(false);
@@ -22,9 +21,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   };
 
   const NavLink = styled(Link)(({ theme }) => ({
-    fontSize: "16px",
+    fontSize: "17px",
     color: "#CBA585",
-    fontWeight: "400",
+    fontWeight: "500",
     fontFamily: "Pretendard",
     cursor: "pointer",
     textDecoration: "none",
@@ -88,16 +87,16 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   }));
 
   const ButtonLink = styled(Link)(({ theme }) => ({
-    fontSize: "16px",
+    fontSize: "17px",
     color: "#CBA585",
-    fontWeight: "400",
+    fontWeight: "500",
     fontFamily: "Pretendard",
     cursor: "pointer",
     textDecoration: "none",
     marginRight: "1rem",
     boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
     border: "2px solid #CBA585",
-    borderRadius: "5px",
+    // borderRadius: "5px",
     padding: "11px 15px",
     transition: "0.2s",
 
