@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme)=>({
   },
 }))
 
-
 function DomesticMark() {
   const [trademarkData, setTrademarkData] = useState({});
   const [classificationData, setClassificationData] = useState({});
@@ -27,16 +26,12 @@ function DomesticMark() {
   const [applicantData, setApplicantData] = useState({});
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [countriesData, setcountriesData] = useState({});
-
+  const [markSelectData, setmarkSelcetData] = useState({});
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
   const classes = useStyles();
 
   const handleCloseModal = () => {
     setModalOpen(false);
-  };
-
-  const markSelectData = { //더미데이터
-    type: "국내",
   };
 
   const nationData = { //국가 데이터 (진짜씀)
@@ -50,12 +45,12 @@ function DomesticMark() {
       mark: {
         ...trademarkData,
         ...classificationData,
-        ...markSelectData,
         ...applicantType,
+        type: markSelectData,
         country: nationDataString,
-        madrid: "111",
-        direct: "111",
-        status: "111"
+        madrid: "더미데이터",
+        direct: "더미데이터",
+        status: "더미데이터"
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
@@ -92,11 +87,11 @@ function DomesticMark() {
   return (
     <div className={classes.root}>
       <Navbar backgroundColor={true} borderBottom={true} />
-      <MarkSelectForm />
+      <MarkSelectForm onSelectedMark={setmarkSelcetData}/>
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-      <NationSelectForm onSelectedCountries={setcountriesData} />
+      {markSelectData === "국내출원" ? null : <NationSelectForm onSelectedCountries={setcountriesData} />}
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}

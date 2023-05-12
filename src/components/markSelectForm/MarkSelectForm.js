@@ -18,17 +18,21 @@ function MarkAreaCard(props) {
   const [isSelected, setIsSelected] = useState(false); //카드가 선택됐는지 판단하는 state
 
   const handleClick = () => {
-    //카드의 패키지를 상태를 전달;
     props.onClick(props.markData.type);
-    console.log(props.markData.type);
-    setIsSelected(!isSelected);
+    setIsSelected(true); // 선택된 상태로 설정합니다.
   };
 
   useEffect(() => {
     if (props.selectedMark !== props.markData.type) {
-      setIsSelected(false); // 선택된 카드가 아닐 때 상태 초기화
+      setIsSelected(false);
     }
   }, [props.selectedMark]);
+
+  useEffect(() => {
+    if (props.selectedMark === props.markData.type) {
+      setIsSelected(true);
+    }
+  }, [props.selectedMark, props.markData.type]);
 
   return (
     <Card
@@ -74,7 +78,7 @@ function MarkAreaCard(props) {
   );
 }
 
-function MarkSelectForm() {
+function MarkSelectForm({ onSelectedMark }) {
   //상표패키지선택 컴포넌트
 
   const [selectedMark, setSelectedMark] = useState("국내출원");
@@ -85,6 +89,9 @@ function MarkSelectForm() {
   };
 
   let [markData] = useState(markType_data); //상표패키지 데이터
+  useEffect(() => {
+    onSelectedMark(selectedMark);
+  }, [selectedMark, onSelectedMark]);
 
   return (
     <Box sx={{ backgroundColor: "#3e3e3f", marginTop: "80px" }}>
@@ -98,28 +105,25 @@ function MarkSelectForm() {
           style={{ textAlign: "center", margin: "30px 0 0 0" }}
         >
           <Grid item xs={4}>
-            {" "}
             <MarkAreaCard
               markData={markData[0]}
               onClick={handleMarkClick}
               selectedMark={selectedMark}
-            />{" "}
+            />
           </Grid>
           <Grid item xs={4}>
-            {" "}
             <MarkAreaCard
               markData={markData[1]}
               onClick={handleMarkClick}
               selectedMark={selectedMark}
-            />{" "}
+            />
           </Grid>
           <Grid item xs={4}>
-            {" "}
             <MarkAreaCard
               markData={markData[2]}
               onClick={handleMarkClick}
               selectedMark={selectedMark}
-            />{" "}
+            />
           </Grid>
         </Grid>
       </FormContainer>

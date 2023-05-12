@@ -22,11 +22,11 @@ const handleLogin = () => {
     password: password,
   })
   .then((response) => {
-    const token = response.data.accessToken; // JWT 토큰 추출
+    const jwtToken = response.headers['Authorization'];
+    localStorage.setItem('Authorization', jwtToken); // JWT 토큰 추출
     console.log({ username });
     console.log(response);
     // 토큰 저장
-    localStorage.setItem('token', token);
     navigate('/dashboard'); // 로그인 성공 시 다른 URL로 이동
   })
   .catch((error) => {
