@@ -1,5 +1,4 @@
 // 신청 폼 스타일
-// container, textfield, typo
 import { styled } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 
@@ -36,7 +35,6 @@ export const FileLabel = styled("label")({
   fontFamily: "Pretendard",
   fontWeight: "600",
   fontSize: "25px",
-  transition: "0.5s",
 });
 
 export const PostCodeButton = styled(Button)({
