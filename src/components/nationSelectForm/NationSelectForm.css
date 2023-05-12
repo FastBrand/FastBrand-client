@@ -65,6 +65,19 @@
     padding: 8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
+.nationBox_selected02 {
+    background-color: #857770;
+    color: white;
+    border-radius: 30px;
+    border: 0.2px solid #857770;
+    width: 120px;
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 5px;
+    text-align: center;
+    padding: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
 
 #confireButton_table{
     font-size: 16px;
@@ -77,3 +90,4 @@
     height: 48px;
     padding: 8px 16px;
 }
+

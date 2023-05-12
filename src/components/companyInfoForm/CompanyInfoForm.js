@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     border:"2px solid #cba585",
     marginLeft: '100px',
     marginRight: '100px',
-    paddingTop: '20px'
+    paddingTop: '30px'
   },
   paragraphs:{
     color: 'black',
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
   infoBox03:{
     backgroundColor: '#3E3E3F',
-    height: '600px',
+    height: '800px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -130,7 +130,7 @@ function CompanyInfoForm() {
         </Typography>
         </Grid>
         <Grid item xs={12} md={12}>
-        <Typography className={classes.paragraphs} variant="body1" paragraphs>
+        <Typography className={classes.paragraphs} variant="body1">
         여러분의 소중한 지적재산권의 출원, 등록, 관리, 보호를 위하여 최선을 다하고 있는 특허법인 원전의 소개 말씀을 올리겠습니다.<br/><br/>
 
         특허제도의 역사가 일천한 한국에 있어서, 저희들 원전은 전통있는 사무소중의 하나로서 1969년 설립이래<br/>

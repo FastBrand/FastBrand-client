@@ -67,14 +67,13 @@ function CustomTooltip({ active, payload, label }) {
 }
 
 
-
 function getRecentWeek() {
   const today = new Date();
   const recentWeek = [];
 
   for (let i = 0; i < 7; i++) {
     const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
-    const dateString = `${currentDate.getFullYear()}/${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+    const dateString = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
     recentWeek.push(dateString);
   }
 
@@ -87,9 +86,9 @@ function DashboardForm() {
   const [visitorCount, setVisitorCount] = useState([]); // 일일 방문자 수
   const recentWeek = getRecentWeek(); // 최근 일주일
   const [chartData, setChartData] = useState([]); // 차트 데이터
+  const [chartData02, setChartData02] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [markCount, setMarkCount] = useState([]); //상표신청수 데이터
-
 
   useEffect(() => {
     axios.all([
@@ -98,17 +97,34 @@ function DashboardForm() {
     ]).then(axios.spread((dashboardResponse, infoResponse) => {
       const dashboardData = dashboardResponse.data;
       const infoData = infoResponse.data; //상표신청자데이터
+      const dateCounts = {}; // 날짜별 신청수
 
-      setVisitorCount(dashboardData);
+      infoData.forEach((user) => {
 
-      const updatedChartData = recentWeek.map((date, index) => {
-        return { name: date, visitor: dashboardData[index] };
+         const date = user.created_at.substring(0, 10); // 날짜 형식 추출 (YYYY-MM-DD)
+        if (dateCounts[date]) {
+          dateCounts[date]++;
+        } else {
+          dateCounts[date] = 1;
+        }
       });
 
+      const chartData = Object.keys(dateCounts).map((date) => ({
+        name: date,
+        count: dateCounts[date] || 0,
+      }));
+
+      const updatedChartData = recentWeek.map((date) => ({
+        name: date,
+        visitor: dashboardData[recentWeek.indexOf(date)] || 0,
+        count: dateCounts[date] || 0,
+      }));
+
+      setVisitorCount(dashboardData);
       setChartData(updatedChartData);
-      setMarkCount(infoData);
-      console.log(infoData);
+      setChartData02(chartData);
       setLoading(false); // 로딩 완료 후 상태 업데이트
+      console.log(updatedChartData);
     })).catch((error) => {
       console.log(error);
       setLoading(false);
@@ -118,7 +134,7 @@ function DashboardForm() {
 
   const integerFormatter = (value) => Math.floor(value);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(100);
+  const [maxValue, setMaxValue] = useState(10000);
 
   useEffect(() => {
     if (chartData.length > 0) {
@@ -141,8 +157,8 @@ function DashboardForm() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "500px",
-          width: "800px" 
+          height: "300px",
+          width: "1000px" 
           }}>
           <CircularProgress color="inherit" size={80} />
         </div>
@@ -169,20 +185,20 @@ function DashboardForm() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "500px",
-          width: "800px" 
+          height: "300px",
+          width: "1000px" 
           }}>
           <CircularProgress color="inherit" size={80} />
         </div>
       ) : (
-        <BarChart width={1000} height={300} data={chartData}>
-          <XAxis stroke='#000000' dataKey="name" />
+        <BarChart width={1000} height={300} data={chartData02}>
+          <XAxis stroke='#000000' dataKey="name"
+           tickCount={recentWeek.length} />
           <YAxis stroke='#000000'
           tickFormatter={integerFormatter}
-          domain={[minValue, maxValue]}
-          ticks={[minValue, maxValue / 10, maxValue]} />
+          />
           <CartesianGrid stroke="#000000" strokeDasharray="1 1" />
-          <Bar dataKey="visitor" fill="#0972b3" />
+          <Bar dataKey="count" fill="#0972b3" />
           <Tooltip content={<CustomTooltip/>} />
           <Legend />
         </BarChart>

@@ -60,12 +60,12 @@ function CheckModal({open, handleClose, handleSubmit}) {
         </Box>
         <div className={classes.checkText01}>견적 내용</div>
         <p className={classes.minicheckText01}>※ 결제는 견적을 변리사무소 메일로 발송하고 입력하신 메일로 연락드린 후에 진행됩니다.</p>
-        <div className={classes.checkText02}>패키지 이름</div>
-        <div className={classes.checkText02}>VAT</div>
-        <div className={classes.checkText02}>특허청 관납료</div>
+        <div className={classes.checkText02}>패키지</div>
         <div className={classes.checkText02}>상표명</div>
         <div className={classes.checkText02}>출원인 성명</div>
         <div className={classes.checkText02}>담당자 성명</div>
+        <div className={classes.checkText02}>담당자 연락처</div>
+        <div className={classes.checkText02}>담당자 이메일</div>
         <Button id="submitButton02"
         onClick={handleSubmit}
         variant="contained">

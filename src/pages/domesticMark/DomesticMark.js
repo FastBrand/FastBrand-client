@@ -25,7 +25,8 @@ function DomesticMark() {
   const [managerData, setManagerData] = useState({});
   const [applicantData, setApplicantData] = useState({});
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
-  const [countriesData, setcountriesData] = useState({});
+  const [countriesData, setcountriesData] = useState({}); //개별출원
+  const [madridData, setMadridData] = useState({}); //마드리드
   const [markSelectData, setmarkSelcetData] = useState({});
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
   const classes = useStyles();
@@ -34,11 +35,18 @@ function DomesticMark() {
     setModalOpen(false);
   };
 
-  const nationData = { //국가 데이터 (진짜씀)
-    country: countriesData,
+  const nationData = { //개별출원 데이터 (진짜씀)
+    country: countriesData
   };
+  const nationData2 = { //개별출원 데이터 (진짜씀)
+    country: madridData
+  };
+  
   const nationDataArray = Object.values(nationData.country);
-  const nationDataString = nationDataArray.join(', ');
+  const madridDataArray = Object.values(nationData2.country);
+
+  const nationDataString = nationDataArray.join(',');
+  const madridDataString = madridDataArray.join(',');
 
   const handleSubmit = () => {
     const data = {
@@ -47,9 +55,9 @@ function DomesticMark() {
         ...classificationData,
         ...applicantType,
         type: markSelectData,
-        country: nationDataString,
-        madrid: "더미데이터",
-        direct: "더미데이터",
+        country: "더미데이터",
+        madrid: madridDataString,
+        direct: nationDataString,
         status: "더미데이터"
       },
       ...(applicantType.poc === "personal"
@@ -91,7 +99,8 @@ function DomesticMark() {
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-      {markSelectData === "국내출원" ? null : <NationSelectForm onSelectedCountries={setcountriesData} />}
+      {markSelectData === "국내출원" ? 
+      null : <NationSelectForm onSelectedCountries={setcountriesData} onSelectedMadrid={setMadridData} />}
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}

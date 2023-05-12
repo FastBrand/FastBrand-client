@@ -1,425 +1,423 @@
-
-  {
-    "한국": {
+{
+  "한국": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "중국": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "미국": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "유럽공동체": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "일본": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "호주": {
       "continent": "오세아니아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "베트남": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "인도": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "필리핀": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "아프리카연합": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "영국": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "대만": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "아랍에미리트": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "방글라데시": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "아르메니아": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "앙골라": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "아르헨티나": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "오스트리아":{
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "캐나다": {
       "continent": "북미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "스위스": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "칠레": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "벨기에": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "불가리아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "바레인": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "브루나이": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "볼리비아": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "브라질": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "베네룩스": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "체코": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "독일": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "덴마크": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "도미니카": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "콜럼비아": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "코스타리카": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "프랑스": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "가나": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "크로아티아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "아이티": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "헝가리": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "그리스": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "과테말라": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "홍콩": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "온두라스": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "인도네시아": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "아일랜드": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "이스라엘": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "스페인": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "에티오피아": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "핀란드": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "피지": {
       "continent": "오세아니아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "에콰도르": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "에스토니아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "이집트": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "남아프리카공화국": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "세르비아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "사우디아라비아": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "러시아": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "태국": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "터키": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "우루과이": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "우즈베키스탄": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "베네수엘라": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "우크라이나": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "싱가포르": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "슬로베니아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "슬로바키아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "쿠웨이트": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "카자흐스탄": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "라오스": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "레바논": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "스리랑카": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "캄보디아": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "케냐": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "자메이카": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "요르단": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "리투아니아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "룩셈부르크": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "모나코": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "리비아": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "모로코": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "이라크": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "아이슬란드": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "이탈리아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "파나마": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "페루": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "포르투갈": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "팔레스타인": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "파키스탄": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "푸에르토리코": {
       "continent": "북미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "파라과이": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "카타르": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "네덜란드": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "네팔": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "루마니아": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "노르웨이": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "뉴질랜드": {
       "continent": "오세아니아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "모잠비크": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "멕시코": {
       "continent": "중남미",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "미얀마": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "몽골": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "나이지리아": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "쿠바": {
       "continent": "아프리카",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "말레이시아": {
       "continent": "아시아",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "오만": {
       "continent": "중동",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     },
     "스웨덴": {
       "continent": "유럽",
-      "madrid" : "마드리드"
+      "direct" : "개별출원"
     }   
-
   }
   
