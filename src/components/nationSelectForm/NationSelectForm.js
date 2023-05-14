@@ -146,7 +146,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
 
   const handleClose2 = () => { //마드리드 모달창 닫기
     const selected = Object.keys(selectedMadrid);
-    const selectedCountriesArray = selected.map((country) => [country, madrid_data[country].madrid]);
+    const selectedCountriesArray = selected.map((country) => [country]);
     onSelectedMadrid(selectedCountriesArray);
     console.log(selected);
     const newBoxes = selected.map((c) => (
@@ -221,7 +221,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
       <br /><br /><br />
       <Container>
         <div className="littleTitle02" style={{ color: "black" }}>04. 출원할 방법과 국가를 선택해주세요.</div>
-        <div className="littleInfo">'같은 국가를' 개별출원과 마드리드 동시에 출원할수는 없습니다.</div>
+        <div className="littleInfo">'같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다.</div>
 
         <NationButton variant="outlined" onClick={handleOpen}>개별국가 출원</NationButton>
         <NationButton variant="outlined" onClick={handleOpen2}>마드리드 출원</NationButton>
@@ -317,6 +317,10 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
           </Box>
         </Modal>
 
+
+
+
+
         <Modal
           open={open2}
           onClose={handleClose2}
@@ -340,7 +344,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
               top: '5px',
               right: '5px',
             }}>
-              <IconButton onClick={handleClose}>
+              <IconButton onClick={handleClose2}>
                 <CloseIcon />
               </IconButton>
             </Box>

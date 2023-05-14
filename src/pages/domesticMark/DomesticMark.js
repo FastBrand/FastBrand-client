@@ -117,6 +117,11 @@ function DomesticMark() {
         open={modalOpen}
         handleClose={handleCloseModal}
         handleSubmit={handleSubmit}
+        trademarkData={trademarkData}
+        managerData={managerData}
+        
+        applicantData={applicantData}
+        markSelectData={markSelectData}
       />
     </div>
   );
