@@ -167,7 +167,7 @@ function MarkInfo() {
         <div>
         <StyledBox>
         <StyledTextField
-            label="검색"
+            label="상표 검색"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
