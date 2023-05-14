@@ -36,7 +36,7 @@ export const CustomListItem = styled(ListItem)(({ theme }) => ({
 
 export const CustomBox = styled(Box)(({ theme }) => ({
   fontFamily: "Pretendard",
-  paddingTop: "8em",
+  paddingTop: "15em",
   fontSize: "16px",
 }));
 
