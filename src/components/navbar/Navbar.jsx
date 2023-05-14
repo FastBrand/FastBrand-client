@@ -96,7 +96,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     marginRight: "1rem",
     boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
     border: "2px solid #CBA585",
-    // borderRadius: "5px",
+    borderRadius: "3px",
     padding: "11px 15px",
     transition: "0.2s",
 
