@@ -8,7 +8,7 @@ import {
   CardActionArea,
   Box,
 } from "@mui/material";
-import { CustomTypo, FormContainer } from "../../styles/FormStyles";
+import { CustomTypo, FormContainer } from "../../styles/formStyles";
 import box_icon from "../../assets/images/icon/box.png";
 import markType_data from "./data"; //상표유형 데이터
 import "./MarkSelectForm.css";

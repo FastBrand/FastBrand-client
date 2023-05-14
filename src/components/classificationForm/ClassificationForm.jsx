@@ -1,5 +1,5 @@
 import { ToggleButton, Tooltip, Typography } from "@mui/material";
-import { CustomTypo, FormContainer } from "../../styles/FormStyles";
+import { CustomTypo, FormContainer } from "../../styles/formStyles";
 import React, { useState, useEffect } from "react";
 
 const classifications = [

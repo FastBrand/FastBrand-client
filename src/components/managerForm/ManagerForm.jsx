@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Grid } from "@mui/material";
-import { CustomTypo, FormContainer } from "../../styles/FormStyles";
+import { CustomTypo, FormContainer } from "../../styles/formStyles";
 
 const ManagerForm = ({ onManagerChange }) => {
   const [managerData, setManagerData] = useState({

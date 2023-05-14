@@ -14,7 +14,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/material/styles";
 import { useState, useEffect } from "react";
-import { CustomTypo, FormContainer } from "../../styles/FormStyles";
+import { CustomTypo, FormContainer } from "../../styles/formStyles";
 import "./NationSelectForm.css";
 import nation_data from "./NationData.json";
 

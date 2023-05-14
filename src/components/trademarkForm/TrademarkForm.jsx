@@ -6,7 +6,7 @@ import {
   FormContainer,
   Wrapper,
   FileLabel,
-} from "../../styles/FormStyles";
+} from "../../styles/formStyles";
 import { useState, useEffect } from "react";
 
 const TrademarkForm = ({ onTrademarkDataChange }) => {

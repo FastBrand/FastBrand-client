@@ -5,7 +5,7 @@ import {
   CustomTypo,
   FormContainer,
   PostCodeButton,
-} from "../../../styles/FormStyles";
+} from "../../../styles/formStyles";
 
 const PersonalForm = ({ onPersonalChange }) => {
   const [open, setOpen] = useState(false);
