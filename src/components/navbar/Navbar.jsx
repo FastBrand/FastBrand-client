@@ -1,4 +1,4 @@
-import { Box, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuDrawer from "../menuDrawer/MenuDrawer";
 import { styled } from "@mui/system";
@@ -109,8 +109,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   return (
     <NavbarWrapper
       backgroundColor={backgroundColor ? "white" : "transparent"}
-      // borderBottom={borderBottom ? "1px solid #eee" : "none"}
-      // backgroundColor="white"
+      borderBottom={borderBottom ? "1px solid #eee" : "none"}
     >
       <NavbarContainer>
         <Box
