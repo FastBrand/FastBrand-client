@@ -7,17 +7,18 @@ import ApplicantForm from "../../components/applicantForm/ApplicantForm";
 import ManagerForm from "../../components/managerForm/ManagerForm";
 import TopButton from "../../components/topButton/TopButton";
 import CheckModal from "../../components/CheckModal/CheckModal";
+import Footer from "../../components/footer/Footer";
 import { Button } from "@mui/material";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from "@material-ui/styles";
 import { useState } from "react";
 import axios from "axios";
 import "./DomesticMark.css";
 
-const useStyles = makeStyles((theme)=>({
-  root:{
+const useStyles = makeStyles((theme) => ({
+  root: {
     fontFamily: "Pretendard",
   },
-}))
+}));
 
 function DomesticMark() {
   const [trademarkData, setTrademarkData] = useState({});
@@ -34,11 +35,12 @@ function DomesticMark() {
     setModalOpen(false);
   };
 
-  const nationData = { //국가 데이터 (진짜씀)
+  const nationData = {
+    //국가 데이터 (진짜씀)
     country: countriesData,
   };
   const nationDataArray = Object.values(nationData.country);
-  const nationDataString = nationDataArray.join(', ');
+  const nationDataString = nationDataArray.join(", ");
 
   const handleSubmit = () => {
     const data = {
@@ -50,7 +52,7 @@ function DomesticMark() {
         country: nationDataString,
         madrid: "더미데이터",
         direct: "더미데이터",
-        status: "더미데이터"
+        status: "더미데이터",
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
@@ -70,7 +72,8 @@ function DomesticMark() {
       .post(endpoint, JSONData, {
         headers: {
           "Content-Type": "application/json",
-        },}) 
+        },
+      })
       .then((response) => {
         console.log(response);
         console.log("성공");
@@ -81,34 +84,35 @@ function DomesticMark() {
         console.log(data);
         console.log(JSONData);
       });
-
   };
 
   return (
     <div className={classes.root}>
       <Navbar backgroundColor={true} borderBottom={true} />
-      <MarkSelectForm onSelectedMark={setmarkSelcetData}/>
+      <MarkSelectForm onSelectedMark={setmarkSelcetData} />
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-      {markSelectData === "국내출원" ? null : <NationSelectForm onSelectedCountries={setcountriesData} />}
+      {markSelectData === "국내출원" ? null : (
+        <NationSelectForm onSelectedCountries={setcountriesData} />
+      )}
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
       />
 
-      <Button
-        id="submitButton01"
-        onClick={() => setModalOpen(true)}
-      >
+      <Button id="submitButton01" onClick={() => setModalOpen(true)}>
         견적보기
       </Button>
       <TopButton />
-      <CheckModal
-        open={modalOpen}
-        handleClose={handleCloseModal}
-        handleSubmit={handleSubmit}
-      />
+      {modalOpen && (
+        <CheckModal
+          open={modalOpen}
+          handleClose={handleCloseModal}
+          handleSubmit={handleSubmit}
+        />
+      )}
+      <Footer />
     </div>
   );
 }
