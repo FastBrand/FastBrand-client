@@ -49,10 +49,9 @@ function DomesticMark() {
   const madridDataString = madridDataArray.join(',');
 
   const handleSubmit = () => {
-    let directValue = nationDataString;
 
     if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-      directValue = `한국, ${nationDataString}`;
+      nationDataString = `한국, ${nationDataString}`;
     }
 
     const data = {
@@ -63,7 +62,7 @@ function DomesticMark() {
         type: markSelectData,
         country: "더미데이터",
         madrid: madridDataString,
-        direct: directValue,
+        direct: nationDataString,
         status: "더미데이터"
       },
       ...(applicantType.poc === "personal"
@@ -127,6 +126,8 @@ function DomesticMark() {
         handleClose={handleCloseModal}
         handleSubmit={handleSubmit}
         trademarkData={trademarkData}
+        madridDataString={madridDataString}
+        nationDataString={nationDataString}
         managerData={managerData}
         applicantData={applicantData}
         markSelectData={markSelectData}

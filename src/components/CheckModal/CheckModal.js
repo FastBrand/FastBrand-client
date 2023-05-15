@@ -1,6 +1,7 @@
 import { Modal, Box, IconButton, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
+import emailjs from 'emailjs-com';
 
 const useStyles = makeStyles((theme)=>({
   modalBox:{
@@ -52,8 +53,59 @@ const useStyles = makeStyles((theme)=>({
   }
 }))
 
-function CheckModal({open, handleClose, handleSubmit, trademarkData, managerData, applicantData,  markSelectData}) {
+
+
+function CheckModal({open, handleClose, handleSubmit, trademarkData, madridDataString, nationDataString, managerData, applicantData,  markSelectData}) {
   const classes = useStyles();
+
+  const handleButtonClick = () => {
+    handleSubmit();
+    sendEmail(); 
+  };
+
+  const sendEmail = () => {
+ 
+    const templateParams = {
+      to_email: managerData.email, // 수신자 이메일
+      subject: '상표신청',
+      message: `
+      - 상표 정보 
+        상표번호: ${trademarkData.id}
+        패키지: ${markSelectData}
+        상표명: ${trademarkData.brand_name}
+        세부설명: ${trademarkData.description}
+        분류: ${trademarkData.sector}
+        출원국가(마드리드): ${madridDataString}
+        출원국가(개별출원): ${nationDataString} 
+        
+        -담당자 정보      
+        담당자 성명: ${managerData.name}
+        담당자 이메일: ${managerData.email}
+        담당자 휴대전화: ${managerData.mobile}
+        담당자 유선전화: ${managerData.phone}
+
+        -출원인 정보
+        출원인 성명(한글): ${applicantData.name_kor}
+        출원인 성명(영문): ${applicantData.name_eng}
+        출원인 주민번호: ${applicantData.ssn}
+        출원인 우편번호: ${applicantData.zipcode}
+        출원인 주소: ${applicantData.address}, ${applicantData.detail}
+        출원인 이메일: ${applicantData.personalEmail}
+        출원인 휴대전화: ${applicantData.personalMobile}
+        출원인 유선전화: ${applicantData.personalPhone}
+      ` 
+    };
+
+    emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
+    .then((response) => {
+      console.log('이메일 전송성공', response);
+      console.log(nationDataString);
+      console.log(madridDataString);
+    })
+    .catch((error) => {
+      console.error('이메일 전송오류', error);
+    });
+};
 
   return (
     <Modal open={open} onClose={handleClose}>
@@ -86,7 +138,7 @@ function CheckModal({open, handleClose, handleSubmit, trademarkData, managerData
         <span className={classes.checkText03}>{managerData.email}</span>
         </div>
         <Button id="submitButton02"
-        onClick={handleSubmit}
+        onClick={handleButtonClick}
         variant="contained">
         견적발송
         </Button>
