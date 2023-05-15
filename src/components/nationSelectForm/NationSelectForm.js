@@ -43,7 +43,6 @@ const NationButton_table = styled(Button)({ //개별출원
   fontWeight: '400px',
   marginLeft: '5px',
   borderRadius: '40px',
-  borderRadius: '40px',
   border: '0.5px solid #2F2E41',
   backgroundColor: 'transparent',
   color: 'black',
@@ -71,7 +70,6 @@ const NationButton_table2 = styled(Button)({ //마드리드
   fontSize: '12px',
   fontWeight: '400px',
   marginLeft: '5px',
-  borderRadius: '40px',
   borderRadius: '40px',
   border: '0.5px solid #2F2E41',
   backgroundColor: 'transparent',
@@ -218,9 +216,9 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
     <div style={{ margin: "100px 230px", flexWrap: "wrap", justifyContent: "center" }}>
       <br /><br /><br />
       <Container>
-        <div className="littleTitle02" style={{ color: "black" }}>04. 출원할 방법과 국가를 선택해주세요.</div>
+        <div className="littleTitle02" style={{ color: "black" }}>04-2. 출원할 방법과 국가를 선택해주세요.</div>
         <div className="littleInfo">
-        '같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다.   
+        ※ '같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다. 
         <span><CustomTooltip /></span>
         </div>
         
@@ -272,7 +270,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
               </IconButton>
             </Box>
             <h2 id="modal-title">개별출원선택창</h2>
-            <p id="modal-description">개별출원 선택창입니다. 다중선택이 가능하며 스크롤해서 선택해주세요.</p>
+            <p id="modal-description">※ 개별출원 선택창입니다. 다중선택이 가능하며 스크롤해서 선택해주세요.</p>
 
             <TableContainer style={{ width: '800px', maxHeight: '60vh' }}>
               <Table style={{ width: '100%', height: '100%' }}>
@@ -349,8 +347,8 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
               </IconButton>
             </Box>
             <h2 id="modal-title">마드리드선택창</h2>
-            <p id="modal-description">마드리드 협약국가들 선택창입니다. 다중선택이 가능하며 스크롤해서 선택해주세요.</p>
-            <p id="modal-description">모든 국가가 마드리드 협약에 소속되지는 않습니다.</p>
+            <p id="modal-description">※ 마드리드 협약국가들 선택창입니다. 다중선택이 가능하며 스크롤해서 선택해주세요.</p>
+            <p id="modal-description">※ 모든 국가가 마드리드 협약에 소속되어있지는 않습니다.</p>
             <TableContainer style={{ width: '800px', maxHeight: '60vh' }}>
               <Table style={{ width: '100%', height: '100%' }}>
                 {Object.entries(madridContinentMap).map(([continent, countries]) => (
