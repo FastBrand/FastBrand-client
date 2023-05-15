@@ -40,7 +40,8 @@ function MarkAreaCard(props) {
         minWidth: 250,
         minHeight: 380,
         alignItems: "center",
-        backgroundColor: isSelected ? "gray" : "white",
+        backgroundColor: isSelected ? "#857770" : "white",
+        color: isSelected ? "white" : "black",
       }}
     >
       <CardActionArea onClick={handleClick}>
@@ -52,7 +53,7 @@ function MarkAreaCard(props) {
             width: 100,
             height: 100,
             objectFit: "cover",
-            marginLeft: "127px",
+            marginLeft: "150px",
             marginTop: "50px",
           }}
         />
@@ -60,17 +61,30 @@ function MarkAreaCard(props) {
           <Typography
             gutterBottom
             variant="h5"
-            fontWeight={500}
             component="div"
+            sx={{
+              color: isSelected ? "#f6f6eb" : "#857770",
+              fontWeight:'600'
+            }}
           >
             {props.markData.type}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <br />
+          <Typography variant="body1" fontWeight={400}>
             {props.markData.content}
           </Typography>
-          <Typography variant="h4" color="#CBA585" fontWeight={500}>
-            <br />₩{props.markData.price}~
+          <Typography variant="body1" fontWeight={400}>
+            <br />
+            {props.markData.content2}
+          </Typography>
+          <Typography variant="body1" fontWeight={400}>
+            <br />
+            {props.markData.content3}
+          </Typography>
+          <Typography variant="h4" sx={{
+            fontWeight: '600',
+            color: isSelected ? "#f6f6eb" : "#857770",
+          }}>
+            <br />₩{props.markData.price}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -97,7 +111,7 @@ function MarkSelectForm({ onSelectedMark }) {
     <Box sx={{ backgroundColor: "#3e3e3f", marginTop: "80px" }}>
       <FormContainer>
         <CustomTypo sx={{ color: "white" }}>
-          01. 상표유형을 선택해주세요.
+          01. 패키지 유형을 선택해주세요.
         </CustomTypo>
         <Grid
           container

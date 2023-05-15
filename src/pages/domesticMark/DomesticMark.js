@@ -35,10 +35,10 @@ function DomesticMark() {
     setModalOpen(false);
   };
 
-  const nationData = { //개별출원 데이터 (진짜씀)
+  const nationData = { //개별출원 데이터 (
     country: countriesData
   };
-  const nationData2 = { //개별출원 데이터 (진짜씀)
+  const nationData2 = { //마드리드출원 데이터
     country: madridData
   };
   
@@ -49,6 +49,12 @@ function DomesticMark() {
   const madridDataString = madridDataArray.join(',');
 
   const handleSubmit = () => {
+    let directValue = nationDataString;
+
+    if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
+      directValue = `한국, ${nationDataString}`;
+    }
+
     const data = {
       mark: {
         ...trademarkData,
@@ -57,7 +63,7 @@ function DomesticMark() {
         type: markSelectData,
         country: "더미데이터",
         madrid: madridDataString,
-        direct: nationDataString,
+        direct: directValue,
         status: "더미데이터"
       },
       ...(applicantType.poc === "personal"
@@ -99,8 +105,11 @@ function DomesticMark() {
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
+
       {markSelectData === "국내출원" ? 
-      null : <NationSelectForm onSelectedCountries={setcountriesData} onSelectedMadrid={setMadridData} />}
+      null : 
+      <NationSelectForm onSelectedCountries={setcountriesData} onSelectedMadrid={setMadridData} />}
+
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
@@ -119,7 +128,6 @@ function DomesticMark() {
         handleSubmit={handleSubmit}
         trademarkData={trademarkData}
         managerData={managerData}
-        
         applicantData={applicantData}
         markSelectData={markSelectData}
       />

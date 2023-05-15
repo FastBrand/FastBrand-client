@@ -104,7 +104,7 @@ function CompanyInfoForm() {
 
   return (
     <div className={classes.root}>
-        <Navbar/>
+      <Navbar />
     <Box className={classes.infoBox01}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={12}>

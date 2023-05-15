@@ -9,12 +9,14 @@ import { styled } from '@mui/material/styles';
 import { useState, useEffect } from 'react';
 import nation_data from './NationData.json';
 import madrid_data from './MadridData.json';
+import CustomTooltip from './Tooltip';
 import "./NationSelectForm.css";
 
 const NationButton = styled(Button)({ //개별출원 박스
   fontSize: '16px',
   fontWeight: 400,
   marginRight: '100px',
+  marginLeft: '50px',
   borderRadius: '50px',
   border: '0.5px solid #2F2E41',
   backgroundColor: 'transparent',
@@ -104,7 +106,7 @@ function NationSelectedBox({ country }) { //개별출원 국가 박스 추가 �
 function NationSelectedBox2({ country }) { //마드리드 국가 박스 추가 로직
   return (
     <Box className="nationBox_selected02">
-      {country}M
+      {country} <span style={{color:"#ffce2a"}}>M</span>
     </Box>
   )
 }
@@ -140,7 +142,6 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
     ));
     setBoxes([...boxes, newBoxes]);
     setSelectedCountries(selectedCountries); // 선택된 국가들을 업데이트
-    console.log("모달창 닫기");
     setOpen(false);
   };
 
@@ -154,7 +155,6 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
     ));
     setBoxes2([...boxes2, newBoxes]);
     setSelectedMadrid(selectedMadrid); // 선택된 국가들을 업데이트
-    console.log("모달창2 닫기");
     setOpen2(false);
   };
 
@@ -207,12 +207,10 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
   }
 
   const handleConfirm = () => { //확인버튼을 눌렀을 때
-    console.log("확인버튼");
     handleClose();
   };
 
   const handleConfirm2 = () => { //확인버튼을 눌렀을 때
-    console.log("확인2버튼");
     handleClose2();
   };
 
@@ -221,8 +219,12 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
       <br /><br /><br />
       <Container>
         <div className="littleTitle02" style={{ color: "black" }}>04. 출원할 방법과 국가를 선택해주세요.</div>
-        <div className="littleInfo">'같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다.</div>
-
+        <div className="littleInfo">
+        '같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다.   
+        <span><CustomTooltip /></span>
+        </div>
+        
+        
         <NationButton variant="outlined" onClick={handleOpen}>개별국가 출원</NationButton>
         <NationButton variant="outlined" onClick={handleOpen2}>마드리드 출원</NationButton>
 
@@ -239,8 +241,6 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
           }
 
         </div>
-
-
 
 
 
@@ -272,7 +272,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
               </IconButton>
             </Box>
             <h2 id="modal-title">개별출원선택창</h2>
-            <p id="modal-description">개별출원 선택창입니다.다중선택이 가능하며 스크롤해서 선택해주세요.</p>
+            <p id="modal-description">개별출원 선택창입니다. 다중선택이 가능하며 스크롤해서 선택해주세요.</p>
 
             <TableContainer style={{ width: '800px', maxHeight: '60vh' }}>
               <Table style={{ width: '100%', height: '100%' }}>
@@ -350,7 +350,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
             </Box>
             <h2 id="modal-title">마드리드선택창</h2>
             <p id="modal-description">마드리드 협약국가들 선택창입니다. 다중선택이 가능하며 스크롤해서 선택해주세요.</p>
-
+            <p id="modal-description">모든 국가가 마드리드 협약에 소속되지는 않습니다.</p>
             <TableContainer style={{ width: '800px', maxHeight: '60vh' }}>
               <Table style={{ width: '100%', height: '100%' }}>
                 {Object.entries(madridContinentMap).map(([continent, countries]) => (

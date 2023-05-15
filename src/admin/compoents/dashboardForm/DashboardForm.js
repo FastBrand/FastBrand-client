@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import { BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 import { Box, Typography, CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,10 +14,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '20px',
     marginTop: '30px',
     border: '0.5px solid #000',
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     borderRadius: 5,
     width: '1100px',
-    height: '400px'
+    height: '400px',
+  boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.3)', // 그림자 효과
   },
   tooltip: {
     backgroundColor: '#FFFFFF',
@@ -39,15 +40,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#3E3E3F',
   },
   text01: {
+    borderBottom: '3px soild #3E3E3F',
     marginTop: '10px',
     marginLeft: '20px',
     marginBottom: '30px',
     fontSize: '28px',
-    fontWeight: 400,
+    fontWeight: 300,
     color: '#000000',
     textDecoration: 'underline',
     textDecorationColor: '#000000',
     textUnderlineOffset: '5px',
+    textDecorationThickness: '1px',
   },
 
 }));
@@ -60,6 +63,20 @@ function CustomTooltip({ active, payload, label }) {
       <div className={classes.tooltip}>
         <p>{`날짜: ${label}`}</p>
         <p>{`방문자: ${payload[0].value}`}</p>
+      </div>
+    );
+  }
+  return null;
+}
+
+function CustomTooltip2({ active, payload, label }) {
+  const classes = useStyles();
+
+  if (active && payload && payload.length) {
+    return (
+      <div className={classes.tooltip}>
+        <p>{`날짜: ${label}`}</p>
+        <p>{`신청수: ${payload[0].value}`}</p>
       </div>
     );
   }
@@ -169,9 +186,10 @@ function DashboardForm() {
           tickFormatter={integerFormatter}
           domain={[minValue, maxValue]}
           ticks={[minValue, maxValue / 10, maxValue]} />
-          <CartesianGrid stroke="#000000" strokeDasharray="1 1" />
-          <Area dataKey="visitor" fill="#0972b3" />
+          <CartesianGrid stroke="#90827b" strokeDasharray="2 2" />
+          <Area dataKey="visitor" fill="#76777c" fillOpacity={0.8} stroke="#76777c" />
           <Tooltip content={<CustomTooltip />} />
+          
           <Legend />
         </AreaChart>
       )}
@@ -179,7 +197,7 @@ function DashboardForm() {
       <Box className={classes.box}>
       <Typography className={classes.text01}>
         상표신청 현황
-        </Typography>   
+        </Typography> 
       {loading ? (
         <div style={{ 
           display: "flex",
@@ -197,9 +215,9 @@ function DashboardForm() {
           <YAxis stroke='#000000'
           tickFormatter={integerFormatter}
           />
-          <CartesianGrid stroke="#000000" strokeDasharray="1 1" />
-          <Bar dataKey="count" fill="#0972b3" />
-          <Tooltip content={<CustomTooltip/>} />
+          <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
+          <Bar dataKey="count" fill="#90827b" />
+          <Tooltip content={<CustomTooltip2/>} />
           <Legend />
         </BarChart>
       )}
