@@ -6,7 +6,7 @@ import { Title, FAQContainer } from "./FaqStyles";
 const Faq = () => {
   return (
     <>
-      <FAQContainer sx={{ pb: 50 }}>
+      <FAQContainer>
         <Navbar backgroundColor={true} borderBottom={true} />
         <Title>FAQ</Title>
         <FaqAccordion />
