@@ -8,6 +8,7 @@ import DashBoard from "./admin/pages/main/DashBoard";
 import FaqBoard from "./admin/pages/main/FaqBoard";
 import MarkBoard from "./admin/pages/main/MarkBoard";
 import CompanyInfoForm from "./components/companyInfoForm/CompanyInfoForm";
+import MarkDetail from "./admin/pages/main/MarkDetail";
 import Step from "./pages/step/Step";
 import { Route, Routes } from "react-router-dom";
 
@@ -21,10 +22,11 @@ function App() {
         <Route path="/domesticmark" element={<DomesticMark />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/director" element={<Director />} />
-        <Route path="/dashboard" element={<DashBoard />} />
-        <Route path="/faqBoard" element={<FaqBoard />} />
-        <Route path="/markBoard" element={<MarkBoard />} />
-        <Route path="/companyinfo" element={<CompanyInfoForm />} />
+        <Route path="/dashboard" element={<DashBoard/>} />
+        <Route path="/faqBoard" element={<FaqBoard/>} />
+        <Route path="/markBoard" element={<MarkBoard/>} />
+        <Route path="/companyinfo" element={<CompanyInfoForm/>} />
+        <Route path="/markinfo/:id" element={<MarkDetail/>} />
       </Routes>
     </div>
   );
