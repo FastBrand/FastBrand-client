@@ -7,7 +7,7 @@ import {
   FileLabel,
   Wrapper,
   PostCodeButton,
-} from "../../../styles/FormStyles";
+} from "../../../styles/formStyles";
 
 const CorporateForm = ({ onCorporateChange }) => {
   const [open, setOpen] = useState(false);

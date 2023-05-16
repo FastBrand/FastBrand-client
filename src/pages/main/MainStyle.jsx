@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Box, Typography, Container } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import mainImg from "../../assets/images/메인.jpeg";
 
@@ -24,7 +24,6 @@ export const BackgroundBox = styled(Box)(({ theme }) => ({
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   height: "100vh",
-  width: "100vw",
   [theme.breakpoints.down("md")]: {
     backgroundPosition: "center",
   },
@@ -38,7 +37,7 @@ export const ButtonLink = styled(Link)(({ theme }) => ({
   justifyContent: "center",
   transition: "0.5s",
   backgroundSize: "200% auto",
-  borderRadius: "5px",
+  borderRadius: "3px",
   fontSize: "18px",
   color: "white",
   fontWeight: "600",
@@ -48,4 +47,19 @@ export const ButtonLink = styled(Link)(({ theme }) => ({
   "&:hover": {
     backgroundPosition: "right center",
   },
+}));
+
+export const MainContainer = styled("div")(({ theme }) => ({
+  padding: "0 13vw ",
+  [theme.breakpoints.down("md")]: {
+    padding: "0 5vw",
+  },
+}));
+
+export const SubTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: "Pretendard",
+  fontSize: "20px",
+  color: "white",
+  fontWeight: "500",
+  margin: "0 0 40px 5px",
 }));

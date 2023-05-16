@@ -9,6 +9,7 @@ import FaqBoard from "./admin/pages/main/FaqBoard";
 import MarkBoard from "./admin/pages/main/MarkBoard";
 import CompanyInfoForm from "./components/companyInfoForm/CompanyInfoForm";
 import MarkDetail from "./admin/pages/main/MarkDetail";
+import Step from "./pages/step/Step";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/price" element={<Price />} />
+        <Route path="/step" element={<Step />} />
         <Route path="/domesticmark" element={<DomesticMark />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/director" element={<Director />} />
