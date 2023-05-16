@@ -3,7 +3,7 @@ import {
   CustomFormControlLabel,
   CustomRadioGroup,
 } from "./ApplicantFormStyle";
-import { FileLabel, Wrapper } from "../../styles/FormStyles";
+import { FileLabel, Wrapper } from "../../styles/formStyles";
 import React from "react";
 import { useState, useEffect } from "react";
 import PersonalForm from "./personalForm/PersonalForm";

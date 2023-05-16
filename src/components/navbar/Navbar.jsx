@@ -1,4 +1,4 @@
-import { Box, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuDrawer from "../menuDrawer/MenuDrawer";
 import { styled } from "@mui/system";
@@ -96,7 +96,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     marginRight: "1rem",
     boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
     border: "2px solid #CBA585",
-    // borderRadius: "5px",
+    borderRadius: "3px",
     padding: "11px 15px",
     transition: "0.2s",
 
@@ -109,8 +109,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   return (
     <NavbarWrapper
       backgroundColor={backgroundColor ? "white" : "transparent"}
-      // borderBottom={borderBottom ? "1px solid #eee" : "none"}
-      // backgroundColor="white"
+      borderBottom={borderBottom ? "1px solid #eee" : "none"}
     >
       <NavbarContainer>
         <Box
@@ -132,10 +131,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
             </Link>
             <NavbarLinksBox>
               <NavLink to="/price">비용안내</NavLink>
-              <NavLink>절차안내</NavLink>
+              <NavLink to="/step">절차안내</NavLink>
               <NavLink to="/companyinfo">회사소개</NavLink>
               <NavLink to="/faq">고객문의</NavLink>
-              {/* <NavLink to="/director">관리자(임시)</NavLink> */}
             </NavbarLinksBox>
           </Box>
         </Box>
