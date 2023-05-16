@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import { BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 import { Box, Typography, CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,10 +14,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '20px',
     marginTop: '30px',
     border: '0.5px solid #000',
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     borderRadius: 5,
     width: '1100px',
-    height: '400px'
+    height: '400px',
+  boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.3)', // 그림자 효과
   },
   tooltip: {
     backgroundColor: '#FFFFFF',
@@ -39,15 +40,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#3E3E3F',
   },
   text01: {
+    borderBottom: '3px soild #3E3E3F',
     marginTop: '10px',
     marginLeft: '20px',
     marginBottom: '30px',
     fontSize: '28px',
-    fontWeight: 400,
+    fontWeight: 300,
     color: '#000000',
     textDecoration: 'underline',
     textDecorationColor: '#000000',
     textUnderlineOffset: '5px',
+    textDecorationThickness: '1px',
   },
 
 }));
@@ -66,6 +69,19 @@ function CustomTooltip({ active, payload, label }) {
   return null;
 }
 
+function CustomTooltip2({ active, payload, label }) {
+  const classes = useStyles();
+
+  if (active && payload && payload.length) {
+    return (
+      <div className={classes.tooltip}>
+        <p>{`날짜: ${label}`}</p>
+        <p>{`신청수: ${payload[0].value}`}</p>
+      </div>
+    );
+  }
+  return null;
+}
 
 
 function getRecentWeek() {
@@ -74,7 +90,7 @@ function getRecentWeek() {
 
   for (let i = 0; i < 7; i++) {
     const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
-    const dateString = `${currentDate.getFullYear()}/${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+    const dateString = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
     recentWeek.push(dateString);
   }
 
@@ -87,9 +103,9 @@ function DashboardForm() {
   const [visitorCount, setVisitorCount] = useState([]); // 일일 방문자 수
   const recentWeek = getRecentWeek(); // 최근 일주일
   const [chartData, setChartData] = useState([]); // 차트 데이터
+  const [chartData02, setChartData02] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [markCount, setMarkCount] = useState([]); //상표신청수 데이터
-
 
   useEffect(() => {
     axios.all([
@@ -98,17 +114,34 @@ function DashboardForm() {
     ]).then(axios.spread((dashboardResponse, infoResponse) => {
       const dashboardData = dashboardResponse.data;
       const infoData = infoResponse.data; //상표신청자데이터
+      const dateCounts = {}; // 날짜별 신청수
 
-      setVisitorCount(dashboardData);
+      infoData.forEach((user) => {
 
-      const updatedChartData = recentWeek.map((date, index) => {
-        return { name: date, visitor: dashboardData[index] };
+         const date = user.created_at.substring(0, 10); // 날짜 형식 추출 (YYYY-MM-DD)
+        if (dateCounts[date]) {
+          dateCounts[date]++;
+        } else {
+          dateCounts[date] = 1;
+        }
       });
 
+      const chartData = Object.keys(dateCounts).map((date) => ({
+        name: date,
+        count: dateCounts[date] || 0,
+      }));
+
+      const updatedChartData = recentWeek.map((date) => ({
+        name: date,
+        visitor: dashboardData[recentWeek.indexOf(date)] || 0,
+        count: dateCounts[date] || 0,
+      }));
+
+      setVisitorCount(dashboardData);
       setChartData(updatedChartData);
-      setMarkCount(infoData);
-      console.log(infoData);
+      setChartData02(chartData);
       setLoading(false); // 로딩 완료 후 상태 업데이트
+      console.log(updatedChartData);
     })).catch((error) => {
       console.log(error);
       setLoading(false);
@@ -118,7 +151,7 @@ function DashboardForm() {
 
   const integerFormatter = (value) => Math.floor(value);
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(100);
+  const [maxValue, setMaxValue] = useState(10000);
 
   useEffect(() => {
     if (chartData.length > 0) {
@@ -141,8 +174,8 @@ function DashboardForm() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "500px",
-          width: "800px" 
+          height: "300px",
+          width: "1000px" 
           }}>
           <CircularProgress color="inherit" size={80} />
         </div>
@@ -153,9 +186,10 @@ function DashboardForm() {
           tickFormatter={integerFormatter}
           domain={[minValue, maxValue]}
           ticks={[minValue, maxValue / 10, maxValue]} />
-          <CartesianGrid stroke="#000000" strokeDasharray="1 1" />
-          <Area dataKey="visitor" fill="#0972b3" />
+          <CartesianGrid stroke="#90827b" strokeDasharray="2 2" />
+          <Area dataKey="visitor" fill="#76777c" fillOpacity={0.8} stroke="#76777c" />
           <Tooltip content={<CustomTooltip />} />
+          
           <Legend />
         </AreaChart>
       )}
@@ -163,27 +197,27 @@ function DashboardForm() {
       <Box className={classes.box}>
       <Typography className={classes.text01}>
         상표신청 현황
-        </Typography>   
+        </Typography> 
       {loading ? (
         <div style={{ 
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "500px",
-          width: "800px" 
+          height: "300px",
+          width: "1000px" 
           }}>
           <CircularProgress color="inherit" size={80} />
         </div>
       ) : (
-        <BarChart width={1000} height={300} data={chartData}>
-          <XAxis stroke='#000000' dataKey="name" />
+        <BarChart width={1000} height={300} data={chartData02}>
+          <XAxis stroke='#000000' dataKey="name"
+           tickCount={recentWeek.length} />
           <YAxis stroke='#000000'
           tickFormatter={integerFormatter}
-          domain={[minValue, maxValue]}
-          ticks={[minValue, maxValue / 10, maxValue]} />
-          <CartesianGrid stroke="#000000" strokeDasharray="1 1" />
-          <Bar dataKey="visitor" fill="#0972b3" />
-          <Tooltip content={<CustomTooltip/>} />
+          />
+          <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
+          <Bar dataKey="count" fill="#90827b" />
+          <Tooltip content={<CustomTooltip2/>} />
           <Legend />
         </BarChart>
       )}
