@@ -131,10 +131,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
             </Link>
             <NavbarLinksBox>
               <NavLink to="/price">비용안내</NavLink>
-              <NavLink>절차안내</NavLink>
+              <NavLink to="/step">절차안내</NavLink>
               <NavLink to="/companyinfo">회사소개</NavLink>
               <NavLink to="/faq">고객문의</NavLink>
-              {/* <NavLink to="/director">관리자(임시)</NavLink> */}
             </NavbarLinksBox>
           </Box>
         </Box>
