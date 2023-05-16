@@ -7,13 +7,16 @@ import Navbar from '../navbar/Navbar';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    fontFamily: 'Prentendard'
+    fontFamily: 'Prentendard',
+    
   },
   sectionTitle: {
+    fontFamily: 'Prentendard',
     textAlign: 'center',
     color: 'white',
   },
   sectionTitle02: {
+    fontFamily: 'Prentendard',
     marginTop: "30px",
     marginBottom: "20px",
     textAlign: 'center',
@@ -22,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#141221',
   },
   sectionTitle03: {
+    fontFamily: 'Prentendard',
     color:'#f3eae8',
     alignItems: 'center',
     justifyContent: 'center',
@@ -29,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '600'
   },
   sectionTitle04: {
+    fontFamily: 'Prentendard',
     color:'#cba585',
     alignItems: 'center',
     justifyContent: 'center',
@@ -41,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%'
   },
   linkButton: {
+    fontFamily: 'Prentendard',
     width: '200px',
     height: '50px',
     marginTop: '50px',
@@ -54,49 +60,63 @@ const useStyles = makeStyles((theme) => ({
     display: 'block' 
   },
   gridBox: {
+    fontFamily: 'Prentendard',
     border:"2px solid #cba585",
     marginLeft: '100px',
     marginRight: '100px',
     paddingTop: '30px'
   },
   paragraphs:{
+    fontFamily: 'Prentendard',
     color: 'black',
     alignItems: 'center',
     justifyContent: 'center',
     textAlign:'center',
+    margin: 'auto',
+    display: 'flex',
   },
   paragraphs02:{
+    fontFamily: 'Prentendard',
     color: '#f3eae8',
     alignItems: 'center',
     justifyContent: 'center',
     textAlign:'center',
     marginTop: '10px',
     marginBottom: '30px',
+    margin: 'auto',
+    display: 'flex',
   },
 
   infoBox01:{
+    fontFamily: 'Prentendard',
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${companyImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '500px',
+    height: '50vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'auto', 
   },
   infoBox02:{
+    fontFamily: 'Prentendard',
     backgroundColor: 'white',
-    height: '500px',
-    display: 'flex',
+    height: '55vh',
+    display: 'block',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'auto' ,
   },
   infoBox03:{
+    fontFamily: 'Prentendard',
     backgroundColor: '#3E3E3F',
-    height: '800px',
+    height: '100vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'auto' ,
   }
+
 }));
 
 function CompanyInfoForm() {
@@ -105,7 +125,7 @@ function CompanyInfoForm() {
   return (
     <div className={classes.root}>
       <Navbar />
-    <Box className={classes.infoBox01}>
+    <Box className={classes.infoBox01} sx={{ height: '100%' }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={12}>
             <Typography className={classes.sectionTitle} variant="h3">
@@ -122,7 +142,7 @@ function CompanyInfoForm() {
         </Grid>
     </Box>
 
-    <Box className={classes.infoBox02}>
+    <Box className={classes.infoBox02} sx={{ height: '100%' }}>
         <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
         <Typography variant="h4" className={classes.sectionTitle02}>
@@ -151,7 +171,7 @@ function CompanyInfoForm() {
         </Grid>
     </Box> 
 
-    <Box className={classes.infoBox03}>
+    <Box className={classes.infoBox03} sx={{ height: '100%' }}>
     <Grid container spacing={3}>
         <Grid item xs={12} md={12}>
             <Typography variant="h4" className={classes.sectionTitle03}>원전의 특징(元全)</Typography>

@@ -209,17 +209,17 @@ function DashboardForm() {
           <CircularProgress color="inherit" size={80} />
         </div>
       ) : (
-        <BarChart width={1000} height={300} data={chartData02}>
+        <AreaChart width={1000} height={300} data={chartData02}>
           <XAxis stroke='#000000' dataKey="name"
            tickCount={recentWeek.length} />
           <YAxis stroke='#000000'
           tickFormatter={integerFormatter}
           />
           <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
-          <Bar dataKey="count" fill="#90827b" />
+          <Area dataKey="count" fill="#90827b" />
           <Tooltip content={<CustomTooltip2/>} />
           <Legend />
-        </BarChart>
+        </AreaChart>
       )}
       </Box>
     </div>

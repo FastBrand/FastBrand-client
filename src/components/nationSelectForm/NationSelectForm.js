@@ -13,6 +13,7 @@ import CustomTooltip from './Tooltip';
 import "./NationSelectForm.css";
 
 const NationButton = styled(Button)({ //개별출원 박스
+  fontFamily: 'Prentendard',
   fontSize: '16px',
   fontWeight: 400,
   marginRight: '100px',
@@ -39,6 +40,7 @@ const NationButton = styled(Button)({ //개별출원 박스
 
 
 const NationButton_table = styled(Button)({ //개별출원
+  fontFamily: 'Prentendard',
   fontSize: '12px',
   fontWeight: '400px',
   marginLeft: '5px',
@@ -67,6 +69,7 @@ const NationButton_table = styled(Button)({ //개별출원
 
 
 const NationButton_table2 = styled(Button)({ //마드리드
+  fontFamily: 'Prentendard',
   fontSize: '12px',
   fontWeight: '400px',
   marginLeft: '5px',
@@ -213,7 +216,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
   };
 
   return (
-    <div style={{ margin: "100px 230px", flexWrap: "wrap", justifyContent: "center" }}>
+    <div style={{ margin: "100px 230px", flexWrap: "wrap", justifyContent: "center", fontFamily: 'Prentendard', }}>
       <br /><br /><br />
       <Container>
         <div className="littleTitle02" style={{ color: "black" }}>04-2. 출원할 방법과 국가를 선택해주세요.</div>
