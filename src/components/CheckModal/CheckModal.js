@@ -3,16 +3,10 @@ import {
   Box,
   IconButton, 
   Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
  } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
 import emailjs from 'emailjs-com';
-import { useState } from 'react';
 
 const useStyles = makeStyles((theme)=>({
   modalBox:{
@@ -69,7 +63,7 @@ function CheckModal({
   open,handleClose,handleSubmit, 
   trademarkData,
   madridDataString, 
-  nationDataString, 
+  directNationString, 
   managerData, 
   applicantData, 
   markSelectData, 
@@ -77,9 +71,9 @@ function CheckModal({
 
   const classes = useStyles();
 
+  
   const handleConfirmButtonClick = () => {
     if (window.confirm("정말로 진행하시겠습니까?")) {
-      
     handleSubmit();
     sendEmail(); 
     }
@@ -87,7 +81,7 @@ function CheckModal({
 
   const sendEmail = () => {
     const templateParams = {
-      to_email: managerData.email, // 수신자 이메일
+      //to_email: managerData.email, // 수신자 이메일
       subject: '상표신청',
       message: `
       - 상표 정보 
@@ -96,7 +90,7 @@ function CheckModal({
         세부설명: ${trademarkData.description}
         분류: ${classificationData.sector}
         출원국가(마드리드): ${madridDataString}
-        출원국가(개별출원): ${nationDataString} 
+        출원국가(개별출원): ${directNationString } 
         
         -담당자 정보      
         담당자 성명: ${managerData.name}

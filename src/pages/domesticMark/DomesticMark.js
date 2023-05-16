@@ -29,21 +29,7 @@ function DomesticMark() {
   const [madridData, setMadridData] = useState({}); //마드리드
   const [markSelectData, setmarkSelcetData] = useState({});
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
-  const [openConfirmDialog, setOpenConfirmDialog]=useState(false); 
   const classes = useStyles();
-
-  const handleConfirmButtonClick = () => {
-    setOpenConfirmDialog(true);
-  };
-
-  const handleConfirmDialogClose = () => {
-    setOpenConfirmDialog(true);
-  };
-
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
 
   const nationData = { //개별출원 데이터 (
     country: countriesData
@@ -57,13 +43,18 @@ function DomesticMark() {
 
   const nationDataString = nationDataArray.join(',');
   const madridDataString = madridDataArray.join(',');
+  let directNationString = ''
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
 
   const handleSubmit = () => {
-
     if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-      nationDataString = `한국, ${nationDataString}`;
+      directNationString = `한국, ${nationDataString}`;
     }
-
+  
+  
     const data = {
       mark: {
         ...trademarkData,
@@ -72,7 +63,7 @@ function DomesticMark() {
         type: markSelectData,
         country: "더미데이터",
         madrid: madridDataString,
-        direct: nationDataString,
+        direct: directNationString ,
         status: "더미데이터"
       },
       ...(applicantType.poc === "personal"
@@ -133,17 +124,15 @@ function DomesticMark() {
       <TopButton />
       <CheckModal
         open={modalOpen}
-        handleClose={handleCloseModal}
+        handleClose={handleClose}
         handleSubmit={handleSubmit}
         trademarkData={trademarkData}
         madridDataString={madridDataString}
-        nationDataString={nationDataString}
+        directNationString={directNationString }
         managerData={managerData}
         applicantData={applicantData}
         markSelectData={markSelectData}
         classificationData={classificationData}
-        handleConfirmButtonClick={handleConfirmButtonClick}
-        handleConfirmDialogClose={handleConfirmDialogClose}
       />
     </div>
   );
