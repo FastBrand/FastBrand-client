@@ -29,7 +29,17 @@ function DomesticMark() {
   const [madridData, setMadridData] = useState({}); //마드리드
   const [markSelectData, setmarkSelcetData] = useState({});
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
+  const [openConfirmDialog, setOpenConfirmDialog]=useState(false); 
   const classes = useStyles();
+
+  const handleConfirmButtonClick = () => {
+    setOpenConfirmDialog(true);
+  };
+
+  const handleConfirmDialogClose = () => {
+    setOpenConfirmDialog(true);
+  };
+
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -131,6 +141,9 @@ function DomesticMark() {
         managerData={managerData}
         applicantData={applicantData}
         markSelectData={markSelectData}
+        classificationData={classificationData}
+        handleConfirmButtonClick={handleConfirmButtonClick}
+        handleConfirmDialogClose={handleConfirmDialogClose}
       />
     </div>
   );

@@ -1,7 +1,18 @@
-import { Modal, Box, IconButton, Button } from "@mui/material";
+import {
+  Modal, 
+  Box,
+  IconButton, 
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+ } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
 import emailjs from 'emailjs-com';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme)=>({
   modalBox:{
@@ -54,27 +65,36 @@ const useStyles = makeStyles((theme)=>({
 }))
 
 
+function CheckModal({
+  open,handleClose,handleSubmit, 
+  trademarkData,
+  madridDataString, 
+  nationDataString, 
+  managerData, 
+  applicantData, 
+  markSelectData, 
+  classificationData}) {
 
-function CheckModal({open, handleClose, handleSubmit, trademarkData, madridDataString, nationDataString, managerData, applicantData,  markSelectData}) {
   const classes = useStyles();
 
-  const handleButtonClick = () => {
+  const handleConfirmButtonClick = () => {
+    if (window.confirm("정말로 진행하시겠습니까?")) {
+      
     handleSubmit();
     sendEmail(); 
+    }
   };
 
   const sendEmail = () => {
- 
     const templateParams = {
       to_email: managerData.email, // 수신자 이메일
       subject: '상표신청',
       message: `
       - 상표 정보 
-        상표번호: ${trademarkData.id}
         패키지: ${markSelectData}
         상표명: ${trademarkData.brand_name}
         세부설명: ${trademarkData.description}
-        분류: ${trademarkData.sector}
+        분류: ${classificationData.sector}
         출원국가(마드리드): ${madridDataString}
         출원국가(개별출원): ${nationDataString} 
         
@@ -99,8 +119,6 @@ function CheckModal({open, handleClose, handleSubmit, trademarkData, madridDataS
     emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
     .then((response) => {
       console.log('이메일 전송성공', response);
-      console.log(nationDataString);
-      console.log(madridDataString);
     })
     .catch((error) => {
       console.error('이메일 전송오류', error);
@@ -138,12 +156,26 @@ function CheckModal({open, handleClose, handleSubmit, trademarkData, madridDataS
         <span className={classes.checkText03}>{managerData.email}</span>
         </div>
         <Button id="submitButton02"
-        onClick={handleButtonClick}
+        onClick={handleConfirmButtonClick}
         variant="contained">
         견적발송
         </Button>
         </Box>
-    </Modal>
+
+    {/* <Dialog open={handleConfirmButtonClick} onClose={handleConfirmDialogClose}>
+    <DialogTitle>견적 이메일 발송</DialogTitle>
+    <DialogContent>
+    <DialogContentText >
+      정말로 진행하시겠습니까?
+    </DialogContentText>
+    </DialogContent>
+    <DialogActions>
+      <Button onClick={handleConfirmDialogClose} color="primary">취소</Button>
+      <Button onClick={handleConfirmDialogClose} color="primary">확인</Button>
+    </DialogActions>
+  </Dialog> */}
+
+  </Modal>
   );
 };
 export default CheckModal;
