@@ -6,7 +6,7 @@ import {
   MainContainer,
   SubTitle,
 } from "./MainStyle";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Footer from "../../components/footer/Footer";
 import React from "react";
 import Navbar from "../../components/navbar/Navbar";
@@ -26,7 +26,7 @@ const Main = () => {
                   상표등록
                 </Box>
               </Title>
-              <SubTitle sx={{}}>고민하지 말고 신청하세요!</SubTitle>
+              <SubTitle>고민하지 말고 신청하세요!</SubTitle>
               <ButtonLink to="/domesticMark">상표등록 신청하기</ButtonLink>
             </Box>
           </CustomBox>
