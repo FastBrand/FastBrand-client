@@ -103,10 +103,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '50px',
     display: 'flex',
   },
-  miniparagraphs:{
-    color: '#c48240',
-  },
-  infoBox0:{
+  infoBox01:{
     fontFamily: 'Prentendard',
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${companyImage01})`,
     backgroundSize: 'cover',
@@ -114,17 +111,7 @@ const useStyles = makeStyles((theme) => ({
     height: '30vh',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  infoBox01:{
-    fontFamily: 'Prentendard',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    height: '50vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'auto', 
+    justifyContent: 'center', 
   },
   infoBox02:{
     fontFamily: 'Prentendard',
@@ -156,7 +143,7 @@ function CompanyPointForm() {
     <div className={classes.root}>
       <Navbar />
 
-      <Box className={classes.infoBox0}>
+      <Box className={classes.infoBox01}>
      
       <Typography variant="h4" className={classes.sectionTitle}>
          서비스 안내
