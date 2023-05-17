@@ -10,6 +10,7 @@ import MarkBoard from "./admin/pages/main/MarkBoard";
 import CompanyInfoForm from "./components/companyInfoForm/CompanyInfoForm";
 import MarkDetail from "./admin/pages/main/MarkDetail";
 import Step from "./pages/step/Step";
+import CompanyPoint from "./pages/companyPoint/CompanyPoint";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
         <Route path="/dashboard" element={<DashBoard/>} />
         <Route path="/faqBoard" element={<FaqBoard/>} />
         <Route path="/markBoard" element={<MarkBoard/>} />
-        <Route path="/companyinfo" element={<CompanyInfoForm/>} />
+        <Route path="/companyinfo" element={<CompanyInfoForm/> } />
+        <Route path="/companypoint" element={<CompanyPoint/> } />
         <Route path="/markinfo/:id" element={<MarkDetail/>} />
       </Routes>
     </div>

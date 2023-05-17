@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import { BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import { Box, Typography, CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -216,7 +216,7 @@ function DashboardForm() {
           tickFormatter={integerFormatter}
           />
           <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
-          <Area dataKey="count" fill="#90827b" />
+          <Area dataKey="count" fillOpacity={0.8} fill="#90827b" stroke="#90827b" />
           <Tooltip content={<CustomTooltip2/>} />
           <Legend />
         </AreaChart>
