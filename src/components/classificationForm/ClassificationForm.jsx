@@ -239,7 +239,7 @@ const ClassificationForm = ({ onClassificationataChange }) => {
                   ? "#CBA585"
                   : "black",
                 boxShadow: selectedClassifications.includes(classification.id)
-                  ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 5px"
+                  ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 3px"
                   : "none",
               }}
             >
