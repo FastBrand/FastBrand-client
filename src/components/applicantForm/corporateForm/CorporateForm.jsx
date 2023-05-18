@@ -5,11 +5,12 @@ import {
   CustomTypo,
   FormContainer,
   FileLabel,
-  Wrapper,
   PostCodeButton,
+  FileUploadContainer,
 } from "../../../styles/formStyles";
 
 const CorporateForm = ({ onCorporateChange }) => {
+  const [fileName, setFileName] = useState("");
   const [open, setOpen] = useState(false);
   const [corporateData, setCorporateData] = useState({
     name_kor: "",
@@ -21,7 +22,7 @@ const CorporateForm = ({ onCorporateChange }) => {
     corporateMobile: "",
     corporatePhone: "",
     corporateEmail: "",
-    seal: "seal", // 법인 인감 파일
+    seal: "",
     address: "", // 주소
     detail: "", // 상세주소
     zipcode: "", // 우편번호
@@ -46,14 +47,18 @@ const CorporateForm = ({ onCorporateChange }) => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-
-    const formData = new FormData();
-    formData.append("seal", file);
-
+    setFileName(file.name);
+    // const formData = new FormData();
+    // formData.append("image", file);
     // FormData 객체에 파일이 제대로 첨부되었는지 확인
-    console.log(formData.get("seal"));
+    // console.log(formData.get("image"));
 
-    setCorporateData((prevData) => ({ ...prevData, seal: formData }));
+    setCorporateData((prevData) => ({
+      ...prevData,
+      seal: file.name,
+    }));
+    // console.log(file.name);
+    console.log(corporateData);
   };
 
   const handleComplete = (data) => {
@@ -181,10 +186,19 @@ const CorporateForm = ({ onCorporateChange }) => {
           </Grid>
         </Grid>
       </FormContainer>
-      <Wrapper>
+      <FileUploadContainer>
         <FileLabel htmlFor="fileUpload">
           사용중인 법인 인감 파일이 있다면 파일을 첨부해주세요
         </FileLabel>
+        <label
+          style={{
+            fontFamily: "Pretendard",
+            textDecoration: "underline",
+            fontSize: "20px",
+          }}
+        >
+          {fileName}
+        </label>
         <input
           accept="image/*"
           id="imgUpload"
@@ -194,7 +208,7 @@ const CorporateForm = ({ onCorporateChange }) => {
         <label className="fileLabel" htmlFor="imgUpload">
           파일 첨부
         </label>
-      </Wrapper>
+      </FileUploadContainer>
       <FormContainer>
         <Grid container spacing={1}>
           <Grid item xs={12}>
