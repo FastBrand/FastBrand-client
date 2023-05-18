@@ -199,13 +199,13 @@ function CheckModal({
         </TableRow>
 
         <TableRow>
-        <TableCell className={classes.tableCell}>담당자 성명: {managerData.name} </TableCell>
-          <TableCell>담당자 이메일: {managerData.email}</TableCell>
-        </TableRow>
-        <TableRow>
+        <TableCell className={classes.tableCell}>담당자 성명: {managerData.name}</TableCell>
+        <TableCell>담당자 이메일: {managerData.email}</TableCell>
+      </TableRow>
+      <TableRow>
         <TableCell className={classes.tableCell}>담당자 연락처: {managerData.mobile}</TableCell>
-          <TableCell>담당자 유선전화: {managerData.phone} </TableCell>
-        </TableRow>
+        <TableCell>담당자 유선전화: {managerData.phone}</TableCell>
+      </TableRow>
       </TableBody>
     </Table>
         <Button id="submitButton03"
@@ -213,8 +213,7 @@ function CheckModal({
         variant="contained">
         견적발송
         </Button>
-        </Box>
-     
+      </Box>
   </Modal>
   );
 };

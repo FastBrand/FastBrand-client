@@ -1,287 +1,358 @@
 {
       "중국": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 249
       },
       "미국": {
         "continent": "북미",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "유럽공동체": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 897
       },
       "일본": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 77
       },
       "호주": {
         "continent": "오세아니아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 263
       },
       "베트남": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 142
       },
       "인도": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "필리핀": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "아프리카연합": {
         "continent": "아프리카",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "영국": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "아랍에미리트": {
         "continent": "중동",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "아르메니아": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "오스트리아":{
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "캐나다": {
         "continent": "북미",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "스위스": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "칠레": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "불가리아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "바레인": {
         "continent": "중동",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "브루나이": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "브라질": {
         "continent": "중남미",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "베네룩스": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "체코": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "독일": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "덴마크": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "콜럼비아": {
         "continent": "중남미",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "프랑스": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "가나": {
         "continent": "아프리카",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "크로아티아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "헝가리": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "그리스": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "인도네시아": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "아일랜드": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "이스라엘": {
         "continent": "중동",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "스페인": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "핀란드": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "에스토니아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "이집트": {
         "continent": "중동",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "세르비아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "러시아": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "태국": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "터키": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "우즈베키스탄": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "우크라이나": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "싱가포르": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "슬로베니아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "슬로바키아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "카자흐스탄": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "라오스": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "캄보디아": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "케냐": {
         "continent": "아프리카",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "자메이카": {
         "continent": "중남미",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "리투아니아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "룩셈부르크": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "모나코": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "모로코": {
         "continent": "아프리카",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "아이슬란드": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "이탈리아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "포르투갈": {
         "continent": "중남미",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "파키스탄": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "네덜란드": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "루마니아": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "노르웨이": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "뉴질랜드": {
         "continent": "오세아니아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "모잠비크": {
         "continent": "아프리카",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "멕시코": {
         "continent": "중남미",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "몽골": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "나이지리아": {
         "continent": "아프리카",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "쿠바": {
         "continent": "아프리카",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "말레이시아": {
         "continent": "아시아",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "오만": {
         "continent": "중동",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       },
       "스웨덴": {
         "continent": "유럽",
-        "madrid" : "마드리드"
+        "priceMadrid" : 300000,
+        "chf": 460
       }   
     }
     

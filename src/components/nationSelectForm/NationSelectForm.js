@@ -67,7 +67,6 @@ const NationButton_table = styled(Button)({ //개별출원
   },
 });
 
-
 const NationButton_table2 = styled(Button)({ //마드리드
   fontFamily: 'Prentendard',
   fontSize: '12px',
@@ -244,7 +243,6 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
         </div>
 
 
-
         <Modal
           open={open}
           onClose={handleClose}
@@ -317,10 +315,6 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) { //국가�
             </div>
           </Box>
         </Modal>
-
-
-
-
 
         <Modal
           open={open2}

@@ -1,419 +1,419 @@
 {
     "중국": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "미국": {
       "continent": "북미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "유럽공동체": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "일본": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "호주": {
       "continent": "오세아니아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "베트남": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "인도": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "필리핀": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "아프리카연합": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "영국": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "대만": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "아랍에미리트": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "방글라데시": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "아르메니아": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "앙골라": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "아르헨티나": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "오스트리아":{
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "캐나다": {
       "continent": "북미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "스위스": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "칠레": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "벨기에": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "불가리아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "바레인": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "브루나이": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "볼리비아": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "브라질": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "베네룩스": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "체코": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "독일": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "덴마크": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "도미니카": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "콜럼비아": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "코스타리카": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "프랑스": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "가나": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "크로아티아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "아이티": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "헝가리": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "그리스": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "과테말라": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "홍콩": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "온두라스": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "인도네시아": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "아일랜드": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "이스라엘": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "스페인": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "에티오피아": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "핀란드": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "피지": {
       "continent": "오세아니아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "에콰도르": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "에스토니아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "이집트": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "남아프리카공화국": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "세르비아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "사우디아라비아": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "러시아": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "태국": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "터키": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "우루과이": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "우즈베키스탄": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "베네수엘라": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "우크라이나": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "싱가포르": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "슬로베니아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "슬로바키아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "쿠웨이트": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "카자흐스탄": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "라오스": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "레바논": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "스리랑카": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "캄보디아": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "케냐": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "자메이카": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "요르단": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "리투아니아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "룩셈부르크": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "모나코": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "리비아": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "모로코": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "이라크": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "아이슬란드": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "이탈리아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "파나마": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "페루": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "포르투갈": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "팔레스타인": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "파키스탄": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "푸에르토리코": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "파라과이": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "카타르": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "네덜란드": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "네팔": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "루마니아": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "노르웨이": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "뉴질랜드": {
       "continent": "오세아니아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "모잠비크": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "멕시코": {
       "continent": "중남미",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "미얀마": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "몽골": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "나이지리아": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "쿠바": {
       "continent": "아프리카",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "말레이시아": {
       "continent": "아시아",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "오만": {
       "continent": "중동",
-      "direct" : "개별출원"
+      "price" : 0
     },
     "스웨덴": {
       "continent": "유럽",
-      "direct" : "개별출원"
+      "price" : 0
     }   
   }
   
