@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme)=>({
     p: 8,
     overflow: 'auto',
     width: '600px',
-    height: '700px',
+    height: '640px',
     backgroundColor:'white',
   },
   modalClose:{
