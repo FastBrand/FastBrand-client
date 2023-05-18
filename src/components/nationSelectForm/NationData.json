@@ -1,419 +1,523 @@
 {
     "중국": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300     
     },
     "미국": {
       "continent": "북미",
-      "price" : 0
+      "price" : 700000,
+      "usd" : 1300  
     },
     "유럽공동체": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 1000000,
+      "usd" : 300  
     },
     "일본": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "호주": {
       "continent": "오세아니아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "베트남": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "인도": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "필리핀": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "아프리카연합": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "영국": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "대만": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "아랍에미리트": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "방글라데시": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "아르메니아": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "앙골라": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "아르헨티나": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "오스트리아":{
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "캐나다": {
       "continent": "북미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "스위스": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "칠레": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "벨기에": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "불가리아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "바레인": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "브루나이": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "볼리비아": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "브라질": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "베네룩스": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "체코": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "독일": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "덴마크": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "도미니카": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "콜럼비아": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "코스타리카": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "프랑스": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "가나": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "크로아티아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "아이티": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "헝가리": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "그리스": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "과테말라": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "홍콩": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "온두라스": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "인도네시아": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "아일랜드": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "이스라엘": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "스페인": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "에티오피아": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "핀란드": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "피지": {
       "continent": "오세아니아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "에콰도르": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "에스토니아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "이집트": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "남아프리카공화국": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "세르비아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "사우디아라비아": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "러시아": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "태국": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "터키": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "우루과이": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "우즈베키스탄": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "베네수엘라": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "우크라이나": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "싱가포르": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "슬로베니아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "슬로바키아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "쿠웨이트": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "카자흐스탄": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "라오스": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "레바논": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "스리랑카": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "캄보디아": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "케냐": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "자메이카": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "요르단": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "리투아니아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "룩셈부르크": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "모나코": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "리비아": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "모로코": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "이라크": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "아이슬란드": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "이탈리아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "파나마": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "페루": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "포르투갈": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "팔레스타인": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "파키스탄": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "푸에르토리코": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "파라과이": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "카타르": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "네덜란드": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "네팔": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "루마니아": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "노르웨이": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "뉴질랜드": {
       "continent": "오세아니아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "모잠비크": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "멕시코": {
       "continent": "중남미",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "미얀마": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "몽골": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "나이지리아": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "쿠바": {
       "continent": "아프리카",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "말레이시아": {
       "continent": "아시아",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "오만": {
       "continent": "중동",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     },
     "스웨덴": {
       "continent": "유럽",
-      "price" : 0
+      "price" : 300000,
+      "usd" : 300
     }   
   }
   

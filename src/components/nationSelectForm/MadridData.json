@@ -32,327 +32,327 @@
       "인도": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 124
       },
       "필리핀": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 101
       },
       "아프리카연합": {
         "continent": "아프리카",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 572
       },
       "영국": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 227
       },
       "아랍에미리트": {
         "continent": "중동",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 1630
       },
       "아르메니아": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 187
       },
       "오스트리아":{
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "캐나다": {
         "continent": "북미",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 255
       },
       "스위스": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 450
       },
       "칠레": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 298
       },
       "불가리아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 327
       },
       "바레인": {
         "continent": "중동",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 1710
       },
       "브루나이": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 196
       },
       "브라질": {
         "continent": "중남미",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 75
       },
       "베네룩스": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 224
       },
       "체코": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "독일": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "덴마크": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 257
       },
       "콜럼비아": {
         "continent": "중남미",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 243
       },
       "프랑스": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "가나": {
         "continent": "아프리카",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 379
       },
       "크로아티아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "헝가리": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "그리스": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 127
       },
       "인도네시아": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 125
       },
       "아일랜드": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 257
       },
       "이스라엘": {
         "continent": "중동",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 483
       },
       "스페인": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "핀란드": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 243
       },
       "에스토니아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 151
       },
       "이집트": {
         "continent": "중동",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "세르비아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "러시아": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "태국": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 418
       },
       "터키": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 27
       },
       "우즈베키스탄": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 1028
       },
       "우크라이나": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 429
       },
       "싱가포르": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 261
       },
       "슬로베니아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "슬로바키아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "카자흐스탄": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "라오스": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 71
       },
       "캄보디아": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 139
       },
       "케냐": {
         "continent": "아프리카",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 312
       },
       "자메이카": {
         "continent": "중남미",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 188
       },
       "리투아니아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "룩셈부르크": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "모나코": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "모로코": {
         "continent": "아프리카",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 219
       },
       "아이슬란드": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 224
       },
       "이탈리아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 95
       },
       "포르투갈": {
         "continent": "중남미",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "파키스탄": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 75
       },
       "네덜란드": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "루마니아": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "노르웨이": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 216
       },
       "뉴질랜드": {
         "continent": "오세아니아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 63
       },
       "모잠비크": {
         "continent": "아프리카",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "멕시코": {
         "continent": "중남미",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 132
       },
       "몽골": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "나이지리아": {
         "continent": "아프리카",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 100
       },
       "쿠바": {
         "continent": "아프리카",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 274
       },
       "말레이시아": {
         "continent": "아시아",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 259
       },
       "오만": {
         "continent": "중동",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 484
       },
       "스웨덴": {
         "continent": "유럽",
         "priceMadrid" : 300000,
-        "chf": 460
+        "chf": 226
       }   
     }
     

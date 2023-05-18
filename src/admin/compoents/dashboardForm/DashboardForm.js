@@ -55,57 +55,55 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-function CustomTooltip({ active, payload, label }) {
-  const classes = useStyles();
-
-  if (active && payload && payload.length) {
-    return (
-      <div className={classes.tooltip}>
-        <p>{`날짜: ${label}`}</p>
-        <p>{`방문자: ${payload[0].value}`}</p>
-      </div>
-    );
-  }
-  return null;
-}
-
-function CustomTooltip2({ active, payload, label }) {
-  const classes = useStyles();
-
-  if (active && payload && payload.length) {
-    return (
-      <div className={classes.tooltip}>
-        <p>{`날짜: ${label}`}</p>
-        <p>{`신청수: ${payload[0].value}`}</p>
-      </div>
-    );
-  }
-  return null;
-}
-
-
-function getRecentWeek() {
-  const today = new Date();
-  const recentWeek = [];
-
-  for (let i = 0; i < 7; i++) {
-    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
-    const dateString = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
-    recentWeek.push(dateString);
-  }
-
-  return recentWeek.reverse();
-}
 
 function DashboardForm() {
   const classes = useStyles();
 
-  const [visitorCount, setVisitorCount] = useState([]); // 일일 방문자 수
+  //const [visitorCount, setVisitorCount] = useState([]); // 일일 방문자 수
   const recentWeek = getRecentWeek(); // 최근 일주일
   const [chartData, setChartData] = useState([]); // 차트 데이터
   const [chartData02, setChartData02] = useState([]); 
   const [loading, setLoading] = useState(true);
-  const [markCount, setMarkCount] = useState([]); //상표신청수 데이터
+  //const [markCount, setMarkCount] = useState([]); //상표신청수 데이터
+
+  function getRecentWeek() {
+    const today = new Date();
+    const recentWeek = [];
+  
+    for (let i = 0; i < 7; i++) {
+      const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
+      const dateString = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+      recentWeek.push(dateString);
+    }
+  
+    return recentWeek.reverse();
+  }
+
+  function CustomTooltip({ active, payload, label }) {
+  
+    if (active && payload && payload.length) {
+      return (
+        <div className={classes.tooltip}>
+          <p>{`날짜: ${label}`}</p>
+          <p>{`방문자: ${payload[0].value}`}</p>
+        </div>
+      );
+    }
+    return null;
+  }
+  
+  function CustomTooltip2({ active, payload, label }) {
+  
+    if (active && payload && payload.length) {
+      return (
+        <div className={classes.tooltip}>
+          <p>{`날짜: ${label}`}</p>
+          <p>{`신청수: ${payload[0].value}`}</p>
+        </div>
+      );
+    }
+    return null;
+  }
 
   useEffect(() => {
     axios.all([
@@ -137,7 +135,7 @@ function DashboardForm() {
         count: dateCounts[date] || 0,
       }));
 
-      setVisitorCount(dashboardData);
+      //setVisitorCount(dashboardData);
       setChartData(updatedChartData);
       setChartData02(chartData);
       setLoading(false); // 로딩 완료 후 상태 업데이트
@@ -181,11 +179,11 @@ function DashboardForm() {
         </div>
       ) : (
         <AreaChart width={1000} height={300} data={chartData}>
-          <XAxis stroke='#000000' dataKey="name" />
+          <XAxis stroke='#000000' dataKey="name"/>
           <YAxis stroke='#000000'
           tickFormatter={integerFormatter}
           domain={[minValue, maxValue]}
-          ticks={[minValue, maxValue / 10, maxValue]} />
+          ticks={[minValue, (maxValue / 4), (maxValue / 2), (maxValue * 3 / 4), maxValue]}/>
           <CartesianGrid stroke="#90827b" strokeDasharray="2 2" />
           <Area dataKey="visitor" fill="#76777c" fillOpacity={0.8} stroke="#76777c" />
           <Tooltip content={<CustomTooltip />} />

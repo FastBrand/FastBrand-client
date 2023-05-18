@@ -46,9 +46,10 @@ const NationButton = styled(Button)({
 
 const NationButton_table = styled(Button)({
   //개별출원
-  display: "flex",
-  padding: "6px 18px",
-  fontSize: "14px",
+  padding: "4px",
+  fontSize: "12px",
+   width: "100px",
+  height: "35px",
   fontWeight: 600,
   fontFamily: "Pretendard",
   // marginLeft: "5px",
@@ -103,27 +104,38 @@ const NationButton_table2 = styled(Button)({
   },
 });
 
-function NationSelectedBox({ country }) {
-  //개별출원 국가 박스 추가 로직
-  return <Box className="nationBox_selected">{country}</Box>;
-}
 
-function NationSelectedBox2({ country }) {
-  //마드리드 국가 박스 추가 로직
-  return (
-    <Box className="nationBox_selected02">
-      {country} <span style={{ color: "#ffce2a" }}>M</span>
-    </Box>
-  );
-}
-function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
+function NationSelectForm({ onSelectedCountries, onSelectedMadrid, onMadridPrice, onEachPrice}) {
   //국가선택 컴포넌트
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [boxes, setBoxes] = useState([]);
   const [boxes2, setBoxes2] = useState([]);
+  const { continentMap, madridContinentMap } = processCountryData(nation_data, madrid_data);
   const [selectedCountries, setSelectedCountries] = useState({}); //선택된 국가들
   const [selectedMadrid, setSelectedMadrid] = useState({}); //선택된 국가들
+
+  const exchangeCHF = useState(1484.94); //스위스 프랑 환율
+  const exchangeUSD = useState(1334.42); //달러 환율
+  const exchangeJPY = useState(9.69); //엔화 환율
+  const exchangeEUR = useState(1444.51); //유로 환율
+  const [madridPrice, setMadridPrice] = useState(0);
+  const [eachPrice, setEachPrice] = useState(0);
+ 
+
+  function NationSelectedBox({ country }) {
+    //개별출원 국가 박스 추가 로직
+    return <Box className="nationBox_selected">{country}</Box>;
+  }
+  
+  function NationSelectedBox2({ country }) {
+    //마드리드 국가 박스 추가 로직
+    return (
+      <Box className="nationBox_selected02">
+        {country} <span style={{ color: "#ffce2a" }}>M</span>
+      </Box>
+    );
+  }
 
   useEffect(() => {
     onSelectedCountries(selectedCountries);
@@ -132,6 +144,45 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
     onSelectedMadrid(selectedMadrid);
   }, [selectedMadrid, onSelectedMadrid]);
 
+  useEffect(() => {// 개별출원 국가가 변경될 때마다 계산을 수행
+    
+    const selectedBasicPrices = Object.keys(selectedCountries).map(
+      (c) => nation_data[c].price
+    );
+    const selectedUsdPrices = Object.keys(selectedCountries).map(
+      (c) => nation_data[c].usd
+    );
+    const usdPrice = (selectedUsdPrices.reduce((acc, curr) => acc + curr, 0)) * exchangeUSD[0];
+    const basicTotalPrice = selectedBasicPrices.reduce((acc, curr) => acc + curr, 0);
+    const totalPrice = basicTotalPrice + usdPrice;
+    if(Object.keys(selectedCountries).length === 0){
+      setEachPrice(0);
+    }
+    else{
+      setEachPrice(totalPrice); // 개별출원 기본 가격 셋팅
+    }
+    onEachPrice(eachPrice);
+  }, [selectedCountries, eachPrice]);
+  
+  useEffect(() => { // 마드리드 국가가 변경될 때마다 계산을 수행
+    const selectedBasicPrices = Object.keys(selectedMadrid).map(
+      (c) => madrid_data[c].priceMadrid
+    );
+    const selectedChfPrices = Object.keys(selectedMadrid).map(
+      (c) => madrid_data[c].chf
+    );
+    const chfPrice = (selectedChfPrices.reduce((acc, curr) => acc + curr, 0)) * exchangeCHF[0];
+    const basicTotalPrice = selectedBasicPrices.reduce((acc, curr) => acc + curr, 0);
+    const totalPriceM = basicTotalPrice + chfPrice + (1000000 + (653 * exchangeCHF[0]));
+    if(Object.keys(selectedMadrid).length === 0){
+      setMadridPrice(0);
+    }
+    else{
+    setMadridPrice(totalPriceM); // 마드리드 기본 가격 셋팅
+    }
+    onMadridPrice(madridPrice);
+  }, [selectedMadrid, madridPrice]);
+  
   const handleOpen = () => {
     //개별출원 모달창 오픈
     setOpen(true);
@@ -149,7 +200,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
     console.log(selected);
     const newBoxes = selected.map((c) => <Box country={c} key={c} />);
     setBoxes([...boxes, newBoxes]);
-    setSelectedCountries(selectedCountries); // 선택된 국가들을 업데이트
+    //setSelectedCountries(selectedCountries); // 선택된 국가들을 업데이트
     setOpen(false);
   };
 
@@ -161,7 +212,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
     console.log(selected);
     const newBoxes = selected.map((c) => <Box country={c} key={c} />);
     setBoxes2([...boxes2, newBoxes]);
-    setSelectedMadrid(selectedMadrid); // 선택된 국가들을 업데이트
+    //setSelectedMadrid(selectedMadrid); // 선택된 국가들을 업데이트
     setOpen2(false);
   };
 
@@ -197,6 +248,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
     setBoxes2(newBoxes);
   };
 
+function processCountryData(nation_data, madrid_data) {
   const continentMap = {}; // 대륙 정보를 저장할 객체
   for (const [country, info] of Object.entries(nation_data)) {
     const continent = info.continent;
@@ -214,6 +266,9 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
     }
     madridContinentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
   }
+
+  return { continentMap, madridContinentMap };
+}
 
   const handleConfirm = () => {
     //확인버튼을 눌렀을 때
