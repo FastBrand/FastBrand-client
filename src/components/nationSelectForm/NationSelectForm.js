@@ -5,7 +5,6 @@ import {
   TableCell,
   TableContainer,
   TableRow,
-  Container,
   Box,
   Button,
   IconButton,
@@ -21,16 +20,17 @@ import "./NationSelectForm.css";
 
 const NationButton = styled(Button)({
   //개별출원 박스
+  fontFamily: "Pretendard",
   fontSize: "16px",
-  fontWeight: 400,
-  marginRight: "50px",
+  fontWeight: 500,
+  marginRight: "30px",
   borderRadius: "30px",
-  border: "0.5px solid #2F2E41",
+  borderColor: "#3E3E3F",
   backgroundColor: "transparent",
   color: "black",
-  width: "180px",
-  height: "52px",
-  padding: "8px 16px",
+  // width: "180px",
+  // height: "52px",
+  padding: "10px 30px",
   "&:hover": {
     backgroundColor: "#3E3E3F",
     color: "white",
@@ -46,27 +46,27 @@ const NationButton = styled(Button)({
 
 const NationButton_table = styled(Button)({
   //개별출원
-  fontSize: "12px",
-  fontWeight: "400px",
-  marginLeft: "5px",
-  borderRadius: "40px",
-  border: "0.5px solid #2F2E41",
+  display: "flex",
+  padding: "6px 18px",
+  fontSize: "14px",
+  fontWeight: 600,
+  fontFamily: "Pretendard",
+  // marginLeft: "5px",
+  borderRadius: "30px",
+  border: "0.5px solid black",
   backgroundColor: "transparent",
   color: "black",
-  width: "100px",
-  height: "35px",
-  padding: "4px",
+  // width: "100px",
+  // height: "35px",
+  // padding: "4px",
   "&:hover": {
-    backgroundColor: "#CBA585",
-    color: "white",
-    borderColor: "#CBA585",
-    boxShadow: "none",
+    borderColor: "black",
   },
-  "&:active": {
-    boxShadow: "none",
-    backgroundColor: "#CBA585",
-    borderColor: "#CBA585",
-  },
+  // "&:active": {
+  //   boxShadow: "none",
+  //   backgroundColor: "#CBA585",
+  //   borderColor: "#CBA585",
+  // },
   "&.selected": {
     backgroundColor: "#CBA585",
     color: "white",
@@ -77,26 +77,25 @@ const NationButton_table = styled(Button)({
 const NationButton_table2 = styled(Button)({
   //마드리드
   fontSize: "12px",
-  fontWeight: "400px",
+  fontFamily: "Pretendard",
+  fontWeight: 600,
   marginLeft: "5px",
-  borderRadius: "40px",
-  border: "0.5px solid #2F2E41",
+  borderRadius: "30px",
+  border: "0.5px solid black",
   backgroundColor: "transparent",
   color: "black",
   width: "100px",
   height: "35px",
   padding: "4px",
   "&:hover": {
-    backgroundColor: "#857770",
-    color: "white",
-    borderColor: "#857770",
-    boxShadow: "none",
+    borderColor: "black",
+    backgroundColor: "white",
   },
-  "&:active": {
-    boxShadow: "none",
-    backgroundColor: "#857770",
-    borderColor: "#857770",
-  },
+  // "&:active": {
+  //   boxShadow: "none",
+  //   backgroundColor: "#857770",
+  //   borderColor: "#857770",
+  // },
   "&.selected": {
     backgroundColor: "#857770",
     color: "white",
@@ -229,9 +228,9 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
   return (
     <FormContainer>
       <CustomTypo>
-        04-2. 출원할 방법과 국가를 선택해주세요.
+        04-2. 출원할 방법과 국가를 선택해주세요
         <div className="littleInfo">
-          ※ '같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다.
+          ※ '같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다&nbsp;
           <span>
             <CustomTooltip />
           </span>
@@ -260,6 +259,7 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
       </div>
 
       <Modal
+        fontFamily="Pretendard"
         open={open}
         onClose={handleClose}
         aria-labelledby="개별출원선택창"
@@ -272,9 +272,10 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
             left: "50%",
             transform: "translate(-50%, -50%)",
             bgcolor: "white",
-            border: "1px solid #000",
+            // border: "1px solid #000",
+            borderRadius: "3px",
             boxShadow: 18,
-            p: 8,
+            padding: "10px 30px 40px 30px",
             overflow: "auto",
             maxHeight: "80vh",
           }}
@@ -350,8 +351,8 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
               onClick={handleConfirm}
               style={{
                 marginRight: "30px",
-                backgroundColor: "#CBA585",
                 color: "white",
+                backgroundColor: "#3E3E3F",
               }}
             >
               확인
@@ -367,125 +368,123 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid }) {
         </Box>
       </Modal>
 
-      <Modal
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="마드리드선택창"
-        aria-describedby="마드리드 협약국가들 선택창입니다. 다중선택이 가능합니다. 스크롤해서 선택해주세요."
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            bgcolor: "white",
-            border: "1px solid #000",
-            boxShadow: 18,
-            p: 8,
-            overflow: "auto",
-            maxHeight: "80vh",
-          }}
+      {open2 && (
+        <Modal
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="마드리드선택창"
+          aria-describedby="마드리드 협약국가들 선택창입니다. 다중선택이 가능합니다. 스크롤해서 선택해주세요."
         >
           <Box
             sx={{
               position: "absolute",
-              top: "5px",
-              right: "5px",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: "white",
+              // border: "1px solid #000",
+              borderRadius: "3px",
+              boxShadow: 18,
+              padding: "10px 30px 40px 30px",
+              overflow: "auto",
+              maxHeight: "80vh",
             }}
           >
-            <IconButton onClick={handleClose2}>
-              <CloseIcon />
-            </IconButton>
-          </Box>
-          <h2 id="modal-title">마드리드선택창</h2>
-          <p id="modal-description">
-            ※ 마드리드 협약국가들 선택창입니다. 다중선택이 가능하며 스크롤해서
-            선택해주세요.
-          </p>
-          <p id="modal-description">
-            ※ 모든 국가가 마드리드 협약에 소속되어있지는 않습니다.
-          </p>
-          <TableContainer style={{ width: "800px", maxHeight: "60vh" }}>
-            <Table style={{ width: "100%", height: "100%" }}>
-              {Object.entries(madridContinentMap).map(
-                ([continent, countries]) => (
-                  <TableBody key={continent} sx={{ overflow: "auto" }}>
-                    <TableRow>
-                      <TableCell
-                        id="contentName_row"
-                        rowSpan={Math.ceil(countries.length / 1)}
-                      >
-                        {continent}
-                      </TableCell>
-                    </TableRow>
-                    {Array.from({
-                      length: Math.ceil(countries.length / 4),
-                    }).map((_, i) => (
-                      <TableRow
-                        key={`row-${i}`}
-                        sx={{ display: "flex", flexWrap: "wrap" }}
-                      >
-                        {countries
-                          .slice(i * 4, (i + 1) * 4)
-                          .map((country, j) => (
-                            <TableCell key={`${continent}-${country}`}>
-                              <NationButton_table2
-                                variant="outlined"
-                                onClick={() =>
-                                  handleSelectMadrid(i, j, country)
-                                }
-                                className={
-                                  selectedMadrid[country] ? "selected" : ""
-                                }
-                              >
-                                {country}
-                              </NationButton_table2>
-                            </TableCell>
-                          ))}
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                )
-              )}
-            </Table>
-          </TableContainer>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "5px",
+                right: "5px",
+              }}
+            >
+              <IconButton onClick={handleClose2}>
+                <CloseIcon />
+              </IconButton>
+            </Box>
+            <h2 id="modal-title">마드리드선택창</h2>
+            <p id="modal-description">
+              ※ 마드리드 협약국가들 선택창입니다. 다중선택이 가능하며 스크롤해서
+              선택해주세요.
+              <br />※ 모든 국가가 마드리드 협약에 소속되어있지는 않습니다.
+            </p>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: "25px",
-              marginLeft: "50px",
-            }}
-          >
-            <Button
-              id="confireButton_table"
-              variant="outlined"
-              onClick={handleConfirm2}
+            <TableContainer style={{ width: "800px", maxHeight: "60vh" }}>
+              <Table style={{ width: "100%", height: "100%" }}>
+                {Object.entries(madridContinentMap).map(
+                  ([continent, countries]) => (
+                    <TableBody key={continent} sx={{ overflow: "auto" }}>
+                      <TableRow>
+                        <TableCell
+                          id="contentName_row"
+                          rowSpan={Math.ceil(countries.length / 1)}
+                        >
+                          {continent}
+                        </TableCell>
+                      </TableRow>
+                      {Array.from({
+                        length: Math.ceil(countries.length / 4),
+                      }).map((_, i) => (
+                        <TableRow
+                          key={`row-${i}`}
+                          sx={{ display: "flex", flexWrap: "wrap" }}
+                        >
+                          {countries
+                            .slice(i * 4, (i + 1) * 4)
+                            .map((country, j) => (
+                              <TableCell key={`${continent}-${country}`}>
+                                <NationButton_table2
+                                  variant="outlined"
+                                  onClick={() =>
+                                    handleSelectMadrid(i, j, country)
+                                  }
+                                  className={
+                                    selectedMadrid[country] ? "selected" : ""
+                                  }
+                                >
+                                  {country}
+                                </NationButton_table2>
+                              </TableCell>
+                            ))}
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  )
+                )}
+              </Table>
+            </TableContainer>
+
+            <div
               style={{
-                marginRight: "30px",
-                backgroundColor: "#857770",
-                color: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "25px",
+                marginLeft: "50px",
               }}
             >
-              확인
-            </Button>
-            <Button
-              id="confireButton_table"
-              variant="outlined"
-              onClick={handleClose2}
-              style={{
-                color: "#857770",
-                border: "0.5px solid #857770",
-              }}
-            >
-              취소
-            </Button>
-          </div>
-        </Box>
-      </Modal>
+              <Button
+                id="confireButton_table"
+                variant="outlined"
+                onClick={handleConfirm2}
+                style={{
+                  backgroundColor: "#3E3E3F",
+                  marginRight: "30px",
+                  color: "white",
+                }}
+              >
+                확인
+              </Button>
+              <Button
+                id="confireButton_table"
+                variant="outlined"
+                onClick={handleClose2}
+              >
+                취소
+              </Button>
+            </div>
+          </Box>
+        </Modal>
+      )}
     </FormContainer>
   );
 }
