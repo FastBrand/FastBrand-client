@@ -174,6 +174,11 @@ const classifications = [
     description:
       "법무, 보안, 웨딩, 장례, 종교, 돌봄서비스, 개인 서비스업, 온라인 소셜네트워킹",
   },
+  {
+    id: 46,
+    name: "기타",
+    description: "기타",
+  },
 ];
 
 const ClassificationForm = ({ onClassificationataChange }) => {
@@ -239,7 +244,7 @@ const ClassificationForm = ({ onClassificationataChange }) => {
                   ? "#CBA585"
                   : "black",
                 boxShadow: selectedClassifications.includes(classification.id)
-                  ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 5px"
+                  ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 3px"
                   : "none",
               }}
             >

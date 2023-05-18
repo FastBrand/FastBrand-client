@@ -8,9 +8,10 @@
 .littleInfo {
   font-size: 16px;
   text-align: left;
-  font-weight: 300;
+  /* font-family: "Pretendard"; */
+  font-weight: 500;
   color: #000000;
-  margin-bottom: 50px;
+  margin-bottom: 2rem;
 }
 
 .boxContainer {
@@ -24,6 +25,7 @@
   font-size: 20px;
   font-weight: 400;
   text-align: center;
+  font-family: "Pretendard";
   color: white;
 }
 
@@ -54,40 +56,43 @@
 
 .nationBox_selected {
   background-color: #cba585;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   border-radius: 30px;
+  font-weight: 500;
   border: 0.2px solid #cba585;
-  width: 120px;
-  height: 25px;
   margin-top: 10px;
   margin-left: 5px;
   text-align: center;
-  padding: 8px;
+  padding: 12px 30px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 .nationBox_selected02 {
-    background-color: #857770;
-    color: white;
-    border-radius: 30px;
-    border: 0.2px solid #857770;
-    width: 120px;
-    height: 25px;
-    margin-top: 10px;
-    margin-left: 5px;
-    text-align: center;
-    padding: 8px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  background-color: #857770;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  padding: 12px 30px;
+  color: white;
+  border-radius: 30px;
+  border: 0.2px solid #857770;
+  margin-top: 10px;
+  margin-left: 5px;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 #confireButton_table {
   font-size: 16px;
-  font-weight: 400;
-  border-radius: 50px;
-  border: 0.5px solid #cba585;
+  font-weight: 600;
+  border-radius: 30px;
+  border: 0.5px solid #3e3e3f;
   background-color: white;
-  color: #cba585;
+  color: #3e3e3f;
   width: 120px;
   height: 48px;
   padding: 8px 16px;
 }
-

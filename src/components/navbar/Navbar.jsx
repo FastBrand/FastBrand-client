@@ -21,9 +21,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   };
 
   const NavLink = styled(Link)(({ theme }) => ({
-    fontSize: "17px",
+    fontSize: "18px",
     color: "#CBA585",
-    fontWeight: "500",
+    fontWeight: 500,
     fontFamily: "Pretendard",
     cursor: "pointer",
     textDecoration: "none",
@@ -87,9 +87,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   }));
 
   const ButtonLink = styled(Link)(({ theme }) => ({
-    fontSize: "17px",
+    fontSize: "18px",
     color: "#CBA585",
-    fontWeight: "500",
+    fontWeight: 600,
     fontFamily: "Pretendard",
     cursor: "pointer",
     textDecoration: "none",

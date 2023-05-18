@@ -4,8 +4,9 @@ import "./TrademarkForm.scss";
 import {
   CustomTypo,
   FormContainer,
-  Wrapper,
   FileLabel,
+  FileUploadContainer,
+  CustomTextField,
 } from "../../styles/formStyles";
 import { useState, useEffect } from "react";
 
@@ -13,7 +14,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
   const [trademarkData, setTrademarkData] = useState({
     brand_name: "",
     description: "",
-    image: "image",
+    image: "",
   });
   const [fileName, setFileName] = useState("");
 
@@ -31,7 +32,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-
+    setFileName(file.name);
     // const formData = new FormData();
     // formData.append("image", file);
     // FormData 객체에 파일이 제대로 첨부되었는지 확인
@@ -41,7 +42,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
       ...prevData,
       image: file.name,
     }));
-    console.log(file.name);
+    // console.log(file.name);
     // console.log(trademarkData);
     // setFileName(file.name);
   };
@@ -61,7 +62,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
               id="trademarkName"
               label="상표명"
               variant="standard"
-              sx={{ mb: "3rem" }}
+              sx={{ mb: "3rem", fontFamily: "Pretendard" }}
               value={trademarkData.trademarkName}
               onChange={(event) => handleInputChange(event, "brand_name")}
             />
@@ -79,8 +80,17 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
           </Grid>
         </Grid>
       </FormContainer>
-      <Wrapper>
+      <FileUploadContainer>
         <FileLabel>상표이미지가 있다면 파일을 첨부해주세요</FileLabel>
+        <label
+          style={{
+            fontFamily: "Pretendard",
+            textDecoration: "underline",
+            fontSize: "20px",
+          }}
+        >
+          {fileName}
+        </label>
         <input
           accept="image/*"
           id="fileUpload"
@@ -90,7 +100,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
         <label className="fileLabel" htmlFor="fileUpload">
           파일 첨부
         </label>
-      </Wrapper>
+      </FileUploadContainer>
     </>
   );
 };

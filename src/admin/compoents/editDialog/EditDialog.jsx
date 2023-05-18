@@ -22,8 +22,13 @@ const EditDialog = ({ open, hanldeUpdate, handleClose, selectedRow }) => {
     setFAQ({ ...FAQ, content: event.target.value });
   };
   const handleConfirm = () => {
+    const newFAQ = {
+      ...FAQ,
+      title: FAQ.title.replace(/\n/g, "\r\n"),
+      content: FAQ.content.replace(/\n/g, "\r\n"),
+    };
     axios
-      .patch(`http://localhost:8080/api/faq/${selectedRow.id}`, FAQ) // faq delete api
+      .patch(`http://localhost:8080/api/faq/${selectedRow.id}`, newFAQ) // faq delete api
       .then((response) => {
         hanldeUpdate();
         handleClose();

@@ -37,53 +37,71 @@ function MarkAreaCard(props) {
   return (
     <Card
       sx={{
-        minWidth: 250,
-        minHeight: 380,
         alignItems: "center",
+        textAlign: "center",
         backgroundColor: isSelected ? "#857770" : "white",
         color: isSelected ? "white" : "black",
       }}
     >
-      <CardActionArea onClick={handleClick}>
-        <CardMedia
+      <CardActionArea
+        onClick={handleClick}
+        sx={{ paddingBottom: "20px", paddingTop: "20px" }}
+      >
+        {/* <CardMedia
           component="img"
           image={box_icon}
           alt="package picture"
           sx={{
             width: 100,
-            height: 100,
             objectFit: "cover",
-            marginLeft: "150px",
-            marginTop: "50px",
+            margin: "0 auto 10px ", // top right bottom left
           }}
-        />
-        <CardContent sx={{ height: 300 }}>
+        /> */}
+        <CardContent sx={{ justifyContent: "center" }}>
           <Typography
             gutterBottom
             variant="h5"
-            component="div"
+            // component="div"
             sx={{
               color: isSelected ? "#f6f6eb" : "#857770",
-              fontWeight:'600'
+              fontFamily: "Pretendard",
+              fontWeight: 700,
+              fontSize: "36px",
             }}
           >
             {props.markData.type}
           </Typography>
-          <Typography variant="body1" fontWeight={400}>
+          <Typography
+            variant="body1"
+            fontWeight={600}
+            fontFamily="Pretendard"
+            fontSize="18px"
+          >
             {props.markData.content}
           </Typography>
-          <Typography variant="body1" fontWeight={400}>
-            <br />
+          <Typography
+            variant="body1"
+            fontWeight={600}
+            fontFamily="Pretendard"
+            fontSize="18px"
+          >
             {props.markData.content2}
           </Typography>
-          <Typography variant="body1" fontWeight={400}>
-            <br />
+          <Typography
+            variant="body1"
+            fontWeight={600}
+            fontFamily="Pretendard"
+            fontSize="18px"
+          >
             {props.markData.content3}
           </Typography>
-          <Typography variant="h4" sx={{
-            fontWeight: '600',
-            color: isSelected ? "#f6f6eb" : "#857770",
-          }}>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "600",
+              color: isSelected ? "#f6f6eb" : "#857770",
+            }}
+          >
             <br />₩{props.markData.price}
           </Typography>
         </CardContent>
@@ -111,13 +129,9 @@ function MarkSelectForm({ onSelectedMark }) {
     <Box sx={{ backgroundColor: "#3e3e3f", marginTop: "80px" }}>
       <FormContainer>
         <CustomTypo sx={{ color: "white" }}>
-          01. 패키지 유형을 선택해주세요.
+          01. 패키지 유형을 선택해주세요
         </CustomTypo>
-        <Grid
-          container
-          spacing={3}
-          style={{ textAlign: "center", margin: "30px 0 0 0" }}
-        >
+        <Grid container spacing={3}>
           <Grid item xs={4}>
             <MarkAreaCard
               markData={markData[0]}
