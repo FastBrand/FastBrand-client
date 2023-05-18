@@ -45,15 +45,16 @@ function DomesticMark() {
   const nationDataString = nationDataArray.join(',');
   const madridDataString = madridDataArray.join(',');
   let directNationString = nationDataString;
-
+  if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
+    directNationString = `한국, ${nationDataString}`;
+  }
+  
   const handleClose = () => {
     setModalOpen(false);
   };
 
   const handleSubmit = () => {
-    if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-      directNationString = `한국, ${nationDataString}`;
-    }
+
 
     const data = {
       mark: {
