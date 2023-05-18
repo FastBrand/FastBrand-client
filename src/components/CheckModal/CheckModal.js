@@ -12,7 +12,6 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
 import emailjs from 'emailjs-com';
-import { useState } from "react";
 
 const useStyles = makeStyles((theme)=>({
   modalBox:{
@@ -34,6 +33,7 @@ const useStyles = makeStyles((theme)=>({
     right: '5px',
   },
   checkText01:{
+    fontFamily: "Pretendard",
     fontSize: '22px',
     fontWeight: 300,
     color: 'black',
@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme)=>({
     marginBottom: '5px',
   },
   minicheckText01:{
+    fontFamily: "Pretendard",
     textAlign: 'left',
     fontSize: '14px',
     marginLeft: '10px',
@@ -58,9 +59,10 @@ const useStyles = makeStyles((theme)=>({
     textAlign: 'center',
   },
   tableCell: {
+    fontFamily: "Pretendard",
     borderRight: '0.1px solid black',
     width: '50%',
-  },
+  }
 }))
 
 
@@ -197,7 +199,7 @@ function CheckModal({
         </Box>
         <div className={classes.checkText01}>견적 내용</div>
         <div className={classes.minicheckText01}>
-          최소가격은 1개류 기준으로 제시됩니다.<br/>
+         ※ 최소가격은 1개류 기준으로 제시됩니다.<br/>
           2개 이상의 분류를 선택했을 시, 실제 가격과 차이가 있을 수 있습니다.
           </div>
         <Table>

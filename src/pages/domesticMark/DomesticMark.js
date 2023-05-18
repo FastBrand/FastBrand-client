@@ -48,7 +48,7 @@ function DomesticMark() {
   const madridDataString = madridDataArray.join(',');
   let directNationString = nationDataString;
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-    directNationString = `한국, ${nationDataString}`;
+    directNationString = `[한국] ${nationDataString}`;
   }
   
   const handleClose = () => {
@@ -91,11 +91,9 @@ function DomesticMark() {
       })
       .then((response) => {
         console.log(response);
-        console.log("성공");
       })
       .catch((error) => {
         console.log(error);
-        console.log("실패");
         console.log(data);
         console.log(JSONData);
       });
