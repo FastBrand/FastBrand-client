@@ -44,7 +44,7 @@ const Step = () => {
             <StepTitle>출원서 작성</StepTitle>
             <StepContent>우선심사신청서 작성</StepContent>
           </Grid>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={5} sm={4} md={3}>
             <img src={StepFive} alt="절차안내05" />
             <StepTitle>출원완료보고</StepTitle>
             <StepContent>
@@ -53,7 +53,8 @@ const Step = () => {
               출원인에게 통보(SNS, 이메일)
             </StepContent>
           </Grid>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={5} sm={4} md={3}>
             <img src={StepSix} alt="절차안내06" />
             <StepTitle>특허청심사 및 결과통지보고</StepTitle>
             <StepContent>
@@ -62,11 +63,13 @@ const Step = () => {
               등록료 납부
             </StepContent>
           </Grid>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={5} sm={4} md={3}>
             <img src={StepSeven} alt="절차안내07" />
             <StepTitle>등록상표권 관리</StepTitle>
             <StepContent>
-              상표등록증발송, 상표갱신관리, 권리자 변동(주소이전등)사항관리
+              상표등록증발송, 상표갱신관리, <br />
+              권리자 변동(주소이전등)사항관리
             </StepContent>
           </Grid>
         </Grid>
