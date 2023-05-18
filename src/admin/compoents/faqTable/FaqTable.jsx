@@ -68,14 +68,14 @@ const FaqTable = () => {
         onClick={handleAddClick}
         sx={{
           mb: 1,
-          border: "1px solid #eee",
-          backgroundColor: "#eee",
-          color: "black",
+          backgroundColor: "#3E3E3F",
+          color: "white",
+          border: "1px solid #3E3E3F",
           fontWeight: 600,
           "&:hover": {
-            backgroundColor: "#3E3E3F",
-            color: "white",
-            border: "1px solid #3E3E3F",
+            border: "1px solid #eee",
+            backgroundColor: "#eee",
+            color: "black",
           },
         }}
       >
