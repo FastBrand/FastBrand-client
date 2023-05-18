@@ -28,6 +28,8 @@ function DomesticMark() {
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [countriesData, setcountriesData] = useState({}); //개별출원
   const [madridData, setMadridData] = useState({}); //마드리드
+  const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
+  const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
   const [markSelectData, setmarkSelcetData] = useState({});
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
   const classes = useStyles();
@@ -46,7 +48,7 @@ function DomesticMark() {
   const madridDataString = madridDataArray.join(',');
   let directNationString = nationDataString;
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-    directNationString = `한국, ${nationDataString}`;
+    directNationString = `[한국] ${nationDataString}`;
   }
   
   const handleClose = () => {
@@ -89,11 +91,9 @@ function DomesticMark() {
       })
       .then((response) => {
         console.log(response);
-        console.log("성공");
       })
       .catch((error) => {
         console.log(error);
-        console.log("실패");
         console.log(data);
         console.log(JSONData);
       });
@@ -108,7 +108,11 @@ function DomesticMark() {
       <ManagerForm onManagerChange={setManagerData} />
       {markSelectData === "국내출원" ? 
       null : 
-      <NationSelectForm onSelectedCountries={setcountriesData} onSelectedMadrid={setMadridData} />}
+      <NationSelectForm onSelectedCountries={setcountriesData}
+      onSelectedMadrid={setMadridData} 
+      onEachPrice={setDirectPriceData}
+      onMadridPrice={setMadridPriceData}
+      />}
 
 
       <ApplicantForm
@@ -132,6 +136,8 @@ function DomesticMark() {
         markSelectData={markSelectData}
         classificationData={classificationData}
         applicantType={applicantType}
+        madridPriceData={madridPriceData}
+        directPriceData={directPriceData}
       />
       <Footer />
     </div>

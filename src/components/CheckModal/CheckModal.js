@@ -12,7 +12,6 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
 import emailjs from 'emailjs-com';
-import { useState } from "react";
 
 const useStyles = makeStyles((theme)=>({
   modalBox:{
@@ -25,7 +24,7 @@ const useStyles = makeStyles((theme)=>({
     p: 8,
     overflow: 'auto',
     width: '600px',
-    height: '640px',
+    height: '700px',
     backgroundColor:'white',
   },
   modalClose:{
@@ -34,6 +33,7 @@ const useStyles = makeStyles((theme)=>({
     right: '5px',
   },
   checkText01:{
+    fontFamily: "Pretendard",
     fontSize: '22px',
     fontWeight: 300,
     color: 'black',
@@ -43,11 +43,12 @@ const useStyles = makeStyles((theme)=>({
     marginBottom: '5px',
   },
   minicheckText01:{
+    fontFamily: "Pretendard",
     textAlign: 'left',
     fontSize: '14px',
-    marginLeft: '30px',
-    color: 'black',
-    fontWeight: 200,
+    marginLeft: '10px',
+    color: 'red',
+    fontWeight: 400,
   },
   checkTextBox:{
     marginLeft: '50px',
@@ -58,9 +59,10 @@ const useStyles = makeStyles((theme)=>({
     textAlign: 'center',
   },
   tableCell: {
+    fontFamily: "Pretendard",
     borderRight: '0.1px solid black',
     width: '50%',
-  },
+  }
 }))
 
 
@@ -73,10 +75,40 @@ function CheckModal({
   applicantData, 
   markSelectData, 
   classificationData,
-  applicantType
+  applicantType,
+  madridPriceData,
+  directPriceData
 }) {
 
   const classes = useStyles();
+
+  const handlePrice = () => {
+    let priceData = 0;
+   
+    if (markSelectData === "국내출원"){
+      priceData = madridPriceData + directPriceData + 200000;
+      priceData = priceData.toFixed(0);
+     
+    }
+    else if (markSelectData === "국내+해외출원"){
+      priceData = madridPriceData + directPriceData + 100000;
+      priceData = priceData.toFixed(0);
+    }
+    else {
+      priceData = madridPriceData + directPriceData;
+      priceData = priceData.toFixed(0);
+    }
+    const formatter = new Intl.NumberFormat("ko-KR", {
+      style: "currency",
+      currency: "KRW",
+    });
+    const numberWithCommas = formatter.format(priceData);
+    
+    return numberWithCommas
+  };
+      // handlePrice 함수를 호출하여 가격을 계산
+  const formattedPrice = handlePrice();
+  
 
   const handleConfirmButtonClick = () => {
     if (window.confirm("정말로 진행하시겠습니까?")) {
@@ -84,7 +116,7 @@ function CheckModal({
     sendEmail(); 
     }
   };
-
+  
   const sendEmail = () => {
     let message;
     if (applicantType.poc === "personal") {
@@ -166,6 +198,10 @@ function CheckModal({
         </IconButton>
         </Box>
         <div className={classes.checkText01}>견적 내용</div>
+        <div className={classes.minicheckText01}>
+         ※ 최소가격은 1개류 기준으로 제시됩니다.<br/>
+          2개 이상의 분류를 선택했을 시, 실제 가격과 차이가 있을 수 있습니다.
+          </div>
         <Table>
       <TableBody>
         <TableRow>
@@ -181,8 +217,12 @@ function CheckModal({
           <TableCell>{trademarkData.description}</TableCell>
         </TableRow>
         <TableRow>
+          <TableCell>예상최소가격: </TableCell>
+          <TableCell>{formattedPrice}원</TableCell>
+        </TableRow>
+        <TableRow>
         <TableCell>상표 분류: </TableCell>
-        <TableCell>{classificationData.sector}</TableCell>
+        <TableCell>{classificationData.sector} </TableCell>
         </TableRow>
         <TableRow>
         <TableCell>출원국가(마드리드): </TableCell>

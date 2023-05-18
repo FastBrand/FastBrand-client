@@ -11,9 +11,13 @@ const useStyles = makeStyles((theme) => ({
     
   },
   sectionTitle: {
-    fontFamily: 'Prentendard',
-    textAlign: 'center',
-    color: 'white',
+    fontFamily: "Pretendard",
+    fontWeight: 600,
+    fontSize: "40px",
+    textAlign: "center",
+    marginTop: "100px",
+    marginBottom: "3vw",
+    color: 'white'
   },
   sectionTitle02: {
     fontFamily: 'Prentendard',
