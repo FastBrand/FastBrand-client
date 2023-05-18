@@ -1,15 +1,15 @@
 #submitButton01 {
   font-family: "Pretendard";
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 600;
   background-color: transparent;
   color: #cba585;
-  border-radius: 50px;
+  border-radius: 30px;
   border: 2px solid #cba585;
   padding: 8px 40px;
   display: flex;
   margin: auto;
-  margin-bottom: 70px;
+  margin-bottom: 120px;
   box-shadow: none;
 }
 
@@ -19,7 +19,7 @@
   font-weight: 400;
   background-color: transparent;
   color: #cba585;
-  border-radius: 50px;
+  border-radius: 30px;
   border: 2px solid #cba585;
   padding: 8px 40px;
   display: flex;
@@ -27,14 +27,3 @@
   margin-top: 70px;
   box-shadow: none;
 }
-
-
-
-
-
-
-
-
-
-
-
