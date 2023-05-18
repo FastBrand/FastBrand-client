@@ -7,17 +7,18 @@ import ApplicantForm from "../../components/applicantForm/ApplicantForm";
 import ManagerForm from "../../components/managerForm/ManagerForm";
 import TopButton from "../../components/topButton/TopButton";
 import CheckModal from "../../components/CheckModal/CheckModal";
+import Footer from "../../components/footer/Footer";
 import { Button } from "@mui/material";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from "@material-ui/styles";
 import { useState } from "react";
 import axios from "axios";
 import "./DomesticMark.css";
 
-const useStyles = makeStyles((theme)=>({
-  root:{
+const useStyles = makeStyles((theme) => ({
+  root: {
     fontFamily: "Pretendard",
   },
-}))
+}));
 
 function DomesticMark() {
   const [trademarkData, setTrademarkData] = useState({});
@@ -31,19 +32,21 @@ function DomesticMark() {
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
   const classes = useStyles();
 
-  const nationData = { //개별출원 데이터 (
-    country: countriesData
+  const nationData = {
+    //개별출원 데이터 (
+    country: countriesData,
   };
-  const nationData2 = { //마드리드출원 데이터
-    country: madridData
+  const nationData2 = {
+    //마드리드출원 데이터
+    country: madridData,
   };
-  
+
   const nationDataArray = Object.values(nationData.country);
   const madridDataArray = Object.values(nationData2.country);
 
-  const nationDataString = nationDataArray.join(',');
-  const madridDataString = madridDataArray.join(',');
-  let directNationString = ''
+  const nationDataString = nationDataArray.join(",");
+  const madridDataString = madridDataArray.join(",");
+  let directNationString = "";
 
   const handleClose = () => {
     setModalOpen(false);
@@ -53,8 +56,7 @@ function DomesticMark() {
     if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
       directNationString = `한국, ${nationDataString}`;
     }
-  
-  
+
     const data = {
       mark: {
         ...trademarkData,
@@ -63,8 +65,8 @@ function DomesticMark() {
         type: markSelectData,
         country: "더미데이터",
         madrid: madridDataString,
-        direct: directNationString ,
-        status: "더미데이터"
+        direct: directNationString,
+        status: "더미데이터",
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
@@ -84,7 +86,8 @@ function DomesticMark() {
       .post(endpoint, JSONData, {
         headers: {
           "Content-Type": "application/json",
-        },}) 
+        },
+      })
       .then((response) => {
         console.log(response);
         console.log("성공");
@@ -95,30 +98,26 @@ function DomesticMark() {
         console.log(data);
         console.log(JSONData);
       });
-
   };
 
   return (
     <div className={classes.root}>
       <Navbar backgroundColor={true} borderBottom={true} />
-      <MarkSelectForm onSelectedMark={setmarkSelcetData}/>
+      <MarkSelectForm onSelectedMark={setmarkSelcetData} />
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-
-      {markSelectData === "국내출원" ? 
-      null : 
-      <NationSelectForm onSelectedCountries={setcountriesData} onSelectedMadrid={setMadridData} />}
-
+      {markSelectData === "국내출원" ? null : (
+        <NationSelectForm
+          onSelectedCountries={setcountriesData}
+          onSelectedMadrid={setMadridData}
+        />
+      )}
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
       />
-
-      <Button
-        id="submitButton01"
-        onClick={() => setModalOpen(true)}
-      >
+      <Button id="submitButton01" onClick={() => setModalOpen(true)}>
         견적보기
       </Button>
       <TopButton />
@@ -128,12 +127,13 @@ function DomesticMark() {
         handleSubmit={handleSubmit}
         trademarkData={trademarkData}
         madridDataString={madridDataString}
-        directNationString={directNationString }
+        directNationString={directNationString}
         managerData={managerData}
         applicantData={applicantData}
         markSelectData={markSelectData}
         classificationData={classificationData}
       />
+      <Footer />
     </div>
   );
 }
