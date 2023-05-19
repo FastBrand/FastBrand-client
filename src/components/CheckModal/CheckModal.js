@@ -81,23 +81,26 @@ function CheckModal({
 }) {
 
   const classes = useStyles();
+ 
 
-  const handlePrice = () => {
+  const handlePrice = () => { //가격정산처리
     let priceData = 0;
-   
+    
     if (markSelectData === "국내출원"){
       priceData = madridPriceData + directPriceData + 200000;
       priceData = priceData.toFixed(0);
-     
     }
+
     else if (markSelectData === "국내+해외출원"){
       priceData = madridPriceData + directPriceData + 100000;
       priceData = priceData.toFixed(0);
     }
+
     else {
       priceData = madridPriceData + directPriceData;
       priceData = priceData.toFixed(0);
     }
+
     const formatter = new Intl.NumberFormat("ko-KR", {
       style: "currency",
       currency: "KRW",
@@ -106,9 +109,9 @@ function CheckModal({
     
     return numberWithCommas;
   };
+
   // handlePrice 함수를 호출하여 가격을 계산
   const formattedPrice = handlePrice();
-  
   const handleConfirmButtonClick = () => {
     if (window.confirm("견적이메일을 발송하시겠습니까?")) {
       handleSubmit();

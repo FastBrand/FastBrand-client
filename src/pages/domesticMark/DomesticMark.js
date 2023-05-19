@@ -48,7 +48,7 @@ function DomesticMark() {
   const madridDataString = madridDataArray.join(',');
   let directNationString = nationDataString;
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-    directNationString = `[한국] ${nationDataString}`;
+    directNationString = `한국(고정) ${nationDataString}`;
   }
   
   const handleClose = () => {
@@ -104,12 +104,14 @@ function DomesticMark() {
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
+      
       {markSelectData === "국내출원" ? 
       null : 
       <NationSelectForm onSelectedCountries={setcountriesData}
       onSelectedMadrid={setMadridData} 
       onEachPrice={setDirectPriceData}
       onMadridPrice={setMadridPriceData}
+      classificationDataString={classificationData.sector}
       />}
 
       <ApplicantForm
