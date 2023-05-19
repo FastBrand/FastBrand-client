@@ -8,7 +8,7 @@ const ManagerForm = ({ onManagerChange }) => {
     email: "",
     mobile: "",
     phone: "",
-    acc_num: "999", // 계좌번호할거면 은행명도 있어야하지 않나
+    acc_num: "", // 계좌번호
   });
 
   useEffect(() => {
@@ -72,6 +72,17 @@ const ManagerForm = ({ onManagerChange }) => {
             sx={{ mb: "3rem" }}
             value={managerData.phone}
             onChange={(event) => handleInputChange(event, "phone")}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            id="managerAccountNumber"
+            fullWidth
+            label="계좌번호"
+            variant="standard"
+            sx={{ mb: "3rem" }}
+            value={managerData.acc_num}
+            onChange={(event) => handleInputChange(event, "acc_num")}
           />
         </Grid>
       </Grid>
