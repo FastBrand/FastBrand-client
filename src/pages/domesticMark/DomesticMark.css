@@ -12,6 +12,10 @@
   margin-bottom: 120px;
   box-shadow: none;
 }
+#submitButton01:hover {
+  background-color: #cba585;
+  color: white;
+}
 
 #submitButton03 {
   font-family: "Pretendard";
@@ -26,4 +30,8 @@
   margin: auto;
   margin-top: 20px;
   box-shadow: none;
+}
+#submitButton03:hover {
+  background-color: #3E3E3F;
+  color: white;
 }

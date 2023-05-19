@@ -56,8 +56,6 @@ function DomesticMark() {
   };
 
   const handleSubmit = () => {
-
-
     const data = {
       mark: {
         ...trademarkData,
@@ -113,7 +111,6 @@ function DomesticMark() {
       onEachPrice={setDirectPriceData}
       onMadridPrice={setMadridPriceData}
       />}
-
 
       <ApplicantForm
         onApplicantChange={setApplicantData}

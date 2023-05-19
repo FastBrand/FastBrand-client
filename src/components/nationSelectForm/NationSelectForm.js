@@ -144,8 +144,8 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid, onMadridPrice
     onSelectedMadrid(selectedMadrid);
   }, [selectedMadrid, onSelectedMadrid]);
 
-  useEffect(() => {// 개별출원 국가가 변경될 때마다 계산을 수행
-    
+  // 개별출원 국가가 변경될 때마다 계산을 수행
+  useEffect(() => {
     const selectedBasicPrices = Object.keys(selectedCountries).map(
       (c) => nation_data[c].price
     );
@@ -164,7 +164,8 @@ function NationSelectForm({ onSelectedCountries, onSelectedMadrid, onMadridPrice
     onEachPrice(eachPrice);
   }, [selectedCountries, eachPrice]);
   
-  useEffect(() => { // 마드리드 국가가 변경될 때마다 계산을 수행
+  // 마드리드 국가가 변경될 때마다 계산을 수행
+  useEffect(() => { 
     const selectedBasicPrices = Object.keys(selectedMadrid).map(
       (c) => madrid_data[c].priceMadrid
     );
@@ -280,6 +281,7 @@ function processCountryData(nation_data, madrid_data) {
     handleClose2();
   };
 
+
   return (
     <FormContainer>
       <CustomTypo>
@@ -300,17 +302,17 @@ function processCountryData(nation_data, madrid_data) {
       </NationButton>
 
       <div className="boxContainer">
-        {boxes.map(
-          (
-            country,
-            index //국가버튼 선택시에 밑에 추가되는 상자들 표시
-          ) => (
-            <Box key={index}>{country}</Box>
-          )
-        )}
-        {boxes2.map((country, index) => (
-          <Box key={index}>{country}</Box>
-        ))}
+      {boxes.map(
+      (
+        country,
+        index //국가버튼 선택시에 밑에 추가되는 상자들 표시
+      ) => (
+        <Box key={index}>{country}</Box>
+      )
+    )}
+    {boxes2.map((country, index) => (
+      <Box key={index}>{country}</Box>
+    ))}
       </div>
 
 

@@ -4,10 +4,10 @@ import {
   IconButton, 
   Button,
   Table, 
-  TableHead,
   TableBody, 
   TableRow, 
-  TableCell 
+  TableCell,
+  Snackbar,
  } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
@@ -77,7 +77,7 @@ function CheckModal({
   classificationData,
   applicantType,
   madridPriceData,
-  directPriceData
+  directPriceData,
 }) {
 
   const classes = useStyles();
@@ -104,18 +104,21 @@ function CheckModal({
     });
     const numberWithCommas = formatter.format(priceData);
     
-    return numberWithCommas
+    return numberWithCommas;
   };
-      // handlePrice 함수를 호출하여 가격을 계산
+  // handlePrice 함수를 호출하여 가격을 계산
   const formattedPrice = handlePrice();
   
-
   const handleConfirmButtonClick = () => {
-    if (window.confirm("정말로 진행하시겠습니까?")) {
-    handleSubmit();
-    sendEmail(); 
+    if (window.confirm("견적이메일을 발송하시겠습니까?")) {
+      handleSubmit();
+      sendEmail();
+      handleClose();
+      window.location.reload();
+      alert("메일발송이 완료되었습니다.");
     }
   };
+  
   
   const sendEmail = () => {
     let message;
@@ -152,9 +155,9 @@ function CheckModal({
         상표명: ${trademarkData.brand_name}
         세부설명: ${trademarkData.description}
         분류: ${classificationData.sector}
-        출원국가(마드리드): ${madridDataString}
         출원국가(개별출원): ${directNationString} 
-        
+        출원국가(마드리드): ${madridDataString}
+       
         -담당자 정보      
         담당자 성명: ${managerData.name}
         담당자 이메일: ${managerData.email}
@@ -225,14 +228,13 @@ function CheckModal({
         <TableCell>{classificationData.sector} </TableCell>
         </TableRow>
         <TableRow>
-        <TableCell>출원국가(마드리드): </TableCell>
-        <TableCell>{madridDataString}</TableCell>
-        </TableRow>
-        <TableRow>
         <TableCell>출원국가(개별국출원):</TableCell>
         <TableCell>{directNationString}</TableCell>
         </TableRow>
-
+        <TableRow>
+        <TableCell>출원국가(마드리드): </TableCell>
+        <TableCell>{madridDataString}</TableCell>
+        </TableRow>
         <TableRow>
         <TableCell>출원인 성명: </TableCell>
           <TableCell>{applicantData.name_kor}</TableCell>
