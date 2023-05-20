@@ -60,9 +60,6 @@ function DomesticMark() {
   };
 
   const handleSubmit = () => {
-    const formData = new FormData();
-    formData.append("image", imageData);
-    formData.append("seal", sealData);
     const data = {
       mark: {
         ...trademarkData,
@@ -87,16 +84,16 @@ function DomesticMark() {
 
     const JSONData = JSON.stringify(data);
 
+    const formData = new FormData();
+    formData.append("image", imageData);
+    formData.append("seal", sealData);
+    formData.append("data", data);
     axios
-      .post(
-        endpoint,
-        { JSONData, imageData },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      .post(endpoint, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((response) => {
         console.log(response);
       })
