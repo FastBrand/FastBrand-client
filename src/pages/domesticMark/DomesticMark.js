@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DomesticMark() {
-  const [imageData, setImageData] = useState(null); //상표이미지
-  const [sealData, setSealData] = useState(null); // 법인인감
+  const [imageData, setImageData] = useState(null); // 이미지 파일
+  const [sealData, setSealData] = useState(null);
   const [trademarkData, setTrademarkData] = useState({});
   const [classificationData, setClassificationData] = useState({});
   const [managerData, setManagerData] = useState({});
@@ -60,6 +60,9 @@ function DomesticMark() {
   };
 
   const handleSubmit = () => {
+    const formData = new FormData();
+    formData.append("image", imageData);
+    formData.append("seal", sealData);
     const data = {
       mark: {
         ...trademarkData,
@@ -85,11 +88,15 @@ function DomesticMark() {
     const JSONData = JSON.stringify(data);
 
     axios
-      .post(endpoint, JSONData, imageData, sealData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+        endpoint,
+        { JSONData, imageData },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((response) => {
         console.log(response);
       })
@@ -106,7 +113,7 @@ function DomesticMark() {
       <MarkSelectForm onSelectedMark={setmarkSelcetData} />
       <TrademarkForm
         onTrademarkDataChange={setTrademarkData}
-        onFormDataChange={setImageData}
+        onImageDataChange={setImageData}
       />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
@@ -121,7 +128,7 @@ function DomesticMark() {
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
-        onFormDataChange={setSealData}
+        onSealDataChange={setSealData}
       />
       <Button id="submitButton01" onClick={() => setModalOpen(true)}>
         견적보기

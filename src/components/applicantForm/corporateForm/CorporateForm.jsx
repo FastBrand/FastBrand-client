@@ -7,9 +7,10 @@ import {
   FileLabel,
   PostCodeButton,
   FileUploadContainer,
+  CustomTextField,
 } from "../../../styles/formStyles";
 
-const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
+const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
   const [fileName, setFileName] = useState("");
   const [open, setOpen] = useState(false);
   const [corporateData, setCorporateData] = useState({
@@ -52,12 +53,8 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
       ...prevData,
       seal: file.name,
     }));
-    const formData = new FormData();
-    formData.append("seal", file);
-    // FormData 객체에 파일이 제대로 첨부되었는지 확인
-    // console.log(formData.get("image"));
 
-    onFormDataChange(formData);
+    onSealDataChange(file);
   };
 
   const handleComplete = (data) => {
@@ -77,10 +74,9 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
         <CustomTypo>06. 출원인 정보를 입력해주세요</CustomTypo>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateName_kor"
               label="법인명(한글)"
               variant="standard"
@@ -89,10 +85,9 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateName_eng"
               label="법인명(영어)"
               variant="standard"
@@ -101,10 +96,9 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateBrn"
               label="사업자 등록번호"
               variant="standard"
@@ -113,10 +107,9 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateCrn"
               label="법인 등록번호"
               variant="standard"
@@ -125,10 +118,9 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateName"
               label="대표자 성명"
               variant="standard"
@@ -137,10 +129,9 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateSsn"
               label="대표자 주민등록번호"
               variant="standard"
@@ -149,10 +140,9 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateMobile"
               label="법인 대표 휴대전화"
               variant="standard"
@@ -161,21 +151,19 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               id="corporatePhone"
               label="법인 대표 유선전화"
               variant="standard"
               fullWidth
-              sx={{ mb: "3rem" }}
               value={corporateData.corporatePhone}
               onChange={(event) => handleInputChange(event, "corporatePhone")}
             />
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateEmail"
               label="법인 대표 이메일"
               variant="standard"
@@ -209,16 +197,15 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
         </label>
       </FileUploadContainer>
       <FormContainer>
-        <Grid container spacing={1}>
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <CustomTypo>07. 법인 등본상 주소를 입력해주세요</CustomTypo>
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              controlled="true"
+          <Grid item xs={8} sm={5}>
+            <CustomTextField
               required
               fullWidth
-              sx={{ mb: "3rem" }}
+              dense
               id="corporateZipcode"
               label="우편번호"
               variant="standard"
@@ -226,7 +213,7 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
               onChange={(event) => handleInputChange(event, "zipcode")}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={4} sm={7}>
             <PostCodeButton
               variant="contained"
               onClick={() => {
@@ -236,12 +223,12 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
               우편번호찾기
             </PostCodeButton>
           </Grid>
-          <Grid item xs={12}>
-            <TextField
+          <Grid item xs={12} sm={6}>
+            <CustomTextField
               controlled="true"
               required
               fullWidth
-              sx={{ mb: "3rem" }}
+              multiline
               id="corporateAddress"
               label="주소"
               variant="standard"
@@ -249,12 +236,11 @@ const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
               onChange={(event) => handleInputChange(event, "address")}
             />
           </Grid>
-          <Grid item xs={6}>
-            <TextField
+          <Grid item xs={12} sm={6}>
+            <CustomTextField
               controlled="true"
               required
               fullWidth
-              sx={{ mb: "3rem" }}
               id="corporateDetail"
               label="상세주소"
               variant="standard"

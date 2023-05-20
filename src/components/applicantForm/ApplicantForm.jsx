@@ -12,7 +12,7 @@ import CorporateForm from "./corporateForm/CorporateForm";
 const ApplicantForm = ({
   onApplicantChange,
   onApplicantTypeChange,
-  onFormDataChange,
+  onSealDataChange,
 }) => {
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [corporateData, setCorporateData] = useState({});
@@ -69,7 +69,7 @@ const ApplicantForm = ({
       ) : (
         <CorporateForm
           onCorporateChange={setCorporateData}
-          onFormDataChange={onFormDataChange}
+          onSealDataChange={onSealDataChange}
         />
       )}
     </>
