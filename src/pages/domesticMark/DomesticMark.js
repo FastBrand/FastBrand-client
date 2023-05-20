@@ -87,7 +87,11 @@ function DomesticMark() {
     const formData = new FormData();
     formData.append("image", imageData);
     formData.append("seal", sealData);
-    formData.append("data", data);
+    formData.append("data", JSONData);
+
+    console.log(formData.get("image"));
+    console.log(formData.get("seal"));
+    console.log(formData.get("data"));
     axios
       .post(endpoint, formData, {
         headers: {
@@ -99,8 +103,8 @@ function DomesticMark() {
       })
       .catch((error) => {
         console.log(error);
-        console.log(data);
-        console.log(JSONData);
+        // console.log(data);
+        // console.log(JSONData);
       });
   };
 
