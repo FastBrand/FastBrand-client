@@ -10,7 +10,7 @@ import {
 } from "../../styles/formStyles";
 import { useState, useEffect } from "react";
 
-const TrademarkForm = ({ onTrademarkDataChange }) => {
+const TrademarkForm = ({ onTrademarkDataChange, onFormDataChange }) => {
   const [trademarkData, setTrademarkData] = useState({
     brand_name: "",
     description: "",
@@ -33,18 +33,20 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setFileName(file.name);
-    // const formData = new FormData();
-    // formData.append("image", file);
-    // FormData 객체에 파일이 제대로 첨부되었는지 확인
-    // console.log(formData.get("image"));
 
     setTrademarkData((prevData) => ({
       ...prevData,
       image: file.name,
     }));
+    const formData = new FormData();
+    formData.append("image", file);
+    // FormData 객체에 파일이 제대로 첨부되었는지 확인
+    // console.log(formData.get("image"));
+
     // console.log(file.name);
     // console.log(trademarkData);
     // setFileName(file.name);
+    onFormDataChange(formData);
   };
   return (
     <>
@@ -56,7 +58,7 @@ const TrademarkForm = ({ onTrademarkDataChange }) => {
             </CustomTypo>
           </Grid>
           <Grid item xs={6}>
-            <TextField
+            <CustomTextField
               fullWidth
               required
               id="trademarkName"

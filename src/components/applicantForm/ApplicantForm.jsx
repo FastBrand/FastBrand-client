@@ -9,7 +9,11 @@ import { useState, useEffect } from "react";
 import PersonalForm from "./personalForm/PersonalForm";
 import CorporateForm from "./corporateForm/CorporateForm";
 
-const ApplicantForm = ({ onApplicantChange, onApplicantTypeChange }) => {
+const ApplicantForm = ({
+  onApplicantChange,
+  onApplicantTypeChange,
+  onFormDataChange,
+}) => {
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [corporateData, setCorporateData] = useState({});
   const [personalData, setPersonalData] = useState({});
@@ -63,7 +67,10 @@ const ApplicantForm = ({ onApplicantChange, onApplicantTypeChange }) => {
       {applicantType.poc === "personal" ? (
         <PersonalForm onPersonalChange={setPersonalData} />
       ) : (
-        <CorporateForm onCorporateChange={setCorporateData} />
+        <CorporateForm
+          onCorporateChange={setCorporateData}
+          onFormDataChange={onFormDataChange}
+        />
       )}
     </>
   );

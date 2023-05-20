@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function DomesticMark() {
+  const [imageData, setImageData] = useState(null); //상표이미지
+  const [sealData, setSealData] = useState(null); // 법인인감
   const [trademarkData, setTrademarkData] = useState({});
   const [classificationData, setClassificationData] = useState({});
   const [managerData, setManagerData] = useState({});
@@ -34,30 +36,30 @@ function DomesticMark() {
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
   const classes = useStyles();
 
-  const nationData = { //개별출원 데이터 (
-    country: countriesData
+  const nationData = {
+    //개별출원 데이터 (
+    country: countriesData,
   };
-  const nationData2 = { //마드리드출원 데이터
-    country: madridData
+  const nationData2 = {
+    //마드리드출원 데이터
+    country: madridData,
   };
-  
+
   const nationDataArray = Object.values(nationData.country);
   const madridDataArray = Object.values(nationData2.country);
 
-  const nationDataString = nationDataArray.join(',');
-  const madridDataString = madridDataArray.join(',');
+  const nationDataString = nationDataArray.join(",");
+  const madridDataString = madridDataArray.join(",");
   let directNationString = nationDataString;
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
     directNationString = `[한국] ${nationDataString}`;
   }
-  
+
   const handleClose = () => {
     setModalOpen(false);
   };
 
   const handleSubmit = () => {
-
-
     const data = {
       mark: {
         ...trademarkData,
@@ -67,7 +69,7 @@ function DomesticMark() {
         country: "더미데이터",
         madrid: madridDataString,
         direct: directNationString,
-        status: "더미데이터"
+        status: "더미데이터",
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
@@ -81,10 +83,9 @@ function DomesticMark() {
         : "http://localhost:8080/api/register/corporate";
 
     const JSONData = JSON.stringify(data);
-    //console.log(JSONData);
 
     axios
-      .post(endpoint, JSONData, {
+      .post(endpoint, JSONData, imageData, sealData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -101,25 +102,27 @@ function DomesticMark() {
 
   return (
     <div className={classes.root}>
-      <Navbar backgroundColor={true} borderBottom={true} />
+      <Navbar />
       <MarkSelectForm onSelectedMark={setmarkSelcetData} />
-      <TrademarkForm onTrademarkDataChange={setTrademarkData} />
+      <TrademarkForm
+        onTrademarkDataChange={setTrademarkData}
+        onFormDataChange={setImageData}
+      />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-      {markSelectData === "국내출원" ? 
-      null : 
-      <NationSelectForm onSelectedCountries={setcountriesData}
-      onSelectedMadrid={setMadridData} 
-      onEachPrice={setDirectPriceData}
-      onMadridPrice={setMadridPriceData}
-      />}
-
-
+      {markSelectData === "국내출원" ? null : (
+        <NationSelectForm
+          onSelectedCountries={setcountriesData}
+          onSelectedMadrid={setMadridData}
+          onEachPrice={setDirectPriceData}
+          onMadridPrice={setMadridPriceData}
+        />
+      )}
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
+        onFormDataChange={setSealData}
       />
-
       <Button id="submitButton01" onClick={() => setModalOpen(true)}>
         견적보기
       </Button>
@@ -130,7 +133,7 @@ function DomesticMark() {
         handleSubmit={handleSubmit}
         trademarkData={trademarkData}
         madridDataString={madridDataString}
-        directNationString={directNationString }
+        directNationString={directNationString}
         managerData={managerData}
         applicantData={applicantData}
         markSelectData={markSelectData}

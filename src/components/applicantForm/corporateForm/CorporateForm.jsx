@@ -9,7 +9,7 @@ import {
   FileUploadContainer,
 } from "../../../styles/formStyles";
 
-const CorporateForm = ({ onCorporateChange }) => {
+const CorporateForm = ({ onCorporateChange, onFormDataChange }) => {
   const [fileName, setFileName] = useState("");
   const [open, setOpen] = useState(false);
   const [corporateData, setCorporateData] = useState({
@@ -48,17 +48,16 @@ const CorporateForm = ({ onCorporateChange }) => {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setFileName(file.name);
-    // const formData = new FormData();
-    // formData.append("image", file);
-    // FormData 객체에 파일이 제대로 첨부되었는지 확인
-    // console.log(formData.get("image"));
-
     setCorporateData((prevData) => ({
       ...prevData,
       seal: file.name,
     }));
-    // console.log(file.name);
-    console.log(corporateData);
+    const formData = new FormData();
+    formData.append("seal", file);
+    // FormData 객체에 파일이 제대로 첨부되었는지 확인
+    // console.log(formData.get("image"));
+
+    onFormDataChange(formData);
   };
 
   const handleComplete = (data) => {
