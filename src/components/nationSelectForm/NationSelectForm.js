@@ -176,10 +176,15 @@ function NationSelectForm({
       const addBasicTotalMadridPrice = selectedBasicMadridPrices.reduce((acc, curr) => acc + curr, 0);
       const addChfPrice = (selectedChfPrices.reduce((acc, curr) => acc + curr, 0)) * exchangeCHF[0];
 
-      setEachAddFee(addBasicTotalPrice+addUsdPrice);
+      setEachAddFee(addBasicTotalPrice + addUsdPrice);
       setMadridAddFee(addBasicTotalMadridPrice + addChfPrice);
+      onEachPrice(eachPrice + eachAddFee);
+      onMadridPrice(madridPrice + madridAddFee);
+
+      console.log("마드리드 추가류가격:",madridAddFee);
+      console.log("개별출원 추가류가격:",eachAddFee);
     }
-  }, [classificationDataString]);
+  }, [classificationDataString, eachAddFee, madridAddFee]);
  
 
 
@@ -201,9 +206,9 @@ function NationSelectForm({
     else{
       setEachPrice(totalPrice); // 개별출원 기본 가격 셋팅
     }
-    onEachPrice(eachPrice + eachAddFee);
 
-  
+    console.log("개별출원 추가류가격:",eachAddFee);
+    onEachPrice(eachPrice + eachAddFee);
   }, [selectedCountries, eachPrice]);
   
   // 마드리드 국가가 변경될 때마다 계산을 수행
@@ -223,6 +228,8 @@ function NationSelectForm({
     else{
     setMadridPrice(totalPriceM); // 마드리드 기본 가격 셋팅
     }
+
+    console.log("마드리드 추가류가격:",madridAddFee);
     onMadridPrice(madridPrice + madridAddFee);
   }, [selectedMadrid, madridPrice]);
   

@@ -89,6 +89,7 @@ function DomesticMark() {
       })
       .then((response) => {
         console.log(response);
+        console.log(data)
       })
       .catch((error) => {
         console.log(error);

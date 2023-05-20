@@ -82,7 +82,6 @@ function CheckModal({
 
   const classes = useStyles();
  
-
   const handlePrice = () => { //가격정산처리
     let priceData = 0;
     
@@ -117,14 +116,14 @@ function CheckModal({
       handleSubmit();
       sendEmail();
       handleClose();
-      window.location.reload();
+      //window.location.reload();
       alert("메일발송이 완료되었습니다.");
     }
   };
   
-  
   const sendEmail = () => {
     let message;
+
     if (applicantType.poc === "personal") {
       message = `
         -상표 정보 
@@ -183,16 +182,24 @@ function CheckModal({
   
     const templateParams = {
       subject: '상표신청',
-      message: message
+      message: message,
     };
   
-    emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
-    .then((response) => {
-      console.log('이메일 전송성공', response);
-    })
-    .catch((error) => {
-      console.error('이메일 전송오류', error);
-    });
+    // emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
+    // .then((response) => {
+    //   console.log('이메일 전송성공', response);
+    // })
+    // .catch((error) => {
+    //   console.error('이메일 전송오류', error);
+    // });
+    // emailjs.send('service_ntfee7r', 'template_nk4mhqd', templateParams, 'niIZOtG66JjWR0wjS')
+    // .then((response) => {
+    //   console.log('이메일 전송성공', response);
+    // })
+    // .catch((error) => {
+    //   console.error('이메일 전송오류', error);
+    // });
+
   };
 
   return (
