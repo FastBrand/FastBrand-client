@@ -229,7 +229,7 @@ const ClassificationForm = ({ onClassificationataChange }) => {
               onClick={() => handleClassificationClick(classification.id)}
               style={{
                 border: selectedClassifications.includes(classification.id)
-                  ? "2px solid #CBA585"
+                  ? "2px solid #857770"
                   : "1px solid black",
                 fontFamily: "Pretendard",
                 fontWeight: selectedClassifications.includes(classification.id)
@@ -239,9 +239,13 @@ const ClassificationForm = ({ onClassificationataChange }) => {
                 margin: "0.8rem 0.5rem",
                 borderRadius: "3px",
                 fontSize: "18px",
-                backgroundColor: "white",
+                backgroundColor: selectedClassifications.includes(
+                  classification.id
+                )
+                  ? "#857770"
+                  : "white",
                 color: selectedClassifications.includes(classification.id)
-                  ? "#CBA585"
+                  ? "#f6f6eb"
                   : "black",
                 boxShadow: selectedClassifications.includes(classification.id)
                   ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 3px"
