@@ -287,7 +287,7 @@ function NationSelectForm({
       setEachAddFee(addBasicTotalPrice + addUsdPrice);
       setMadridAddFee(addBasicTotalMadridPrice + addChfPrice);  
     }
-    
+
     if(Object.keys(selectedMadrid).length === 0){
       setMadridPrice(0);
     }

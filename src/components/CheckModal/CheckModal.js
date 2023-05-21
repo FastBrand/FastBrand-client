@@ -62,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Pretendard",
     borderRight: '0.1px solid black',
     width: '50%',
+  },
+  textRed: {
+    color:'#872e40',
+    fontSize: '18px'
   }
 }))
 
@@ -254,39 +258,6 @@ function CheckModal({
             <TableCell>상표 분류: </TableCell>
             <TableCell>{classificationData.sector} </TableCell>
           </TableRow>
-
-          {markSelectData === '국내출원' ? (
-            <>
-              <TableRow>
-                <TableCell className={classes.tableCell}>패키지 수수료:  ₩200,000</TableCell>
-                <TableCell className={classes.tableCell}>부가세: ₩20,000</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className={classes.tableCell}>특허청 전문기관:  ₩45,000</TableCell>
-                <TableCell className={classes.tableCell}>부가세: ₩4,500</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className={classes.tableCell}>특허청 관납료(우선심사포함): ₩216,000</TableCell>
-                <TableCell className={classes.tableCell}>예상가격: {formattedPrice}</TableCell>
-              </TableRow>
-            </>
-          ) : (
-            <>
-              <TableRow>
-                <TableCell>출원국가(개별국출원):</TableCell>
-                <TableCell>{directNationString}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>출원국가(마드리드): </TableCell>
-                <TableCell>{madridDataString}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>예상가격: </TableCell>
-                <TableCell>{formattedPrice}원</TableCell>
-              </TableRow>
-            </>
-          )}
-
           <TableRow>
             <TableCell>출원인 성명: </TableCell>
             <TableCell>{applicantData.name_kor}</TableCell>
@@ -300,6 +271,43 @@ function CheckModal({
             <TableCell className={classes.tableCell}>담당자 연락처: {managerData.mobile}</TableCell>
             <TableCell>담당자 유선전화: {managerData.phone}</TableCell>
           </TableRow>
+
+          {markSelectData === '국내출원' ? (
+            <>
+              <TableRow>
+                <TableCell>패키지 수수료(부가세 10%):</TableCell>
+                <TableCell>₩220,000</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>특허청 전문기관(부가세 10%):</TableCell>
+                <TableCell>₩49,500</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>특허청 관납료(우선심사포함): </TableCell>
+                <TableCell>₩216,000</TableCell>
+              </TableRow>
+              <TableRow>
+              <TableCell><div className={classes.textRed}>예상가격:</div></TableCell>
+              <TableCell><div className={classes.textRed}>{formattedPrice}</div></TableCell>
+              </TableRow>
+            </>
+          ) : (
+            <>
+              <TableRow>
+                <TableCell>출원국가(개별국출원):</TableCell>
+                <TableCell>{directNationString}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>출원국가(마드리드): </TableCell>
+                <TableCell>{madridDataString}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell><div className={classes.textRed}>예상가격: </div></TableCell>
+                <TableCell><div className={classes.textRed}>{formattedPrice}</div></TableCell>
+              </TableRow>
+            </>
+          )}
+
         </TableBody>
     </Table>
       <Button id="submitButton03"
