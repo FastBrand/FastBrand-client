@@ -1,20 +1,20 @@
 import {
-  Modal, 
+  Modal,
   Box,
-  IconButton, 
+  IconButton,
   Button,
-  Table, 
-  TableBody, 
-  TableRow, 
+  Table,
+  TableBody,
+  TableRow,
   TableCell,
   Snackbar,
- } from "@mui/material";
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
 import emailjs from 'emailjs-com';
 
-const useStyles = makeStyles((theme)=>({
-  modalBox:{
+const useStyles = makeStyles((theme) => ({
+  modalBox: {
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -24,15 +24,15 @@ const useStyles = makeStyles((theme)=>({
     p: 8,
     overflow: 'auto',
     width: '600px',
-    height: '700px',
-    backgroundColor:'white',
+    height: '800px',
+    backgroundColor: 'white',
   },
-  modalClose:{
+  modalClose: {
     position: 'absolute',
     top: '5px',
     right: '5px',
   },
-  checkText01:{
+  checkText01: {
     fontFamily: "Pretendard",
     fontSize: '22px',
     fontWeight: 300,
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme)=>({
     marginTop: '25px',
     marginBottom: '5px',
   },
-  minicheckText01:{
+  minicheckText01: {
     fontFamily: "Pretendard",
     textAlign: 'left',
     fontSize: '14px',
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme)=>({
     color: 'red',
     fontWeight: 400,
   },
-  checkTextBox:{
+  checkTextBox: {
     marginLeft: '50px',
     marginRight: '50px',
     marginTop: '50px',
@@ -67,13 +67,13 @@ const useStyles = makeStyles((theme)=>({
 
 
 function CheckModal({
-  open,handleClose,handleSubmit, 
+  open, handleClose, handleSubmit,
   trademarkData,
-  madridDataString, 
-  directNationString, 
-  managerData, 
-  applicantData, 
-  markSelectData, 
+  madridDataString,
+  directNationString,
+  managerData,
+  applicantData,
+  markSelectData,
   classificationData,
   applicantType,
   madridPriceData,
@@ -81,17 +81,17 @@ function CheckModal({
 }) {
 
   const classes = useStyles();
- 
+
   const handlePrice = () => { //가격정산처리
     let priceData = 0;
-    
-    if (markSelectData === "국내출원"){
-      priceData = madridPriceData + directPriceData + 200000;
+
+    if (markSelectData === "국내출원") {
+      priceData = 485500;
       priceData = priceData.toFixed(0);
     }
 
-    else if (markSelectData === "국내+해외출원"){
-      priceData = madridPriceData + directPriceData + 100000;
+    else if (markSelectData === "국내+해외출원") {
+      priceData = madridPriceData + directPriceData + 385500;
       priceData = priceData.toFixed(0);
     }
 
@@ -105,7 +105,7 @@ function CheckModal({
       currency: "KRW",
     });
     const numberWithCommas = formatter.format(priceData);
-    
+
     return numberWithCommas;
   };
 
@@ -117,23 +117,27 @@ function CheckModal({
       sendEmail();
       handleClose();
       alert("메일발송이 완료되었습니다.");
-      //window.location.reload(); 제출하면 새로고침
+      window.location.reload();
     }
   };
-  
+
   const sendEmail = () => {
     let message;
+    let toEmail = managerData.email;
 
     if (applicantType.poc === "personal") {
       message = `
         -상표 정보 
         패키지: ${markSelectData}
         상표명: ${trademarkData.brand_name}
+
         세부설명: ${trademarkData.description}
+
         분류: ${classificationData.sector}
         출원국가(마드리드): ${madridDataString}
         출원국가(개별출원): ${directNationString} 
-        
+        예상가격: ${formattedPrice}
+
         -담당자 정보      
         담당자 성명: ${managerData.name}
         담당자 이메일: ${managerData.email}
@@ -159,7 +163,8 @@ function CheckModal({
         분류: ${classificationData.sector}
         출원국가(개별출원): ${directNationString} 
         출원국가(마드리드): ${madridDataString}
-       
+        예상가격: ${formattedPrice}
+
         -담당자 정보      
         담당자 성명: ${managerData.name}
         담당자 이메일: ${managerData.email}
@@ -179,12 +184,13 @@ function CheckModal({
         법인대표 유선전화: ${applicantData.corporatePhone}
       `;
     }
-  
+
     const templateParams = {
       subject: '상표신청',
+      toEmail: toEmail,
       message: message,
     };
-  
+
     // emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
     // .then((response) => {
     //   console.log('이메일 전송성공', response);
@@ -202,71 +208,107 @@ function CheckModal({
 
   };
 
+
   return (
     <Modal open={open} onClose={handleClose}>
       <Box className={classes.modalBox}>
         <Box className={classes.modalClose} >
-        <IconButton onClick={handleClose}>
-          <CloseIcon />
-        </IconButton>
+          <IconButton onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
         </Box>
         <div className={classes.checkText01}>견적 내용</div>
-        <div className={classes.minicheckText01}>
-         ※ [스위스, 불가리아, 우크라이나] 마드리드 출원의 경우<br/>
-          3개 이상의 분류를 선택했을 시, 실제 가격과 차이가 있을 수 있습니다.
+        {markSelectData === '국내출원' ? (
+          <div className={classes.minicheckText01}>
+            ※ 유의사항 <br />
+            - 거절통지에 대한 의견서 수수료 별도<br />
+            - 특허청 등록료 별도<br />
+            - 등록대행수수료 별도<br />
+            - 미출원시 상표조사비용 55,000원(부가세포함) 차감<br />
           </div>
+        ) : (
+          <div className={classes.minicheckText01}>
+            ※ 유의사항 <br />
+            - 거절통지에 대한 의견서 비용별도<br />
+            - 수수료 부가세 별도<br />
+            - 마드리드 출원의 경우 [스위스, 불가리아, 우크라이나]국가 3개 이상의 분류를 선택했을 시,<br/>
+            실제가격이 예상가격보다 저렴할 수 있습니다. <br />
+          </div>
+        )
+}
         <Table>
-      <TableBody>
-        <TableRow>
-          <TableCell>패키지: </TableCell>
-          <TableCell>{markSelectData}</TableCell>
-        </TableRow>
-        <TableRow>
-        <TableCell>상표명: </TableCell>
-          <TableCell>{trademarkData.brand_name}</TableCell>
-        </TableRow>
-        <TableRow>
-        <TableCell>세부설명: </TableCell>
-          <TableCell>{trademarkData.description}</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>예상최소가격: </TableCell>
-          <TableCell>{formattedPrice}원</TableCell>
-        </TableRow>
-        <TableRow>
-        <TableCell>상표 분류: </TableCell>
-        <TableCell>{classificationData.sector} </TableCell>
-        </TableRow>
-        <TableRow>
-        <TableCell>출원국가(개별국출원):</TableCell>
-        <TableCell>{directNationString}</TableCell>
-        </TableRow>
-        <TableRow>
-        <TableCell>출원국가(마드리드): </TableCell>
-        <TableCell>{madridDataString}</TableCell>
-        </TableRow>
-        <TableRow>
-        <TableCell>출원인 성명: </TableCell>
-          <TableCell>{applicantData.name_kor}</TableCell>
-        </TableRow>
+        <TableBody>
+          <TableRow>
+            <TableCell>패키지: </TableCell>
+            <TableCell>{markSelectData}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>상표명: </TableCell>
+            <TableCell>{trademarkData.brand_name}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>세부설명: </TableCell>
+            <TableCell>{trademarkData.description}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>상표 분류: </TableCell>
+            <TableCell>{classificationData.sector} </TableCell>
+          </TableRow>
 
-        <TableRow>
-        <TableCell className={classes.tableCell}>담당자 성명: {managerData.name}</TableCell>
-        <TableCell>담당자 이메일: {managerData.email}</TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell className={classes.tableCell}>담당자 연락처: {managerData.mobile}</TableCell>
-        <TableCell>담당자 유선전화: {managerData.phone}</TableCell>
-      </TableRow>
-      </TableBody>
+          {markSelectData === '국내출원' ? (
+            <>
+              <TableRow>
+                <TableCell className={classes.tableCell}>패키지 수수료:  ₩200,000</TableCell>
+                <TableCell className={classes.tableCell}>부가세: ₩20,000</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.tableCell}>특허청 전문기관:  ₩45,000</TableCell>
+                <TableCell className={classes.tableCell}>부가세: ₩4,500</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.tableCell}>특허청 관납료(우선심사포함): ₩216,000</TableCell>
+                <TableCell className={classes.tableCell}>예상가격: {formattedPrice}</TableCell>
+              </TableRow>
+            </>
+          ) : (
+            <>
+              <TableRow>
+                <TableCell>출원국가(개별국출원):</TableCell>
+                <TableCell>{directNationString}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>출원국가(마드리드): </TableCell>
+                <TableCell>{madridDataString}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>예상가격: </TableCell>
+                <TableCell>{formattedPrice}원</TableCell>
+              </TableRow>
+            </>
+          )}
+
+          <TableRow>
+            <TableCell>출원인 성명: </TableCell>
+            <TableCell>{applicantData.name_kor}</TableCell>
+          </TableRow>
+
+          <TableRow>
+            <TableCell className={classes.tableCell}>담당자 성명: {managerData.name}</TableCell>
+            <TableCell>담당자 이메일: {managerData.email}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className={classes.tableCell}>담당자 연락처: {managerData.mobile}</TableCell>
+            <TableCell>담당자 유선전화: {managerData.phone}</TableCell>
+          </TableRow>
+        </TableBody>
     </Table>
-        <Button id="submitButton03"
+      <Button id="submitButton03"
         onClick={handleConfirmButtonClick}
         variant="contained">
         견적발송
-        </Button>
-      </Box>
-  </Modal>
+      </Button>
+    </Box>
+  </Modal >
   );
 };
 export default CheckModal;
