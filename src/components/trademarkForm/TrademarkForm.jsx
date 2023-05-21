@@ -1,4 +1,4 @@
-import { TextField, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import "./TrademarkForm.scss";
 import {
@@ -17,7 +17,6 @@ const TrademarkForm = ({ onTrademarkDataChange, onImageDataChange }) => {
     image: "",
   });
   const [fileName, setFileName] = useState("");
-
   useEffect(() => {
     onTrademarkDataChange(trademarkData);
   }, [trademarkData, onTrademarkDataChange]);
@@ -32,6 +31,14 @@ const TrademarkForm = ({ onTrademarkDataChange, onImageDataChange }) => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+
+    if (file.size > 5000000) {
+      window.confirm(
+        "사진 크기가 너무 큽니다. 5MB 이하의 크기로 업로드 해주세요."
+      );
+      return;
+    }
+
     setFileName(file.name);
 
     setTrademarkData((prevData) => ({
