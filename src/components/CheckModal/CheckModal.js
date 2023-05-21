@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     marginLeft: '10px',
     marginTop: '25px',
-    marginBottom: '5px',
+    marginBottom: '10px',
   },
   minicheckText01: {
     fontFamily: "Pretendard",
