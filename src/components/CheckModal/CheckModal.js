@@ -116,8 +116,8 @@ function CheckModal({
       handleSubmit();
       sendEmail();
       handleClose();
-      //window.location.reload();
       alert("메일발송이 완료되었습니다.");
+      //window.location.reload(); 제출하면 새로고침
     }
   };
   
@@ -171,7 +171,7 @@ function CheckModal({
         법인명(영문): ${applicantData.name_eng}
         사업자등록번호: ${applicantData.brn}
         법인 등록번호: ${applicantData.crn}
-        대표자 주민번호: ${applicantData.ssn}       
+        대표자 생년월일: ${applicantData.ssn}       
         법인대표 우편번호: ${applicantData.zipcode}
         법인대표 주소: ${applicantData.address}, ${applicantData.detail}
         법인대표 이메일: ${applicantData.corporateEmail}
@@ -212,8 +212,8 @@ function CheckModal({
         </Box>
         <div className={classes.checkText01}>견적 내용</div>
         <div className={classes.minicheckText01}>
-         ※ 최소가격은 1개류 기준으로 제시됩니다.<br/>
-          2개 이상의 분류를 선택했을 시, 실제 가격과 차이가 있을 수 있습니다.
+         ※ [스위스, 불가리아, 우크라이나] 마드리드 출원의 경우<br/>
+          3개 이상의 분류를 선택했을 시, 실제 가격과 차이가 있을 수 있습니다.
           </div>
         <Table>
       <TableBody>

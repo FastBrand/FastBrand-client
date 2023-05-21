@@ -30,8 +30,9 @@ function DomesticMark() {
   const [madridData, setMadridData] = useState({}); //마드리드
   const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
   const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
-  const [markSelectData, setmarkSelcetData] = useState({});
+  const [markSelectData, setmarkSelcetData] = useState("");
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
+
   const classes = useStyles();
 
   const nationData = { //개별출원 데이터 (
@@ -107,12 +108,15 @@ function DomesticMark() {
       <ManagerForm onManagerChange={setManagerData} />
       
       {markSelectData === "국내출원" ? 
-      null : 
-      <NationSelectForm onSelectedCountries={setcountriesData}
+      null
+      :
+      <NationSelectForm
+      onSelectedCountries={setcountriesData}
       onSelectedMadrid={setMadridData} 
       onEachPrice={setDirectPriceData}
       onMadridPrice={setMadridPriceData}
       classificationDataString={classificationData.sector}
+      markSelectData={markSelectData}
       />}
 
       <ApplicantForm
