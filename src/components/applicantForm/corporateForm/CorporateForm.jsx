@@ -1,4 +1,4 @@
-import { TextField, Grid, Dialog } from "@mui/material";
+import { Grid, Dialog } from "@mui/material";
 import DaumPostcode from "react-daum-postcode";
 import React, { useState, useEffect } from "react";
 import {
@@ -48,6 +48,13 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    if (file.size > 5000000) {
+      window.confirm(
+        "사진 크기가 너무 큽니다. 5MB 이하의 크기로 업로드 해주세요."
+      );
+      return;
+    }
+
     setFileName(file.name);
     setCorporateData((prevData) => ({
       ...prevData,
@@ -133,7 +140,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               required
               fullWidth
               id="corporateSsn"
-              label="대표자 주민등록번호"
+              label="대표자 생년월일"
               variant="standard"
               value={corporateData.ssn}
               onChange={(event) => handleInputChange(event, "ssn")}
@@ -203,7 +210,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
           </Grid>
           <Grid item xs={8} sm={5}>
             <CustomTextField
-              required
+              // required
               fullWidth
               dense
               id="corporateZipcode"
@@ -226,7 +233,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
           <Grid item xs={12} sm={6}>
             <CustomTextField
               controlled="true"
-              required
+              // required
               fullWidth
               multiline
               id="corporateAddress"
@@ -239,7 +246,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
           <Grid item xs={12} sm={6}>
             <CustomTextField
               controlled="true"
-              required
+              // required
               fullWidth
               id="corporateDetail"
               label="상세주소"
