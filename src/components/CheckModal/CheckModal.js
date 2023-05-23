@@ -145,7 +145,7 @@ function CheckModal({
       else {
           nationMessage = `
           -견적
-          출원국가(개별출원): ${directNationString} 
+          출원국가(개별출원): 한국
           분류: ${classificationData.sector}
           예상가격: ${formattedPrice}
           `;
@@ -187,7 +187,7 @@ function CheckModal({
        else {
            nationMessage = `
            -견적
-           출원국가(개별출원): ${directNationString} 
+           출원국가(개별출원): 한국
            분류: ${classificationData.sector}
            예상가격: ${formattedPrice}
            `;
