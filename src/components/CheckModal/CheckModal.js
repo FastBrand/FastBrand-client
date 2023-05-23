@@ -121,26 +121,41 @@ function CheckModal({
       sendEmail();
       handleClose();
       alert("메일발송이 완료되었습니다.");
-      window.location.reload();
+      
+      setTimeout(function() {
+        window.location.reload();
+      }, 500);
     }
   };
 
   const sendEmail = () => {
     let message;
+    let nationMessage = '';
     let toEmail = managerData.email;
 
     if (applicantType.poc === "personal") {
+      if(markSelectData !== '국내출원'){
+       nationMessage = `
+       -견적
+       출원국가(개별출원): ${directNationString} 
+       출원국가(마드리드): ${madridDataString}
+       예상가격: ${formattedPrice}
+       `;
+      } 
+      else {
+          nationMessage = `
+          -견적
+          출원국가(개별출원): ${directNationString} 
+          분류: ${classificationData.sector}
+          예상가격: ${formattedPrice}
+          `;
+      }
+
       message = `
         -상표 정보 
         패키지: ${markSelectData}
         상표명: ${trademarkData.brand_name}
-
         세부설명: ${trademarkData.description}
-
-        분류: ${classificationData.sector}
-        출원국가(마드리드): ${madridDataString}
-        출원국가(개별출원): ${directNationString} 
-        예상가격: ${formattedPrice}
 
         -담당자 정보      
         담당자 성명: ${managerData.name}
@@ -158,16 +173,31 @@ function CheckModal({
         출원인 휴대전화: ${applicantData.personalMobile}
         출원인 유선전화: ${applicantData.personalPhone}
       `;
-    } else {
+    } 
+    else {
+      if(markSelectData !== '국내출원'){
+        nationMessage = `
+        -견적
+        출원국가(개별출원): ${directNationString} 
+        출원국가(마드리드): ${madridDataString}
+        분류: ${classificationData.sector}
+        예상가격: ${formattedPrice}
+        `;
+       } 
+       else {
+           nationMessage = `
+           -견적
+           출원국가(개별출원): ${directNationString} 
+           분류: ${classificationData.sector}
+           예상가격: ${formattedPrice}
+           `;
+       }
+ 
       message = `
         -상표 정보 
         패키지: ${markSelectData}
         상표명: ${trademarkData.brand_name}
         세부설명: ${trademarkData.description}
-        분류: ${classificationData.sector}
-        출원국가(개별출원): ${directNationString} 
-        출원국가(마드리드): ${madridDataString}
-        예상가격: ${formattedPrice}
 
         -담당자 정보      
         담당자 성명: ${managerData.name}
@@ -193,6 +223,7 @@ function CheckModal({
       subject: '상표신청',
       toEmail: toEmail,
       message: message,
+      nationMessage: nationMessage,
     };
 
     // emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
@@ -202,6 +233,7 @@ function CheckModal({
     // .catch((error) => {
     //   console.error('이메일 전송오류', error);
     // });
+
     // emailjs.send('service_ntfee7r', 'template_nk4mhqd', templateParams, 'niIZOtG66JjWR0wjS')
     // .then((response) => {
     //   console.log('이메일 전송성공', response);
