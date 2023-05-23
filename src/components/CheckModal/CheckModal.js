@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 400,
   },
   checkTextBox: {
+    fontFamily: "Pretendard",
     marginLeft: '50px',
     marginRight: '50px',
     marginTop: '50px',
