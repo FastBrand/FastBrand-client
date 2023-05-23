@@ -3,13 +3,11 @@ import {
   Grid,
   Card,
   CardContent,
-  CardMedia,
   Typography,
   CardActionArea,
   Box,
 } from "@mui/material";
 import { CustomTypo, FormContainer } from "../../styles/formStyles";
-import box_icon from "../../assets/images/icon/box.png";
 import markType_data from "./data"; //상표유형 데이터
 import "./MarkSelectForm.css";
 
@@ -126,7 +124,7 @@ function MarkSelectForm({ onSelectedMark }) {
   }, [selectedMark, onSelectedMark]);
 
   return (
-    <Box sx={{ backgroundColor: "#3e3e3f", marginTop: "80px" }}>
+    <Box sx={{ backgroundColor: "#3e3e3f", paddingTop: "80px" }}>
       <FormContainer>
         <CustomTypo sx={{ color: "white" }}>
           01. 패키지 유형을 선택해주세요

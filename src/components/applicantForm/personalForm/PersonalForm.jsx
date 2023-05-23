@@ -1,10 +1,11 @@
-import { TextField, Grid, Dialog } from "@mui/material";
+import { Grid, Dialog } from "@mui/material";
 import DaumPostcode from "react-daum-postcode";
 import React, { useState, useEffect } from "react";
 import {
   CustomTypo,
   FormContainer,
   PostCodeButton,
+  CustomTextField,
 } from "../../../styles/formStyles";
 
 const PersonalForm = ({ onPersonalChange }) => {
@@ -54,82 +55,75 @@ const PersonalForm = ({ onPersonalChange }) => {
       <CustomTypo>05. 출원인 정보를 입력해주세요</CustomTypo>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <TextField
+          <CustomTextField
             required
             fullWidth
             id="personalName_kor"
             label="성명(한글)"
             variant="standard"
-            sx={{ mb: "3rem" }}
             value={personalData.personalName_kor}
             onChange={(event) => handleInputChange(event, "name_kor")}
           />
         </Grid>
         <Grid item xs={6}>
-          <TextField
+          <CustomTextField
             required
             fullWidth
             id="applicantEnglishName"
             label="성명(영어)"
             variant="standard"
-            sx={{ mb: "3rem" }}
             value={personalData.name_eng}
             onChange={(event) => handleInputChange(event, "name_eng")}
           />
         </Grid>
         <Grid item xs={6}>
-          <TextField
+          <CustomTextField
             required
             fullWidth
             id="personalSsn"
-            label="주민번호"
+            label="생년월일"
             variant="standard"
-            sx={{ mb: "3rem" }}
             value={personalData.ssn}
             onChange={(event) => handleInputChange(event, "ssn")}
           />
         </Grid>
         <Grid item xs={6}>
-          <TextField
+          <CustomTextField
             required
             fullWidth
             id="personalEmail"
             label="이메일"
             variant="standard"
-            sx={{ mb: "3rem" }}
             value={personalData.personalEmail}
             onChange={(event) => handleInputChange(event, "personalEmail")}
           />
         </Grid>
         <Grid item xs={6}>
-          <TextField
+          <CustomTextField
             required
             fullWidth
             id="personalMobile"
             label="휴대전화"
             variant="standard"
-            sx={{ mb: "3rem" }}
             value={personalData.personalMobile}
             onChange={(event) => handleInputChange(event, "personalMobile")}
           />
         </Grid>
         <Grid item xs={6}>
-          <TextField
+          <CustomTextField
             fullWidth
             id="personalPhone"
             label="유선전화"
             variant="standard"
-            sx={{ mb: "3rem" }}
             value={personalData.personalPhone}
             onChange={(event) => handleInputChange(event, "personalPhone")}
           />
         </Grid>
-        <Grid item xs={6}>
-          <TextField
+        <Grid item xs={8} sm={5}>
+          <CustomTextField
             controlled="true"
-            required
             fullWidth
-            sx={{ mb: "3rem" }}
+            // required
             id="personalZipcode"
             label="우편번호"
             variant="standard"
@@ -137,7 +131,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             onChange={(event) => handleInputChange(event, "zipcode")}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={4} sm={6}>
           <PostCodeButton
             variant="contained"
             onClick={() => {
@@ -147,12 +141,12 @@ const PersonalForm = ({ onPersonalChange }) => {
             우편번호찾기
           </PostCodeButton>
         </Grid>
-        <Grid item xs={12}>
-          <TextField
+        <Grid item xs={12} sm={6}>
+          <CustomTextField
             controlled="true"
-            required
+            // required
             fullWidth
-            sx={{ mb: "3rem" }}
+            multiline
             id="personalAddress"
             label="주소"
             variant="standard"
@@ -160,12 +154,11 @@ const PersonalForm = ({ onPersonalChange }) => {
             onChange={(event) => handleInputChange(event, "address")}
           />
         </Grid>
-        <Grid item xs={6}>
-          <TextField
+        <Grid item xs={12} sm={6}>
+          <CustomTextField
             controlled="true"
-            required
+            // required
             fullWidth
-            sx={{ mb: "3rem" }}
             id="personalDetail"
             label="상세주소"
             variant="standard"

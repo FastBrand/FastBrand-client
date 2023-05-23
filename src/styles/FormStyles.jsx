@@ -5,27 +5,27 @@ import { Button, TextField, Typography } from "@mui/material";
 export const CustomTypo = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
   fontWeight: "600",
-  fontSize: "42px",
+  fontSize: "38px",
   marginBottom: "2rem",
 }));
 
 export const FormContainer = styled("div")(({ theme }) => ({
-  padding: "100px 13vw",
-  [theme.breakpoints.down("xl")]: {
+  padding: "90px 15vw",
+  [theme.breakpoints.down("lg")]: {
     paddingLeft: "5vw",
     paddingRight: "5vw",
   },
 }));
 
 export const Wrapper = styled("div")(({ theme }) => ({
-  paddingLeft: "13vw",
-  paddingRight: "13vw",
+  paddingLeft: "15vw",
+  paddingRight: "15vw",
   backgroundColor: "#eee",
   height: "180px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  [theme.breakpoints.down("xl")]: {
+  [theme.breakpoints.down("lg")]: {
     paddingLeft: "5vw",
     paddingRight: "5vw",
   },
@@ -38,14 +38,14 @@ export const FileLabel = styled("label")({
 });
 
 export const FileUploadContainer = styled("div")(({ theme }) => ({
-  paddingLeft: "13vw",
-  paddingRight: "13vw",
+  paddingLeft: "15vw",
+  paddingRight: "15vw",
   backgroundColor: "#eee",
   height: "180px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  [theme.breakpoints.down("xl")]: {
+  [theme.breakpoints.down("lg")]: {
     paddingLeft: "5vw",
     paddingRight: "5vw",
   },
@@ -71,21 +71,24 @@ export const PostCodeButton = styled(Button)({
 
 export const CustomTextField = styled(TextField)({
   // 폰트 설정
-  fontFamily: "Pretendard",
-  fontWeight: "400",
-
-  "& label.Mui-focused": {
-    // focused 상태일 때의 라벨 색상
-    color: "#f44336",
-  },
+  // paddingBottom: "2rem",
   "& .MuiInputBase-root": {
-    // 기본 상태일 때의 폰트와 밑줄 색상
     fontFamily: "Pretendard",
-    fontWeight: "400",
-    borderBottom: "1px solid #757575",
-    "&.Mui-focused": {
-      // focused 상태일 때의 폰트와 밑줄 색상
-      borderBottom: "2px solid black",
-    },
+    fontWeight: "500",
+    fontSize: "20px",
+  },
+  // 라벨 폰트 설정
+  "& .MuiInputLabel-root": {
+    fontFamily: "Pretendard",
+    fontWeight: "500",
+    fontSize: "20px",
+  },
+  "&.MuiTextField-root": {
+    // dense 설정
+    marginBottom: "2rem",
+  },
+  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    // 포커스 시 테두리 스타일
+    borderColor: "1px solid black", // 테두리를 black으로
   },
 });

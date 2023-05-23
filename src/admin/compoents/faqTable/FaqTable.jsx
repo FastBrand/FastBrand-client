@@ -61,22 +61,13 @@ const FaqTable = () => {
   };
 
   return (
-    <Box sx={{ mb: 15 }}>
+    <Box>
       <Button
         variant="contained"
         startIcon={<AddIcon />}
         onClick={handleAddClick}
         sx={{
           mb: 1,
-          backgroundColor: "#3E3E3F",
-          color: "white",
-          border: "1px solid #3E3E3F",
-          fontWeight: 600,
-          "&:hover": {
-            border: "1px solid #eee",
-            backgroundColor: "#eee",
-            color: "black",
-          },
         }}
       >
         추가
