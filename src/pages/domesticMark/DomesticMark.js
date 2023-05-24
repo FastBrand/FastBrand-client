@@ -241,7 +241,7 @@ function DomesticMark() {
 
     const formData = new FormData();
     formData.append("image", imageData);
-    formData.append("seal", sealData);
+    if (applicantType.poc === "corporate") formData.append("seal", sealData);
     formData.append("data", new Blob([JSONData], { type: "application/json" }));
 
     // formData 확인
@@ -266,7 +266,7 @@ function DomesticMark() {
 
   return (
     <div className={classes.root}>
-      <Navbar />
+      <Navbar backgroundColor="white" />
       <MarkSelectForm onSelectedMark={setmarkSelcetData} />
       <TrademarkForm
         onTrademarkDataChange={setTrademarkData}
@@ -291,21 +291,23 @@ function DomesticMark() {
         견적보기
       </Button>
       <TopButton />
-      <CheckModal
-        open={modalOpen}
-        handleClose={handleClose}
-        handleSubmit={handleSubmit}
-        trademarkData={trademarkData}
-        madridDataString={madridDataString}
-        directNationString={directNationString}
-        managerData={managerData}
-        applicantData={applicantData}
-        markSelectData={markSelectData}
-        classificationData={classificationData}
-        applicantType={applicantType}
-        madridPriceData={madridPriceData}
-        directPriceData={directPriceData}
-      />
+      {modalOpen && (
+        <CheckModal
+          open={modalOpen}
+          handleClose={handleClose}
+          handleSubmit={handleSubmit}
+          trademarkData={trademarkData}
+          madridDataString={madridDataString}
+          directNationString={directNationString}
+          managerData={managerData}
+          applicantData={applicantData}
+          markSelectData={markSelectData}
+          classificationData={classificationData}
+          applicantType={applicantType}
+          madridPriceData={madridPriceData}
+          directPriceData={directPriceData}
+        />
+      )}
       <Footer />
     </div>
   );
