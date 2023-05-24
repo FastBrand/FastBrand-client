@@ -124,8 +124,8 @@ function NationSelectForm({
 
   const exchangeCHF = useState(1484.94); //스위스 프랑 환율
   const exchangeUSD = useState(1334.42); //달러 환율
-  const exchangeJPY = useState(9.69); //엔화 환율
-  const exchangeEUR = useState(1444.51); //유로 환율
+  // const exchangeJPY = useState(9.69); //엔화 환율
+  // const exchangeEUR = useState(1444.51); //유로 환율
   const [madridPrice, setMadridPrice] = useState(0);
   const [eachPrice, setEachPrice] = useState(0);
   const [madridAddFee, setMadridAddFee] = useState(0);

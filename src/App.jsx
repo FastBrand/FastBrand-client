@@ -10,10 +10,12 @@ import CompanyInfoForm from "./components/companyInfoForm/CompanyInfoForm";
 import MarkDetail from "./admin/pages/main/MarkDetail";
 import Step from "./pages/step/Step";
 import CompanyPoint from "./pages/companyPoint/CompanyPoint";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LoginForm from "./components/loginForm/LoginForm";
 
 function App() {
+  const isAuthenticated = localStorage.getItem('Authorization') !== null;
+
   return (
     <div className="App">
       <Routes>
@@ -22,16 +24,23 @@ function App() {
         <Route path="/domesticmark" element={<DomesticMark />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/director" element={<Director />} />
-        <Route path="/dashboard" element={<DashBoard/>} />
-        <Route path="/faqBoard" element={<FaqBoard/>} />
-        <Route path="/markBoard" element={<MarkBoard/>} />
-        <Route path="/companyinfo" element={<CompanyInfoForm/> } />
-        <Route path="/companypoint" element={<CompanyPoint/> } />
-        <Route path="/markinfo/:id" element={<MarkDetail/>} />
-        <Route path="/login" element={<LoginForm /> } />
+        <Route path="/companyinfo" element={<CompanyInfoForm />} />
+        <Route path="/companypoint" element={<CompanyPoint />} />
+        <Route path="/login" element={<LoginForm />} />
+        {isAuthenticated ? (
+          <>
+            <Route path="/markinfo/:id" element={<MarkDetail />} />
+            <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/faqBoard" element={<FaqBoard />} />
+            <Route path="/markBoard" element={<MarkBoard />} />
+          </>
+        ) : (
+          <Navigate to="/login" replace />
+        )}
       </Routes>
     </div>
   );
 }
 
 export default App;
+
