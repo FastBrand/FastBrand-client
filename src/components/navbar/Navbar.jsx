@@ -1,13 +1,31 @@
-import { Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuDrawer from "../menuDrawer/MenuDrawer";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logoImg from "../../assets/images/logo/복합.svg";
 
-const Navbar = ({ backgroundColor, borderBottom }) => {
+const Navbar = ({ backgroundColor }) => {
   const [open, setOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingUp = prevScrollPos > currentScrollPos;
+
+      setVisible(isScrollingUp);
+      // console.log(visible);
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos, visible]);
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -21,7 +39,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   };
 
   const NavLink = styled(Link)(({ theme }) => ({
-    fontSize: "18px",
+    fontSize: "20px",
     color: "#CBA585",
     fontWeight: 500,
     fontFamily: "Pretendard",
@@ -33,12 +51,12 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
     },
   }));
 
-  const NavbarLinksBox = styled(Box)(({ theme }) => ({
+  const NavbarLinksBox = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     gap: theme.spacing(5),
-    [theme.breakpoints.down("750")]: {
+    [theme.breakpoints.down("1250")]: {
       display: "none",
     },
   }));
@@ -46,39 +64,42 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   const CustomMenuIcon = styled(MenuIcon)(({ theme }) => ({
     cursor: "pointer",
     color: "#CBA585",
-    fontSize: "2rem",
+    fontSize: "2.3rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.8rem",
     },
   }));
 
-  const NavbarContainer = styled(Box)(({ theme }) => ({
+  const NavbarContainer = styled("div")(({ theme }) => ({
     position: "fixed",
-    top: "0",
+    zIndex: "100",
+    top: visible ? "0" : "-110px",
     left: "0",
     right: "0",
     display: "flex",
+    transition: "all 0.3s linear",
+    height: "100px",
+    padding: "0 150px",
     alignItems: "center",
-    margin: "0 150px 0 150px",
     justifyContent: "space-between",
-    padding: theme.spacing(1),
-    [theme.breakpoints.down("1080")]: {
-      margin: "0",
+    backgroundColor: backgroundColor,
+    borderBottom: backgroundColor === "none" ? "none" : "1px solid #eee",
+    [theme.breakpoints.down("1250")]: {
+      padding: " 0 20px",
     },
   }));
 
-  const NavbarWrapper = styled(Box)(({ theme }) => ({
-    position: "fixed",
-    zIndex: "100",
-    top: "0",
-    left: "0",
-    right: "0",
+  const NavbarLeftWrapper = styled("div")({
     display: "flex",
-    height: "100px",
     alignItems: "center",
-    justifyContent: "space-between",
-  }));
+  });
 
+  const NavbarRightWrapper = styled("div")({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gaps: "1rem",
+  });
   const NavbarLogo = styled("img")(({ theme }) => ({
     cursor: "pointer",
     height: "85px",
@@ -87,7 +108,7 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   }));
 
   const ButtonLink = styled(Link)(({ theme }) => ({
-    fontSize: "18px",
+    fontSize: "20px",
     color: "#CBA585",
     fontWeight: 600,
     fontFamily: "Pretendard",
@@ -107,53 +128,25 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
   }));
 
   return (
-    <NavbarWrapper
-      backgroundColor={backgroundColor ? "white" : "transparent"}
-      borderBottom={borderBottom ? "1px solid #eee" : "none"}
-    >
-      <NavbarContainer>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1rem",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Link to="/">
-              <NavbarLogo src={logoImg} alt="빠른상표" />
-            </Link>
-            <NavbarLinksBox>
-              <NavLink to="/price">비용안내</NavLink>
-              <NavLink to="/step">절차안내</NavLink>
-              <NavLink to="/companyinfo">회사소개</NavLink>
-              <NavLink to="/companypoint">서비스안내</NavLink>
-              <NavLink to="/faq">고객문의</NavLink>
-            </NavbarLinksBox>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gaps: "1rem",
-          }}
-        >
-          <ButtonLink to="/domesticMark">상표등록 신청하기</ButtonLink>
-          <CustomMenuIcon onClick={toggleDrawer(true)} />
-          {open && (
-            <MenuDrawer open={open} toggleDrawer={() => setOpen(false)} />
-          )}
-        </Box>
-      </NavbarContainer>
-    </NavbarWrapper>
+    <NavbarContainer>
+      <NavbarLeftWrapper>
+        <Link to="/">
+          <NavbarLogo src={logoImg} alt="빠른상표" />
+        </Link>
+        <NavbarLinksBox>
+          <NavLink to="/price">비용안내</NavLink>
+          <NavLink to="/step">절차안내</NavLink>
+          <NavLink to="/companyinfo">회사소개</NavLink>
+          <NavLink to="/companypoint">서비스안내</NavLink>
+          <NavLink to="/faq">자주하는질문</NavLink>
+        </NavbarLinksBox>
+      </NavbarLeftWrapper>
+      <NavbarRightWrapper>
+        <ButtonLink to="/domesticMark">상표등록 신청하기</ButtonLink>
+        <CustomMenuIcon onClick={toggleDrawer(true)} />
+        {open && <MenuDrawer open={open} toggleDrawer={() => setOpen(false)} />}
+      </NavbarRightWrapper>
+    </NavbarContainer>
   );
 };
 
