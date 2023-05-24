@@ -27,7 +27,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
     address: "", // 주소
     detail: "", // 상세주소
     zipcode: "", // 우편번호
-    agreement: "동의",
+    agreement: "",
   });
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
   };
 
   return (
-    <form>
+    <>
       <FormContainer>
         <CustomTypo>06. 출원인 정보를 입력해주세요</CustomTypo>
         <Grid container spacing={2}>
@@ -266,7 +266,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
           </Dialog>
         )}
       </FormContainer>
-    </form>
+    </>
   );
 };
 export default CorporateForm;
