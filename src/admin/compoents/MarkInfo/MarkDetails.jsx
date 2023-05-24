@@ -41,6 +41,7 @@ function MarkDetail() {
         mobile: data.user.mobile,
         phone: data.user.phone,
         acc_num: data.user.acc_num,
+        price: data.user.price,
         created_at: data.user.created_at,
 
         pname_kor: data.personal.name_kor,
@@ -72,6 +73,7 @@ function MarkDetail() {
         mobile: data.user.mobile,
         phone: data.user.phone,
         acc_num: data.user.acc_num,
+        price: data.user.price,
         created_at: data.user.created_at,
 
         cname_kor: data.corporate.name_kor,
@@ -360,6 +362,10 @@ function MarkDetail() {
           <TableRow className="table-row">
             <TableCell align="center">계좌번호</TableCell>
             <TableCell align="center">{trademark.acc_num}</TableCell>
+          </TableRow>
+          <TableRow className="table-row">
+            <TableCell align="center">예상가격</TableCell>
+            <TableCell align="center">{trademark.price}</TableCell>
           </TableRow>
           <TableRow className="table-row">
             <TableCell align="center">등록일자</TableCell>

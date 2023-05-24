@@ -12,6 +12,7 @@ import {
   IconButton,
   TableSortLabel,
   TextField,
+  Button
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState, useEffect, useMemo } from "react";
@@ -195,7 +196,7 @@ function MarkInfo() {
         size="small"
         aria-label="새로고침"
       >
-        <RefreshIcon />
+        <Button>새로고침</Button>
       </IconButton>
       <TableContainer component={Paper} sx={{ width: "90%" }}>
         <Table>

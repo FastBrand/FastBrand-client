@@ -147,11 +147,9 @@ function NationSelectForm({
 
   useEffect(() => {
     onSelectedCountries(selectedCountries);
-    console.log(markSelectData);
   }, [selectedCountries, onSelectedCountries]);
   useEffect(() => {
     onSelectedMadrid(selectedMadrid);
-    console.log(markSelectData);
   }, [selectedMadrid, onSelectedMadrid]);
 
   // if (markSelectData === "국내출원") 국내출원 패키지면 국가배열 초기화

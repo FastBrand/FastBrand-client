@@ -63,7 +63,7 @@ function DomesticMark() {
         ...classificationData,
         ...applicantType,
         type: markSelectData,
-        country: formatterData.toString(),
+        country: "더미데이터",
         madrid: madridDataString,
         direct: directNationString,
         status: "더미데이터"
@@ -71,7 +71,10 @@ function DomesticMark() {
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
         : { corporate: { ...applicantData } }),
-      user: { ...managerData },
+      user: {
+        ...managerData,
+        price: formatterData.toString()
+      },
     };
 
     const endpoint =
