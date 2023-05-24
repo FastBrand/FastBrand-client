@@ -3,7 +3,18 @@ import {
   CustomFormControlLabel,
   CustomRadioGroup,
 } from "./ApplicantFormStyle";
-import { FileLabel, Wrapper } from "../../styles/formStyles";
+import CloseIcon from "@mui/icons-material/Close";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
+  DialogActions,
+  Radio,
+  FormControlLabel,
+  Typography,
+} from "@mui/material";
+import { FileLabel, Wrapper, FormContainer } from "../../styles/formStyles";
 import React from "react";
 import { useState, useEffect } from "react";
 import PersonalForm from "./personalForm/PersonalForm";
@@ -18,6 +29,23 @@ const ApplicantForm = ({
   const [corporateData, setCorporateData] = useState({});
   const [personalData, setPersonalData] = useState({});
   const [applicantData, setApplicantData] = useState({});
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  };
+
+  const handleInputChange = (event, field) => {
+    const value = event.target.value;
+    setApplicantData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -71,6 +99,71 @@ const ApplicantForm = ({
           onCorporateChange={setCorporateData}
           onSealDataChange={onSealDataChange}
         />
+      )}
+      <Wrapper sx={{ backgroundColor: "white", height: "0", pb: 15 }}>
+        <Typography
+          sx={{
+            cursor: "pointer",
+            fontFamily: "Pretendard",
+            textDecoration: "underline",
+            fontSize: "18px",
+            fontWeight: 300,
+            mr: 1,
+          }}
+          onClick={handleDialogOpen}
+        >
+          개인정보수집 및 활용 동의 전문 보기
+        </Typography>
+        <CustomRadioGroup
+          name="agreement"
+          value={applicantData.agreement}
+          onChange={(event) => handleInputChange(event, "agreement")}
+          sx={{
+            "& .MuiFormControlLabel-label": {
+              fontFamily: "Pretendard",
+            },
+            width: "30%",
+          }}
+        >
+          <FormControlLabel
+            sx={{ m: 0 }}
+            value="동의"
+            control={<Radio />}
+            label="동의"
+          />
+          <FormControlLabel
+            sx={{ m: 0 }}
+            value="거부"
+            control={<Radio />}
+            label="거부"
+          />
+        </CustomRadioGroup>
+      </Wrapper>
+      {dialogOpen && (
+        <Dialog
+          open={dialogOpen}
+          onClose={handleDialogClose}
+          fullWidth
+          maxWidth="sm"
+          scroll="paper"
+        >
+          <DialogActions>
+            <IconButton
+              edge="end"
+              color="inherit"
+              onClick={handleDialogClose}
+              sx={{
+                position: "absolute",
+                top: 5,
+                right: 15,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogActions>
+          <DialogTitle>개인정보수집 및 활용</DialogTitle>
+          <DialogContent dividers>개인정보수집 및 활용 내용</DialogContent>
+        </Dialog>
       )}
     </>
   );
