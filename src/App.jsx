@@ -1,6 +1,5 @@
 import "./App.scss";
 import Main from "./pages/main/Main";
-import Price from "./pages/price/Price";
 import DomesticMark from "./pages/domesticMark/DomesticMark";
 import Faq from "./pages/faq/Faq";
 import Director from "./pages/director/Director";
@@ -19,7 +18,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/price" element={<Price />} />
         <Route path="/step" element={<Step />} />
         <Route path="/domesticmark" element={<DomesticMark />} />
         <Route path="/faq" element={<Faq />} />
