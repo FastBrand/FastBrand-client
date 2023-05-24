@@ -7,10 +7,10 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Snackbar,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
+import { useEffect, useState } from "react";
 import emailjs from 'emailjs-com';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
   checkText01: {
     fontFamily: "Pretendard",
-    fontSize: '22px',
-    fontWeight: 300,
+    fontSize: '18px',
+    fontWeight: 400,
     color: 'black',
     textAlign: 'left',
     marginLeft: '10px',
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     fontSize: '14px',
     marginLeft: '10px',
-    color: 'red',
+    color: '#872e40',
     fontWeight: 400,
   },
   checkTextBox: {
@@ -66,7 +66,8 @@ const useStyles = makeStyles((theme) => ({
   },
   textRed: {
     color:'#872e40',
-    fontSize: '18px'
+    fontSize: '20px',
+    fontWeight: 500,
   }
 }))
 
@@ -83,9 +84,11 @@ function CheckModal({
   applicantType,
   madridPriceData,
   directPriceData,
+  onFormattedPrice
 }) {
 
   const classes = useStyles();
+  const [formattedPrice, setFormattedPrice] = useState(0);
 
   const handlePrice = () => { //가격정산처리
     let priceData = 0;
@@ -110,12 +113,14 @@ function CheckModal({
       currency: "KRW",
     });
     const numberWithCommas = formatter.format(priceData);
-
     return numberWithCommas;
   };
 
-  // handlePrice 함수를 호출하여 가격을 계산
-  const formattedPrice = handlePrice();
+  useEffect(() => {
+    setFormattedPrice(handlePrice());
+    onFormattedPrice(formattedPrice);
+  }, [markSelectData, madridPriceData, directPriceData]);
+
   const handleConfirmButtonClick = () => {
     if (window.confirm("견적이메일을 발송하시겠습니까?")) {
       handleSubmit();
@@ -123,9 +128,9 @@ function CheckModal({
       handleClose();
       alert("메일발송이 완료되었습니다.");
       
-      setTimeout(function() {
-        window.location.reload();
-      }, 500);
+      // setTimeout(function() {
+      //   window.location.reload();
+      // }, 500);
     }
   };
 
@@ -133,7 +138,7 @@ function CheckModal({
     let message;
     let nationMessage = '';
     let toEmail = managerData.email;
-
+ 
     if (applicantType.poc === "personal") {
       if(markSelectData !== '국내출원'){
        nationMessage = `
@@ -269,7 +274,7 @@ function CheckModal({
             - 거절통지에 대한 의견서 비용별도<br />
             - 수수료 부가세 별도<br />
             - 마드리드 출원의 경우 [스위스, 불가리아, 우크라이나]국가 3개 이상의 분류를 선택했을 시,<br/>
-            실제가격이 예상가격보다 저렴할 수 있습니다. <br />
+            &nbsp; &nbsp;실제가격이 예상가격보다 저렴할 수 있습니다. <br />
           </div>
         )
 }

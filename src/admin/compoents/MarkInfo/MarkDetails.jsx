@@ -165,7 +165,7 @@ function MarkDetail() {
                 <TableCell align="center">{trademark.pname_eng}</TableCell>
               </TableRow>
               <TableRow className="table-row">
-                <TableCell align="center">주민등록번호</TableCell>
+                <TableCell align="center">생년월일</TableCell>
                 <TableCell align="center">{trademark.pssn}</TableCell>
               </TableRow>
               <TableRow className="table-row">
@@ -236,7 +236,7 @@ function MarkDetail() {
               <TableCell align="center">{trademark.corporateName}</TableCell>
             </TableRow>
             <TableRow className="table-row">
-              <TableCell align="center">대표자 주민등록번호</TableCell>
+              <TableCell align="center">대표자 생년월일</TableCell>
               <TableCell align="center">{trademark.cssn}</TableCell>
             </TableRow>
             <TableRow className="table-row">
@@ -321,7 +321,7 @@ function MarkDetail() {
               <TableCell align="center">{trademark.madrid}</TableCell>
             </TableRow>
             <TableRow className="table-row">
-              <TableCell align="center">직접출원</TableCell>
+              <TableCell align="center">개별출원</TableCell>
               <TableCell align="center">{trademark.direct}</TableCell>
             </TableRow>
           </TableBody>

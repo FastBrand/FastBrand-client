@@ -32,7 +32,7 @@ function DomesticMark() {
   const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
   const [markSelectData, setmarkSelcetData] = useState("");
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
-
+  const [formatterData, setFormatterData] = useState(0);
   const classes = useStyles();
 
   const nationData = { //개별출원 데이터 (
@@ -63,7 +63,7 @@ function DomesticMark() {
         ...classificationData,
         ...applicantType,
         type: markSelectData,
-        country: "더미데이터",
+        country: formatterData.toString(),
         madrid: madridDataString,
         direct: directNationString,
         status: "더미데이터"
@@ -142,6 +142,7 @@ function DomesticMark() {
         applicantType={applicantType}
         madridPriceData={madridPriceData}
         directPriceData={directPriceData}
+        onFormattedPrice={setFormatterData}
       />
       <Footer />
     </div>

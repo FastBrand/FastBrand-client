@@ -22,11 +22,13 @@ const handleLogin = () => {
     password: password,
   })
   .then((response) => {
-    const jwtToken = response.headers['Authorization'];
-    localStorage.setItem('Authorization', jwtToken); // JWT 토큰 추출
+    //const jwtToken = response.headers['Authorization'];
+    //localStorage.setItem('Authorization', jwtToken); // JWT 토큰 추출
+    const { accessToken } = response.data;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
     console.log({ username });
     console.log(response);
-    // 토큰 저장
+    
     navigate('/dashboard'); // 로그인 성공 시 다른 URL로 이동
   })
   .catch((error) => {
@@ -99,7 +101,7 @@ const handleCloseSnackbar = (event, reason) => {
         open={loginFailed}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
-        message="로그인 실패"
+        message="로그인 실패, 아이디와 비밀번호를 확인해주세요."
         action={
           <Button
           color="secondary"
@@ -120,6 +122,7 @@ const handleCloseSnackbar = (event, reason) => {
           horizontal: "center"
         }}
       />
+      
     </Backdrop>
       
     

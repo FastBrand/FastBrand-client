@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -64,13 +64,12 @@ const useStyles = makeStyles((theme) => ({
 
 function DashboardForm() {
   const classes = useStyles();
-
   //const [visitorCount, setVisitorCount] = useState([]); // 일일 방문자 수
   const recentWeek = getRecentWeek(); // 최근 일주일
   const [chartData, setChartData] = useState([]); // 차트 데이터
   const [chartData02, setChartData02] = useState([]);
   const [loading, setLoading] = useState(true);
-  //const [markCount, setMarkCount] = useState([]); //상표신청수 데이터
+  const [markCount, setMarkCount] = useState([]); //상표신청수 데이터
 
   function getRecentWeek() {
     const today = new Date();
@@ -252,7 +251,9 @@ function DashboardForm() {
           </AreaChart>
         )}
       </Box>
+      
     </div>
+
   );
 }
 
