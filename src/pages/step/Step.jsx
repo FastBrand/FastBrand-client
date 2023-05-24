@@ -13,7 +13,7 @@ import { Title, StepTitle, StepContent, StepContainer } from "./StepStyles";
 const Step = () => {
   return (
     <>
-      <Navbar backgroundColor={true} borderBottom={true} />
+      <Navbar backgroundColor="white" />
       <StepContainer>
         <Title>절차안내</Title>
         <Grid container direction="row" justifyContent="center">

@@ -7,7 +7,7 @@ const Faq = () => {
   return (
     <>
       <FAQContainer>
-        <Navbar backgroundColor={true} borderBottom={true} />
+        <Navbar backgroundColor="white" />
         <Title>FAQ</Title>
         <FaqAccordion />
       </FAQContainer>
