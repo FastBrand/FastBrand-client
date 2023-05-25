@@ -8,7 +8,7 @@ const Faq = () => {
     <>
       <FAQContainer>
         <Navbar backgroundColor="white" />
-        <Title>FAQ</Title>
+        <Title>자주하는질문</Title>
         <FaqAccordion />
       </FAQContainer>
       <Footer />
