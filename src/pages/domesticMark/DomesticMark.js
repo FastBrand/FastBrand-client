@@ -134,15 +134,13 @@ function DomesticMark() {
         )
       )
         return;
-      if (!/^[\d-]+$/.text(applicantData.personalMobile)) {
+      if (!/^[\d-]+$/.test(applicantData.personalMobile)) {
         showError("출원인 휴대전화를 형식에 맞게 입력해주세요.");
       }
 
-      if (
-        !checkField(applicantData.agreement, "개인정보수집에 동의해주세요.") ||
-        applicantData.agreement === "거부"
-      )
-        return;
+      if (applicantData.agreement !== "동의")
+        showError("개인정보수집 및 활용에 동의해주세요.");
+      return;
     }
     //출원인(법인)
     if (applicantType.poc === "corporate") {
@@ -239,17 +237,26 @@ function DomesticMark() {
 
     const JSONData = JSON.stringify(data);
 
-    const formData = new FormData();
-    formData.append("image", imageData);
-    if (applicantType.poc === "corporate") formData.append("seal", sealData);
-    formData.append("data", new Blob([JSONData], { type: "application/json" }));
+    const imageData = new FormData();
+    imageData.append("image", imageData);
+    if (applicantType.poc === "corporate") imageData.append("seal", sealData);
 
-    // formData 확인
-    // console.log(formData.get("image"));
-    // console.log(formData.get("seal"));
-    // console.log(formData.get("data"));
     axios
-      .post(endpoint, formData, {
+      .post(endpoint, JSONData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log(JSONData);
+      });
+
+    axios
+      .post("http://localhost:8080/api/eidt/upload", imageData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -259,8 +266,6 @@ function DomesticMark() {
       })
       .catch((error) => {
         console.log(error);
-        // console.log(data);
-        console.log(JSONData);
       });
   };
 
