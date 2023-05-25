@@ -242,27 +242,14 @@ function DomesticMark() {
     const JSONData = JSON.stringify(data);
 
     const formData = new FormData();
+    formData.append("data", new Blob([JSONData], { type: "application/json" }));
     formData.append("image", imageData);
     if (applicantType.poc === "corporate") formData.append("seal", sealData);
 
     axios
-      .post(endpoint, JSONData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log(JSONData);
-      });
-
-    axios
       .post(endpoint, formData, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
@@ -278,7 +265,10 @@ function DomesticMark() {
     <div className={classes.root}>
       <Navbar backgroundColor="white" />
       <MarkSelectForm onSelectedMark={setmarkSelcetData} />
-      <TrademarkForm onTrademarkDataChange={setTrademarkData} />
+      <TrademarkForm
+        onTrademarkDataChange={setTrademarkData}
+        onImageDataChange={setImageData}
+      />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
 
@@ -296,6 +286,7 @@ function DomesticMark() {
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
+        onSealDataChange={setSealData}
       />
 
       <Button id="submitButton01" onClick={() => handleOpen(true)}>
