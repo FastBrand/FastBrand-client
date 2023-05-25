@@ -10,12 +10,12 @@ const [password, setPassword] = useState('');
 const [loginFailed, setLoginFailed] = useState(false);
 const navigate = useNavigate(); // useNavigate hook 사용
 
-useEffect(() => {
-  // 이미 로그인된 상태라면 '/dashboard'로 이동
-  if (localStorage.getItem('Authorization')) {
-    navigate('/dashboard');
-  }
-}, [navigate]);
+// useEffect(() => {
+//   // 이미 로그인된 상태라면 '/dashboard'로 이동
+//   if (localStorage.getItem('Authorization')!==null) {
+//     navigate('/dashboard');
+//   }
+// }, [navigate]);
 
 const handleKeyPress = (event) => {
   if (event.key === 'Enter') {
@@ -31,7 +31,7 @@ const handleLogin = () => {
   .then((response) => {
     const jwtToken = response.headers['Authorization'];
     localStorage.setItem('Authorization', jwtToken); // JWT 토큰 추출
-    console.log("로그인성공:",response);
+    console.log("로그인성공:",response.headers);
     navigate('/dashboard'); // 로그인 성공 시 다른 URL로 이동
   })
   .catch((error) => {
@@ -55,7 +55,18 @@ const handleCloseSnackbar = (event, reason) => {
         justifyContent: "center",
       }}
     >
-      <Box sx={{ marginTop: "250px" }}>
+
+      <Box sx={{ marginTop: "200px" }}>
+      <Box sx={{
+        textAlign: "center",
+        marginBottom: '32px',
+        fontFamily: 'Pretendard',
+        fontWeight: 500,
+        fontSize: "28px",
+        color: '#181c06'
+      }}>
+        관리자 로그인
+      </Box>
         <div>
           <TextField
             style={{ width: "300px" }}

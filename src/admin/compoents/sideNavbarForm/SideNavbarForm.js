@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Drawer,
@@ -6,14 +6,19 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Dialog, 
+  DialogActions, 
+  DialogTitle,
+  Button,
 } from "@material-ui/core";
+import { useState } from "react";
 import BookOutlinedIcon from "@mui/icons-material/BookOutlined";
 import SignalCellularAltOutlinedIcon from "@mui/icons-material/SignalCellularAltOutlined";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
+import LogoutIcon from '@mui/icons-material/Logout';
 import logo from "../../../assets/images/logo/도형.svg";
 
 const drawerWidth = 202;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -24,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
   },
+
   drawerPaper: {
     width: drawerWidth,
     backgroundColor: "#3E3E3F",
@@ -48,14 +54,35 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "3px",
     marginBottom: "3px",
   },
+  buttonList: {
+    "&:hover": {
+      backgroundColor: "#999999"
+    },
+    "&active":{
+      backgroundColor: "#999999"
+    }
+  }
 }));
 
 function SideNavbarForm() {
   const classes = useStyles();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
-  const handleListItemClick = (event) => {
-    // 선택된 버튼의 스타일을 변경
-    event.currentTarget.style.backgroundColor = "#999999";
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleLogout = () => {
+    setOpen(false);
+    localStorage.removeItem('Authorization');
+    console.log("로그아웃함:", localStorage.getItem('Authorization'));
+    navigate('/login');
   };
 
   return (
@@ -71,10 +98,10 @@ function SideNavbarForm() {
         <img src={logo} alt="logo" className={classes.logo} />
         <List>
           <ListItem
+            className={classes.buttonList}
             button
             component={NavLink}
             to="/dashboard"
-            onClick={handleListItemClick}
           >
             <ListItemIcon className={classes.icon}>
               <SignalCellularAltOutlinedIcon />
@@ -82,10 +109,10 @@ function SideNavbarForm() {
             <ListItemText primary="대시보드" />
           </ListItem>
           <ListItem
+          className={classes.buttonList}
             button
             component={NavLink}
             to="/markBoard"
-            onClick={handleListItemClick}
           >
             <ListItemIcon className={classes.icon}>
               <MessageOutlinedIcon />
@@ -93,18 +120,41 @@ function SideNavbarForm() {
             <ListItemText primary="상표 관리" />
           </ListItem>
           <ListItem
+          className={classes.buttonList}
             button
             component={NavLink}
             to="/faqBoard"
-            onClick={handleListItemClick}
           >
             <ListItemIcon className={classes.icon}>
               <BookOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="FAQ 관리" />
           </ListItem>
+          <ListItem
+            className={classes.buttonList}
+            button
+            onClick={handleClickOpen}
+          >
+            <ListItemIcon className={classes.icon}>
+              <LogoutIcon />
+            </ListItemIcon>
+            <ListItemText primary="로그아웃" />
+          </ListItem>
         </List>
       </Drawer>
+
+      <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="로그아웃창"
+          aria-describedby="관리자 로그아웃"
+      >
+        <DialogTitle id="alert-dialog-title">정말로 로그아웃을 하시겠습니까?</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleLogout}>예</Button>
+          <Button onClick={handleClose}>아니오</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

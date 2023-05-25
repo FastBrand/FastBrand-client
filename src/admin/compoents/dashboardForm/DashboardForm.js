@@ -11,6 +11,8 @@ import {
   Legend,
 } from "recharts";
 import { Box, Typography, CircularProgress } from "@material-ui/core";
+import TestAdmin from "../testAdmin/TestAdmin";
+import { Navigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,6 +116,8 @@ function DashboardForm() {
     return null;
   }
 
+  const headers = TestAdmin();
+
   useEffect(() => {
     axios
       .all([
@@ -148,14 +152,13 @@ function DashboardForm() {
 
           //setVisitorCount(dashboardData);
           setChartData(updatedChartData);
-          setChartData02(chartData);
-          setLoading(false); // 로딩 완료 후 상태 업데이트
-          console.log(updatedChartData);
+          setChartData02(chartData);   console.log(updatedChartData);
+          setLoading(false); // 로딩 완료 후 상태 업데이트 
         })
       )
       .catch((error) => {
-        console.log(error);
         setLoading(false);
+        console.log(error);
       });
   }, []);
 
@@ -172,6 +175,10 @@ function DashboardForm() {
       setMaxValue(newMaxValue);
     }
   }, [chartData]);
+
+  if (!localStorage.getItem("Authorization")) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className={classes.root}>

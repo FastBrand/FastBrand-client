@@ -17,12 +17,12 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import RefreshIcon from "@material-ui/icons/Refresh";
 import axios from "axios";
 import moment from "moment";
 import ReactPaginate from "react-paginate";
 import { styled } from "@mui/material/styles";
 import "./paginate.css";
+import { Navigate } from "react-router-dom";
 
 const StyledBox = styled(Box)({
   display: "flex",
@@ -166,6 +166,10 @@ function MarkInfo() {
   useEffect(() => {
     setPageCount(Math.ceil(trademarks.length / itemsPerPage));
   }, [trademarks]);
+
+  if (!localStorage.getItem("Authorization")) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div>

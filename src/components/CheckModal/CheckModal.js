@@ -7,6 +7,9 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Dialog, 
+  DialogActions, 
+  DialogTitle
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { makeStyles } from '@material-ui/styles';
@@ -90,6 +93,14 @@ function CheckModal({
   const classes = useStyles();
   const [formattedPrice, setFormattedPrice] = useState(0);
 
+  const [openDialog, setOpenDialog] = useState(false); //다이얼로그 창
+  const handleDialogOpen = () => {
+    setOpenDialog(true);
+  };
+  const handleDialogClose = () => {
+    setOpenDialog(false);
+  };
+
   const handlePrice = () => { //가격정산처리
     let priceData = 0;
 
@@ -122,16 +133,16 @@ function CheckModal({
   }, [markSelectData, madridPriceData, directPriceData]);
 
   const handleConfirmButtonClick = () => {
-    if (window.confirm("견적이메일을 발송하시겠습니까?")) {
       handleSubmit();
       sendEmail();
+      handleDialogClose();
       handleClose();
       alert("메일발송이 완료되었습니다.");
-      
+
       // setTimeout(function() {
       //   window.location.reload();
       // }, 500);
-    }
+    
   };
 
   const sendEmail = () => {
@@ -345,14 +356,25 @@ function CheckModal({
               </TableRow>
             </>
           )}
-
         </TableBody>
     </Table>
       <Button id="submitButton03"
-        onClick={handleConfirmButtonClick}
+        onClick={handleDialogOpen}
         variant="contained">
         견적발송
       </Button>
+      <Dialog
+          open={openDialog}
+          onClose={handleDialogClose}
+          aria-labelledby="메일발송창"
+          aria-describedby="견적메일발송 확인"
+      >
+        <DialogTitle id="alert-dialog-title">정말로 견적메일을 보내시겠습니까?</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleConfirmButtonClick}>예</Button>
+          <Button onClick={handleDialogClose}>아니오</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   </Modal >
   );
