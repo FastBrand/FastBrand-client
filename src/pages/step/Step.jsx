@@ -17,7 +17,7 @@ const Step = () => {
       <StepContainer>
         <Title>절차안내</Title>
         <Grid container direction="row" justifyContent="center">
-          <Grid item xs={6} sm={4} md={3} justifyContent="center">
+          <Grid item xs={6} md={3} justifyContent="center">
             <img src={StepOne} alt="절차안내01" />
             <StepTitle>상표등록신청</StepTitle>
             <StepContent>
@@ -26,7 +26,7 @@ const Step = () => {
               상표정보, 상품류 지정상품 선정
             </StepContent>
           </Grid>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={6} md={3}>
             <img src={StepTwo} alt="절차안내02" />
             <StepTitle>
               상표전문가를 통한
@@ -34,17 +34,17 @@ const Step = () => {
               등록가능성 검토
             </StepTitle>
           </Grid>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={6} md={3}>
             <img src={StepThree} alt="절차안내03" />
             <StepTitle>상표출원준비</StepTitle>
             <StepContent>대리인선임, 특허고객정보등록</StepContent>
           </Grid>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={6} md={3}>
             <img src={StepFour} alt="절차안내04" />
             <StepTitle>출원서 작성</StepTitle>
             <StepContent>우선심사신청서 작성</StepContent>
           </Grid>
-          <Grid item xs={5} sm={4} md={3}>
+          <Grid item xs={5} md={3}>
             <img src={StepFive} alt="절차안내05" />
             <StepTitle>출원완료보고</StepTitle>
             <StepContent>
@@ -54,7 +54,7 @@ const Step = () => {
             </StepContent>
           </Grid>
           <Grid item xs={1}></Grid>
-          <Grid item xs={5} sm={4} md={3}>
+          <Grid item xs={5} md={3}>
             <img src={StepSix} alt="절차안내06" />
             <StepTitle>특허청심사 및 결과통지보고</StepTitle>
             <StepContent>
@@ -64,7 +64,7 @@ const Step = () => {
             </StepContent>
           </Grid>
           <Grid item xs={1}></Grid>
-          <Grid item xs={5} sm={4} md={3}>
+          <Grid item xs={5} md={3}>
             <img src={StepSeven} alt="절차안내07" />
             <StepTitle>등록상표권 관리</StepTitle>
             <StepContent>
