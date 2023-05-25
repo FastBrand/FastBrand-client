@@ -73,7 +73,7 @@ const ApplicantForm = ({
     <>
       <Wrapper sx={{ backgroundColor: "#3E3E3F" }}>
         <FileLabel sx={{ color: "white" }}>
-          출원인 유형을 선택해주세요
+          출원인 유형을 선택해주세요*
         </FileLabel>
         <CustomRadioGroup
           name="applicant-type"
@@ -107,12 +107,12 @@ const ApplicantForm = ({
             fontFamily: "Pretendard",
             textDecoration: "underline",
             fontSize: "18px",
-            fontWeight: 300,
+            fontWeight: 500,
             mr: 1,
           }}
           onClick={handleDialogOpen}
         >
-          개인정보수집 및 활용 동의 전문 보기
+          개인정보수집 및 활용 동의 전문 보기*
         </Typography>
         <CustomRadioGroup
           name="agreement"
@@ -121,6 +121,7 @@ const ApplicantForm = ({
           sx={{
             "& .MuiFormControlLabel-label": {
               fontFamily: "Pretendard",
+              fontWeight: 500,
             },
             width: "30%",
           }}
@@ -128,13 +129,29 @@ const ApplicantForm = ({
           <FormControlLabel
             sx={{ m: 0 }}
             value="동의"
-            control={<Radio />}
+            control={
+              <Radio
+                sx={{
+                  "&.Mui-checked": {
+                    color: "#CBA585",
+                  },
+                }}
+              />
+            }
             label="동의"
           />
           <FormControlLabel
             sx={{ m: 0 }}
             value="거부"
-            control={<Radio />}
+            control={
+              <Radio
+                sx={{
+                  "&.Mui-checked": {
+                    color: "#CBA585",
+                  },
+                }}
+              />
+            }
             label="거부"
           />
         </CustomRadioGroup>
