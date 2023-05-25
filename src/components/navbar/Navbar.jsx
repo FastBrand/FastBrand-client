@@ -41,7 +41,7 @@ const Navbar = ({ backgroundColor }) => {
   const NavLink = styled(Link)(({ theme }) => ({
     fontSize: "20px",
     color: "#CBA585",
-    fontWeight: 500,
+    fontWeight: 600,
     fontFamily: "Pretendard",
     cursor: "pointer",
     textDecoration: "none",
