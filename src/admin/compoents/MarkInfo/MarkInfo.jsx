@@ -12,6 +12,7 @@ import {
   IconButton,
   TableSortLabel,
   TextField,
+  Button
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState, useEffect, useMemo } from "react";
@@ -184,7 +185,7 @@ function MarkInfo() {
           <SearchIcon sx={{ color: "black", fontSize: "30px" }} />
         </IconButton>
       </StyledBox>
-      <IconButton
+      {/* <IconButton
         style={{
           backgroundColor: "#999999",
           color: "inherit",
@@ -194,9 +195,9 @@ function MarkInfo() {
         color="primary"
         size="small"
         aria-label="새로고침"
-      >
-        <RefreshIcon />
-      </IconButton>
+      > */}
+        <Button onClick={refreshData}>새로고침</Button>
+      {/* </IconButton> */}
       <TableContainer component={Paper} sx={{ width: "90%" }}>
         <Table>
           <TableHead>

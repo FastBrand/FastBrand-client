@@ -15,8 +15,7 @@ const CustomTooltip = () => {
             <br />
             <br />
             <span style={{ color: "#ff8368" }}>단점: </span>
-            중계기관을 거치므로 개별국출원 보다 다소 심사진행이 느릴 수
-            있습니다.
+            중계기관을 거치므로 개별국출원 보다 다소 심사진행이 느릴 수 있습니다.
           </Typography>
         </>
       }

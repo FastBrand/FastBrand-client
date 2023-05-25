@@ -1,7 +1,7 @@
 import { TextField, Button } from '@material-ui/core';
 import { Box, Snackbar, Backdrop } from '@mui/material';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
@@ -9,6 +9,13 @@ const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [loginFailed, setLoginFailed] = useState(false);
 const navigate = useNavigate(); // useNavigate hook 사용
+
+useEffect(() => {
+  // 이미 로그인된 상태라면 '/dashboard'로 이동
+  if (localStorage.getItem('Authorization')) {
+    navigate('/dashboard');
+  }
+}, [navigate]);
 
 const handleKeyPress = (event) => {
   if (event.key === 'Enter') {
@@ -24,9 +31,7 @@ const handleLogin = () => {
   .then((response) => {
     const jwtToken = response.headers['Authorization'];
     localStorage.setItem('Authorization', jwtToken); // JWT 토큰 추출
-    console.log({ username });
-    console.log(response);
-    // 토큰 저장
+    console.log("로그인성공:",response);
     navigate('/dashboard'); // 로그인 성공 시 다른 URL로 이동
   })
   .catch((error) => {
@@ -99,7 +104,7 @@ const handleCloseSnackbar = (event, reason) => {
         open={loginFailed}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
-        message="로그인 실패"
+        message="로그인 실패, 아이디와 비밀번호를 확인해주세요."
         action={
           <Button
           color="secondary"
@@ -120,6 +125,7 @@ const handleCloseSnackbar = (event, reason) => {
           horizontal: "center"
         }}
       />
+      
     </Backdrop>
       
     

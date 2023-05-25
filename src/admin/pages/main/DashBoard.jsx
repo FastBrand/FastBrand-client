@@ -8,11 +8,13 @@ function DashBoard() {
       <div
         className="dashboard"
         style={{
-          height: "100vh",
+          height: "120vh",
           marginLeft: "202px",
         }}
       >
+     
         <DashboardForm />
+    
       </div>
     </div>
   );

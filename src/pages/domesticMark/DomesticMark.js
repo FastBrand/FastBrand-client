@@ -32,8 +32,9 @@ function DomesticMark() {
   const [madridData, setMadridData] = useState({}); //마드리드
   const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
   const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
-  const [markSelectData, setmarkSelcetData] = useState({});
+  const [markSelectData, setmarkSelcetData] = useState("");
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
+  const [formatterData, setFormatterData] = useState(0);
   const classes = useStyles();
 
   const nationData = {
@@ -52,7 +53,7 @@ function DomesticMark() {
   const madridDataString = madridDataArray.join(",");
   let directNationString = nationDataString;
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-    directNationString = `[한국] ${nationDataString}`;
+    directNationString = `한국(고정) ${nationDataString}`;
   }
 
   const handleOpen = () => {
@@ -227,7 +228,10 @@ function DomesticMark() {
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
         : { corporate: { ...applicantData } }),
-      user: { ...managerData },
+      user: {
+        ...managerData,
+        price: formatterData.toString(),
+      },
     };
 
     const endpoint =
@@ -256,13 +260,14 @@ function DomesticMark() {
       });
 
     axios
-      .post("http://localhost:8080/api/eidt/upload", imageData, {
+      .post(endpoint, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       })
       .then((response) => {
         console.log(response);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -273,26 +278,27 @@ function DomesticMark() {
     <div className={classes.root}>
       <Navbar backgroundColor="white" />
       <MarkSelectForm onSelectedMark={setmarkSelcetData} />
-      <TrademarkForm
-        onTrademarkDataChange={setTrademarkData}
-        onImageDataChange={setImageData}
-      />
+      <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
+
       {markSelectData === "국내출원" ? null : (
         <NationSelectForm
           onSelectedCountries={setcountriesData}
           onSelectedMadrid={setMadridData}
           onEachPrice={setDirectPriceData}
           onMadridPrice={setMadridPriceData}
+          classificationDataString={classificationData.sector}
+          markSelectData={markSelectData}
         />
       )}
+
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
-        onSealDataChange={setSealData}
       />
-      <Button id="submitButton01" onClick={() => handleOpen()}>
+
+      <Button id="submitButton01" onClick={() => handleOpen(true)}>
         견적보기
       </Button>
       <TopButton />
@@ -311,6 +317,7 @@ function DomesticMark() {
           applicantType={applicantType}
           madridPriceData={madridPriceData}
           directPriceData={directPriceData}
+          onFormattedPrice={setFormatterData}
         />
       )}
       <Footer />
