@@ -1,11 +1,9 @@
 import {
   CustomDrawer,
   CustomListItem,
-  CustomBox,
   CustomCloseIcon,
 } from "./MenuDrawerStyles";
-import CustomerService from "../../assets/images/icon/customer-service.png";
-import { List, ListItemText, Grid, Box } from "@mui/material";
+import { List, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const menuItems = [
@@ -32,15 +30,25 @@ const MenuDrawer = ({ open, toggleDrawer }) => {
       <div
         style={{
           fontFamily: "Pretendard",
-          padding: "0 0px 2em 0",
+          paddingBottom: "30px",
           borderBottom: "1px solid #d9d9d9",
         }}
       >
-        <span style={{ fontWeight: 700, fontSize: "38px" }}>02-553-1246</span>
+        <div
+          style={{
+            fontSize: "24px",
+            fontWeight: 800,
+          }}
+        >
+          고객 센터
+        </div>
+        <div style={{ fontWeight: 700, fontSize: "38px", marginTop: "-5px" }}>
+          02-553-1246
+        </div>
         <br />
-        Email. sjyim@wonjon.com
+        핸드폰 : 010-4006-5236
         <br />
-        FAX.02-553-0990, 0987
+        이메일 : mark@wonjon.com
       </div>
       <CustomCloseIcon onClick={() => toggleDrawer(false)} />
       <List>
