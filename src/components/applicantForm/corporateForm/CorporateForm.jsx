@@ -78,7 +78,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
   return (
     <>
       <FormContainer>
-        <CustomTypo>06. 출원인 정보를 입력해주세요</CustomTypo>
+        <CustomTypo>06. 출원인 정보를 입력해주세요*</CustomTypo>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <CustomTextField

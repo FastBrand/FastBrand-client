@@ -53,7 +53,7 @@ const TrademarkForm = ({ onTrademarkDataChange, onImageDataChange }) => {
       <FormContainer>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <CustomTypo>02. 상표명과 설명을 적어주세요</CustomTypo>
+            <CustomTypo>02. 상표명과 설명을 적어주세요*</CustomTypo>
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField

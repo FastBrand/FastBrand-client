@@ -29,7 +29,7 @@ const ManagerForm = ({ onManagerChange }) => {
 
   return (
     <FormContainer>
-      <CustomTypo>04. 담당자 정보를 입력해주세요</CustomTypo>
+      <CustomTypo>04. 담당자 정보를 입력해주세요*</CustomTypo>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <CustomTextField
