@@ -4,6 +4,7 @@ import {
   CustomBox,
   CustomCloseIcon,
 } from "./MenuDrawerStyles";
+import CustomerService from "../../assets/images/icon/customer-service.png";
 import { List, ListItemText, Grid, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -22,24 +23,25 @@ const MenuDrawer = ({ open, toggleDrawer }) => {
       open={open}
       onClose={() => toggleDrawer(false)}
     >
-      <CustomBox>
-        <Grid container>
-          <Grid item xs={3}>
-            <Box style={{ fontWeight: 800 }}>
-              <Box>고객센터</Box>
-              <Box>핸드폰</Box>
-              <Box>이메일</Box>
-            </Box>
-          </Grid>
-          <Grid item xs={9}>
-            <Box>
-              <Box>02-553-1246</Box>
-              <Box>010-4006-5236</Box>
-              <Box>mark@wonjon.com</Box>
-            </Box>
-          </Grid>
-        </Grid>
-      </CustomBox>
+      {/* <a
+          href="https://www.flaticon.com/free-icons/customer-service"
+          title="customer service icons"
+        >
+          Customer service icons created by Freepik - Flaticon
+        </a> */}
+      <div
+        style={{
+          fontFamily: "Pretendard",
+          padding: "0 0px 2em 0",
+          borderBottom: "1px solid #d9d9d9",
+        }}
+      >
+        <span style={{ fontWeight: 700, fontSize: "38px" }}>02-553-1246</span>
+        <br />
+        Email. sjyim@wonjon.com
+        <br />
+        FAX.02-553-0990, 0987
+      </div>
       <CustomCloseIcon onClick={() => toggleDrawer(false)} />
       <List>
         {menuItems.map((item, index) => (
