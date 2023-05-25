@@ -237,9 +237,9 @@ function DomesticMark() {
 
     const JSONData = JSON.stringify(data);
 
-    const imageData = new FormData();
-    imageData.append("image", imageData);
-    if (applicantType.poc === "corporate") imageData.append("seal", sealData);
+    const formData = new FormData();
+    formData.append("image", imageData);
+    if (applicantType.poc === "corporate") formData.append("seal", sealData);
 
     axios
       .post(endpoint, JSONData, {
