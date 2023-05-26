@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { List, Box, ListItem, Typography } from "@mui/material";
+import { List, ListItem, Typography } from "@mui/material";
 
 export const Logo = styled("img")(({ theme }) => ({
   width: "150px",
@@ -36,13 +36,10 @@ export const CustomList = styled(List)(({ theme }) => ({
   display: "flex",
   paddingBottom: 3,
   flexDirection: "row",
-  [theme.breakpoints.down("400")]: {
-    flexDirection: "column",
-  },
 }));
 
 export const CustomListItem = styled(ListItem)(({ theme }) => ({
-  width: "180px",
+  width: "150px",
   padding: 0,
 }));
 
@@ -52,7 +49,7 @@ export const CustomListItemText = styled(Typography)(({ theme }) => ({
   color: "#CBA585",
 }));
 
-export const CompanyInfo = styled(Box)(({ theme }) => ({
+export const CompanyInfo = styled("div")(({ theme }) => ({
   color: "#696969",
   fontWeight: "500",
 }));

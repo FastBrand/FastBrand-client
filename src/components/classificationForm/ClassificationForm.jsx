@@ -209,7 +209,21 @@ const ClassificationForm = ({ onClassificationataChange }) => {
 
   return (
     <FormContainer sx={{ pb: 0 }}>
-      <CustomTypo>03. 분류를 선택해주세요</CustomTypo>
+      <CustomTypo>
+        03. 분류를 선택해주세요*
+        <div
+          style={{
+            fontSize: " 16px",
+            textAlign: "left",
+            /* font-family: "Pretendard"; */
+            fontWeight: 500,
+            color: "#000000",
+            marginBottom: "2rem",
+          }}
+        >
+          다중선택이 가능하며 마우스를 대면 분류에 대한 정보를 볼 수 있습니다
+        </div>
+      </CustomTypo>
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "left" }}
       >

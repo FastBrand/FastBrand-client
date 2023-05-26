@@ -18,84 +18,110 @@ function PriceForm() {
   return (
     <div>
       <div>
-      <Navbar backgroundColor={true} borderBottom={true} />
+        <Navbar backgroundColor="white" />
       </div>
-    <div className="priceInfo">
-      <br/><br/><br/>
-      <div className="priceTitle">비용안내</div>
-      <Container>
-        <Grid container spacing={3}>
-          <Grid item xs={4}>
-            <Card className="priceCard">
-              <CardContent>
-              <Typography id='priceNotice01'>
-                  {title[0]}
-                </Typography>
-                <br /><br /><br />
-                <Typography id="priceNum" variant="h3" color={"#CBA585"}>
-                  ₩ 000,000~
-                </Typography>
-                <Typography id='priceNotice02'>
-                  <CheckIcon /> 30일 이내 출원심사 완료
-                  <br /><br /><br />
-                  <CheckIcon /> 상표출원 불가판정 시, 심사비 환불
-                  <br /><br /><br />
-                  <CheckIcon /> 무료 문의
-                  <br /><br /><br />
-                </Typography>
-                <br /><br /><br />
-              </CardContent>
-            </Card>
-          </Grid>
+      <div className="priceInfo">
+        <br />
+        <br />
+        <br />
+        <div className="priceTitle">비용안내</div>
+        <Container>
+          <Grid container spacing={3}>
+            <Grid item xs={4}>
+              <Card className="priceCard">
+                <CardContent>
+                  <Typography id="priceNotice01">{title[0]}</Typography>
+                  <br />
+                  <br />
+                  <br />
+                  <Typography id="priceNum" variant="h3" color={"#CBA585"}>
+                    ₩ 000,000~
+                  </Typography>
+                  <Typography id="priceNotice02">
+                    <CheckIcon /> 30일 이내 출원심사 완료
+                    <br />
+                    <br />
+                    <br />
+                    <CheckIcon /> 상표출원 불가판정 시, 심사비 환불
+                    <br />
+                    <br />
+                    <br />
+                    <CheckIcon /> 무료 문의
+                    <br />
+                    <br />
+                    <br />
+                  </Typography>
+                  <br />
+                  <br />
+                  <br />
+                </CardContent>
+              </Card>
+            </Grid>
 
-          <Grid item xs={4}>
-            <Card className="priceCard">
-              <CardContent>
-              <Typography id='priceNotice01'>
-                  {title[1]}
-                </Typography>
-                <br /><br /><br />
-                <Typography id="priceNum" variant="h3" color={"#7A3200"}>
-                  ₩ 000,000~
-                </Typography>
-                <Typography id='priceNotice02'>
-                  <CheckIcon /> 30일 이내 출원심사 완료
-                  <br /><br /><br />
-                  <CheckIcon /> 상표출원 불가판정 시, 심사비 환불
-                  <br /><br /><br />
-                  <CheckIcon /> 무료 문의
-                  <br /><br /><br />
-                </Typography>
-                <br /><br /><br />
-              </CardContent>
-            </Card>
-          </Grid>
+            <Grid item xs={4}>
+              <Card className="priceCard">
+                <CardContent>
+                  <Typography id="priceNotice01">{title[1]}</Typography>
+                  <br />
+                  <br />
+                  <br />
+                  <Typography id="priceNum" variant="h3" color={"#7A3200"}>
+                    ₩ 000,000~
+                  </Typography>
+                  <Typography id="priceNotice02">
+                    <CheckIcon /> 30일 이내 출원심사 완료
+                    <br />
+                    <br />
+                    <br />
+                    <CheckIcon /> 상표출원 불가판정 시, 심사비 환불
+                    <br />
+                    <br />
+                    <br />
+                    <CheckIcon /> 무료 문의
+                    <br />
+                    <br />
+                    <br />
+                  </Typography>
+                  <br />
+                  <br />
+                  <br />
+                </CardContent>
+              </Card>
+            </Grid>
 
-          <Grid item xs={4}>
-            <Card className="priceCard">
-              <CardContent>
-                <Typography id='priceNotice01'>
-                  {title[2]}
-                </Typography>
-                <br /><br /><br />
-                <Typography id="priceNum" variant="h3" color={"#005B49"}>
-                  ₩ 000,000~
-                </Typography>
-                <Typography id='priceNotice02'>
-                  <CheckIcon /> 30일 이내 출원심사 완료
-                  <br /><br /><br />
-                  <CheckIcon /> 상표출원 불가판정 시, 심사비 환불
-                  <br /><br /><br />
-                  <CheckIcon /> 무료 문의
-                  <br /><br /><br />
-                </Typography>
-                <br /><br /><br />
-              </CardContent>
-            </Card>
+            <Grid item xs={4}>
+              <Card className="priceCard">
+                <CardContent>
+                  <Typography id="priceNotice01">{title[2]}</Typography>
+                  <br />
+                  <br />
+                  <br />
+                  <Typography id="priceNum" variant="h3" color={"#005B49"}>
+                    ₩ 000,000~
+                  </Typography>
+                  <Typography id="priceNotice02">
+                    <CheckIcon /> 30일 이내 출원심사 완료
+                    <br />
+                    <br />
+                    <br />
+                    <CheckIcon /> 상표출원 불가판정 시, 심사비 환불
+                    <br />
+                    <br />
+                    <br />
+                    <CheckIcon /> 무료 문의
+                    <br />
+                    <br />
+                    <br />
+                  </Typography>
+                  <br />
+                  <br />
+                  <br />
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </div>
+        </Container>
+      </div>
     </div>
   );
 }

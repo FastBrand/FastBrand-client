@@ -16,7 +16,7 @@ const Main = () => {
     <>
       <BackgroundBox>
         <MainContainer>
-          <Navbar backgroundColor={false} borderBottom={false} />
+          <Navbar backgroundColor="none" />
           <CustomBox>
             <Box>
               <Title variant="h1">
