@@ -142,7 +142,6 @@ function CheckModal({
       // setTimeout(function() {
       //   window.location.reload();
       // }, 500);
-    
   };
 
   const sendEmail = () => {

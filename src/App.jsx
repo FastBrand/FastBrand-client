@@ -13,7 +13,7 @@ import CompanyPoint from "./pages/companyPoint/CompanyPoint";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import LoginForm from "./components/loginForm/LoginForm";
-
+import NotFound from "./pages/notFound/NotFound";
 
 function App() {
   
@@ -39,7 +39,7 @@ function App() {
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/faqBoard" element={<FaqBoard />} />
         <Route path="/markBoard" element={<MarkBoard />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );

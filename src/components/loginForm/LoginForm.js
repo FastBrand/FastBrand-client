@@ -1,8 +1,15 @@
-import { TextField, Button } from '@material-ui/core';
-import { Box, Snackbar, Backdrop } from '@mui/material';
+import { 
+  Box, 
+  Snackbar, 
+  Backdrop,
+  TextField, 
+  Button,
+ } from '@mui/material';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+
+
 
 function LoginForm() {
 const [username, setUsername] = useState('');
@@ -10,12 +17,6 @@ const [password, setPassword] = useState('');
 const [loginFailed, setLoginFailed] = useState(false);
 const navigate = useNavigate(); // useNavigate hook 사용
 
-// useEffect(() => {
-//   // 이미 로그인된 상태라면 '/dashboard'로 이동
-//   if (localStorage.getItem('Authorization')!==null) {
-//     navigate('/dashboard');
-//   }
-// }, [navigate]);
 
 const handleKeyPress = (event) => {
   if (event.key === 'Enter') {
@@ -47,6 +48,10 @@ const handleCloseSnackbar = (event, reason) => {
   setLoginFailed(false);
 };
 
+  if (localStorage.getItem('Authorization')!== null) {
+    navigate('/dashboard');
+  }
+
   return (
     <div
       style={{
@@ -61,9 +66,9 @@ const handleCloseSnackbar = (event, reason) => {
         textAlign: "center",
         marginBottom: '32px',
         fontFamily: 'Pretendard',
-        fontWeight: 500,
-        fontSize: "28px",
-        color: '#181c06'
+        fontWeight: 600,
+        fontSize: "32px",
+        color: '#7f7778'
       }}>
         관리자 로그인
       </Box>
@@ -111,25 +116,38 @@ const handleCloseSnackbar = (event, reason) => {
       open={loginFailed}
       onClick={handleCloseSnackbar}
     >
+  
       <Snackbar
         open={loginFailed}
-        autoHideDuration={6000}
         onClose={handleCloseSnackbar}
-        message="로그인 실패, 아이디와 비밀번호를 확인해주세요."
+        message={
+        <div>
+          로그인 실패
+          <br />
+          아이디와 비밀번호를 확인해주세요.
+        </div>
+        }
         action={
           <Button
-          color="secondary"
-          size="small"
-          onClick={handleCloseSnackbar}>
+          color="error"
+          size="medium"
+          onClick={handleCloseSnackbar}
+          sx={{ marginTop: "8px" }}
+          >
             닫기
           </Button>
         }
         sx={{
           position: "fixed",
-          top: "70%",
+          top: "50%", 
           left: "50%",
-          height: "300px", // 너비를 3배 늘림
-          justifyContent: "center", // 내용을 가운데 정렬
+          transform: "translate(-50%, -50%)", 
+          width: "300px", 
+          height: "500px", 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "center",
+          flexDirection: "column", // 메시지와 액션을 세로로 배치
         }}
         anchorOrigin={{
           vertical: "top",
