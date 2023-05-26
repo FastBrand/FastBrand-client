@@ -236,8 +236,8 @@ function DomesticMark() {
 
     const endpoint =
       applicantType.poc === "personal"
-        ? "http://localhost:8080/api/register/personal"
-        : "http://localhost:8080/api/register/corporate";
+        ? "http://localhost:8080/api/register/all/personal"
+        : "http://localhost:8080/api/register/all/corporate";
 
     const JSONData = JSON.stringify(data);
 
@@ -247,11 +247,7 @@ function DomesticMark() {
     if (applicantType.poc === "corporate") formData.append("seal", sealData);
 
     axios
-      .post(endpoint, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      .post(endpoint, formData)
       .then((response) => {
         console.log(response);
         console.log(data);
