@@ -10,12 +10,11 @@ import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-
 function LoginForm() {
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [loginFailed, setLoginFailed] = useState(false);
-const navigate = useNavigate(); // useNavigate hook 사용
+const navigate = useNavigate();
 
 
 const handleKeyPress = (event) => {

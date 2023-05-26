@@ -129,8 +129,11 @@ function CheckModal({
 
   useEffect(() => {
     setFormattedPrice(handlePrice());
-    onFormattedPrice(formattedPrice);
   }, [markSelectData, madridPriceData, directPriceData]);
+
+  useEffect(() => {
+    onFormattedPrice(formattedPrice);
+  }, [formattedPrice]);
 
   const handleConfirmButtonClick = () => {
       handleSubmit();
