@@ -293,7 +293,7 @@ function MarkInfo() {
                         {trademark.brand_name}
                       </TableCell>
                       <TableCell align="center">{trademark.type}</TableCell>
-                      <TableCell align="center">{trademark.poc}</TableCell>
+                      <TableCell align="center">{trademark.poc === 'personal' ? '개인' : trademark.poc === 'corporate' ? '법인' : ''}</TableCell>
                       <TableCell align="center">{trademark.name}</TableCell>
                       <TableCell align="center">{trademark.email}</TableCell>
                       <TableCell align="center">
@@ -317,7 +317,7 @@ function MarkInfo() {
                         {trademark.brand_name}
                       </TableCell>
                       <TableCell align="center">{trademark.type}</TableCell>
-                      <TableCell align="center">{trademark.poc}</TableCell>
+                      <TableCell align="center">{trademark.poc === 'personal' ? '개인' : trademark.poc === 'corporate' ? '법인' : ''}</TableCell>
                       <TableCell align="center">{trademark.name}</TableCell>
                       <TableCell align="center">{trademark.email}</TableCell>
                       <TableCell align="center">

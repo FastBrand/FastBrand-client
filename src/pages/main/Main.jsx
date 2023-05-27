@@ -9,9 +9,20 @@ import {
 import { Box } from "@mui/material";
 import Footer from "../../components/footer/Footer";
 import React from "react";
+import { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
+import ReactGA from "react-ga";
 
 const Main = () => {
+
+  useEffect(() => {
+    // Google Analytics 초기화
+    ReactGA.initialize("UA-264549276-1");
+
+    // 페이지 뷰 기록
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+
   return (
     <>
       <BackgroundBox>

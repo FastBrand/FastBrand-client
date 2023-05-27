@@ -33,8 +33,8 @@ function DomesticMark() {
   const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
   const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
   const [markSelectData, setmarkSelcetData] = useState("");
-  const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
-  const [formatterData, setFormatterData] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false); 
+  const [formatterData, setFormatterData] = useState(0); //종합가격
   const classes = useStyles();
 
   const nationData = {
@@ -240,7 +240,6 @@ function DomesticMark() {
         : "http://localhost:8080/api/register/corporate";
 
     const JSONData = JSON.stringify(data);
-    //console.log(JSONData);
 
     axios
       .post(endpoint, JSONData, {
@@ -248,6 +247,7 @@ function DomesticMark() {
           "Content-Type": "application/json",
         },
       })
+      // .post(endpoint, formData) merge데이터 충돌난건데 혹시 몰라서 주석처리해서 보존함 
       .then((response) => {
         console.log(response);
         console.log(data)
