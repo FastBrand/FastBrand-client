@@ -41,6 +41,7 @@ function MarkDetail() {
         mobile: data.user.mobile,
         phone: data.user.phone,
         acc_num: data.user.acc_num,
+        price: data.user.price,
         created_at: data.user.created_at,
 
         pname_kor: data.personal.name_kor,
@@ -72,6 +73,7 @@ function MarkDetail() {
         mobile: data.user.mobile,
         phone: data.user.phone,
         acc_num: data.user.acc_num,
+        price: data.user.price,
         created_at: data.user.created_at,
 
         cname_kor: data.corporate.name_kor,
@@ -165,7 +167,7 @@ function MarkDetail() {
                 <TableCell align="center">{trademark.pname_eng}</TableCell>
               </TableRow>
               <TableRow className="table-row">
-                <TableCell align="center">주민등록번호</TableCell>
+                <TableCell align="center">생년월일</TableCell>
                 <TableCell align="center">{trademark.pssn}</TableCell>
               </TableRow>
               <TableRow className="table-row">
@@ -236,7 +238,7 @@ function MarkDetail() {
               <TableCell align="center">{trademark.corporateName}</TableCell>
             </TableRow>
             <TableRow className="table-row">
-              <TableCell align="center">대표자 주민등록번호</TableCell>
+              <TableCell align="center">대표자 생년월일</TableCell>
               <TableCell align="center">{trademark.cssn}</TableCell>
             </TableRow>
             <TableRow className="table-row">
@@ -321,7 +323,7 @@ function MarkDetail() {
               <TableCell align="center">{trademark.madrid}</TableCell>
             </TableRow>
             <TableRow className="table-row">
-              <TableCell align="center">직접출원</TableCell>
+              <TableCell align="center">개별출원</TableCell>
               <TableCell align="center">{trademark.direct}</TableCell>
             </TableRow>
           </TableBody>
@@ -360,6 +362,10 @@ function MarkDetail() {
           <TableRow className="table-row">
             <TableCell align="center">계좌번호</TableCell>
             <TableCell align="center">{trademark.acc_num}</TableCell>
+          </TableRow>
+          <TableRow className="table-row">
+            <TableCell align="center">예상가격</TableCell>
+            <TableCell align="center">{trademark.price}</TableCell>
           </TableRow>
           <TableRow className="table-row">
             <TableCell align="center">등록일자</TableCell>

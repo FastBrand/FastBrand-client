@@ -174,6 +174,11 @@ const classifications = [
     description:
       "법무, 보안, 웨딩, 장례, 종교, 돌봄서비스, 개인 서비스업, 온라인 소셜네트워킹",
   },
+  {
+    id: 46,
+    name: "기타",
+    description: "기타",
+  },
 ];
 
 const ClassificationForm = ({ onClassificationataChange }) => {
@@ -224,7 +229,7 @@ const ClassificationForm = ({ onClassificationataChange }) => {
               onClick={() => handleClassificationClick(classification.id)}
               style={{
                 border: selectedClassifications.includes(classification.id)
-                  ? "2px solid #CBA585"
+                  ? "2px solid #857770"
                   : "1px solid black",
                 fontFamily: "Pretendard",
                 fontWeight: selectedClassifications.includes(classification.id)
@@ -234,12 +239,16 @@ const ClassificationForm = ({ onClassificationataChange }) => {
                 margin: "0.8rem 0.5rem",
                 borderRadius: "3px",
                 fontSize: "18px",
-                backgroundColor: "white",
+                backgroundColor: selectedClassifications.includes(
+                  classification.id
+                )
+                  ? "#857770"
+                  : "white",
                 color: selectedClassifications.includes(classification.id)
-                  ? "#CBA585"
+                  ? "#f6f6eb"
                   : "black",
                 boxShadow: selectedClassifications.includes(classification.id)
-                  ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 5px"
+                  ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 3px"
                   : "none",
               }}
             >

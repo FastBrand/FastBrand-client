@@ -130,9 +130,9 @@ const Navbar = ({ backgroundColor, borderBottom }) => {
               <NavbarLogo src={logoImg} alt="빠른상표" />
             </Link>
             <NavbarLinksBox>
-              <NavLink to="/price">비용안내</NavLink>
               <NavLink to="/step">절차안내</NavLink>
               <NavLink to="/companyinfo">회사소개</NavLink>
+              <NavLink to="/companypoint">서비스안내</NavLink>
               <NavLink to="/faq">고객문의</NavLink>
             </NavbarLinksBox>
           </Box>

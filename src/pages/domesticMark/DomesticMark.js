@@ -7,17 +7,18 @@ import ApplicantForm from "../../components/applicantForm/ApplicantForm";
 import ManagerForm from "../../components/managerForm/ManagerForm";
 import TopButton from "../../components/topButton/TopButton";
 import CheckModal from "../../components/CheckModal/CheckModal";
+import Footer from "../../components/footer/Footer";
 import { Button } from "@mui/material";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from "@material-ui/styles";
 import { useState } from "react";
 import axios from "axios";
 import "./DomesticMark.css";
 
-const useStyles = makeStyles((theme)=>({
-  root:{
+const useStyles = makeStyles((theme) => ({
+  root: {
     fontFamily: "Pretendard",
   },
-}))
+}));
 
 function DomesticMark() {
   const [trademarkData, setTrademarkData] = useState({});
@@ -27,8 +28,11 @@ function DomesticMark() {
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [countriesData, setcountriesData] = useState({}); //개별출원
   const [madridData, setMadridData] = useState({}); //마드리드
-  const [markSelectData, setmarkSelcetData] = useState({});
+  const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
+  const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
+  const [markSelectData, setmarkSelcetData] = useState("");
   const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
+  const [formatterData, setFormatterData] = useState(0);
   const classes = useStyles();
 
   const nationData = { //개별출원 데이터 (
@@ -43,18 +47,16 @@ function DomesticMark() {
 
   const nationDataString = nationDataArray.join(',');
   const madridDataString = madridDataArray.join(',');
-  let directNationString = ''
-
+  let directNationString = nationDataString;
+  if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
+    directNationString = `한국(고정) ${nationDataString}`;
+  }
+  
   const handleClose = () => {
     setModalOpen(false);
   };
 
   const handleSubmit = () => {
-    if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-      directNationString = `한국, ${nationDataString}`;
-    }
-  
-  
     const data = {
       mark: {
         ...trademarkData,
@@ -63,13 +65,16 @@ function DomesticMark() {
         type: markSelectData,
         country: "더미데이터",
         madrid: madridDataString,
-        direct: directNationString ,
+        direct: directNationString,
         status: "더미데이터"
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
         : { corporate: { ...applicantData } }),
-      user: { ...managerData },
+      user: {
+        ...managerData,
+        price: formatterData.toString()
+      },
     };
 
     const endpoint =
@@ -84,41 +89,45 @@ function DomesticMark() {
       .post(endpoint, JSONData, {
         headers: {
           "Content-Type": "application/json",
-        },}) 
+        },
+      })
       .then((response) => {
         console.log(response);
-        console.log("성공");
+        console.log(data)
       })
       .catch((error) => {
         console.log(error);
-        console.log("실패");
         console.log(data);
         console.log(JSONData);
       });
-
   };
 
   return (
     <div className={classes.root}>
       <Navbar backgroundColor={true} borderBottom={true} />
-      <MarkSelectForm onSelectedMark={setmarkSelcetData}/>
+      <MarkSelectForm onSelectedMark={setmarkSelcetData} />
       <TrademarkForm onTrademarkDataChange={setTrademarkData} />
       <ClassificationForm onClassificationataChange={setClassificationData} />
       <ManagerForm onManagerChange={setManagerData} />
-
+      
       {markSelectData === "국내출원" ? 
-      null : 
-      <NationSelectForm onSelectedCountries={setcountriesData} onSelectedMadrid={setMadridData} />}
+      null
+      :
+      <NationSelectForm
+      onSelectedCountries={setcountriesData}
+      onSelectedMadrid={setMadridData} 
+      onEachPrice={setDirectPriceData}
+      onMadridPrice={setMadridPriceData}
+      classificationDataString={classificationData.sector}
+      markSelectData={markSelectData}
+      />}
 
       <ApplicantForm
         onApplicantChange={setApplicantData}
         onApplicantTypeChange={setApplicantType}
       />
 
-      <Button
-        id="submitButton01"
-        onClick={() => setModalOpen(true)}
-      >
+      <Button id="submitButton01" onClick={() => setModalOpen(true)}>
         견적보기
       </Button>
       <TopButton />
@@ -133,7 +142,12 @@ function DomesticMark() {
         applicantData={applicantData}
         markSelectData={markSelectData}
         classificationData={classificationData}
+        applicantType={applicantType}
+        madridPriceData={madridPriceData}
+        directPriceData={directPriceData}
+        onFormattedPrice={setFormatterData}
       />
+      <Footer />
     </div>
   );
 }

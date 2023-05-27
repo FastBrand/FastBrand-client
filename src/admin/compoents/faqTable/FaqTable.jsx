@@ -31,7 +31,12 @@ const FaqTable = () => {
     axios
       .get("http://localhost:8080/api/faq")
       .then((response) => {
-        setFaqData(response.data);
+        const formattedData = response.data.map((faq) => ({
+          ...faq,
+          content: faq.content.replace(/\\r\\n/g, "\r\n"),
+          title: faq.title.replace(/\\r\\n/g, "\r\n"),
+        }));
+        setFaqData(formattedData);
       })
       .catch((error) => {
         console.log(error);
@@ -61,6 +66,9 @@ const FaqTable = () => {
         variant="contained"
         startIcon={<AddIcon />}
         onClick={handleAddClick}
+        sx={{
+          mb: 1,
+        }}
       >
         추가
       </Button>
