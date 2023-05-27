@@ -15,6 +15,7 @@ export const StepTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
   fontSize: "24px",
   fontWeight: 700,
+  marginTop: "-50px",
 }));
 
 export const StepContent = styled(Typography)(({ theme }) => ({

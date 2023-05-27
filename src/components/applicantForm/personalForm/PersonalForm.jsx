@@ -20,7 +20,7 @@ const PersonalForm = ({ onPersonalChange }) => {
     address: "",
     detail: "",
     zipcode: "",
-    agreement: "동의",
+    agreement: "",
   });
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const PersonalForm = ({ onPersonalChange }) => {
 
   return (
     <FormContainer>
-      <CustomTypo>05. 출원인 정보를 입력해주세요</CustomTypo>
+      <CustomTypo>05. 출원인 정보를 입력해주세요*</CustomTypo>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <CustomTextField

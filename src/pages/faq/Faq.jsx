@@ -7,8 +7,8 @@ const Faq = () => {
   return (
     <>
       <FAQContainer>
-        <Navbar backgroundColor={true} borderBottom={true} />
-        <Title>FAQ</Title>
+        <Navbar backgroundColor="white" />
+        <Title>자주하는질문</Title>
         <FaqAccordion />
       </FAQContainer>
       <Footer />

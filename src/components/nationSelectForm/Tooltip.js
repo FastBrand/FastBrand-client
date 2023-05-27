@@ -7,7 +7,7 @@ const CustomTooltip = () => {
       placement="top"
       title={
         <>
-          <Typography fontSize={"14px"} fontFamily="Pretendard">
+          <Typography fontSize={"16px"} fontFamily="Pretendard">
             <span style={{ color: "#ffc448" }}>장점: </span>
             마드리드 출원이란 [마드리드 협약]에 속해 있는 국가들을 중계하는
             기관에 요청하여 여러 국가 동시 출원시에 '기본개별수수료' 절감효과를

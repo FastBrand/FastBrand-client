@@ -12,8 +12,17 @@ import { Box, ListItem } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const menuItems = [
-  { text: "개인정보취급방침", link: "/" },
-  { text: "이용약관", link: "/" },
+  {
+    text: "개인정보취급방침",
+    link: "http://www.wonjon.com/default/info/info01.php",
+    target: "_blank",
+  },
+  {
+    text: "이메일무단수집거부",
+    link: "http://www.wonjon.com/default/info/info02.php",
+    target: "_blank",
+  },
+  { text: "관리자", link: "/login", target: "_self" },
 ];
 
 const Footer = () => {
@@ -24,7 +33,12 @@ const Footer = () => {
         <CompanyInfo>
           <CustomList>
             {menuItems.map((item, index) => (
-              <CustomListItem key={index} component={Link} to={item.link}>
+              <CustomListItem
+                key={index}
+                component={Link}
+                to={item.link}
+                target={item.target}
+              >
                 <CustomListItemText>{item.text}</CustomListItemText>
               </CustomListItem>
             ))}

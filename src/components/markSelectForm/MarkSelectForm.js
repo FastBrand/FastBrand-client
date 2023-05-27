@@ -64,7 +64,7 @@ function MarkAreaCard(props) {
               color: isSelected ? "#f6f6eb" : "#857770",
               fontFamily: "Pretendard",
               fontWeight: 700,
-              fontSize: "36px",
+              fontSize: "34px",
             }}
           >
             {props.markData.type}
@@ -127,7 +127,7 @@ function MarkSelectForm({ onSelectedMark }) {
     <Box sx={{ backgroundColor: "#3e3e3f", paddingTop: "80px" }}>
       <FormContainer>
         <CustomTypo sx={{ color: "white" }}>
-          01. 패키지 유형을 선택해주세요
+          01. 패키지 유형을 선택해주세요*
         </CustomTypo>
         <Grid container spacing={3}>
           <Grid item xs={4}>

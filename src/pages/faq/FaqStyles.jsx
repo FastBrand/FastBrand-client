@@ -4,9 +4,10 @@ import { Typography } from "@mui/material";
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
   fontWeight: 600,
-  fontSize: "45px",
+  fontSize: "40px",
   textAlign: "center",
-  marginBottom: "5vw",
+  marginTop: "200px",
+  marginBottom: "3vw",
   [theme.breakpoints.down("lg")]: {
     fontSize: "37px",
   },
@@ -16,7 +17,6 @@ export const FAQContainer = styled("div")(({ theme }) => ({
   paddingLeft: "25vw",
   paddingRight: "25vw",
   paddingBottom: "300px",
-  marginTop: "150px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

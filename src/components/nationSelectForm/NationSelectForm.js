@@ -397,9 +397,9 @@ function processCountryData(nation_data, madrid_data) {
   return (
     <FormContainer>
       <CustomTypo>
-        04-2. 출원할 방법과 국가를 선택해주세요
+        04-2. 출원할 방법과 국가를 선택해주세요*
         <div className="littleInfo">
-          ※ '같은 국가'를 개별출원과 마드리드 동시에 출원할수는 없습니다&nbsp;
+          ※ '같은 국가'를 개별출원과 마드리드 동시에 출원할 수 없습니다&nbsp;
           <span>
             <CustomTooltip />
           </span>
