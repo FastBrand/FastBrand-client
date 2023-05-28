@@ -12,11 +12,11 @@ const ManagerForm = ({ onManagerChange }) => {
     email: "",
     mobile: "",
     phone: "",
-    acc_num: "", // 계좌번호
+    acc_num: "", // 은행명, 계좌번호
   });
 
   const [bankData, setBankData] = useState({
-    type: "은행",
+    type: "",
     name: "",
     acc_num: "",
   });
@@ -169,7 +169,7 @@ const ManagerForm = ({ onManagerChange }) => {
             onChange={(event) => handleInputChange(event, "phone")}
           />
         </Grid>
-        <Grid item xs={1.5}>
+        <Grid item xs={6} md={3}>
           <FormControl fullWidth>
             <InputLabel
               required
@@ -185,7 +185,11 @@ const ManagerForm = ({ onManagerChange }) => {
               구분
             </InputLabel>
             <Select
-              sx={{ fontFamily: "Pretendard", fontSize: "20px" }}
+              sx={{
+                fontFamily: "Pretendard",
+                fontSize: "20px",
+                marginBottom: "2rem",
+              }}
               variant="standard"
               labelId="bankTypeLabel"
               id="bankType"
@@ -201,7 +205,7 @@ const ManagerForm = ({ onManagerChange }) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={6} md={3}>
           <FormControl fullWidth>
             <InputLabel
               id="bankNameLabel"
@@ -217,7 +221,11 @@ const ManagerForm = ({ onManagerChange }) => {
               {bankData.type === "은행" ? "은행명" : "증권사명"}
             </InputLabel>
             <Select
-              sx={{ fontFamily: "Pretendard", fontSize: "20px" }}
+              sx={{
+                fontFamily: "Pretendard",
+                fontSize: "20px",
+                marginBottom: "2rem",
+              }}
               variant="standard"
               labelId="bankNameLabel"
               id="bankName"
@@ -247,7 +255,7 @@ const ManagerForm = ({ onManagerChange }) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} md={6}>
           <CustomTextField
             id="managerAccountNumber"
             required
