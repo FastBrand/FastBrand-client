@@ -209,7 +209,6 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
             <CustomTextField
               // required
               fullWidth
-              dense
               id="corporateZipcode"
               label="우편번호"
               variant="standard"
