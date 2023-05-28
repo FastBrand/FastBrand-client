@@ -121,7 +121,7 @@ function DashboardForm() {
   useEffect(() => {
     axios
       .all([
-        axios.get("http://localhost:8080/api/dashboard"),
+        axios.get("http://localhost:8080/api/manage/dashboard", {headers}),
         axios.get("http://localhost:8080/api/main/user"),
       ])
       .then(
