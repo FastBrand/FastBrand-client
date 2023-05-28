@@ -118,7 +118,7 @@ function DashboardForm() {
   useEffect(() => {
     let dateCounts = {};
 
-    axios.get("http://localhost:8080/api/main/user").then((infoResponse) => {
+    axios.get("http://43.202.29.2:8080/api/main/user").then((infoResponse) => {
       // 이후에 필요한 작업들...
       const infoData = infoResponse.data; //상표신청자데이터
 
@@ -140,7 +140,7 @@ function DashboardForm() {
     });
 
     const auth = axios.create({
-      baseURL: "http://localhost:8080/api/admin/",
+      baseURL: "http://43.202.29.2:8080/api/admin/",
     });
 
     auth.interceptors.request.use(
