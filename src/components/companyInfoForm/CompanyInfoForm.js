@@ -23,25 +23,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "30px",
     marginBottom: "20px",
     textAlign: "center",
-    fontSize: "32px",
-    fontWeight: "600",
+    fontSize: "28px",
+    fontWeight: "500",
     color: "#141221",
   },
   sectionTitle03: {
     fontFamily: "Prentendard",
-    color: "#f3eae8",
+    marginTop: "38px",
+    fontSize: "38px",
+    color: "#0c273c",
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
     fontWeight: "600",
-  },
-  sectionTitle04: {
-    fontFamily: "Prentendard",
-    color: "#cba585",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    fontWeight: "400",
   },
   serviceImg: {
     height: 200,
@@ -70,6 +64,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paragraphs: {
     fontFamily: "Prentendard",
+    fontSize:"18px",
+    fontWeight: 400,
     color: "black",
     alignItems: "center",
     justifyContent: "center",
@@ -98,26 +94,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "auto",
   },
   infoBox02: {
     fontFamily: "Prentendard",
     backgroundColor: "white",
-    height: "55vh",
+    height: "70vh",
     display: "block",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "auto",
-  },
-  infoBox03: {
-    fontFamily: "Prentendard",
-    backgroundColor: "#3E3E3F",
-    height: "100vh",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    overflow: "auto",
-  },
+  }
 }));
 
 function CompanyInfoForm() {
@@ -146,11 +131,14 @@ function CompanyInfoForm() {
       <Box className={classes.infoBox02} sx={{ height: "100%" }}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={12}>
+          <Typography variant="h4" className={classes.sectionTitle03}>
+              CEO 인삿말
+            </Typography>
             <Typography variant="h4" className={classes.sectionTitle02}>
               " 특허법인 원전(元全)의 홈페이지를 찾아주셔서 대단히 감사합니다 "
             </Typography>
           </Grid>
-          <Grid item xs={12} md={12}>
+          </Grid>
             <Typography className={classes.paragraphs} variant="body1">
               여러분의 소중한 지적재산권의 출원, 등록, 관리, 보호를 위하여
               최선을 다하고 있는 특허법인 원전의 소개 말씀을 올리겠습니다.
@@ -183,68 +171,7 @@ function CompanyInfoForm() {
               <br />
               감사합니다.
             </Typography>
-          </Grid>
-        </Grid>
-      </Box>
-
-      <Box className={classes.infoBox03} sx={{ height: "100%" }}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={12}>
-            <Typography variant="h4" className={classes.sectionTitle03}>
-              원전의 특징(元全)
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <Box className={classes.gridBox}>
-              <Typography variant="h5" className={classes.sectionTitle04}>
-                특허법인 원전은 변리사법에 의하여 구성원 전원이 무한책임을 지는
-                특허법인(특허청 특허법인 인가 제1호)입니다.
-                <br />
-              </Typography>
-              <Typography variant="body1" className={classes.paragraphs02}>
-                저희들 원전은 성심과 열의를 다하여 더욱 높은 질의 특허업무
-                서비스를 제공하고자 최선을 다하여
-                <br />
-                모든 업무를 전문변리사의 책임하에 수행합니다. 또한, 담당업무를
-                변리사가 직접 책임처리 함으로써 최양질의 서비스를 제공합니다.
-              </Typography>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={12}>
-            <Box className={classes.gridBox}>
-              <Typography variant="h5" className={classes.sectionTitle04}>
-                특허의 출원에서 관리 보호 침해소송에 이르기까지 토탈서비스
-                체제를 구축하여 운영하고 있습니다.
-                <br />
-              </Typography>
-              <Typography variant="body1" className={classes.paragraphs02}>
-                특허의 출원에서 등록 , 심판, 소송 (침해소송포함)에 이르기까지
-                특허에 관한 모든 업무를 총괄하여 봉사하는
-                <br />
-                즉, 토탈서비스의 시스템을 구축하여 고객에게 불편이 없도록
-                봉사해드리고 있습니다.
-              </Typography>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} md={12}>
-            <Box className={classes.gridBox}>
-              <Typography variant="h5" className={classes.sectionTitle04}>
-                가장 합리적이고 부담없는 요금으로 해외출원을 돕기 위하여
-                해외특허출원 전담팀을 운영하고 있습니다.
-                <br />
-              </Typography>
-              <Typography variant="body1" className={classes.paragraphs02}>
-                해외 각국의 신용있는 특허사무소들과 유기적으로 협력하여 가장
-                합리적이고 부담없는 요금으로
-                <br />
-                우리 기업들의 해외출원을 도와드리고자 해외특허출원의 전담팀을
-                운영하고 있습니다.
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
+          
       </Box>
     </div>
   );
