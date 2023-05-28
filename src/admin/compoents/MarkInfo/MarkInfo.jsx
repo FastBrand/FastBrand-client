@@ -126,12 +126,9 @@ function MarkInfo() {
     setSortDirection(direction);
   };
 
-  const Authorization = localStorage.getItem("Authorization");
-  const headers = { Authorization: `${Authorization}` };
-
   const refreshData = () => {
     axios
-      .get("http://localhost:8080/api/main/info", { headers })
+      .get("http://localhost:8080/api/main/info")
       .then((response) => {
         const dataArr = response.data;
         const newTrademarks = dataArr.map((data) => {
