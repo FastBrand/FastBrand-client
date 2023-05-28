@@ -22,7 +22,7 @@ const AddDialog = ({ open, handleClose, hanldeUpdate }) => {
 
   const handleAddClick = () => {
     axios
-      .post("http://localhost:8080/api/faq", newFAQ) // faq add api
+      .post("http://43.202.29.2:8080/api/faq", newFAQ) // faq add api
       .then((response) => {
         hanldeUpdate();
         handleClose();

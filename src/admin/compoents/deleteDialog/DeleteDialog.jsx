@@ -12,7 +12,7 @@ const DeleteDialog = ({ open, handleClose, selectedRow, hanldeUpdate }) => {
   const handleDeleteClick = () => {
     const idToDelete = selectedRow.id;
     axios
-      .delete(`http://localhost:8080/api/faq/${idToDelete}`) // faq delete api
+      .delete(`http://43.202.29.2:8080/api/faq/${idToDelete}`) // faq delete api
       .then((response) => {
         hanldeUpdate();
         handleClose();

@@ -237,8 +237,8 @@ function DomesticMark() {
 
     const endpoint =
       applicantType.poc === "personal"
-        ? "http://localhost:8080/api/register/personal"
-        : "http://localhost:8080/api/register/corporate";
+        ? "http://43.202.29.2:8080/api/register/personal"
+        : "http://43.202.29.2:8080/api/register/corporate";
 
     const JSONData = JSON.stringify(data);
 
@@ -260,7 +260,7 @@ function DomesticMark() {
 
   return (
     <div className={classes.root}>
-      <Navbar backgroundColor="white" />
+      <Navbar backgroundColor='white' />
       <MarkSelectForm onSelectedMark={setmarkSelcetData} />
       <TrademarkForm
         onTrademarkDataChange={setTrademarkData}
@@ -286,7 +286,7 @@ function DomesticMark() {
         onSealDataChange={setSealData}
       />
 
-      <Button id="submitButton01" onClick={() => handleOpen(true)}>
+      <Button id='submitButton01' onClick={() => handleOpen(true)}>
         견적보기
       </Button>
       <TopButton />

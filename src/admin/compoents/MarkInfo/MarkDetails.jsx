@@ -18,7 +18,7 @@ function MarkDetail() {
   const headers = { Authorization: `${Authorization}` };
 
   const refreshData = () => {
-    axios.get(`http://localhost:8080/api/main/info/${id}`, { headers })
+    axios.get(`http://43.202.29.2:8080/api/main/info/${id}`, { headers })
     .then(response => {
       const data = response.data;
       
@@ -99,7 +99,7 @@ function MarkDetail() {
 
   const handleDeleteClick = async () => {
     try {
-      await axios.delete(`http://localhost:8080/api/edit/mark/${trademark.id}`);
+      await axios.delete(`http://43.202.29.2:8080/api/edit/mark/${trademark.id}`);
       window.location.href = "/markBoard";
     } catch (error) {
       console.error(error);

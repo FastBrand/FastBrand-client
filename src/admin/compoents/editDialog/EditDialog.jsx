@@ -28,7 +28,7 @@ const EditDialog = ({ open, hanldeUpdate, handleClose, selectedRow }) => {
       content: FAQ.content.replace(/\n/g, "\r\n"),
     };
     axios
-      .patch(`http://localhost:8080/api/faq/${selectedRow.id}`, newFAQ) // faq delete api
+      .patch(`http://43.202.29.2:8080/api/faq/${selectedRow.id}`, newFAQ) // faq delete api
       .then((response) => {
         hanldeUpdate();
         handleClose();

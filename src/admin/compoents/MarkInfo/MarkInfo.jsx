@@ -131,7 +131,7 @@ function MarkInfo() {
 
   const refreshData = () => {
     axios
-      .get("http://localhost:8080/api/main/info", { headers })
+      .get("http://43.202.29.2:8080/api/main/info", { headers })
       .then((response) => {
         const dataArr = response.data;
         const newTrademarks = dataArr.map((data) => {

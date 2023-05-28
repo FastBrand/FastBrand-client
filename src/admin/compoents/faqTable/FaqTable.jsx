@@ -30,7 +30,7 @@ const FaqTable = () => {
 
   const hanldeUpdate = () => {
     axios
-      .get("http://localhost:8080/api/faq")
+      .get("http://43.202.29.2:8080/api/faq")
       .then((response) => {
         const formattedData = response.data.map((faq) => ({
           ...faq,
