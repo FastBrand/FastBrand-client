@@ -23,7 +23,6 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
     corporateMobile: "",
     corporatePhone: "",
     corporateEmail: "",
-    seal: "",
     address: "", // 주소
     detail: "", // 상세주소
     zipcode: "", // 우편번호
@@ -52,14 +51,11 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
       window.confirm(
         "사진 크기가 너무 큽니다. 50MB 이하의 크기로 업로드 해주세요."
       );
+      event.target.value = null;
       return;
     }
 
     setFileName(file.name);
-    setCorporateData((prevData) => ({
-      ...prevData,
-      seal: file.name,
-    }));
 
     onSealDataChange(file);
   };
@@ -212,7 +208,6 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
             <CustomTextField
               // required
               fullWidth
-              dense
               id="corporateZipcode"
               label="우편번호"
               variant="standard"
