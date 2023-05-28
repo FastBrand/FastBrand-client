@@ -36,15 +36,11 @@ const TrademarkForm = ({ onTrademarkDataChange, onImageDataChange }) => {
       window.confirm(
         "사진 크기가 너무 큽니다. 50MB 이하의 크기로 업로드 해주세요."
       );
+      event.target.value = null;
       return;
     }
 
     setFileName(file.name);
-
-    setTrademarkData((prevData) => ({
-      ...prevData,
-      image: file.name,
-    }));
 
     onImageDataChange(file);
   };

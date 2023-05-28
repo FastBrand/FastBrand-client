@@ -10,11 +10,11 @@ import {
   DialogContent,
   IconButton,
   DialogActions,
-  Radio,
+  Checkbox,
   FormControlLabel,
   Typography,
 } from "@mui/material";
-import { FileLabel, Wrapper, FormContainer } from "../../styles/formStyles";
+import { FileLabel, Wrapper } from "../../styles/formStyles";
 import React from "react";
 import { useState, useEffect } from "react";
 import PersonalForm from "./personalForm/PersonalForm";
@@ -28,7 +28,7 @@ const ApplicantForm = ({
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [corporateData, setCorporateData] = useState({});
   const [personalData, setPersonalData] = useState({});
-  const [applicantData, setApplicantData] = useState({});
+  const [applicantData, setApplicantData] = useState({ agreement: "동의" });
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleDialogClose = () => {
@@ -39,18 +39,19 @@ const ApplicantForm = ({
     setDialogOpen(true);
   };
 
-  const handleInputChange = (event, field) => {
-    const value = event.target.value;
-    setApplicantData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
-
   const handleChange = (event) => {
     const value = event.target.value;
     setApplicantType(() => ({
       poc: value,
+    }));
+  };
+
+  const handleAgreementChange = (event) => {
+    const checked = event.target.checked;
+    const agreementValue = checked ? "동의" : "";
+    setApplicantData((prevData) => ({
+      ...prevData,
+      agreement: agreementValue,
     }));
   };
 
@@ -114,47 +115,33 @@ const ApplicantForm = ({
         >
           개인정보수집 및 활용 동의 전문 보기*
         </Typography>
-        <CustomRadioGroup
-          name="agreement"
-          value={applicantData.agreement}
-          onChange={(event) => handleInputChange(event, "agreement")}
-          sx={{
-            "& .MuiFormControlLabel-label": {
-              fontFamily: "Pretendard",
-              fontWeight: 500,
-            },
-            width: "30%",
-          }}
-        >
-          <FormControlLabel
-            sx={{ m: 0 }}
-            value="동의"
-            control={
-              <Radio
-                sx={{
-                  "&.Mui-checked": {
-                    color: "#CBA585",
-                  },
-                }}
-              />
-            }
-            label="동의"
-          />
-          <FormControlLabel
-            sx={{ m: 0 }}
-            value="거부"
-            control={
-              <Radio
-                sx={{
-                  "&.Mui-checked": {
-                    color: "#CBA585",
-                  },
-                }}
-              />
-            }
-            label="거부"
-          />
-        </CustomRadioGroup>
+
+        <FormControlLabel
+          sx={{ m: 0 }}
+          value="동의"
+          control={
+            <Checkbox
+              sx={{
+                "&.Mui-checked": {
+                  color: "#CBA585",
+                },
+              }}
+              checked={applicantData.agreement === "동의"}
+              onChange={handleAgreementChange}
+            />
+          }
+          label={
+            <Typography
+              sx={{
+                fontFamily: "Pretendard",
+                fontWeight: 500,
+                fontSize: "18px",
+              }}
+            >
+              동의
+            </Typography>
+          }
+        />
       </Wrapper>
       {dialogOpen && (
         <Dialog

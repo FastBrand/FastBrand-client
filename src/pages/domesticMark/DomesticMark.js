@@ -105,6 +105,7 @@ function DomesticMark() {
         return;
       }
     }
+
     //출원인(개인)
     if (applicantType.poc === "personal") {
       if (
@@ -117,6 +118,7 @@ function DomesticMark() {
         return;
       if (!checkField(applicantData.ssn, "출원인 생년월일을 입력해주세요."))
         return;
+
       if (
         !checkField(
           applicantData.personalEmail,
@@ -124,6 +126,7 @@ function DomesticMark() {
         )
       )
         return;
+
       if (!/\S+@\S+\.\S+/.test(applicantData.personalEmail)) {
         showError("출원인 이메일을 형식에 맞게 입력해주세요.");
         return;
@@ -135,13 +138,11 @@ function DomesticMark() {
         )
       )
         return;
+
       if (!/^[\d-]+$/.test(applicantData.personalMobile)) {
         showError("출원인 휴대전화를 형식에 맞게 입력해주세요.");
+        return;
       }
-
-      if (applicantData.agreement !== "동의")
-        showError("개인정보수집 및 활용에 동의해주세요.");
-      return;
     }
     //출원인(법인)
     if (applicantType.poc === "corporate") {
@@ -196,15 +197,14 @@ function DomesticMark() {
         showError("출원인 법인 대표 이메일을 형식에 맞게 입력해주세요.");
         return;
       }
-      if (
-        !checkField(
-          applicantData.agreement,
-          "개인정보수집에 동의를 해주세요."
-        ) ||
-        applicantData.agreement === "거부"
-      )
-        return;
     }
+    if (
+      !checkField(
+        applicantData.agreement,
+        "개인정보수집 및 활용에 동의해주세요."
+      )
+    )
+      return;
 
     setModalOpen(true);
   };
