@@ -33,8 +33,8 @@ function DomesticMark() {
   const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
   const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
   const [markSelectData, setmarkSelcetData] = useState("");
-  const [modalOpen, setModalOpen] = useState(false); 
-  const [formatterData, setFormatterData] = useState(0); //종합가격
+  const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
+  const [formatterData, setFormatterData] = useState(0);
   const classes = useStyles();
 
   const nationData = {
@@ -52,9 +52,8 @@ function DomesticMark() {
   const nationDataString = nationDataArray.join(",");
   const madridDataString = madridDataArray.join(",");
   let directNationString = nationDataString;
-
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-    directNationString = `한국(고정) ${nationDataString}`; //국내포함 패키지의 경우 개별출원국가배열에 한국을 고정으로 넣어줌
+    directNationString = `한국(고정) ${nationDataString}`;
   }
 
   const handleOpen = () => {
@@ -142,6 +141,7 @@ function DomesticMark() {
 
       if (applicantData.agreement !== "동의")
         showError("개인정보수집 및 활용에 동의해주세요.");
+      return;
     }
     //출원인(법인)
     if (applicantType.poc === "corporate") {
@@ -196,14 +196,14 @@ function DomesticMark() {
         showError("출원인 법인 대표 이메일을 형식에 맞게 입력해주세요.");
         return;
       }
-      // if (
-      //   !checkField(
-      //     applicantData.agreement,
-      //     "개인정보수집에 동의를 해주세요."
-      //   ) ||
-      //   applicantData.agreement === "거부"
-      // )
-      //   return;
+      if (
+        !checkField(
+          applicantData.agreement,
+          "개인정보수집에 동의를 해주세요."
+        ) ||
+        applicantData.agreement === "거부"
+      )
+        return;
     }
 
     setModalOpen(true);
@@ -212,7 +212,7 @@ function DomesticMark() {
   const handleClose = () => {
     setModalOpen(false);
   };
-  
+
   const handleSubmit = () => {
     const data = {
       mark: {
@@ -223,14 +223,14 @@ function DomesticMark() {
         country: "더미데이터",
         madrid: madridDataString,
         direct: directNationString,
-        status: "더미데이터"
+        status: "더미데이터",
       },
       ...(applicantType.poc === "personal"
         ? { personal: { ...applicantData } }
         : { corporate: { ...applicantData } }),
       user: {
         ...managerData,
-        price: formatterData.toString()
+        price: formatterData.toString(),
       },
     };
 
@@ -241,21 +241,19 @@ function DomesticMark() {
 
     const JSONData = JSON.stringify(data);
 
+    const formData = new FormData();
+    formData.append("data", new Blob([JSONData], { type: "application/json" }));
+    formData.append("image", imageData);
+    if (applicantType.poc === "corporate") formData.append("seal", sealData);
+
     axios
-      .post(endpoint, JSONData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      // .post(endpoint, formData) merge데이터 충돌난건데 혹시 몰라서 주석처리해서 보존함 
+      .post(endpoint, formData)
       .then((response) => {
         console.log(response);
-        console.log(data)
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
-        console.log(data);
-        console.log(JSONData);
       });
   };
 
