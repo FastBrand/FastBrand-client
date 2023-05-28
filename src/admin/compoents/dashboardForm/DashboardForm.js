@@ -118,7 +118,7 @@ function DashboardForm() {
   axios.interceptors.request.use(
     (config) => {
       // 요청을 보내기 전에 수행할 작업
-      if(!config.url.includes("/login") && config.url.startsWith('http://localhost:8080/api/manage')) {
+      if(!config.url.includes("/login") && config.url.startsWith('http://localhost:8080/api/admin')) {
       const token = localStorage.getItem("Authorization");
       if (token) {
         config.headers.Authorization = `${token}`;
@@ -156,7 +156,7 @@ function DashboardForm() {
         setChartData02(chartData);
   
         // 인증이 필요한 요청
-        return axios.get("http://localhost:8080/api/manage/dashboard");
+        return axios.get("http://localhost:8080/api/admin/dashboard");
       })
       .then((dashboardResponse) => {
         // 이후에 필요한 작업들...
