@@ -32,6 +32,8 @@ function MarkAreaCard(props) {
     }
   }, [props.selectedMark, props.markData.type]);
 
+  const content01 = String(props.markData.content);
+
   return (
     <Card
       sx={{
@@ -39,11 +41,21 @@ function MarkAreaCard(props) {
         textAlign: "center",
         backgroundColor: isSelected ? "#857770" : "white",
         color: isSelected ? "white" : "black",
+        width: "300px", // 원하는 너비 설정
+        height: "400px", // 원하는 높이 설정
+        margin: "12px", // 원하는 마진 설정
+        "@media (max-width: 1024px)": {
+          width: "80%", // 화면이 600px 이하일 때 너비를 100%로 조정
+          height: "auto", // 화면이 600px 이하일 때 높이를 자동 조정
+          fontSize: "18px",
+        },
       }}
     >
       <CardActionArea
         onClick={handleClick}
-        sx={{ paddingBottom: "20px", paddingTop: "20px" }}
+        sx={{ 
+          width: "100%",
+          height: "100%"}}
       >
         {/* <CardMedia
           component="img"
@@ -65,6 +77,12 @@ function MarkAreaCard(props) {
               fontFamily: "Pretendard",
               fontWeight: 700,
               fontSize: "34px",
+              "@media (max-width: 1024px)":{
+                fontSize: "24px",
+              },
+              "@media (max-width: 600px)":{
+                fontSize: "14px",
+              }
             }}
           >
             {props.markData.type}
@@ -74,22 +92,43 @@ function MarkAreaCard(props) {
             fontWeight={600}
             fontFamily="Pretendard"
             fontSize="18px"
+            sx={{
+              wordWrap: "break-word",
+              "@media (max-width: 1024px)":{
+                fontSize: "18px",
+                display: "none",
+              }
+            }}
           >
-            {props.markData.content}
+          {props.markData.content}
           </Typography>
           <Typography
             variant="body1"
             fontWeight={600}
             fontFamily="Pretendard"
             fontSize="18px"
+            sx={{
+              wordWrap: "break-word",
+              "@media (max-width: 1024px)":{
+                fontSize: "20px",
+                display: "none",
+              }
+            }}
           >
-            {props.markData.content2}
+           {props.markData.content2}
           </Typography>
           <Typography
             variant="body1"
             fontWeight={600}
             fontFamily="Pretendard"
             fontSize="18px"
+            sx={{
+              wordWrap: "break-word",
+              "@media (max-width: 1024px)":{
+                fontSize: "20px",
+                display: "none", 
+              }
+            }}
           >
             {props.markData.content3}
           </Typography>
@@ -97,10 +136,17 @@ function MarkAreaCard(props) {
             variant="h4"
             sx={{
               fontWeight: "600",
+              marginBottom: '10px',
               color: isSelected ? "#f6f6eb" : "#857770",
+                "@media (max-width: 1024px)":{
+                  fontSize: "24px",
+                },
+              "@media (max-width: 600px)":{
+                fontSize: "10px",
+              }
             }}
           >
-            <br />₩{props.markData.price}
+            <br/>₩ {props.markData.price}
           </Typography>
         </CardContent>
       </CardActionArea>

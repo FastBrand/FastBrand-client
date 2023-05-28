@@ -17,6 +17,7 @@ import nation_data from "./NationData.json";
 import madrid_data from "./MadridData.json";
 import CustomTooltip from "./Tooltip";
 import "./NationSelectForm.css";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const NationButton = styled(Button)({
   //개별출원 박스
@@ -32,14 +33,14 @@ const NationButton = styled(Button)({
   // height: "52px",
   padding: "10px 30px",
   "&:hover": {
-    backgroundColor: "#3E3E3F",
+    backgroundColor: "#CBA585",
     color: "white",
-    borderColor: "#3E3E3F",
+    borderColor: "#CBA585",
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: "#3E3E3F",
+    backgroundColor: "#CBA585",
     borderColor: "none",
   },
 });
@@ -409,7 +410,19 @@ function processCountryData(nation_data, madrid_data) {
       <NationButton variant="outlined" onClick={handleOpen}>
         개별국가 출원
       </NationButton>
-      <NationButton variant="outlined" onClick={handleOpen2}>
+      <NationButton variant="outlined" onClick={handleOpen2} sx={{
+          "&:hover": {
+            backgroundColor: "#857770",
+            color: "white",
+            borderColor: "#857770",
+            boxShadow: "none",
+          },
+          "&:active": {
+            boxShadow: "none",
+            backgroundColor: "#857770",
+            borderColor: "none",
+          },
+      }}>
         마드리드 출원
       </NationButton>
 

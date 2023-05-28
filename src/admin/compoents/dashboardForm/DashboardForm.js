@@ -11,7 +11,6 @@ import {
   Legend,
 } from "recharts";
 import { Box, Typography, CircularProgress } from "@material-ui/core";
-import TestAdmin from "../testAdmin/TestAdmin";
 import { Navigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -116,51 +115,68 @@ function DashboardForm() {
     return null;
   }
 
-  const headers = TestAdmin();
-
+  axios.interceptors.request.use(
+    (config) => {
+      // 요청을 보내기 전에 수행할 작업
+      if(!config.url.includes("/login") && config.url.startsWith('http://localhost:8080/api/manage')) {
+      const token = localStorage.getItem("Authorization");
+      if (token) {
+        config.headers.Authorization = `${token}`;
+      }
+    }
+      return config;
+    },
+    (error) => {
+      // 요청이 실패한 경우에 대한 처리
+      return Promise.reject(error);
+    }
+  );
   useEffect(() => {
-    axios
-      .all([
-        axios.get("http://localhost:8080/api/manage/dashboard", {headers}),
-        axios.get("http://localhost:8080/api/main/user"),
-      ])
-      .then(
-        axios.spread((dashboardResponse, infoResponse) => {
-          const dashboardData = dashboardResponse.data;
-          const infoData = infoResponse.data; //상표신청자데이터
-          const dateCounts = {}; // 날짜별 신청수
+    let dateCounts = {};
 
-          infoData.forEach((user) => {
-            const date = user.created_at.substring(0, 10); // 날짜 형식 추출 (YYYY-MM-DD)
-            if (dateCounts[date]) {
-              dateCounts[date]++;
-            } else {
-              dateCounts[date] = 1;
-            }
-          });
-
-          const chartData = Object.keys(dateCounts).map((date) => ({
-            name: date,
-            count: dateCounts[date] || 0,
-          }));
-
-          const updatedChartData = recentWeek.map((date) => ({
-            name: date,
-            visitor: dashboardData[recentWeek.indexOf(date)] || 0,
-            count: dateCounts[date] || 0,
-          }));
-
-          //setVisitorCount(dashboardData);
-          setChartData(updatedChartData);
-          setChartData02(chartData);   console.log(updatedChartData);
-          setLoading(false); // 로딩 완료 후 상태 업데이트 
-        })
-      )
+    axios.get("http://localhost:8080/api/main/user")
+      .then((infoResponse) => {
+        // 이후에 필요한 작업들...
+        const infoData = infoResponse.data; //상표신청자데이터
+      
+        infoData.forEach((user) => {
+          const date = user.created_at.substring(0, 10); // 날짜 형식 추출 (YYYY-MM-DD)
+          if (dateCounts[date]) {
+            dateCounts[date]++;
+          } else {
+            dateCounts[date] = 1;
+          }
+        });
+  
+        const chartData = Object.keys(dateCounts).map((date) => ({
+          name: date,
+          count: dateCounts[date] || 0,
+        }));
+  
+        setChartData02(chartData);
+  
+        // 인증이 필요한 요청
+        return axios.get("http://localhost:8080/api/manage/dashboard");
+      })
+      .then((dashboardResponse) => {
+        // 이후에 필요한 작업들...
+        const dashboardData = dashboardResponse.data;
+        const updatedChartData = recentWeek.map((date) => ({
+          name: date,
+          visitor: dashboardData[recentWeek.indexOf(date)] || 0,
+          count: dateCounts[date] || 0,
+        }));
+  
+        //setVisitorCount(dashboardData);
+        setChartData(updatedChartData);
+        setLoading(false); // 로딩 완료 후 상태 업데이트 
+      })
       .catch((error) => {
         setLoading(false);
         console.log(error);
       });
   }, []);
+  
 
   const integerFormatter = (value) => Math.floor(value);
   const [minValue, setMinValue] = useState(0);
