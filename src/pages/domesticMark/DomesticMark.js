@@ -242,21 +242,19 @@ function DomesticMark() {
 
     const JSONData = JSON.stringify(data);
 
+    const formData = new FormData();
+    formData.append("data", new Blob([JSONData], { type: "application/json" }));
+    formData.append("image", imageData);
+    if (applicantType.poc === "corporate") formData.append("seal", sealData);
+
     axios
-      .post(endpoint, JSONData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      // .post(endpoint, formData) merge데이터 충돌난건데 혹시 몰라서 주석처리해서 보존함
+      .post(endpoint, formData)
       .then((response) => {
         console.log(response);
         console.log(data);
       })
       .catch((error) => {
         console.log(error);
-        console.log(data);
-        console.log(JSONData);
       });
   };
 
