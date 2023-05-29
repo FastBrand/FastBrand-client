@@ -29,10 +29,9 @@ const handleLogin = () => {
     password: password,
   })
   .then((response) => {
-    localStorage.clear();
-    const jwtToken = response.headers['Authorization'];
+    const jwtToken = response.headers['authorization'];
     localStorage.setItem('Authorization', jwtToken); // JWT 토큰 추출
-    console.log("로그인성공");
+    console.log("로그인성공:",response.headers);
     navigate('/dashboard'); // 로그인 성공 시 다른 URL로 이동
   })
   .catch((error) => {

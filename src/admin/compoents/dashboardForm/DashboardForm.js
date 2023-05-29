@@ -115,50 +115,51 @@ function DashboardForm() {
     return null;
   }
 
-  axios.interceptors.request.use(
-    (config) => {
-      // 요청을 보내기 전에 수행할 작업
-      if(!config.url.includes("/login") && config.url.startsWith('http://localhost:8080/api/manage')) {
-      const token = localStorage.getItem("authorization");
-      if (token) {
-        config.headers.Authorization = `${token}` }
-    }
-      return config;
-    },
-    (error) => {
-      // 요청이 실패한 경우에 대한 처리
-      return Promise.reject(error);
-    }
-  );
-
-
   useEffect(() => {
     let dateCounts = {};
 
-    axios.get("http://localhost:8080/api/main/user")
-      .then((infoResponse) => {
-        // 이후에 필요한 작업들...
-        const infoData = infoResponse.data; //상표신청자데이터
-      
-        infoData.forEach((user) => {
-          const date = user.created_at.substring(0, 10); // 날짜 형식 추출 (YYYY-MM-DD)
-          if (dateCounts[date]) {
-            dateCounts[date]++;
-          } else {
-            dateCounts[date] = 1;
-          }
-        });
-  
-        const chartData = Object.keys(dateCounts).map((date) => ({
-          name: date,
-          count: dateCounts[date] || 0,
-        }));
-  
-        setChartData02(chartData);
-  
-        // 인증이 필요한 요청
-        return axios.get("http://localhost:8080/api/manage/dashboard");
-      })
+    axios.get("http://localhost:8080/api/main/user").then((infoResponse) => {
+      // 이후에 필요한 작업들...
+      const infoData = infoResponse.data; //상표신청자데이터
+
+      infoData.forEach((user) => {
+        const date = user.created_at.substring(0, 10); // 날짜 형식 추출 (YYYY-MM-DD)
+        if (dateCounts[date]) {
+          dateCounts[date]++;
+        } else {
+          dateCounts[date] = 1;
+        }
+      });
+
+      const chartData = Object.keys(dateCounts).map((date) => ({
+        name: date,
+        count: dateCounts[date] || 0,
+      }));
+
+      setChartData02(chartData);
+    });
+
+    const auth = axios.create({
+      baseURL: "http://localhost:8080/api/admin/",
+    });
+
+    auth.interceptors.request.use(
+      (config) => {
+        // 요청을 보내기 전에 수행할 작업
+        const token = localStorage.getItem("Authorization");
+        if (token) {
+          config.headers["Authorization"] = token;
+        }
+        return config;
+      },
+      (error) => {
+        // 요청이 실패한 경우에 대한 처리
+        return Promise.reject(error);
+      }
+    );
+
+    auth
+      .get("/dashboard")
       .then((dashboardResponse) => {
         // 이후에 필요한 작업들...
         const dashboardData = dashboardResponse.data;
@@ -167,17 +168,16 @@ function DashboardForm() {
           visitor: dashboardData[recentWeek.indexOf(date)] || 0,
           count: dateCounts[date] || 0,
         }));
-  
+
         //setVisitorCount(dashboardData);
         setChartData(updatedChartData);
-        setLoading(false); // 로딩 완료 후 상태 업데이트 
+        setLoading(false); // 로딩 완료 후 상태 업데이트
       })
       .catch((error) => {
         setLoading(false);
         console.log(error);
       });
   }, []);
-  
 
   const integerFormatter = (value) => Math.floor(value);
   const [minValue, setMinValue] = useState(0);
@@ -194,7 +194,7 @@ function DashboardForm() {
   }, [chartData]);
 
   if (!localStorage.getItem("Authorization")) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to='/login' replace />;
   }
 
   return (
@@ -211,13 +211,13 @@ function DashboardForm() {
               width: "1000px",
             }}
           >
-            <CircularProgress color="inherit" size={80} />
+            <CircularProgress color='inherit' size={80} />
           </div>
         ) : (
           <AreaChart width={1000} height={300} data={chartData}>
-            <XAxis stroke="#000000" dataKey="name" />
+            <XAxis stroke='#000000' dataKey='name' />
             <YAxis
-              stroke="#000000"
+              stroke='#000000'
               tickFormatter={integerFormatter}
               domain={[minValue, maxValue]}
               ticks={[
@@ -228,12 +228,12 @@ function DashboardForm() {
                 maxValue,
               ]}
             />
-            <CartesianGrid stroke="#90827b" strokeDasharray="2 2" />
+            <CartesianGrid stroke='#90827b' strokeDasharray='2 2' />
             <Area
-              dataKey="visitor"
-              fill="#76777c"
+              dataKey='visitor'
+              fill='#76777c'
               fillOpacity={0.8}
-              stroke="#76777c"
+              stroke='#76777c'
             />
             <Tooltip content={<CustomTooltip />} />
 
@@ -253,31 +253,29 @@ function DashboardForm() {
               width: "1000px",
             }}
           >
-            <CircularProgress color="inherit" size={80} />
+            <CircularProgress color='inherit' size={80} />
           </div>
         ) : (
           <AreaChart width={1000} height={300} data={chartData02}>
             <XAxis
-              stroke="#000000"
-              dataKey="name"
+              stroke='#000000'
+              dataKey='name'
               tickCount={recentWeek.length}
             />
-            <YAxis stroke="#000000" tickFormatter={integerFormatter} />
-            <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
+            <YAxis stroke='#000000' tickFormatter={integerFormatter} />
+            <CartesianGrid stroke='#000000' strokeDasharray='2 2' />
             <Area
-              dataKey="count"
+              dataKey='count'
               fillOpacity={0.8}
-              fill="#90827b"
-              stroke="#90827b"
+              fill='#90827b'
+              stroke='#90827b'
             />
             <Tooltip content={<CustomTooltip2 />} />
             <Legend />
           </AreaChart>
         )}
       </Box>
-      
     </div>
-
   );
 }
 
