@@ -115,6 +115,14 @@ function MarkDetail() {
     handleClose();
   };
 
+  const handleOpenImage01 = () => {
+    window.open(trademark.image, '_blank')
+  }
+
+  const handleOpenImage02 = () => {
+    window.open(trademark.seal, '_blank')
+  }
+
   const createdDate = moment(trademark.created_at).format('YYYY-MM-DD HH:mm');
 
   useEffect(() => {
@@ -265,8 +273,8 @@ function MarkDetail() {
             <TableRow className="table-row">
               <TableCell align="center">인감 이미지</TableCell>
               <TableCell align="center">
-              <Card>
-                  <Box sx={{ width: '100%', paddingTop: '100%', position: 'relative' }}>
+              <Card onClick={handleOpenImage02}>
+                  <Box sx={{ width: '100%', paddingTop: '20%', position: 'relative' }}>
                     <CardMedia
                       component="img"
                       alt="No Image"
@@ -320,8 +328,8 @@ function MarkDetail() {
             <TableRow className="table-row">
               <TableCell align="center">이미지</TableCell>
               <TableCell align="center">
-                <Card>
-                  <Box sx={{ width: '100%', paddingTop: '100%', position: 'relative' }}>
+                <Card onClick={handleOpenImage01}>
+                  <Box sx={{ width: '100%', paddingTop: '20%', position: 'relative' }}>
                     <CardMedia
                       component="img"
                       alt="No Image"

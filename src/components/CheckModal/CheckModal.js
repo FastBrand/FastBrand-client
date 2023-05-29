@@ -147,9 +147,9 @@ function CheckModal({
       handleClose();
       alert("메일발송이 완료되었습니다.");
 
-      // setTimeout(function() {
-      //   window.location.reload();
-      // }, 500);
+      setTimeout(function() {
+        window.location.reload();
+      }, 500);
   };
 
   const sendEmail = () => {
