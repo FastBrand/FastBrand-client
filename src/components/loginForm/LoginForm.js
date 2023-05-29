@@ -29,6 +29,7 @@ const handleLogin = () => {
     password: password,
   })
   .then((response) => {
+    localStorage.clear();
     const jwtToken = response.headers['Authorization'];
     localStorage.setItem('Authorization', jwtToken); // JWT 토큰 추출
     console.log("로그인성공");

@@ -119,10 +119,9 @@ function DashboardForm() {
     (config) => {
       // 요청을 보내기 전에 수행할 작업
       if(!config.url.includes("/login") && config.url.startsWith('http://localhost:8080/api/manage')) {
-      const token = localStorage.getItem("Authorization");
+      const token = localStorage.getItem("authorization");
       if (token) {
-        config.headers.Authorization = `${token}`;
-      }
+        config.headers.Authorization = `${token}` }
     }
       return config;
     },
@@ -131,6 +130,8 @@ function DashboardForm() {
       return Promise.reject(error);
     }
   );
+
+
   useEffect(() => {
     let dateCounts = {};
 
