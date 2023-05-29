@@ -186,19 +186,7 @@ function MarkInfo() {
           <SearchIcon sx={{ color: "black", fontSize: "30px" }} />
         </IconButton>
       </StyledBox>
-      {/* <IconButton
-        style={{
-          backgroundColor: "#999999",
-          color: "inherit",
-          marginBottom: "5px",
-        }}
-        onClick={refreshData}
-        color="primary"
-        size="small"
-        aria-label="새로고침"
-      > */}
-        <Button onClick={refreshData}>새로고침</Button>
-      {/* </IconButton> */}
+        <Button onClick={refreshData}>목록갱신</Button>
       <TableContainer component={Paper} sx={{ width: "90%" }}>
         <Table>
           <TableHead>

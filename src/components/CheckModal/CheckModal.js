@@ -12,9 +12,11 @@ import {
   DialogTitle
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import PriceTooltip from "./PriceTooltip.js";
 import { makeStyles } from '@material-ui/styles';
 import { useEffect, useState } from "react";
 import emailjs from 'emailjs-com';
+
 
 const useStyles = makeStyles((theme) => ({
   modalBox: {
@@ -71,6 +73,9 @@ const useStyles = makeStyles((theme) => ({
     color:'#872e40',
     fontSize: '20px',
     fontWeight: 500,
+  },
+  recipeTable: {
+    padding:  '0 10px',
   }
 }))
 
@@ -245,21 +250,21 @@ function CheckModal({
       nationMessage: nationMessage,
     };
 
-    // emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
-    // .then((response) => {
-    //   console.log('이메일 전송성공', response);
-    // })
-    // .catch((error) => {
-    //   console.error('이메일 전송오류', error);
-    // });
+    emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
+    .then((response) => {
+      console.log('이메일 전송성공', response);
+    })
+    .catch((error) => {
+      console.error('이메일 전송오류', error);
+    });
 
-    // emailjs.send('service_ntfee7r', 'template_nk4mhqd', templateParams, 'niIZOtG66JjWR0wjS')
-    // .then((response) => {
-    //   console.log('이메일 전송성공', response);
-    // })
-    // .catch((error) => {
-    //   console.error('이메일 전송오류', error);
-    // });
+    emailjs.send('service_ntfee7r', 'template_nk4mhqd', templateParams, 'niIZOtG66JjWR0wjS')
+    .then((response) => {
+      console.log('이메일 전송성공', response);
+    })
+    .catch((error) => {
+      console.error('이메일 전송오류', error);
+    });
 
   };
 
@@ -291,7 +296,8 @@ function CheckModal({
           </div>
         )
 }
-        <Table>
+      <Box className={classes.recipeTable}>
+        <Table >
         <TableBody>
           <TableRow>
             <TableCell>패키지: </TableCell>
@@ -338,7 +344,9 @@ function CheckModal({
                 <TableCell>₩216,000</TableCell>
               </TableRow>
               <TableRow>
-              <TableCell><div className={classes.textRed}>예상가격:</div></TableCell>
+              <TableCell><div className={classes.textRed}>
+              <span><PriceTooltip/> </span>
+              예상가격:</div></TableCell>
               <TableCell><div className={classes.textRed}>{formattedPrice}</div></TableCell>
               </TableRow>
             </>
@@ -353,13 +361,21 @@ function CheckModal({
                 <TableCell>{madridDataString}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell><div className={classes.textRed}>예상가격: </div></TableCell>
+               <TableCell>
+                <div className={classes.textRed}>
+                <span><PriceTooltip/></span>
+                예상가격: 
+                </div>
+                </TableCell>
                 <TableCell><div className={classes.textRed}>{formattedPrice}</div></TableCell>
               </TableRow>
             </>
           )}
+              
         </TableBody>
+ 
     </Table>
+    </Box>
       <Button id="submitButton03"
         onClick={handleDialogOpen}
         variant="contained">
