@@ -16,6 +16,7 @@ import PriceTooltip from "./PriceTooltip.js";
 import { makeStyles } from '@material-ui/styles';
 import { useEffect, useState } from "react";
 import emailjs from 'emailjs-com';
+import React, { useCallback } from 'react';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -106,7 +107,8 @@ function CheckModal({
     setOpenDialog(false);
   };
 
-  const handlePrice = () => { //가격정산처리
+
+  const handlePrice = useCallback(() => {
     let priceData = 0;
 
     if (markSelectData === "국내출원") {
@@ -130,15 +132,16 @@ function CheckModal({
     });
     const numberWithCommas = formatter.format(priceData);
     return numberWithCommas;
-  };
-
+  }, [markSelectData, madridPriceData, directPriceData]);
+  
   useEffect(() => {
     setFormattedPrice(handlePrice());
-  }, [markSelectData, madridPriceData, directPriceData]);
+  }, [handlePrice]);
 
   useEffect(() => {
     onFormattedPrice(formattedPrice);
   }, [formattedPrice]);
+
 
   const handleConfirmButtonClick = () => {
       handleSubmit();

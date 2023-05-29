@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, Button, Box } from "@material-ui/core";
 import companyImage from "../../assets/images/skyline.jpeg";
 import Navbar from "../navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -171,8 +172,8 @@ function CompanyInfoForm() {
               <br />
               감사합니다.
             </Typography>
-          
       </Box>
+      <Footer/>
     </div>
   );
 }

@@ -15,7 +15,7 @@ import {
   Button
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
@@ -197,7 +197,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>상표번호</b>
                 </TableSortLabel>
               </TableCell>
@@ -207,7 +207,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>상표명</b>
                 </TableSortLabel>
               </TableCell>
@@ -217,7 +217,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>출원유형</b>
                 </TableSortLabel>
               </TableCell>
@@ -227,7 +227,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>개인/법인</b>
                 </TableSortLabel>
               </TableCell>
@@ -237,7 +237,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>담당자</b>
                 </TableSortLabel>
               </TableCell>
@@ -247,7 +247,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>이메일</b>
                 </TableSortLabel>
               </TableCell>
@@ -257,11 +257,11 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>등록일</b>
                 </TableSortLabel>
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
                 <b>세부사항</b>
               </TableCell>
             </TableRow>

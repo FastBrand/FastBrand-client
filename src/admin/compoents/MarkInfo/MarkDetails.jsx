@@ -11,7 +11,7 @@ import "./paginate.css"
 function MarkDetail() {
   const { id } = useParams();
   const [trademark, setTrademark] = useState({});
-  const [isEditing, setIsEditing] = useState(false);
+  //const [isEditing, setIsEditing] = useState(false);
   const [open, setOpen] = useState(false);
 
   const refreshData = () => {
