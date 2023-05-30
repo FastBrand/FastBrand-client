@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Typography, Button, Box } from "@material-ui/core";
+import { Grid, Typography, Button, Box, Fade } from "@material-ui/core";
 import companyImage from "../../assets/images/skyline.jpeg";
 import Navbar from "../navbar/Navbar";
 
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "auto",
+    // overflow: "hidden",
   },
   infoBox02: {
     fontFamily: "Prentendard",
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "auto",
+    // overflow: "hidden",
   },
   infoBox03: {
     fontFamily: "Prentendard",
@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "auto",
+    // overflow: "hidden",
   },
 }));
 
@@ -127,22 +127,23 @@ function CompanyInfoForm() {
     <div className={classes.root}>
       <Navbar backgroundColor="white" />
       <Box className={classes.infoBox01} sx={{ height: "100%" }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12}>
-            <Typography className={classes.sectionTitle} variant="h3">
-              특허법인 원전(元全)
-            </Typography>
-            <Button
-              className={classes.linkButton}
-              variant="contained"
-              onClick={() => window.open("http://www.wonjon.com/")}
-            >
-              더 알아보기
-            </Button>
+        <Fade timeout={1000} in={true}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={12}>
+              <Typography className={classes.sectionTitle} variant="h3">
+                특허법인 원전(元全)
+              </Typography>
+              <Button
+                className={classes.linkButton}
+                variant="contained"
+                onClick={() => window.open("http://www.wonjon.com/")}
+              >
+                더 알아보기
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
+        </Fade>
       </Box>
-
       <Box className={classes.infoBox02} sx={{ height: "100%" }}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={12}>
