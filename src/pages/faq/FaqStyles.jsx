@@ -3,13 +3,12 @@ import { Typography } from "@mui/material";
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
-  fontWeight: 600,
-  fontSize: "40px",
+  fontWeight: 500,
+  fontSize: "35px",
   textAlign: "center",
-  marginTop: "200px",
-  marginBottom: "3vw",
-  [theme.breakpoints.down("lg")]: {
-    fontSize: "37px",
+  marginTop: "150px",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "30px",
   },
 }));
 

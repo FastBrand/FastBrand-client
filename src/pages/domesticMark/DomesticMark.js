@@ -52,14 +52,13 @@ function DomesticMark() {
   const nationDataString = nationDataArray.join(",");
   const madridDataString = madridDataArray.join(",");
   let directNationString = nationDataString;
-
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-    directNationString = `한국(고정) ${nationDataString}`; //국내포함 패키지의 경우 개별출원국가배열에 한국을 고정으로 넣어줌
+    directNationString = `한국(고정) ${nationDataString}`;
   }
 
   const handleOpen = () => {
     const showError = (message) => {
-      window.confirm(message);
+      window.alert(message);
     };
 
     const checkField = (value, message) => {

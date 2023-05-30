@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import "./TrademarkForm.scss";
+import "./TrademarkForm.css";
 import {
   CustomTypo,
   FormContainer,
@@ -31,6 +31,11 @@ const TrademarkForm = ({ onTrademarkDataChange, onImageDataChange }) => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+
+    if (file.size === 0) {
+      // 파일이 선택되지 않은 경우
+      return;
+    }
 
     if (file.size > 50000000) {
       window.confirm(

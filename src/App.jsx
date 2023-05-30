@@ -1,4 +1,3 @@
-import "./App.scss";
 import Main from "./pages/main/Main";
 import DomesticMark from "./pages/domesticMark/DomesticMark";
 import Faq from "./pages/faq/Faq";
@@ -16,13 +15,11 @@ import LoginForm from "./components/loginForm/LoginForm";
 import NotFound from "./pages/notFound/NotFound";
 
 function App() {
-  
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
-    setIsAuthenticated(localStorage.getItem('Authorization')); 
-  }
-, [isAuthenticated]);
+    setIsAuthenticated(localStorage.getItem("Authorization"));
+  }, [isAuthenticated]);
 
   return (
     <div className="App">
@@ -46,4 +43,3 @@ function App() {
 }
 
 export default App;
-
