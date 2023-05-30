@@ -16,9 +16,9 @@ const ManagerForm = ({ onManagerChange }) => {
   });
 
   const [bankData, setBankData] = useState({
-    type: "",
-    name: "",
-    acc_num: "",
+    type: "은행", // 은행, 증권사 구분
+    name: "", // 은행/증권사명
+    num: "", // 계좌번호
   });
 
   // 은행
@@ -118,9 +118,9 @@ const ManagerForm = ({ onManagerChange }) => {
   useEffect(() => {
     setManagerData((prevData) => ({
       ...prevData,
-      acc_num: `${bankData.name}, ${bankData.acc_num}`,
+      acc_num: `${bankData.name}, ${bankData.num}`,
     }));
-  }, [bankData]);
+  }, [bankData.name, bankData.num]);
 
   return (
     <FormContainer>
@@ -182,7 +182,7 @@ const ManagerForm = ({ onManagerChange }) => {
                 ml: -1.5,
               }}
             >
-              구분
+              은행/증권사 구분
             </InputLabel>
             <Select
               sx={{
@@ -257,16 +257,17 @@ const ManagerForm = ({ onManagerChange }) => {
         </Grid>
         <Grid item xs={6} md={6}>
           <CustomTextField
+            sx={{ pb: 0 }}
             id="managerAccountNumber"
             required
             fullWidth
             label="계좌번호"
             variant="standard"
-            value={bankData.acc_num}
+            value={bankData.num}
             onChange={(event) =>
               setBankData((prevData) => ({
                 ...prevData,
-                acc_num: event.target.value,
+                num: event.target.value,
               }))
             }
           />
