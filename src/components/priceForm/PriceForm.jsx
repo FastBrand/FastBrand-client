@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import "./PriceForm.css";
 import { ReactComponent as CheckIcon } from "../../assets/images/icon/iconCheck.svg";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../navbar/Navbar";
 
 function PriceForm() {
   let [title] = useState([

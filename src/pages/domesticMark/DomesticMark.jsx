@@ -287,7 +287,7 @@ function DomesticMark() {
       />
 
       <Button id="submitButton01" onClick={() => handleOpen(true)}>
-        견적보기
+        상표등록
       </Button>
       <TopButton />
       {modalOpen && (

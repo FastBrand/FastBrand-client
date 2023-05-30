@@ -12,7 +12,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import PriceTooltip from "./PriceTooltip.js";
+import PriceTooltip from "./PriceTooltip.jsx";
 import { makeStyles } from '@material-ui/styles';
 import { useEffect, useState } from "react";
 import emailjs from 'emailjs-com';
@@ -387,7 +387,7 @@ function CheckModal({
       <Button id="submitButton03"
         onClick={handleDialogOpen}
         variant="contained">
-        견적발송
+        상표등록
       </Button>
       <Dialog
           open={openDialog}

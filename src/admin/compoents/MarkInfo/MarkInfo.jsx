@@ -275,7 +275,7 @@ function MarkInfo() {
                 {trademarks
                   .slice(pagesVisited, pagesVisited + itemsPerPage)
                   .map((trademark) => (
-                    <TableRow className="table-row">
+                    <TableRow className="table-row" component={Link} to={`/markinfo/${trademark.id}`} >                   
                       <TableCell align="center">{trademark.id}</TableCell>
                       <TableCell align="center">
                         {trademark.brand_name}
@@ -289,8 +289,8 @@ function MarkInfo() {
                       </TableCell>
                       <TableCell align="center">
                         <Link to={`/markinfo/${trademark.id}`}>세부정보</Link>
-                      </TableCell>
-                    </TableRow>
+                      </TableCell>                
+                    </TableRow>   
                   ))}
               </>
             )}
