@@ -24,7 +24,7 @@ const handleKeyPress = (event) => {
 };
 
 const handleLogin = () => {
-  axios.post('http://localhost:8080/login', {
+  axios.post('http://43.202.29.2:8080/login', {
     username: username,
     password: password,
   })
