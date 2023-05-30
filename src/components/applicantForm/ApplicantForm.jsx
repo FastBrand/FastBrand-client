@@ -28,7 +28,7 @@ const ApplicantForm = ({
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [corporateData, setCorporateData] = useState({});
   const [personalData, setPersonalData] = useState({});
-  const [applicantData, setApplicantData] = useState({ agreement: "동의" });
+  const [applicantData, setApplicantData] = useState({});
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleDialogClose = () => {
