@@ -38,9 +38,9 @@ export const CustomList = styled(List)(({ theme }) => ({
   flexDirection: "row",
 }));
 
-export const CustomListItem = styled(ListItem)(({ theme }) => ({
-  width: "150px",
+export const CustomListItem = styled("div")(({ theme }) => ({
   padding: 0,
+  paddingRight: theme.spacing(5),
 }));
 
 export const CustomListItemText = styled(Typography)(({ theme }) => ({
