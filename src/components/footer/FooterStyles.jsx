@@ -46,7 +46,7 @@ export const CustomListItem = styled(ListItem)(({ theme }) => ({
 export const CustomListItemText = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
   fontWeight: "500",
-  color: "#CBA585",
+  color: "white",
 }));
 
 export const CompanyInfo = styled("div")(({ theme }) => ({

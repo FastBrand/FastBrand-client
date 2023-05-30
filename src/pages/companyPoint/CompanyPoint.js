@@ -1,10 +1,14 @@
 import CompanyPointForm from "../../components/companyInfoForm/CompanyPontsForm";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
-function CompanyPoint(){
-    return(
+function CompanyPoint() {
+  return (
     <div>
-        <CompanyPointForm/>
+      <Navbar backgroundColor="white" />
+      <CompanyPointForm />
+      <Footer />
     </div>
-    );
+  );
 }
 export default CompanyPoint;

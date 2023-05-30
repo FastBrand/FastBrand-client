@@ -33,8 +33,9 @@ function DomesticMark() {
   const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
   const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
   const [markSelectData, setmarkSelcetData] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
-  const [formatterData, setFormatterData] = useState(0); //종합가격
+  const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
+  const [formatterData, setFormatterData] = useState(0);
+
   const classes = useStyles();
 
   const nationData = {
@@ -52,14 +53,13 @@ function DomesticMark() {
   const nationDataString = nationDataArray.join(",");
   const madridDataString = madridDataArray.join(",");
   let directNationString = nationDataString;
-
   if (markSelectData === "국내출원" || markSelectData === "국내+해외출원") {
-    directNationString = `한국(고정) ${nationDataString}`; //국내포함 패키지의 경우 개별출원국가배열에 한국을 고정으로 넣어줌
+    directNationString = `한국(고정) ${nationDataString}`;
   }
 
   const handleOpen = () => {
     const showError = (message) => {
-      window.confirm(message);
+      window.alert(message);
     };
 
     const checkField = (value, message) => {

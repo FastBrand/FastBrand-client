@@ -47,6 +47,12 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+
+    if (file.size === 0) {
+      // 파일이 선택되지 않은 경우
+      return;
+    }
+
     if (file.size > 50000000) {
       window.confirm(
         "사진 크기가 너무 큽니다. 50MB 이하의 크기로 업로드 해주세요."

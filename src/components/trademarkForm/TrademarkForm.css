@@ -3,11 +3,8 @@ input[type="file"] {
 }
 
 .fileLabel {
-  // display: flex;
   color: black;
   padding: 8px 30px;
-  // height: 45px;
-  // width: 140px;
   border: 1.5px solid #3e3e3f;
   border-radius: 30px;
   background-color: transparent;
