@@ -4,7 +4,7 @@ import { Typography, Container } from "@mui/material";
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
   fontWeight: 500,
-  fontSize: "37px",
+  fontSize: "35px",
   textAlign: "center",
   // marginTop: "200px",
   // marginBottom: "3vw",
