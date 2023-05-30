@@ -7,14 +7,15 @@ export const Title = styled(Typography)(({ theme }) => ({
   fontSize: "35px",
   textAlign: "center",
   marginTop: "150px",
+  marginBottom: "50px",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
   },
 }));
 
 export const FAQContainer = styled("div")(({ theme }) => ({
-  paddingLeft: "25vw",
-  paddingRight: "25vw",
+  paddingLeft: "15vw",
+  paddingRight: "15vw",
   paddingBottom: "300px",
   display: "flex",
   flexDirection: "column",

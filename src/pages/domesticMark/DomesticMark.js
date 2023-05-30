@@ -33,8 +33,9 @@ function DomesticMark() {
   const [madridPriceData, setMadridPriceData] = useState(0); //마드리드 출원 가격
   const [directPriceData, setDirectPriceData] = useState(0); //각국출원 가격
   const [markSelectData, setmarkSelcetData] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
-  const [formatterData, setFormatterData] = useState(0); //종합가격
+  const [modalOpen, setModalOpen] = useState(false); // 모달창 open 상태를 관리하는 상태 추가
+  const [formatterData, setFormatterData] = useState(0);
+
   const classes = useStyles();
 
   const nationData = {
