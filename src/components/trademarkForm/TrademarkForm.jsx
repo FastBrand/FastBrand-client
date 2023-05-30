@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import "./TrademarkForm.scss";
+import "./TrademarkForm.css";
 import {
   CustomTypo,
   FormContainer,
