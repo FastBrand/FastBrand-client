@@ -7,6 +7,7 @@ export const Title = styled(Typography)(({ theme }) => ({
   fontSize: "35px",
   textAlign: "center",
   marginTop: "150px",
+  marginBottom: "50px",
   [theme.breakpoints.down("sm")]: {
     fontSize: "30px",
   },

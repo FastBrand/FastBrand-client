@@ -5,7 +5,7 @@ function CompanyInfo() {
   return (
     <div>
       <CompanyInfoForm />
-      <Footer />
+    
     </div>
   );
 }

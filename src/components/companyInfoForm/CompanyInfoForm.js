@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, Button, Box, Fade } from "@material-ui/core";
 import companyImage from "../../assets/images/skyline.jpeg";
 import Navbar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -144,7 +145,7 @@ function CompanyInfoForm() {
         <Grid container spacing={3}>
           <Grid item xs={12} md={12}>
             <Typography variant="h4" className={classes.sectionTitle03}>
-              CEO 인삿말
+              CEO 인사말
             </Typography>
             <Typography variant="h4" className={classes.sectionTitle02}>
               " 특허법인 원전(元全)의 홈페이지를 찾아주셔서 대단히 감사합니다 "
@@ -183,6 +184,7 @@ function CompanyInfoForm() {
           감사합니다.
         </Typography>
       </Box>
+      <Footer />
     </div>
   );
 }
