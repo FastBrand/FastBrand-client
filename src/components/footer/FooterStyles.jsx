@@ -33,14 +33,17 @@ export const FooterWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const CustomList = styled(List)(({ theme }) => ({
-  padding: "0 _ 3 _",
   display: "flex",
   flexDirection: "row",
+  [theme.breakpoints.down("460")]: {
+    flexDirection: "column",
+  },
 }));
 
 export const CustomListItem = styled(Link)(({ theme }) => ({
   paddingRight: theme.spacing(5),
   textDecoration: "none",
+  display: "flex",
 }));
 
 export const CustomListItemText = styled(Typography)(({ theme }) => ({
