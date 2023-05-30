@@ -25,7 +25,7 @@ export const CustomListItem = styled(ListItem)(({ theme }) => ({
   "& .MuiListItemText-primary": {
     fontSize: "35px",
     fontFamily: "Pretendard",
-    fontWeight: 700,
+    fontWeight: 600,
   },
   [theme.breakpoints.down("sm")]: {
     "& .MuiDrawer-paper": {
