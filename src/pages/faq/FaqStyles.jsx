@@ -14,8 +14,8 @@ export const Title = styled(Typography)(({ theme }) => ({
 }));
 
 export const FAQContainer = styled("div")(({ theme }) => ({
-  paddingLeft: "25vw",
-  paddingRight: "25vw",
+  paddingLeft: "15vw",
+  paddingRight: "15vw",
   paddingBottom: "300px",
   display: "flex",
   flexDirection: "column",

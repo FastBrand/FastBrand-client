@@ -171,7 +171,10 @@ function MarkInfo() {
   return (
     <div>
       <StyledBox>
-        <StyledSelect value={searchType} onChange={handleSearchTypeChange}>
+        <StyledSelect
+        value={searchType}
+        onChange={handleSearchTypeChange}
+        >
           <MenuItem value="brand_name">상표명</MenuItem>
           <MenuItem value="id">상표번호</MenuItem>
           <MenuItem value="name">담당자</MenuItem>

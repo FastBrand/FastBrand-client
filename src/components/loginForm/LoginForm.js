@@ -8,7 +8,7 @@ import {
 import axios from 'axios';
 import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import Navbar from '../navbar/Navbar';
 
 function LoginForm() {
 const [username, setUsername] = useState('');
@@ -59,8 +59,8 @@ const handleCloseSnackbar = (event, reason) => {
         justifyContent: "center",
       }}
     >
-
-      <Box sx={{ marginTop: "200px" }}>
+      <Navbar/>
+      <Box sx={{ marginTop: "250px" }}>
       <Box sx={{
         textAlign: "center",
         marginBottom: '32px',
@@ -106,6 +106,7 @@ const handleCloseSnackbar = (event, reason) => {
           </Button>
         </div>
       </Box>
+
     <Backdrop
       sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
@@ -115,7 +116,6 @@ const handleCloseSnackbar = (event, reason) => {
       open={loginFailed}
       onClick={handleCloseSnackbar}
     >
-  
       <Snackbar
         open={loginFailed}
         onClose={handleCloseSnackbar}
@@ -154,9 +154,7 @@ const handleCloseSnackbar = (event, reason) => {
         }}
       />
       
-    </Backdrop>
-      
-    
+    </Backdrop>    
     </div>
   );
 }
