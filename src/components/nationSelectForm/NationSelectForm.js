@@ -49,7 +49,7 @@ const NationButton_table = styled(Button)({
   //개별출원
   padding: "4px",
   fontSize: "12px",
-   width: "100px",
+  width: "100px",
   height: "35px",
   fontWeight: 600,
   fontFamily: "Pretendard",
@@ -105,21 +105,23 @@ const NationButton_table2 = styled(Button)({
   },
 });
 
-
 function NationSelectForm({
   onSelectedCountries,
   onSelectedMadrid,
-  onMadridPrice, 
-  onEachPrice, 
+  onMadridPrice,
+  onEachPrice,
   classificationDataString,
-  markSelectData
+  markSelectData,
 }) {
   //국가선택 컴포넌트
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [boxes, setBoxes] = useState([]);
   const [boxes2, setBoxes2] = useState([]);
-  const { continentMap, madridContinentMap } = processCountryData(nation_data, madrid_data);
+  const { continentMap, madridContinentMap } = processCountryData(
+    nation_data,
+    madrid_data
+  );
   const [selectedCountries, setSelectedCountries] = useState({}); //선택된 국가들
   const [selectedMadrid, setSelectedMadrid] = useState({}); //선택된 국가들
 
@@ -136,7 +138,7 @@ function NationSelectForm({
     //개별출원 국가 박스 추가 로직
     return <Box className="nationBox_selected">{country}</Box>;
   }
-  
+
   function NationSelectedBox2({ country }) {
     //마드리드 국가 박스 추가 로직
     return (
@@ -162,9 +164,8 @@ function NationSelectForm({
   //   console.log(selectedMadrid);
   // }
 
-
-  
-  useEffect(() => { //분류의 개수가 변경될 때마다 계산 수행
+  useEffect(() => {
+    //분류의 개수가 변경될 때마다 계산 수행
     if (classificationDataString !== undefined) {
       const categories = classificationDataString.split(",");
       const numberOfCategories = categories.length;
@@ -181,11 +182,21 @@ function NationSelectForm({
       const selectedAddChfPrices = Object.keys(selectedMadrid).map(
         (c) => madrid_data[c].additialCHF
       );
-      const addBasicTotalPrice = selectedAddBasicPrices.reduce((acc, curr) => (acc + curr) * numberOfCategories, 0);
-      const addUsdPrice = (selectedAddUsdPrices.reduce((acc, curr) => acc + curr, 0)) * (exchangeUSD[0] * numberOfCategories);
-    
-      const addBasicTotalMadridPrice = selectedAddBasicMadridPrices.reduce((acc, curr) => (acc + curr) * numberOfCategories, 0);
-      const addChfPrice = (selectedAddChfPrices.reduce((acc, curr) => acc + curr, 0)) * (exchangeCHF[0] * numberOfCategories);
+      const addBasicTotalPrice = selectedAddBasicPrices.reduce(
+        (acc, curr) => (acc + curr) * numberOfCategories,
+        0
+      );
+      const addUsdPrice =
+        selectedAddUsdPrices.reduce((acc, curr) => acc + curr, 0) *
+        (exchangeUSD[0] * numberOfCategories);
+
+      const addBasicTotalMadridPrice = selectedAddBasicMadridPrices.reduce(
+        (acc, curr) => (acc + curr) * numberOfCategories,
+        0
+      );
+      const addChfPrice =
+        selectedAddChfPrices.reduce((acc, curr) => acc + curr, 0) *
+        (exchangeCHF[0] * numberOfCategories);
 
       setEachAddFee(addBasicTotalPrice + addUsdPrice);
       setMadridAddFee(addBasicTotalMadridPrice + addChfPrice);
@@ -193,15 +204,13 @@ function NationSelectForm({
       onMadridPrice(madridPrice + madridAddFee);
 
       console.log("분류 개수:", numberOfCategories);
-      console.log("마드리드 추가류가격:",madridAddFee);
-      console.log("개별출원 추가류가격:",eachAddFee);
-      
+      console.log("마드리드 추가류가격:", madridAddFee);
+      console.log("개별출원 추가류가격:", eachAddFee);
     }
   }, [classificationDataString, eachAddFee]);
- 
 
- 
-  useEffect(() => {  // 개별출원 국가가 변경될 때마다 계산을 수행
+  useEffect(() => {
+    // 개별출원 국가가 변경될 때마다 계산을 수행
     const selectedBasicPrices = Object.keys(selectedCountries).map(
       (c) => nation_data[c].price
     );
@@ -226,30 +235,43 @@ function NationSelectForm({
         (c) => madrid_data[c].additialCHF
       );
 
-      const addBasicTotalPrice = selectedAddBasicPrices.reduce((acc, curr) => (acc + curr) * numberOfCategories, 0);
-      const addUsdPrice = (selectedAddUsdPrices.reduce((acc, curr) => acc + curr, 0)) * (exchangeUSD[0] * numberOfCategories);
-      const addBasicTotalMadridPrice = selectedAddBasicMadridPrices.reduce((acc, curr) => (acc + curr) * numberOfCategories, 0);
-      const addChfPrice = (selectedAddChfPrices.reduce((acc, curr) => acc + curr, 0)) * (exchangeCHF[0] * numberOfCategories);
+      const addBasicTotalPrice = selectedAddBasicPrices.reduce(
+        (acc, curr) => (acc + curr) * numberOfCategories,
+        0
+      );
+      const addUsdPrice =
+        selectedAddUsdPrices.reduce((acc, curr) => acc + curr, 0) *
+        (exchangeUSD[0] * numberOfCategories);
+      const addBasicTotalMadridPrice = selectedAddBasicMadridPrices.reduce(
+        (acc, curr) => (acc + curr) * numberOfCategories,
+        0
+      );
+      const addChfPrice =
+        selectedAddChfPrices.reduce((acc, curr) => acc + curr, 0) *
+        (exchangeCHF[0] * numberOfCategories);
       setEachAddFee(addBasicTotalPrice + addUsdPrice);
-      setMadridAddFee(addBasicTotalMadridPrice + addChfPrice);  
+      setMadridAddFee(addBasicTotalMadridPrice + addChfPrice);
     }
 
-    const usdPrice = (selectedUsdPrices.reduce((acc, curr) => acc + curr, 0)) * exchangeUSD[0];
-    const basicTotalPrice = selectedBasicPrices.reduce((acc, curr) => acc + curr, 0);
+    const usdPrice =
+      selectedUsdPrices.reduce((acc, curr) => acc + curr, 0) * exchangeUSD[0];
+    const basicTotalPrice = selectedBasicPrices.reduce(
+      (acc, curr) => acc + curr,
+      0
+    );
     const totalPrice = basicTotalPrice + usdPrice;
-    
-    if(Object.keys(selectedCountries).length === 0){
+
+    if (Object.keys(selectedCountries).length === 0) {
       setEachPrice(0); //나라 없으면 0
+    } else {
+      setEachPrice(totalPrice + eachAddFee); // 개별출원 기본 가격 셋팅
     }
-    else{
-      setEachPrice(totalPrice+eachAddFee); // 개별출원 기본 가격 셋팅
-    }
-    
+
     onEachPrice(eachPrice);
   }, [selectedCountries, classificationDataString, eachPrice]);
-  
- 
-  useEffect(() => {  // 마드리드 국가가 변경될 때마다 계산을 수행
+
+  useEffect(() => {
+    // 마드리드 국가가 변경될 때마다 계산을 수행
 
     const selectedBasicPrices = Object.keys(selectedMadrid).map(
       (c) => madrid_data[c].priceMadrid
@@ -258,10 +280,15 @@ function NationSelectForm({
       (c) => madrid_data[c].chf
     );
 
-    const chfPrice = (selectedChfPrices.reduce((acc, curr) => acc + curr, 0)) * exchangeCHF[0];
-    const basicTotalPrice = selectedBasicPrices.reduce((acc, curr) => acc + curr, 0);
-    const totalPriceM = basicTotalPrice + chfPrice + (1000000 + (653 * exchangeCHF[0]));
-    
+    const chfPrice =
+      selectedChfPrices.reduce((acc, curr) => acc + curr, 0) * exchangeCHF[0];
+    const basicTotalPrice = selectedBasicPrices.reduce(
+      (acc, curr) => acc + curr,
+      0
+    );
+    const totalPriceM =
+      basicTotalPrice + chfPrice + (1000000 + 653 * exchangeCHF[0]);
+
     if (classificationDataString !== undefined) {
       const categories = classificationDataString.split(",");
       const numberOfCategories = categories.length;
@@ -279,24 +306,33 @@ function NationSelectForm({
         (c) => madrid_data[c].additialCHF
       );
 
-      const addBasicTotalPrice = selectedAddBasicPrices.reduce((acc, curr) => (acc + curr) * numberOfCategories, 0);
-      const addUsdPrice = (selectedAddUsdPrices.reduce((acc, curr) => acc + curr, 0)) * (exchangeUSD[0] * numberOfCategories);
-      const addBasicTotalMadridPrice = selectedAddBasicMadridPrices.reduce((acc, curr) => (acc + curr) * numberOfCategories, 0);
-      const addChfPrice = (selectedAddChfPrices.reduce((acc, curr) => acc + curr, 0)) * (exchangeCHF[0] * numberOfCategories);
+      const addBasicTotalPrice = selectedAddBasicPrices.reduce(
+        (acc, curr) => (acc + curr) * numberOfCategories,
+        0
+      );
+      const addUsdPrice =
+        selectedAddUsdPrices.reduce((acc, curr) => acc + curr, 0) *
+        (exchangeUSD[0] * numberOfCategories);
+      const addBasicTotalMadridPrice = selectedAddBasicMadridPrices.reduce(
+        (acc, curr) => (acc + curr) * numberOfCategories,
+        0
+      );
+      const addChfPrice =
+        selectedAddChfPrices.reduce((acc, curr) => acc + curr, 0) *
+        (exchangeCHF[0] * numberOfCategories);
       setEachAddFee(addBasicTotalPrice + addUsdPrice);
-      setMadridAddFee(addBasicTotalMadridPrice + addChfPrice);  
+      setMadridAddFee(addBasicTotalMadridPrice + addChfPrice);
     }
 
-    if(Object.keys(selectedMadrid).length === 0){
+    if (Object.keys(selectedMadrid).length === 0) {
       setMadridPrice(0);
-    }
-    else{
-    setMadridPrice(totalPriceM + madridAddFee); // 마드리드 기본 가격 셋팅
+    } else {
+      setMadridPrice(totalPriceM + madridAddFee); // 마드리드 기본 가격 셋팅
     }
 
     onMadridPrice(madridPrice);
   }, [selectedMadrid, classificationDataString, madridPrice]);
-  
+
   const handleOpen = () => {
     //개별출원 모달창 오픈
     setOpen(true);
@@ -311,7 +347,7 @@ function NationSelectForm({
     const selected = Object.keys(selectedCountries);
     const selectedCountriesArray = selected.map((country) => [country]);
     onSelectedCountries(selectedCountriesArray);
-    console.log("개별출원:",selected);
+    console.log("개별출원:", selected);
     const newBoxes = selected.map((c) => <Box country={c} key={c} />);
     setBoxes([...boxes, newBoxes]);
     //setSelectedCountries(selectedCountries); // 선택된 국가들을 업데이트
@@ -323,7 +359,7 @@ function NationSelectForm({
     const selected = Object.keys(selectedMadrid);
     const selectedCountriesArray = selected.map((country) => [country]);
     onSelectedMadrid(selectedCountriesArray);
-    console.log("마드리드:",selected);
+    console.log("마드리드:", selected);
     const newBoxes = selected.map((c) => <Box country={c} key={c} />);
     setBoxes2([...boxes2, newBoxes]);
     //setSelectedMadrid(selectedMadrid); // 선택된 국가들을 업데이트
@@ -362,27 +398,27 @@ function NationSelectForm({
     setBoxes2(newBoxes);
   };
 
-function processCountryData(nation_data, madrid_data) {
-  const continentMap = {}; // 대륙 정보를 저장할 객체
-  for (const [country, info] of Object.entries(nation_data)) {
-    const continent = info.continent;
-    if (!continentMap[continent]) {
-      continentMap[continent] = []; // 대륙이 처음 등장하면 배열을 생성
+  function processCountryData(nation_data, madrid_data) {
+    const continentMap = {}; // 대륙 정보를 저장할 객체
+    for (const [country, info] of Object.entries(nation_data)) {
+      const continent = info.continent;
+      if (!continentMap[continent]) {
+        continentMap[continent] = []; // 대륙이 처음 등장하면 배열을 생성
+      }
+      continentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
     }
-    continentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
-  }
 
-  const madridContinentMap = {}; // 마드리드 대륙 정보를 저장할 객체
-  for (const [country, info] of Object.entries(madrid_data)) {
-    const continent = info.continent;
-    if (!madridContinentMap[continent]) {
-      madridContinentMap[continent] = []; // 대륙이 처음 등장하면 배열을 생성
+    const madridContinentMap = {}; // 마드리드 대륙 정보를 저장할 객체
+    for (const [country, info] of Object.entries(madrid_data)) {
+      const continent = info.continent;
+      if (!madridContinentMap[continent]) {
+        madridContinentMap[continent] = []; // 대륙이 처음 등장하면 배열을 생성
+      }
+      madridContinentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
     }
-    madridContinentMap[continent].push(country); // 대륙에 속하는 국가를 배열에 추가
-  }
 
-  return { continentMap, madridContinentMap };
-}
+    return { continentMap, madridContinentMap };
+  }
 
   const handleConfirm = () => {
     //확인버튼을 눌렀을 때
@@ -394,9 +430,8 @@ function processCountryData(nation_data, madrid_data) {
     handleClose2();
   };
 
-
   return (
-    <FormContainer>
+    <FormContainer sx={{ pt: 0 }}>
       <CustomTypo>
         04-2. 출원할 방법과 국가를 선택해주세요*
         <div className="littleInfo">
@@ -410,7 +445,10 @@ function processCountryData(nation_data, madrid_data) {
       <NationButton variant="outlined" onClick={handleOpen}>
         개별국가 출원
       </NationButton>
-      <NationButton variant="outlined" onClick={handleOpen2} sx={{
+      <NationButton
+        variant="outlined"
+        onClick={handleOpen2}
+        sx={{
           "&:hover": {
             backgroundColor: "#857770",
             color: "white",
@@ -422,24 +460,24 @@ function processCountryData(nation_data, madrid_data) {
             backgroundColor: "#857770",
             borderColor: "none",
           },
-      }}>
+        }}
+      >
         마드리드 출원
       </NationButton>
 
       <div className="boxContainer">
-      {boxes.map(
-      (
-        country,
-        index //국가버튼 선택시에 밑에 추가되는 상자들 표시
-      ) => (
-        <Box key={index}>{country}</Box>
-      )
-    )}
-    {boxes2.map((country, index) => (
-      <Box key={index}>{country}</Box>
-    ))}
+        {boxes.map(
+          (
+            country,
+            index //국가버튼 선택시에 밑에 추가되는 상자들 표시
+          ) => (
+            <Box key={index}>{country}</Box>
+          )
+        )}
+        {boxes2.map((country, index) => (
+          <Box key={index}>{country}</Box>
+        ))}
       </div>
-
 
       <Modal
         fontFamily="Pretendard"
