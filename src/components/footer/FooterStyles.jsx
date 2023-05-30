@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { List, ListItem, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const Logo = styled("img")(({ theme }) => ({
   width: "150px",
@@ -32,15 +33,14 @@ export const FooterWrapper = styled("div")(({ theme }) => ({
 }));
 
 export const CustomList = styled(List)(({ theme }) => ({
-  paddingTop: 0,
+  padding: "0 _ 3 _",
   display: "flex",
-  paddingBottom: 3,
   flexDirection: "row",
 }));
 
-export const CustomListItem = styled("div")(({ theme }) => ({
-  padding: 0,
+export const CustomListItem = styled(Link)(({ theme }) => ({
   paddingRight: theme.spacing(5),
+  textDecoration: "none",
 }));
 
 export const CustomListItemText = styled(Typography)(({ theme }) => ({
