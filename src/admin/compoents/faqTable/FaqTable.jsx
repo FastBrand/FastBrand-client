@@ -19,6 +19,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const FaqTable = () => {
   const [faqData, setFaqData] = useState([]);
@@ -60,7 +61,12 @@ const FaqTable = () => {
     setOpenAddDialog(true);
   };
 
+  if (!localStorage.getItem("Authorization")) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
+    
     <Box>
       <Button
         variant="contained"

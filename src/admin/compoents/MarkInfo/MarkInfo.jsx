@@ -17,12 +17,12 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import RefreshIcon from "@material-ui/icons/Refresh";
 import axios from "axios";
 import moment from "moment";
 import ReactPaginate from "react-paginate";
 import { styled } from "@mui/material/styles";
 import "./paginate.css";
+import { Navigate } from "react-router-dom";
 
 const StyledBox = styled(Box)({
   display: "flex",
@@ -167,6 +167,10 @@ function MarkInfo() {
     setPageCount(Math.ceil(trademarks.length / itemsPerPage));
   }, [trademarks]);
 
+  if (!localStorage.getItem("Authorization")) {
+    return <Navigate to="/login" replace />;
+  }
+
   return (
     <div>
       <StyledBox>
@@ -289,7 +293,7 @@ function MarkInfo() {
                         {trademark.brand_name}
                       </TableCell>
                       <TableCell align="center">{trademark.type}</TableCell>
-                      <TableCell align="center">{trademark.poc}</TableCell>
+                      <TableCell align="center">{trademark.poc === 'personal' ? '개인' : trademark.poc === 'corporate' ? '법인' : ''}</TableCell>
                       <TableCell align="center">{trademark.name}</TableCell>
                       <TableCell align="center">{trademark.email}</TableCell>
                       <TableCell align="center">
@@ -313,7 +317,7 @@ function MarkInfo() {
                         {trademark.brand_name}
                       </TableCell>
                       <TableCell align="center">{trademark.type}</TableCell>
-                      <TableCell align="center">{trademark.poc}</TableCell>
+                      <TableCell align="center">{trademark.poc === 'personal' ? '개인' : trademark.poc === 'corporate' ? '법인' : ''}</TableCell>
                       <TableCell align="center">{trademark.name}</TableCell>
                       <TableCell align="center">{trademark.email}</TableCell>
                       <TableCell align="center">

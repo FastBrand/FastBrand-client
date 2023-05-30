@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
+import { Box, Card, CardMedia, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -27,7 +27,7 @@ function MarkDetail() {
         id: data.mark.id,
         brand_name: data.mark.brand_name,
         description: data.mark.description,
-        image: data.mark.image,
+        image: data.images[0].url,
         sector: data.mark.sector,
         type: data.mark.type,
         poc: data.mark.poc,
@@ -59,7 +59,7 @@ function MarkDetail() {
         id: data.mark.id,
         brand_name: data.mark.brand_name,
         description: data.mark.description,
-        image: data.mark.image,
+        image: data.images[0].url,
         sector: data.mark.sector,
         type: data.mark.type,
         poc: data.mark.poc,
@@ -85,7 +85,7 @@ function MarkDetail() {
         corporateMobile: data.corporate.corporateMobile,
         corporatePhone: data.corporate.corporatePhone,
         corporateEmail: data.corporate.corporateEmail,
-        seal: data.corporate.seal,
+        seal: data.seals[0].url,
         caddress: data.corporate.address,
         cdetail: data.corporate.detail,
         czipcode: data.corporate.zipcode,
@@ -267,7 +267,25 @@ function MarkDetail() {
             </TableRow>
             <TableRow className="table-row">
               <TableCell align="center">인감 이미지</TableCell>
-              <TableCell align="center">{trademark.seal}</TableCell>
+              <TableCell align="center">
+              <Card>
+                  <Box sx={{ width: '100%', paddingTop: '100%', position: 'relative' }}>
+                    <CardMedia
+                      component="img"
+                      alt="No Image"
+                      image={trademark.seal}
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </Box>
+                </Card>
+                </TableCell>
             </TableRow>
             <TableRow className="table-row">
               <TableCell align="center">약관 동의 여부</TableCell>
@@ -304,7 +322,25 @@ function MarkDetail() {
             </TableRow>
             <TableRow className="table-row">
               <TableCell align="center">이미지</TableCell>
-              <TableCell align="center">{trademark.image}</TableCell>
+              <TableCell align="center">
+                <Card>
+                  <Box sx={{ width: '100%', paddingTop: '100%', position: 'relative' }}>
+                    <CardMedia
+                      component="img"
+                      alt="No Image"
+                      image={trademark.image}
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </Box>
+                </Card>
+              </TableCell>
             </TableRow>
             <TableRow className="table-row">
               <TableCell align="center">분류</TableCell>
@@ -316,7 +352,7 @@ function MarkDetail() {
             </TableRow>
             <TableRow className="table-row">
               <TableCell align="center">개인/기업</TableCell>
-              <TableCell align="center">{trademark.poc}</TableCell>
+              <TableCell align="center">{trademark.poc === 'personal' ? '개인' : trademark.poc === 'corporate' ? '법인' : ''}</TableCell>
             </TableRow>
             <TableRow className="table-row">
               <TableCell align="center">마드리드</TableCell>
