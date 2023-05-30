@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 5,
     width: "1100px",
     height: "400px",
-    boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.3)", // 그림자 효과
+    boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.3)", 
   },
   tooltip: {
     backgroundColor: "#FFFFFF",
@@ -56,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "28px",
     fontWeight: 700,
     color: "#000000",
-    // textDecoration: "underline",
     textDecorationColor: "#000000",
     textUnderlineOffset: "5px",
     textDecorationThickness: "1px",
@@ -65,12 +64,10 @@ const useStyles = makeStyles((theme) => ({
 
 function DashboardForm() {
   const classes = useStyles();
-  //const [visitorCount, setVisitorCount] = useState([]); // 일일 방문자 수
   const recentWeek = getRecentWeek(); // 최근 일주일
   const [chartData, setChartData] = useState([]); // 차트 데이터
   const [chartData02, setChartData02] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [markCount, setMarkCount] = useState([]); //상표신청수 데이터
 
   function getRecentWeek() {
     const today = new Date();
@@ -194,7 +191,7 @@ function DashboardForm() {
   }, [chartData]);
 
   if (!localStorage.getItem("Authorization")) {
-    return <Navigate to='/login' replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return (
@@ -211,13 +208,13 @@ function DashboardForm() {
               width: "1000px",
             }}
           >
-            <CircularProgress color='inherit' size={80} />
+            <CircularProgress color="inherit" size={80} />
           </div>
         ) : (
           <AreaChart width={1000} height={300} data={chartData}>
-            <XAxis stroke='#000000' dataKey='name' />
+            <XAxis stroke="#000000" dataKey="name" />
             <YAxis
-              stroke='#000000'
+              stroke="#000000"
               tickFormatter={integerFormatter}
               domain={[minValue, maxValue]}
               ticks={[
@@ -228,12 +225,12 @@ function DashboardForm() {
                 maxValue,
               ]}
             />
-            <CartesianGrid stroke='#90827b' strokeDasharray='2 2' />
+            <CartesianGrid stroke="#90827b" strokeDasharray="2 2" />
             <Area
-              dataKey='visitor'
-              fill='#76777c'
+              dataKey="visitor"
+              fill="#76777c"
               fillOpacity={0.8}
-              stroke='#76777c'
+              stroke="#76777c"
             />
             <Tooltip content={<CustomTooltip />} />
 
@@ -253,22 +250,22 @@ function DashboardForm() {
               width: "1000px",
             }}
           >
-            <CircularProgress color='inherit' size={80} />
+            <CircularProgress color="inherit" size={80} />
           </div>
         ) : (
           <AreaChart width={1000} height={300} data={chartData02}>
             <XAxis
-              stroke='#000000'
-              dataKey='name'
+              stroke="#000000"
+              dataKey="name"
               tickCount={recentWeek.length}
             />
-            <YAxis stroke='#000000' tickFormatter={integerFormatter} />
-            <CartesianGrid stroke='#000000' strokeDasharray='2 2' />
+            <YAxis stroke="#000000" tickFormatter={integerFormatter} />
+            <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
             <Area
-              dataKey='count'
+              dataKey="count"
               fillOpacity={0.8}
-              fill='#90827b'
-              stroke='#90827b'
+              fill="#90827b"
+              stroke="#90827b"
             />
             <Tooltip content={<CustomTooltip2 />} />
             <Legend />

@@ -20,6 +20,23 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  addButton: {
+    backgroundColor: '#3E3E3F',
+    color: 'white', 
+    width: '100px',
+    marginBottom: '10px',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: '#3E3E3F'
+    },
+    
+  }
+}
+))
+
 
 const FaqTable = () => {
   const [faqData, setFaqData] = useState([]);
@@ -27,6 +44,8 @@ const FaqTable = () => {
   const [isEditDialogOpen, setOpenEditDialog] = useState(false);
   const [isAddDialogOpen, setOpenAddDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
+
+  const classes = useStyles();
 
   const hanldeUpdate = () => {
     axios
@@ -69,12 +88,10 @@ const FaqTable = () => {
     
     <Box>
       <Button
+        className={classes.addButton}
         variant="contained"
         startIcon={<AddIcon />}
         onClick={handleAddClick}
-        sx={{
-          mb: 1,
-        }}
       >
         추가
       </Button>

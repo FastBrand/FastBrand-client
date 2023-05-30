@@ -3,19 +3,19 @@ import { Typography } from "@mui/material";
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
-  fontWeight: 600,
-  fontSize: "40px",
+  fontWeight: 500,
+  fontSize: "35px",
   textAlign: "center",
-  marginTop: "200px",
-  marginBottom: "3vw",
-  [theme.breakpoints.down("lg")]: {
-    fontSize: "37px",
+  marginTop: "150px",
+  marginBottom: "50px",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "30px",
   },
 }));
 
 export const FAQContainer = styled("div")(({ theme }) => ({
-  paddingLeft: "25vw",
-  paddingRight: "25vw",
+  paddingLeft: "15vw",
+  paddingRight: "15vw",
   paddingBottom: "300px",
   display: "flex",
   flexDirection: "column",

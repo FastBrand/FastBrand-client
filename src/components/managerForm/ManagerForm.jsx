@@ -12,13 +12,13 @@ const ManagerForm = ({ onManagerChange }) => {
     email: "",
     mobile: "",
     phone: "",
-    acc_num: "", // 계좌번호
+    acc_num: "", // 은행명, 계좌번호
   });
 
   const [bankData, setBankData] = useState({
-    type: "은행",
-    name: "",
-    acc_num: "",
+    type: "은행", // 은행, 증권사 구분
+    name: "", // 은행/증권사명
+    num: "", // 계좌번호
   });
 
   // 은행
@@ -118,9 +118,9 @@ const ManagerForm = ({ onManagerChange }) => {
   useEffect(() => {
     setManagerData((prevData) => ({
       ...prevData,
-      acc_num: `${bankData.name}, ${bankData.acc_num}`,
+      acc_num: `${bankData.name}, ${bankData.num}`,
     }));
-  }, [bankData]);
+  }, [bankData.name, bankData.num]);
 
   return (
     <FormContainer>
@@ -169,7 +169,7 @@ const ManagerForm = ({ onManagerChange }) => {
             onChange={(event) => handleInputChange(event, "phone")}
           />
         </Grid>
-        <Grid item xs={1.5}>
+        <Grid item xs={6} md={3}>
           <FormControl fullWidth>
             <InputLabel
               required
@@ -182,10 +182,14 @@ const ManagerForm = ({ onManagerChange }) => {
                 ml: -1.5,
               }}
             >
-              구분
+              은행/증권사 구분
             </InputLabel>
             <Select
-              sx={{ fontFamily: "Pretendard", fontSize: "20px" }}
+              sx={{
+                fontFamily: "Pretendard",
+                fontSize: "20px",
+                marginBottom: "2rem",
+              }}
               variant="standard"
               labelId="bankTypeLabel"
               id="bankType"
@@ -201,7 +205,7 @@ const ManagerForm = ({ onManagerChange }) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={6} md={3}>
           <FormControl fullWidth>
             <InputLabel
               id="bankNameLabel"
@@ -217,7 +221,11 @@ const ManagerForm = ({ onManagerChange }) => {
               {bankData.type === "은행" ? "은행명" : "증권사명"}
             </InputLabel>
             <Select
-              sx={{ fontFamily: "Pretendard", fontSize: "20px" }}
+              sx={{
+                fontFamily: "Pretendard",
+                fontSize: "20px",
+                marginBottom: "2rem",
+              }}
               variant="standard"
               labelId="bankNameLabel"
               id="bankName"
@@ -247,18 +255,19 @@ const ManagerForm = ({ onManagerChange }) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} md={6}>
           <CustomTextField
+            sx={{ pb: 0 }}
             id="managerAccountNumber"
             required
             fullWidth
             label="계좌번호"
             variant="standard"
-            value={bankData.acc_num}
+            value={bankData.num}
             onChange={(event) =>
               setBankData((prevData) => ({
                 ...prevData,
-                acc_num: event.target.value,
+                num: event.target.value,
               }))
             }
           />

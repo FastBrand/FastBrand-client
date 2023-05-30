@@ -15,7 +15,7 @@ import {
   Button
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
@@ -171,7 +171,10 @@ function MarkInfo() {
   return (
     <div>
       <StyledBox>
-        <StyledSelect value={searchType} onChange={handleSearchTypeChange}>
+        <StyledSelect
+        value={searchType}
+        onChange={handleSearchTypeChange}
+        >
           <MenuItem value="brand_name">상표명</MenuItem>
           <MenuItem value="id">상표번호</MenuItem>
           <MenuItem value="name">담당자</MenuItem>
@@ -186,19 +189,7 @@ function MarkInfo() {
           <SearchIcon sx={{ color: "black", fontSize: "30px" }} />
         </IconButton>
       </StyledBox>
-      {/* <IconButton
-        style={{
-          backgroundColor: "#999999",
-          color: "inherit",
-          marginBottom: "5px",
-        }}
-        onClick={refreshData}
-        color="primary"
-        size="small"
-        aria-label="새로고침"
-      > */}
-        <Button onClick={refreshData}>새로고침</Button>
-      {/* </IconButton> */}
+        <Button onClick={refreshData}>목록갱신</Button>
       <TableContainer component={Paper} sx={{ width: "90%" }}>
         <Table>
           <TableHead>
@@ -209,7 +200,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>상표번호</b>
                 </TableSortLabel>
               </TableCell>
@@ -219,7 +210,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>상표명</b>
                 </TableSortLabel>
               </TableCell>
@@ -229,7 +220,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>출원유형</b>
                 </TableSortLabel>
               </TableCell>
@@ -239,7 +230,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>개인/법인</b>
                 </TableSortLabel>
               </TableCell>
@@ -249,7 +240,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>담당자</b>
                 </TableSortLabel>
               </TableCell>
@@ -259,7 +250,7 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>이메일</b>
                 </TableSortLabel>
               </TableCell>
@@ -269,11 +260,11 @@ function MarkInfo() {
                 onClick={handleRowClick}
                 style={{ cursor: "pointer", paddingLeft: "55px" }}
               >
-                <TableSortLabel>
+                <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                   <b>등록일</b>
                 </TableSortLabel>
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" sx={{ whiteSpace: "nowrap" }}>
                 <b>세부사항</b>
               </TableCell>
             </TableRow>
@@ -284,7 +275,7 @@ function MarkInfo() {
                 {trademarks
                   .slice(pagesVisited, pagesVisited + itemsPerPage)
                   .map((trademark) => (
-                    <TableRow className="table-row">
+                    <TableRow className="table-row" component={Link} to={`/markinfo/${trademark.id}`} >                   
                       <TableCell align="center">{trademark.id}</TableCell>
                       <TableCell align="center">
                         {trademark.brand_name}
@@ -298,8 +289,8 @@ function MarkInfo() {
                       </TableCell>
                       <TableCell align="center">
                         <Link to={`/markinfo/${trademark.id}`}>세부정보</Link>
-                      </TableCell>
-                    </TableRow>
+                      </TableCell>                
+                    </TableRow>   
                   ))}
               </>
             )}

@@ -80,7 +80,7 @@ function SideNavbarForm() {
 
   const handleLogout = () => {
     setOpen(false);
-    localStorage.removeItem('Authorization');
+    localStorage.clear();
     console.log("로그아웃함:", localStorage.getItem('Authorization'));
     navigate('/login');
   };

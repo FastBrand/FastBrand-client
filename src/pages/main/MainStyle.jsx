@@ -3,9 +3,14 @@ import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import mainImg from "../../assets/images/메인.jpeg";
 
-export const CustomBox = styled(Box)(({ theme }) => ({
+export const CustomBox = styled("div")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(5),
+  transition: "0.2s",
+  padding: "0 13vw ",
+  [theme.breakpoints.down("md")]: {
+    padding: "0 5vw",
+  },
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
@@ -46,13 +51,6 @@ export const ButtonLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   "&:hover": {
     backgroundPosition: "right center",
-  },
-}));
-
-export const MainContainer = styled("div")(({ theme }) => ({
-  padding: "0 13vw ",
-  [theme.breakpoints.down("md")]: {
-    padding: "0 5vw",
   },
 }));
 
