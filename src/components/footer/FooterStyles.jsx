@@ -35,7 +35,7 @@ export const FooterWrapper = styled("div")(({ theme }) => ({
 export const CustomList = styled(List)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
-  [theme.breakpoints.down("460")]: {
+  [theme.breakpoints.down("470")]: {
     flexDirection: "column",
   },
 }));
