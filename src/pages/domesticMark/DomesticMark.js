@@ -58,7 +58,7 @@ function DomesticMark() {
 
   const handleOpen = () => {
     const showError = (message) => {
-      window.confirm(message);
+      window.alert(message);
     };
 
     const checkField = (value, message) => {
@@ -236,8 +236,8 @@ function DomesticMark() {
 
     const endpoint =
       applicantType.poc === "personal"
-        ? "http://localhost:8080/api/register/all/personal"
-        : "http://localhost:8080/api/register/all/corporate";
+        ? "http://localhost:8080/api/register/personal"
+        : "http://localhost:8080/api/register/corporate";
 
     const JSONData = JSON.stringify(data);
 
