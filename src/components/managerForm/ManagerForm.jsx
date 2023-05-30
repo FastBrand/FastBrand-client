@@ -143,6 +143,7 @@ const ManagerForm = ({ onManagerChange }) => {
             required
             id="managerEMail"
             label="이메일"
+            helperText="ex) aaa@aaa.com"
             variant="standard"
             value={managerData.email}
             onChange={(event) => handleInputChange(event, "email")}
@@ -154,6 +155,7 @@ const ManagerForm = ({ onManagerChange }) => {
             required
             id="managerPhone"
             label="휴대전화"
+            helperText="ex) 000-0000-0000"
             variant="standard"
             value={managerData.mobile}
             onChange={(event) => handleInputChange(event, "mobile")}
@@ -164,6 +166,7 @@ const ManagerForm = ({ onManagerChange }) => {
             id="managerLandlinePhone"
             fullWidth
             label="유선전화"
+            helperText="ex) 00-000-0000"
             variant="standard"
             value={managerData.phone}
             onChange={(event) => handleInputChange(event, "phone")}
@@ -188,7 +191,6 @@ const ManagerForm = ({ onManagerChange }) => {
               sx={{
                 fontFamily: "Pretendard",
                 fontSize: "20px",
-                marginBottom: "2rem",
               }}
               variant="standard"
               labelId="bankTypeLabel"
@@ -270,6 +272,7 @@ const ManagerForm = ({ onManagerChange }) => {
                 num: event.target.value,
               }))
             }
+            helperText="ex) 000-0000-0000-00"
           />
         </Grid>
       </Grid>

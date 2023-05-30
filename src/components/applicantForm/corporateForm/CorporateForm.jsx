@@ -99,6 +99,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               fullWidth
               id="corporateName_eng"
               label="법인명(영어)"
+              sx={{ marginBottom: "1rem" }}
               variant="standard"
               value={corporateData.name_eng}
               onChange={(event) => handleInputChange(event, "name_eng")}
@@ -121,6 +122,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               fullWidth
               id="corporateCrn"
               label="법인 등록번호"
+              sx={{ marginBottom: "1rem" }}
               variant="standard"
               value={corporateData.crn}
               onChange={(event) => handleInputChange(event, "crn")}
@@ -143,6 +145,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               fullWidth
               id="corporateSsn"
               label="대표자 생년월일"
+              helperText="ex) 0000.00.00"
               variant="standard"
               value={corporateData.ssn}
               onChange={(event) => handleInputChange(event, "ssn")}
@@ -154,6 +157,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               fullWidth
               id="corporateMobile"
               label="법인 대표 휴대전화"
+              helperText="ex) 000-0000-0000"
               variant="standard"
               value={corporateData.corporateMobile}
               onChange={(event) => handleInputChange(event, "corporateMobile")}
@@ -163,6 +167,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
             <CustomTextField
               id="corporatePhone"
               label="법인 대표 유선전화"
+              helperText="ex) 00-000-0000"
               variant="standard"
               fullWidth
               value={corporateData.corporatePhone}
@@ -175,6 +180,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               fullWidth
               id="corporateEmail"
               label="법인 대표 이메일"
+              helperText="ex) aaa@aaa.com"
               variant="standard"
               value={corporateData.corporateEmail}
               onChange={(event) => handleInputChange(event, "corporateEmail")}
@@ -216,6 +222,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               fullWidth
               id="corporateZipcode"
               label="우편번호"
+              sx={{ marginBottom: "1rem" }}
               variant="standard"
               value={corporateData.zipcode}
               onChange={(event) => handleInputChange(event, "zipcode")}

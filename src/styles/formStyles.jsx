@@ -71,7 +71,6 @@ export const PostCodeButton = styled(Button)({
 
 export const CustomTextField = styled(TextField)({
   // 폰트 설정
-  // paddingBottom: "2rem",
   "& .MuiInputBase-root": {
     fontFamily: "Pretendard",
     fontWeight: "500",
@@ -85,10 +84,13 @@ export const CustomTextField = styled(TextField)({
   },
   "&.MuiTextField-root": {
     // dense 설정
-    marginBottom: "2rem",
+    paddingBottom: "2rem",
   },
-  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-    // 포커스 시 테두리 스타일
-    borderColor: "1px solid black", // 테두리를 black으로
+
+  // Helpertext 스타일
+  "& .MuiFormHelperText-root": {
+    fontFamily: "Pretendard",
+    fontWeight: "500",
+    fontSize: "14px",
   },
 });
