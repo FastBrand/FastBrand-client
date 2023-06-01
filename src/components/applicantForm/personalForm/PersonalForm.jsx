@@ -20,7 +20,6 @@ const PersonalForm = ({ onPersonalChange }) => {
     address: "",
     detail: "",
     zipcode: "",
-    agreement: "",
   });
 
   useEffect(() => {
