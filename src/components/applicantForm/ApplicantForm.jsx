@@ -28,7 +28,7 @@ const ApplicantForm = ({
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [corporateData, setCorporateData] = useState({});
   const [personalData, setPersonalData] = useState({});
-  const [applicantData, setApplicantData] = useState({});
+  const [applicantData, setApplicantData] = useState({ agreement: "" });
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleDialogClose = () => {
@@ -63,7 +63,10 @@ const ApplicantForm = ({
     // applicantType에 따라 personalData 또는 corporateData를 applicantData에 저장
     const dataToSave =
       applicantType.poc === "personal" ? personalData : corporateData;
-    setApplicantData({ ...dataToSave });
+    setApplicantData((prevData) => ({
+      ...prevData,
+      ...dataToSave,
+    }));
   }, [applicantType, personalData, corporateData]);
 
   useEffect(() => {
