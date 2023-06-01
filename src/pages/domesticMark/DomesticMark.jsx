@@ -244,7 +244,15 @@ function DomesticMark() {
 
     const formData = new FormData();
     formData.append("data", new Blob([JSONData], { type: "application/json" }));
-    formData.append("image", imageData);
+
+    if (imageData === null){
+      formData.append("image", "none");
+    }
+    
+    if(imageData !== null){
+      formData.append("image", imageData);
+    }
+   
     if (applicantType.poc === "corporate") formData.append("seal", sealData);
 
     try {
