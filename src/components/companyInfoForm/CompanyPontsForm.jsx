@@ -18,7 +18,7 @@ import companyImage03 from "../../assets/images/happyprofessionalemployees.jpg";
 
 function CompanyPointForm() {
   return (
-    <div style={{ marginBottom: "200px" }}>
+    <div style={{ marginBottom: "100px" }}>
       {/* <InfoBox01>
         <Grid container spacing={2}>
           <Grid item xs={12} md={12}>
