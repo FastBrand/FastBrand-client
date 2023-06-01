@@ -5,7 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 export const NavLink = styled(Link)(({ theme }) => ({
   fontSize: "20px",
   color: "#CBA585",
-  fontWeight: 600,
+  fontWeight: 500,
   fontFamily: "Pretendard",
   cursor: "pointer",
   textDecoration: "none",
@@ -76,7 +76,7 @@ export const NavbarLogo = styled("img")(({ theme }) => ({
 export const ButtonLink = styled(Link)(({ theme }) => ({
   fontSize: "20px",
   color: "#CBA585",
-  fontWeight: 600,
+  fontWeight: 500,
   fontFamily: "Pretendard",
   cursor: "pointer",
   textDecoration: "none",
