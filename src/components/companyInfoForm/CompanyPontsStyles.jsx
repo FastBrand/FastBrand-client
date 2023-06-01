@@ -16,7 +16,7 @@ export const SectionTitle = styled(Typography)(({ theme }) => ({
 export const Title = styled(Typography)(({ theme }) => ({
   marginTop: "150px",
   fontFamily: "Pretendard",
-  fontWeight: 500,
+  fontWeight: 600,
   fontSize: "35px",
   textAlign: "center",
   // marginTop: "200px",
