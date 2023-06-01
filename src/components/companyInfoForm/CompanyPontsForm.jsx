@@ -50,7 +50,8 @@ function CompanyPointForm() {
                 </Strong>
                 검토로,
                 <Strong>
-                  중간사건(거절이유)이 발생되지 않도록 하여 높은 등록성공률
+                  &nbsp;중간사건(거절이유)이 발생되지 않도록 하여 높은
+                  등록성공률
                 </Strong>
               </Paragraph>
             </div>
