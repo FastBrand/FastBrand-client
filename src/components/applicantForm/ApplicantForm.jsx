@@ -123,7 +123,7 @@ const ApplicantForm = ({
             <Checkbox
               sx={{
                 "&.Mui-checked": {
-                  color: "#CBA585",
+                  color: "black",
                 },
               }}
               checked={applicantData.agreement === "동의"}
