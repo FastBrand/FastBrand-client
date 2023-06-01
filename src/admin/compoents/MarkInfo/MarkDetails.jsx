@@ -163,6 +163,7 @@ function MarkDetail() {
         </div>
       </Box>
       <br></br>
+    
       {trademark.poc === "personal" && (
         <div>
           <h4>출원인 정보</h4>
@@ -221,8 +222,8 @@ function MarkDetail() {
         </div>
       )}
 
-
-      {trademark.poc === "corporate" && (
+      
+      {trademark.poc === "corporate" && trademark.seal !== null && (
         <div>
           <h4>출원인 정보</h4>
           <TableContainer component={Paper} sx={{ width: "80%" }}>
@@ -313,8 +314,144 @@ function MarkDetail() {
           </TableContainer>
         </div>
       )}
+
+     
+        {trademark.poc === "corporate" && trademark.seal === null && (
+        <div>
+          <h4>출원인 정보</h4>
+          <TableContainer component={Paper} sx={{ width: "80%" }}>
+            <Table>
+              <TableHead>
+                <TableRow sx={{ background: "#9E9E9F" }}>
+                  <TableCell align="center"><b>항목</b></TableCell>
+                  <TableCell align="center"><b>내용</b></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow className="table-row">
+                  <TableCell align="center">회사명(한글)</TableCell>
+                  <TableCell align="center">{trademark.cname_kor}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">회사명(영문)</TableCell>
+                  <TableCell align="center">{trademark.cname_eng}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">사업자등록번호</TableCell>
+                  <TableCell align="center">{trademark.brn}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">법인등록번호</TableCell>
+                  <TableCell align="center">{trademark.crn}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">대표자명</TableCell>
+                  <TableCell align="center">{trademark.corporateName}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">대표자 생년월일</TableCell>
+                  <TableCell align="center">{trademark.cssn}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">전화번호</TableCell>
+                  <TableCell align="center">{trademark.corporatePhone}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">휴대폰 번호</TableCell>
+                  <TableCell align="center">{trademark.corporateMobile}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">이메일</TableCell>
+                  <TableCell align="center">{trademark.corporateEmail}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">주소</TableCell>
+                  <TableCell align="center">{trademark.caddress}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">상세주소</TableCell>
+                  <TableCell align="center">{trademark.cdetail}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">우편번호</TableCell>
+                  <TableCell align="center">{trademark.czipcode}</TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">인감 이미지</TableCell>
+                  <TableCell align="center">
+                    없음
+                  </TableCell>
+                </TableRow>
+                <TableRow className="table-row">
+                  <TableCell align="center">약관 동의 여부</TableCell>
+                  <TableCell align="center">{trademark.cagreement}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      )}
+    
       <br></br><br></br>
+
+     { trademark.image !== null &&(
       <div>
+        <h4>상표정보</h4>
+        <TableContainer component={Paper} sx={{ width: "80%" }}>
+          <Table>
+            <TableHead>
+              <TableRow sx={{ background: "#9E9E9F" }}>
+                <TableCell align="center"><b>항목</b></TableCell>
+                <TableCell align="center"><b>내용</b></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow className="table-row">
+                <TableCell align="center">상표번호</TableCell>
+                <TableCell align="center">{trademark.id}</TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">상표명</TableCell>
+                <TableCell align="center">{trademark.brand_name}</TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">설명</TableCell>
+                <TableCell align="center">{trademark.description}</TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">이미지</TableCell>
+                <TableCell align="center">
+                  없음
+                </TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">분류</TableCell>
+                <TableCell align="center">{trademark.sector}</TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">유형</TableCell>
+                <TableCell align="center">{trademark.type}</TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">개인/기업</TableCell>
+                <TableCell align="center">{trademark.poc === 'personal' ? '개인' : trademark.poc === 'corporate' ? '법인' : ''}</TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">마드리드</TableCell>
+                <TableCell align="center">{trademark.madrid}</TableCell>
+              </TableRow>
+              <TableRow className="table-row">
+                <TableCell align="center">개별출원</TableCell>
+                <TableCell align="center">{trademark.direct}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+      )}
+
+      {trademark.image !== null && (
+     <div>
         <h4>상표정보</h4>
         <TableContainer component={Paper} sx={{ width: "80%" }}>
           <Table>
@@ -383,10 +520,12 @@ function MarkDetail() {
           </Table>
         </TableContainer>
       </div>
+      )}
+
       <br></br><br></br>
+
       <div>
         <h4>담당자 정보</h4>
-
         <TableContainer component={Paper} sx={{ width: "80%" }}>
           <Table>
             <TableHead>
