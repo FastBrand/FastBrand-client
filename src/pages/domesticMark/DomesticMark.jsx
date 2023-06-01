@@ -247,16 +247,14 @@ function DomesticMark() {
     formData.append("image", imageData);
     if (applicantType.poc === "corporate") formData.append("seal", sealData);
 
-    axios
-      .post(endpoint, formData)
-      .then((response) => {
-        console.log(response);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    try {
+      const response = await axios.post(endpoint, formData);
+      console.log(response);
+      console.log(data);
+  } catch (error) {
+      console.log(error);
+  }
+};
 
   return (
     <div className={classes.root}>
