@@ -246,14 +246,20 @@ function DomesticMark() {
     formData.append("data", new Blob([JSONData], { type: "application/json" }));
 
     if (imageData === null){
-      formData.append("image", "none");
+      formData.append("image", "noData");
     }
-    
-    if(imageData !== null){
+    else if(imageData !== null){
       formData.append("image", imageData);
     }
    
-    if (applicantType.poc === "corporate") formData.append("seal", sealData);
+    if (applicantType.poc === "corporate") {
+      if(sealData !== null){
+        formData.append("seal", sealData);
+      }
+      else if(sealData === null){
+        formData.append("seal", "noData");
+      }
+    }
 
     try {
       const response = await axios.post(endpoint, formData);

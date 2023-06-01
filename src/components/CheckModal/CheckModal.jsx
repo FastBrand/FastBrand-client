@@ -142,9 +142,9 @@ function CheckModal({
 
   const handleConfirmButtonClick = async () => {
   try{
+    handleDialogClose();
     await handleSubmit();
     await sendEmail();
-    handleDialogClose();
     handleClose();
     alert("메일발송이 완료되었습니다.");
 

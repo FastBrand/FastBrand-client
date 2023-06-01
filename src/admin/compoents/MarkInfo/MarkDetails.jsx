@@ -6,7 +6,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import moment from 'moment';
-import nonImage from '../../../assets/icon/iconCheck.svg';
 import "./paginate.css"
 
 function MarkDetail() {
@@ -82,7 +81,7 @@ function MarkDetail() {
             corporateMobile: data.corporate.corporateMobile,
             corporatePhone: data.corporate.corporatePhone,
             corporateEmail: data.corporate.corporateEmail,
-            seal: data.seals[0].url || null,
+            seal: data.seals[0]?.url,
             caddress: data.corporate.address,
             cdetail: data.corporate.detail,
             czipcode: data.corporate.zipcode,
