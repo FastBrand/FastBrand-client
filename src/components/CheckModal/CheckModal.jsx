@@ -101,10 +101,10 @@ function CheckModal({
   const [formattedPrice, setFormattedPrice] = useState(0);
 
   const [openDialog, setOpenDialog] = useState(false); //다이얼로그 창
-  const handleDialogOpen = () => {
+  const handleDialogOpen = async () => {
     setOpenDialog(true);
   };
-  const handleDialogClose = () => {
+  const handleDialogClose = async () => {
     setOpenDialog(false);
   };
 
@@ -139,20 +139,28 @@ function CheckModal({
     onFormattedPrice(formattedPrice);
   }, [formattedPrice]);
 
+  
 
-  const handleConfirmButtonClick = () => {
-    handleSubmit();
-    sendEmail();
-    handleDialogClose();
-    handleClose();
+  const handleConfirmButtonClick = async () => {
+  try{
+    await handleSubmit();
+    await sendEmail();
+    await handleDialogClose();
+    await handleClose();
     alert("메일발송이 완료되었습니다.");
 
-      setTimeout(function() {
+    setTimeout(() => {
         window.location.reload();
-      }, 500);
-  };
+    }, 500);
+  }
+    catch(error) {
+      console.log(error)
+    }  
+}; 
 
-  const sendEmail = () => {
+
+
+  const sendEmail = async  () => {
     let message;
     let nationMessage = "";
     let toEmail = managerData.email;
