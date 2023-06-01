@@ -10,6 +10,7 @@ import {
   Box,
   Button,
   IconButton,
+  TableSortLabel
 } from "@mui/material";
 import DeleteDialog from "../deleteDialog/DeleteDialog";
 import EditDialog from "../editDialog/EditDialog";
@@ -99,23 +100,39 @@ const FaqTable = () => {
         <Table>
           <TableHead>
             <TableRow sx={{ background: "#9E9E9F" }}>
+              
               <TableCell align="center">
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>No</b>
+                </TableSortLabel>
               </TableCell>
+             
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>질문</b>
-              </TableCell>
+                </TableSortLabel>
+              </TableCell>           
+            
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>답변</b>
-              </TableCell>
+                </TableSortLabel>
+              </TableCell>             
+             
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>수정</b>
-              </TableCell>
+                </TableSortLabel>
+              </TableCell> 
+       
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>삭제</b>
-              </TableCell>
+                </TableSortLabel>
+             </TableCell>             
             </TableRow>
           </TableHead>
+
           <TableBody>
             {faqData.map((faq) => (
               <TableRow key={faq.id}>

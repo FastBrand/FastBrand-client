@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     fontFamily: "Prentendard",
+    overflowX: 'hidden'
   },
   sectionTitle: {
     fontFamily: "Pretendard",
@@ -102,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     alignItems: "center",
     justifyContent: "center",
-    // overflow: "hidden",
+    //overflow: "hidden",
   },
   infoBox03: {
     fontFamily: "Prentendard",
