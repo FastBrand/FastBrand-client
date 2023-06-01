@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import { Box, Typography, CircularProgress } from "@material-ui/core";
 import { Navigate } from "react-router-dom";
@@ -22,10 +23,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "20px",
     marginRight: "20px",
     marginTop: "30px",
-    // border: "0.5px solid #000",
     backgroundColor: "white",
     borderRadius: 5,
-    width: "1100px",
+    width: "90%",
     height: "400px",
     boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.3)", 
   },
@@ -36,17 +36,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     padding: "3px",
     fontSize: "13px",
-  },
-  paper: {
-    padding: theme.spacing(3),
-    width: 850,
-    display: "flex",
-    justifyContent: "left",
-    alignItems: "left",
-    marginLeft: "20px",
-    textAlign: "left",
-    color: "#FFFFFF",
-    backgroundColor: "#3E3E3F",
   },
   text01: {
     borderBottom: "3px soild #3E3E3F",
@@ -173,7 +162,6 @@ function DashboardForm() {
       .catch((error) => {
         setLoading(false);
         console.log(error);
-
       });
   }, []);
 
@@ -212,7 +200,8 @@ function DashboardForm() {
             <CircularProgress color='inherit' size={80} />
           </div>
         ) : (
-          <AreaChart width={1000} height={300} data={chartData}>
+          <ResponsiveContainer width="80%" height={300}>
+          <AreaChart data={chartData}>
             <XAxis stroke='#000000' dataKey='name' />
             <YAxis
               stroke='#000000'
@@ -237,6 +226,7 @@ function DashboardForm() {
 
             <Legend />
           </AreaChart>
+          </ResponsiveContainer>
         )}
       </Box>
       <Box className={classes.box}>
@@ -254,7 +244,8 @@ function DashboardForm() {
             <CircularProgress color='inherit' size={80} />
           </div>
         ) : (
-          <AreaChart width={1000} height={300} data={chartData02}>
+          <ResponsiveContainer width="80%" height={300}>
+          <AreaChart data={chartData02}>
             <XAxis
               stroke='#000000'
               dataKey='name'
@@ -271,6 +262,7 @@ function DashboardForm() {
             <Tooltip content={<CustomTooltip2 />} />
             <Legend />
           </AreaChart>
+          </ResponsiveContainer>
         )}
       </Box>
     </div>

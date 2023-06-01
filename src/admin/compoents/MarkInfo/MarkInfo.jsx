@@ -32,7 +32,7 @@ const StyledBox = styled(Box)({
 });
 
 const StyledTextField = styled(TextField)({
-  width: "200px",
+  minwidth: "200px",
   backgroundColor: "#f5f5f5",
   "&:focus": {
     backgroundColor: "#f5f5f5",
@@ -41,11 +41,21 @@ const StyledTextField = styled(TextField)({
 });
 
 const StyledSelect = styled(Select)({
-  minWidth: "120px",
+  minWidth: "100px",
   backgroundColor: "#f5f5f5",
   "&:focus": {
     backgroundColor: "#f5f5f5",
     borderColor: "#f5f5f5",
+  },
+});
+
+const RefreshButton = styled(Button)({
+  color: "white",
+  backgroundColor: "#3E3E3F",
+  marginRight: "50%",
+  "&:hover": {
+    backgroundColor: "#76777c",
+    color: "white",
   },
 });
 
@@ -170,7 +180,9 @@ function MarkInfo() {
 
   return (
     <div>
+      
       <StyledBox>
+      <RefreshButton onClick={refreshData}>목록갱신</RefreshButton>
         <StyledSelect
         value={searchType}
         onChange={handleSearchTypeChange}
@@ -188,8 +200,8 @@ function MarkInfo() {
         <IconButton onClick={handleSearch}>
           <SearchIcon sx={{ color: "black", fontSize: "30px" }} />
         </IconButton>
-      </StyledBox>
-        <Button onClick={refreshData}>목록갱신</Button>
+        </StyledBox>
+
       <TableContainer component={Paper} sx={{ width: "90%" }}>
         <Table>
           <TableHead>

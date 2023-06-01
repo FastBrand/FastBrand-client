@@ -36,7 +36,6 @@ const handleLogin = () => {
   })
   .catch((error) => {
     console.error(error);
-    console.log("로그인실패", error.headers);
     setLoginFailed(true); // 로그인 실패 상태를 true로 변경
   });
 };
