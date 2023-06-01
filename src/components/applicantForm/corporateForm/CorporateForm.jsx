@@ -26,7 +26,6 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
     address: "", // 주소
     detail: "", // 상세주소
     zipcode: "", // 우편번호
-    agreement: "",
   });
 
   useEffect(() => {
