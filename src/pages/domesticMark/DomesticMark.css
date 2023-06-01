@@ -6,7 +6,7 @@
   color: #cba585;
   border-radius: 3px;
   border: 2px solid #cba585;
-  padding: 10px 80px;
+  padding: 10px 50px;
   display: flex;
   margin: auto;
   margin-bottom: 120px;
@@ -33,6 +33,6 @@
   box-shadow: none;
 }
 #submitButton03:hover {
-  background-color: #3E3E3F;
+  background-color: #3e3e3f;
   color: white;
 }
