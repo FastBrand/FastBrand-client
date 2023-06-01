@@ -16,7 +16,7 @@ export const CustomBox = styled("div")(({ theme }) => ({
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
   fontSize: "80px",
-  fontWeight: "600",
+  fontWeight: 500,
   color: "#fff",
   margin: theme.spacing(24, 0, 0, 0),
   // theme.transitions.create
@@ -58,6 +58,6 @@ export const SubTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
   fontSize: "20px",
   color: "white",
-  fontWeight: "500",
+  fontWeight: 500,
   margin: "0 0 40px 5px",
 }));
