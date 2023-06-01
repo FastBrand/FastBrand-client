@@ -10,6 +10,7 @@ import {
   Box,
   Button,
   IconButton,
+  TableSortLabel
 } from "@mui/material";
 import DeleteDialog from "../deleteDialog/DeleteDialog";
 import EditDialog from "../editDialog/EditDialog";
@@ -20,22 +21,18 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { styled } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
-  addButton: {
-    backgroundColor: '#3E3E3F',
-    color: 'white', 
-    width: '100px',
-    marginBottom: '10px',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: '#3E3E3F'
-    },
-    
-  }
-}
-))
+const AddButton = styled(Button)({
+  color: "white",
+  backgroundColor: "#3E3E3F",
+  marginRight: "50%",
+  marginBottom: "5px",
+  "&:hover": {
+    backgroundColor: "#76777c",
+    color: "white",
+  },
+});
 
 
 const FaqTable = () => {
@@ -45,7 +42,6 @@ const FaqTable = () => {
   const [isAddDialogOpen, setOpenAddDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const classes = useStyles();
 
   const hanldeUpdate = () => {
     axios
@@ -87,35 +83,50 @@ const FaqTable = () => {
   return (
     
     <Box>
-      <Button
-        className={classes.addButton}
+      <AddButton
         variant="contained"
         startIcon={<AddIcon />}
         onClick={handleAddClick}
       >
         추가
-      </Button>
+      </AddButton>
       <TableContainer component={Paper} sx={{ width: "80%" }}>
         <Table>
           <TableHead>
             <TableRow sx={{ background: "#9E9E9F" }}>
+              
               <TableCell align="center">
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>No</b>
+                </TableSortLabel>
               </TableCell>
+             
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>질문</b>
-              </TableCell>
+                </TableSortLabel>
+              </TableCell>           
+            
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>답변</b>
-              </TableCell>
+                </TableSortLabel>
+              </TableCell>             
+             
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>수정</b>
-              </TableCell>
+                </TableSortLabel>
+              </TableCell> 
+       
               <TableCell>
+              <TableSortLabel sx={{ whiteSpace: "nowrap" }}>
                 <b>삭제</b>
-              </TableCell>
+                </TableSortLabel>
+             </TableCell>             
             </TableRow>
           </TableHead>
+
           <TableBody>
             {faqData.map((faq) => (
               <TableRow key={faq.id}>

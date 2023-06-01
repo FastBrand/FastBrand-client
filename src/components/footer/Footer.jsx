@@ -32,12 +32,7 @@ const Footer = () => {
         <CompanyInfo>
           <CustomList>
             {menuItems.map((item, index) => (
-              <CustomListItem
-                key={index}
-                component={Link}
-                to={item.link}
-                target={item.target}
-              >
+              <CustomListItem key={index} to={item.link} target={item.target}>
                 <CustomListItemText>{item.text}</CustomListItemText>
               </CustomListItem>
             ))}

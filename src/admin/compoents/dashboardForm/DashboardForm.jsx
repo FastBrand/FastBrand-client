@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import { Box, Typography, CircularProgress } from "@material-ui/core";
 import { Navigate } from "react-router-dom";
@@ -22,12 +23,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "20px",
     marginRight: "20px",
     marginTop: "30px",
-    // border: "0.5px solid #000",
     backgroundColor: "white",
     borderRadius: 5,
-    width: "1100px",
+    width: "90%",
     height: "400px",
-    boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.3)", 
+    boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.3)",
   },
   tooltip: {
     backgroundColor: "#FFFFFF",
@@ -36,17 +36,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     padding: "3px",
     fontSize: "13px",
-  },
-  paper: {
-    padding: theme.spacing(3),
-    width: 850,
-    display: "flex",
-    justifyContent: "left",
-    alignItems: "left",
-    marginLeft: "20px",
-    textAlign: "left",
-    color: "#FFFFFF",
-    backgroundColor: "#3E3E3F",
   },
   text01: {
     borderBottom: "3px soild #3E3E3F",
@@ -211,31 +200,33 @@ function DashboardForm() {
             <CircularProgress color="inherit" size={80} />
           </div>
         ) : (
-          <AreaChart width={1000} height={300} data={chartData}>
-            <XAxis stroke="#000000" dataKey="name" />
-            <YAxis
-              stroke="#000000"
-              tickFormatter={integerFormatter}
-              domain={[minValue, maxValue]}
-              ticks={[
-                minValue,
-                maxValue / 4,
-                maxValue / 2,
-                (maxValue * 3) / 4,
-                maxValue,
-              ]}
-            />
-            <CartesianGrid stroke="#90827b" strokeDasharray="2 2" />
-            <Area
-              dataKey="visitor"
-              fill="#76777c"
-              fillOpacity={0.8}
-              stroke="#76777c"
-            />
-            <Tooltip content={<CustomTooltip />} />
+          <ResponsiveContainer width="80%" height={300}>
+            <AreaChart data={chartData}>
+              <XAxis stroke="#000000" dataKey="name" />
+              <YAxis
+                stroke="#000000"
+                tickFormatter={integerFormatter}
+                domain={[minValue, maxValue]}
+                ticks={[
+                  minValue,
+                  maxValue / 4,
+                  maxValue / 2,
+                  (maxValue * 3) / 4,
+                  maxValue,
+                ]}
+              />
+              <CartesianGrid stroke="#90827b" strokeDasharray="2 2" />
+              <Area
+                dataKey="visitor"
+                fill="#76777c"
+                fillOpacity={0.8}
+                stroke="#76777c"
+              />
+              <Tooltip content={<CustomTooltip />} />
 
-            <Legend />
-          </AreaChart>
+              <Legend />
+            </AreaChart>
+          </ResponsiveContainer>
         )}
       </Box>
       <Box className={classes.box}>
@@ -253,23 +244,25 @@ function DashboardForm() {
             <CircularProgress color="inherit" size={80} />
           </div>
         ) : (
-          <AreaChart width={1000} height={300} data={chartData02}>
-            <XAxis
-              stroke="#000000"
-              dataKey="name"
-              tickCount={recentWeek.length}
-            />
-            <YAxis stroke="#000000" tickFormatter={integerFormatter} />
-            <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
-            <Area
-              dataKey="count"
-              fillOpacity={0.8}
-              fill="#90827b"
-              stroke="#90827b"
-            />
-            <Tooltip content={<CustomTooltip2 />} />
-            <Legend />
-          </AreaChart>
+          <ResponsiveContainer width="80%" height={300}>
+            <AreaChart data={chartData02}>
+              <XAxis
+                stroke="#000000"
+                dataKey="name"
+                tickCount={recentWeek.length}
+              />
+              <YAxis stroke="#000000" tickFormatter={integerFormatter} />
+              <CartesianGrid stroke="#000000" strokeDasharray="2 2" />
+              <Area
+                dataKey="count"
+                fillOpacity={0.8}
+                fill="#90827b"
+                stroke="#90827b"
+              />
+              <Tooltip content={<CustomTooltip2 />} />
+              <Legend />
+            </AreaChart>
+          </ResponsiveContainer>
         )}
       </Box>
     </div>

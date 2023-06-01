@@ -20,7 +20,6 @@ const PersonalForm = ({ onPersonalChange }) => {
     address: "",
     detail: "",
     zipcode: "",
-    agreement: "",
   });
 
   useEffect(() => {
@@ -71,6 +70,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="applicantEnglishName"
             label="성명(영어)"
+            sx={{ marginBottom: "1rem" }}
             variant="standard"
             value={personalData.name_eng}
             onChange={(event) => handleInputChange(event, "name_eng")}
@@ -82,6 +82,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalSsn"
             label="생년월일"
+            helperText=" ex) 0000.00.00"
             variant="standard"
             value={personalData.ssn}
             onChange={(event) => handleInputChange(event, "ssn")}
@@ -93,6 +94,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalEmail"
             label="이메일"
+            helperText="aaa@aaa.com"
             variant="standard"
             value={personalData.personalEmail}
             onChange={(event) => handleInputChange(event, "personalEmail")}
@@ -104,6 +106,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalMobile"
             label="휴대전화"
+            helperText="ex) 000-0000-0000"
             variant="standard"
             value={personalData.personalMobile}
             onChange={(event) => handleInputChange(event, "personalMobile")}
@@ -114,6 +117,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalPhone"
             label="유선전화"
+            helperText="ex) 00-000-0000"
             variant="standard"
             value={personalData.personalPhone}
             onChange={(event) => handleInputChange(event, "personalPhone")}
@@ -123,9 +127,9 @@ const PersonalForm = ({ onPersonalChange }) => {
           <CustomTextField
             controlled="true"
             fullWidth
-            // required
             id="personalZipcode"
             label="우편번호"
+            sx={{ marginBottom: "1rem" }}
             variant="standard"
             value={personalData.zipcode}
             onChange={(event) => handleInputChange(event, "zipcode")}

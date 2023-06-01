@@ -12,7 +12,6 @@ function DashBoard() {
           marginLeft: "202px",
         }}
       >
-     
         <DashboardForm />
     
       </div>

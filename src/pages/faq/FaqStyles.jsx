@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
-  fontWeight: 500,
+  fontWeight: 600,
   fontSize: "35px",
   textAlign: "center",
   marginTop: "150px",

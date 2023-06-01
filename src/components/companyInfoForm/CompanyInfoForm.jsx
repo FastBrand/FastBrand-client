@@ -9,11 +9,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     fontFamily: "Prentendard",
+    overflowX: 'hidden'
   },
   sectionTitle: {
     fontFamily: "Pretendard",
-    fontWeight: 600,
-    fontSize: "40px",
+    fontWeight: 500,
+    fontSize: "38px",
     textAlign: "center",
     marginTop: "100px",
     marginBottom: "3vw",
@@ -45,16 +46,14 @@ const useStyles = makeStyles((theme) => ({
   },
   linkButton: {
     fontFamily: "Prentendard",
-    width: "200px",
-    height: "50px",
-    marginTop: "50px",
+    padding: "7px 30px",
     fontSize: "18px",
     backgroundColor: "transparent",
     color: "white",
-    border: "3px solid white",
+    border: "2px solid white",
     marginLeft: "auto",
     marginRight: "auto",
-    display: "block",
+    display: "flex",
   },
   gridBox: {
     fontFamily: "Prentendard",
@@ -104,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     alignItems: "center",
     justifyContent: "center",
-    // overflow: "hidden",
+    //overflow: "hidden",
   },
   infoBox03: {
     fontFamily: "Prentendard",

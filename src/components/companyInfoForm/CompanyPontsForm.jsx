@@ -18,7 +18,7 @@ import companyImage03 from "../../assets/images/happyprofessionalemployees.jpg";
 
 function CompanyPointForm() {
   return (
-    <div style={{ marginBottom: "200px" }}>
+    <div style={{ marginBottom: "100px" }}>
       {/* <InfoBox01>
         <Grid container spacing={2}>
           <Grid item xs={12} md={12}>
@@ -50,7 +50,8 @@ function CompanyPointForm() {
                 </Strong>
                 검토로,
                 <Strong>
-                  중간사건(거절이유)이 발생되지 않도록 하여 높은 등록성공률
+                  &nbsp;중간사건(거절이유)이 발생되지 않도록 하여 높은
+                  등록성공률
                 </Strong>
               </Paragraph>
             </div>

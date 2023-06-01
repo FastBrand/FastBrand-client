@@ -1,5 +1,6 @@
 .littleTitle01 {
   font-size: 38px;
+  font-family: "Pretendard";
   text-align: left;
   font-weight: 600;
   color: #ffffff;
@@ -7,6 +8,7 @@
 
 .littleInfo {
   font-size: 16px;
+  font-family: "Pretendard";
   text-align: left;
   font-weight: 300;
   color: #000000;
