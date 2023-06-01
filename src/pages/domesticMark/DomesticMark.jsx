@@ -214,7 +214,7 @@ function DomesticMark() {
     setModalOpen(false);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit =  async () => {
     const data = {
       mark: {
         ...trademarkData,

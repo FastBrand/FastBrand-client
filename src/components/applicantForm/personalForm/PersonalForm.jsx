@@ -94,7 +94,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalEmail"
             label="이메일"
-            helperText="aaa@aaa.com"
+            helperText="ex) aaa@aaa.com"
             variant="standard"
             value={personalData.personalEmail}
             onChange={(event) => handleInputChange(event, "personalEmail")}
