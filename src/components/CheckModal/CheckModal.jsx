@@ -18,7 +18,6 @@ import { useEffect, useState } from "react";
 import emailjs from 'emailjs-com';
 import React, { useCallback } from 'react';
 
-
 const useStyles = makeStyles((theme) => ({
   modalBox: {
     position: "absolute",
@@ -101,10 +100,10 @@ function CheckModal({
   const [formattedPrice, setFormattedPrice] = useState(0);
 
   const [openDialog, setOpenDialog] = useState(false); //다이얼로그 창
-  const handleDialogOpen = async () => {
+  const handleDialogOpen =  () => {
     setOpenDialog(true);
   };
-  const handleDialogClose = async () => {
+  const handleDialogClose = () => {
     setOpenDialog(false);
   };
 
@@ -143,22 +142,20 @@ function CheckModal({
 
   const handleConfirmButtonClick = async () => {
   try{
+    handleDialogClose();
     await handleSubmit();
     await sendEmail();
-    await handleDialogClose();
-    await handleClose();
+    handleClose();
     alert("메일발송이 완료되었습니다.");
 
     setTimeout(() => {
         window.location.reload();
-    }, 500);
+    }, 300);
   }
     catch(error) {
       console.log(error)
     }  
 }; 
-
-
 
   const sendEmail = async  () => {
     let message;
@@ -255,22 +252,16 @@ function CheckModal({
       nationMessage: nationMessage,
     };
 
-    emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
-    .then((response) => {
-      console.log('이메일 전송성공', response);
-    })
-    .catch((error) => {
-      console.error('이메일 전송오류', error);
-    });
-
-    emailjs.send('service_ntfee7r', 'template_nk4mhqd', templateParams, 'niIZOtG66JjWR0wjS')
-    .then((response) => {
-      console.log('이메일 전송성공', response);
-    })
-    .catch((error) => {
-      console.error('이메일 전송오류', error);
-    });
-
+    try{
+      await Promise.all([
+        emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS'),
+        emailjs.send('service_ntfee7r', 'template_nk4mhqd', templateParams, 'niIZOtG66JjWR0wjS')
+      ]);
+      console.log('이메일 전송성공');
+    }
+    catch(error){
+      console.log('이메일 전송오류', error);
+    }
   };
 
   return (
