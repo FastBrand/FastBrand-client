@@ -82,7 +82,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalSsn"
             label="생년월일"
-            helperText=" ex) 1969.00.00"
+            helperText=" ex) 0000.00.00"
             variant="standard"
             value={personalData.ssn}
             onChange={(event) => handleInputChange(event, "ssn")}
@@ -94,7 +94,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalEmail"
             label="이메일"
-            helperText="mark@wonjon.com"
+            helperText="aaa@aaa.com"
             variant="standard"
             value={personalData.personalEmail}
             onChange={(event) => handleInputChange(event, "personalEmail")}
@@ -106,7 +106,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalMobile"
             label="휴대전화"
-            helperText="ex) 010-4006-5236"
+            helperText="ex) 000-0000-0000"
             variant="standard"
             value={personalData.personalMobile}
             onChange={(event) => handleInputChange(event, "personalMobile")}
@@ -117,7 +117,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalPhone"
             label="유선전화"
-            helperText="ex) 02-553-1246"
+            helperText="ex) 00-000-0000"
             variant="standard"
             value={personalData.personalPhone}
             onChange={(event) => handleInputChange(event, "personalPhone")}
