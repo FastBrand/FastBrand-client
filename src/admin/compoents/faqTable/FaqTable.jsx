@@ -21,22 +21,18 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { styled } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
-  addButton: {
-    backgroundColor: '#3E3E3F',
-    color: 'white', 
-    width: '100px',
-    marginBottom: '10px',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: '#3E3E3F'
-    },
-    
-  }
-}
-))
+const AddButton = styled(Button)({
+  color: "white",
+  backgroundColor: "#3E3E3F",
+  marginRight: "50%",
+  marginBottom: "5px",
+  "&:hover": {
+    backgroundColor: "#76777c",
+    color: "white",
+  },
+});
 
 
 const FaqTable = () => {
@@ -46,7 +42,6 @@ const FaqTable = () => {
   const [isAddDialogOpen, setOpenAddDialog] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 
-  const classes = useStyles();
 
   const hanldeUpdate = () => {
     axios
@@ -88,14 +83,13 @@ const FaqTable = () => {
   return (
     
     <Box>
-      <Button
-        className={classes.addButton}
+      <AddButton
         variant="contained"
         startIcon={<AddIcon />}
         onClick={handleAddClick}
       >
         추가
-      </Button>
+      </AddButton>
       <TableContainer component={Paper} sx={{ width: "80%" }}>
         <Table>
           <TableHead>
