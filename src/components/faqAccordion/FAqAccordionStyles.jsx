@@ -13,3 +13,7 @@ export const Title = styled(Typography)(({ theme }) => ({
 export const Content = styled(Typography)({
   fontFamily: "Pretendard",
 });
+
+export const AccordionContainer = styled("div")({
+  marginBottom: "130px",
+});

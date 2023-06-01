@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-import { Title, Content } from "./FAqAccordionStyles";
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { Title, Content, AccordionContainer } from "./FAqAccordionStyles";
 
 const FaqAccordion = () => {
   const [faqData, setFaqData] = React.useState([]);
@@ -25,7 +24,7 @@ const FaqAccordion = () => {
   }, []);
 
   return (
-    <div>
+    <AccordionContainer>
       {faqData.map((faq, index) => (
         <Accordion key={index}>
           <AccordionSummary
@@ -43,7 +42,7 @@ const FaqAccordion = () => {
           </AccordionDetails>
         </Accordion>
       ))}
-    </div>
+    </AccordionContainer>
   );
 };
 
