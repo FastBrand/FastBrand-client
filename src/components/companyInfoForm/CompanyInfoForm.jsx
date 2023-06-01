@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   linkButton: {
     fontFamily: "Prentendard",
-    padding: "10px 30px",
+    padding: "7px 30px",
     fontSize: "18px",
     backgroundColor: "transparent",
     color: "white",
