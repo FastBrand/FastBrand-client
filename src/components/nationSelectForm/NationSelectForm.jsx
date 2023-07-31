@@ -33,14 +33,14 @@ const NationButton = styled(Button)({
   // height: "52px",
   padding: "10px 30px",
   "&:hover": {
-    backgroundColor: "#CBA585",
+    backgroundColor: "#0992e3",
     color: "white",
-    borderColor: "#CBA585",
+    borderColor: "#0992e3",
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: "#CBA585",
+    backgroundColor: "#0992e3",
     borderColor: "none",
   },
 });
@@ -71,9 +71,9 @@ const NationButton_table = styled(Button)({
   //   borderColor: "#CBA585",
   // },
   "&.selected": {
-    backgroundColor: "#CBA585",
+    backgroundColor: "#0992e3",
     color: "white",
-    borderColor: "#CBA585",
+    borderColor: "#0992e3",
   },
 });
 
@@ -100,9 +100,9 @@ const NationButton_table2 = styled(Button)({
   //   borderColor: "#857770",
   // },
   "&.selected": {
-    backgroundColor: "#857770",
+    backgroundColor: "#00baef",
     color: "white",
-    borderColor: "#857770",
+    borderColor: "#00baef",
   },
 });
 
@@ -434,7 +434,7 @@ function NationSelectForm({
   return (
     <FormContainer sx={{ pt: 0 }}>
       <CustomTypo>
-        04-2. 출원할 방법과 국가를 선택해주세요*
+        03-2. 출원할 방법과 국가를 선택해주세요*
         <div className="littleInfo">
           ※ '같은 국가'를 개별출원과 마드리드 동시에 출원할 수 없습니다&nbsp;
           <span>
@@ -451,14 +451,14 @@ function NationSelectForm({
         onClick={handleOpen2}
         sx={{
           "&:hover": {
-            backgroundColor: "#857770",
+            backgroundColor: "#00baef",
             color: "white",
-            borderColor: "#857770",
+            borderColor: "#00baef",
             boxShadow: "none",
           },
           "&:active": {
             boxShadow: "none",
-            backgroundColor: "#857770",
+            backgroundColor: "#00baef",
             borderColor: "none",
           },
         }}
