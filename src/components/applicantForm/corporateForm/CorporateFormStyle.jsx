@@ -22,5 +22,3 @@ export const CustomTypo = styled(Typography)({
   fontWeight: "600",
   fontSize: "46px",
 });
-
-export const SearchButton = styled(Button)(({ theme }) => ({}));
