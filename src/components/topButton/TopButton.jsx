@@ -6,9 +6,9 @@ const StyledFab = styled(Fab)({
   position: "fixed",
   bottom: "1.5rem",
   right: "1.5rem",
-  backgroundColor: "#CBA585",
+  backgroundColor: "#0992E3",
   "&:hover": {
-    backgroundColor: "#CBA585",
+    backgroundColor: "#0992E3",
   },
 });
 
