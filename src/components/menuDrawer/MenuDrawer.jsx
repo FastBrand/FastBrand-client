@@ -42,7 +42,14 @@ const MenuDrawer = ({ open, toggleDrawer }) => {
         >
           고객 센터
         </div>
-        <div style={{ fontWeight: 700, fontSize: "38px", marginTop: "-5px" }}>
+        <div
+          style={{
+            fontWeight: 700,
+            fontSize: "38px",
+            marginTop: "-5px",
+            color: "#0992E3",
+          }}
+        >
           02-553-1246
         </div>
         <br />
