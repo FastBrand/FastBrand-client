@@ -39,7 +39,7 @@ function MarkAreaCard(props) {
       sx={{
         alignItems: "center",
         textAlign: "center",
-        backgroundColor: isSelected ? "#857770" : "white",
+        backgroundColor: isSelected ? "#0992e3" : "white",
         color: isSelected ? "white" : "black",
         width: "300px", // 원하는 너비 설정
         height: "400px", // 원하는 높이 설정
@@ -53,9 +53,10 @@ function MarkAreaCard(props) {
     >
       <CardActionArea
         onClick={handleClick}
-        sx={{ 
+        sx={{
           width: "100%",
-          height: "100%"}}
+          height: "100%",
+        }}
       >
         {/* <CardMedia
           component="img"
@@ -73,16 +74,16 @@ function MarkAreaCard(props) {
             variant="h5"
             // component="div"
             sx={{
-              color: isSelected ? "#f6f6eb" : "#857770",
+              color: isSelected ? "#fff" : "#0992e3",
               fontFamily: "Pretendard",
               fontWeight: 700,
               fontSize: "34px",
-              "@media (max-width: 1024px)":{
+              "@media (max-width: 1024px)": {
                 fontSize: "24px",
               },
-              "@media (max-width: 600px)":{
+              "@media (max-width: 600px)": {
                 fontSize: "14px",
-              }
+              },
             }}
           >
             {props.markData.type}
@@ -94,13 +95,13 @@ function MarkAreaCard(props) {
             fontSize="18px"
             sx={{
               wordWrap: "break-word",
-              "@media (max-width: 1024px)":{
+              "@media (max-width: 1024px)": {
                 fontSize: "18px",
                 display: "none",
-              }
+              },
             }}
           >
-          {props.markData.content}
+            {props.markData.content}
           </Typography>
           <Typography
             variant="body1"
@@ -109,13 +110,13 @@ function MarkAreaCard(props) {
             fontSize="18px"
             sx={{
               wordWrap: "break-word",
-              "@media (max-width: 1024px)":{
+              "@media (max-width: 1024px)": {
                 fontSize: "20px",
                 display: "none",
-              }
+              },
             }}
           >
-           {props.markData.content2}
+            {props.markData.content2}
           </Typography>
           <Typography
             variant="body1"
@@ -124,10 +125,10 @@ function MarkAreaCard(props) {
             fontSize="18px"
             sx={{
               wordWrap: "break-word",
-              "@media (max-width: 1024px)":{
+              "@media (max-width: 1024px)": {
                 fontSize: "20px",
-                display: "none", 
-              }
+                display: "none",
+              },
             }}
           >
             {props.markData.content3}
@@ -136,17 +137,17 @@ function MarkAreaCard(props) {
             variant="h4"
             sx={{
               fontWeight: "600",
-              marginBottom: '10px',
-              color: isSelected ? "#f6f6eb" : "#857770",
-                "@media (max-width: 1024px)":{
-                  fontSize: "24px",
-                },
-              "@media (max-width: 600px)":{
+              marginBottom: "10px",
+              color: isSelected ? "#fff" : "#0992e3",
+              "@media (max-width: 1024px)": {
+                fontSize: "24px",
+              },
+              "@media (max-width: 600px)": {
                 fontSize: "10px",
-              }
+              },
             }}
           >
-            <br/>₩ {props.markData.price}
+            <br />₩ {props.markData.price}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -170,7 +171,7 @@ function MarkSelectForm({ onSelectedMark }) {
   }, [selectedMark, onSelectedMark]);
 
   return (
-    <Box sx={{ backgroundColor: "#3e3e3f", paddingTop: "80px" }}>
+    <Box sx={{ backgroundColor: "#3D4856", paddingTop: "80px" }}>
       <FormContainer>
         <CustomTypo sx={{ color: "white" }}>
           01. 패키지 유형을 선택해주세요*
