@@ -13,11 +13,10 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import PriceTooltip from "./PriceTooltip.jsx";
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from "@material-ui/styles";
 import { useEffect, useState } from "react";
-import emailjs from 'emailjs-com';
-import React, { useCallback } from 'react';
-
+import emailjs from "emailjs-com";
+import React, { useCallback } from "react";
 
 const useStyles = makeStyles((theme) => ({
   modalBox: {
@@ -76,10 +75,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
   },
   recipeTable: {
-    padding:  '0 10px',
-  }
-}))
-
+    padding: "0 10px",
+  },
+}));
 
 function CheckModal({
   open,
@@ -88,7 +86,6 @@ function CheckModal({
   trademarkData,
   madridDataString,
   directNationString,
-  managerData,
   applicantData,
   markSelectData,
   classificationData,
@@ -107,7 +104,6 @@ function CheckModal({
   const handleDialogClose = () => {
     setOpenDialog(false);
   };
-
 
   const handlePrice = useCallback(() => {
     let priceData = 0;
@@ -130,7 +126,7 @@ function CheckModal({
     const numberWithCommas = formatter.format(priceData);
     return numberWithCommas;
   }, [markSelectData, madridPriceData, directPriceData]);
-  
+
   useEffect(() => {
     setFormattedPrice(handlePrice());
   }, [handlePrice]);
@@ -139,7 +135,6 @@ function CheckModal({
     onFormattedPrice(formattedPrice);
   }, [formattedPrice]);
 
-
   const handleConfirmButtonClick = () => {
     handleSubmit();
     sendEmail();
@@ -147,17 +142,18 @@ function CheckModal({
     handleClose();
     alert("메일발송이 완료되었습니다.");
 
-      setTimeout(function() {
-        window.location.reload();
-      }, 500);
+    setTimeout(function () {
+      window.location.reload();
+    }, 500);
   };
 
   const sendEmail = () => {
     let message;
     let nationMessage = "";
-    let toEmail = managerData.email;
+    let toEmail = "";
 
     if (applicantType.poc === "personal") {
+      toEmail = applicantData.personalEmail;
       if (markSelectData !== "국내출원") {
         nationMessage = `
        -견적
@@ -179,12 +175,6 @@ function CheckModal({
         패키지: ${markSelectData}
         상표명: ${trademarkData.brand_name}
         세부설명: ${trademarkData.description}
-
-        -담당자 정보      
-        담당자 성명: ${managerData.name}
-        담당자 이메일: ${managerData.email}
-        담당자 휴대전화: ${managerData.mobile}
-        담당자 유선전화: ${managerData.phone}
         
         -출원인 정보(개인)
         출원인 성명(한글): ${applicantData.name_kor}
@@ -197,6 +187,7 @@ function CheckModal({
         출원인 유선전화: ${applicantData.personalPhone}
       `;
     } else {
+      toEmail = applicantData.corporateEmail;
       if (markSelectData !== "국내출원") {
         nationMessage = `
         -견적
@@ -219,12 +210,6 @@ function CheckModal({
         패키지: ${markSelectData}
         상표명: ${trademarkData.brand_name}
         세부설명: ${trademarkData.description}
-
-        -담당자 정보      
-        담당자 성명: ${managerData.name}
-        담당자 이메일: ${managerData.email}
-        담당자 휴대전화: ${managerData.mobile}
-        담당자 유선전화: ${managerData.phone}
         
         -출원인 정보(법인)
         법인명(한글): ${applicantData.corporateName}
@@ -247,22 +232,33 @@ function CheckModal({
       nationMessage: nationMessage,
     };
 
-    emailjs.send('service_ntfee7r', 'template_5zsy56b', templateParams, 'niIZOtG66JjWR0wjS')
-    .then((response) => {
-      console.log('이메일 전송성공', response);
-    })
-    .catch((error) => {
-      console.error('이메일 전송오류', error);
-    });
+    emailjs
+      .send(
+        "service_ntfee7r",
+        "template_5zsy56b",
+        templateParams,
+        "niIZOtG66JjWR0wjS"
+      )
+      .then((response) => {
+        console.log("이메일 전송성공", response);
+      })
+      .catch((error) => {
+        console.error("이메일 전송오류", error);
+      });
 
-    emailjs.send('service_ntfee7r', 'template_nk4mhqd', templateParams, 'niIZOtG66JjWR0wjS')
-    .then((response) => {
-      console.log('이메일 전송성공', response);
-    })
-    .catch((error) => {
-      console.error('이메일 전송오류', error);
-    });
-
+    emailjs
+      .send(
+        "service_ntfee7r",
+        "template_nk4mhqd",
+        templateParams,
+        "niIZOtG66JjWR0wjS"
+      )
+      .then((response) => {
+        console.log("이메일 전송성공", response);
+      })
+      .catch((error) => {
+        console.error("이메일 전송오류", error);
+      });
   };
 
   return (
@@ -293,103 +289,98 @@ function CheckModal({
             <br />
             - 수수료 부가세 별도
             <br />
-            - 마드리드 출원의 경우 [스위스, 불가리아, 우크라이나]국가 3개 이상의
-            분류를 선택했을 시,
+            - 상표출원 예상비용이며 등록비용은 별도
             <br />
-            &nbsp; &nbsp;실제가격이 예상가격보다 저렴할 수 있습니다. <br />
           </div>
-        )
-}
-      <Box className={classes.recipeTable}>
-        <Table >
-        <TableBody>
-          <TableRow>
-            <TableCell>패키지: </TableCell>
-            <TableCell>{markSelectData}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>상표명: </TableCell>
-            <TableCell>{trademarkData.brand_name}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>세부설명: </TableCell>
-            <TableCell>{trademarkData.description}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>상표 분류: </TableCell>
-            <TableCell>{classificationData.sector} </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>출원인 성명: </TableCell>
-            <TableCell>{applicantData.name_kor}</TableCell>
-          </TableRow>
+        )}
+        <Box className={classes.recipeTable}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell>패키지: </TableCell>
+                <TableCell>{markSelectData}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>상표명: </TableCell>
+                <TableCell>{trademarkData.brand_name}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>세부설명: </TableCell>
+                <TableCell>{trademarkData.description}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>상표 분류: </TableCell>
+                <TableCell>{classificationData.sector} </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>출원인 성명: </TableCell>
+                <TableCell>{applicantData.name_kor}</TableCell>
+              </TableRow>
 
-            <TableRow>
-              <TableCell className={classes.tableCell}>
-                담당자 성명: {managerData.name}
-              </TableCell>
-              <TableCell>담당자 이메일: {managerData.email}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.tableCell}>
-                담당자 연락처: {managerData.mobile}
-              </TableCell>
-              <TableCell>담당자 유선전화: {managerData.phone}</TableCell>
-            </TableRow>
-
-          {markSelectData === '국내출원' ? (
-            <>
-              <TableRow>
-                <TableCell>패키지 수수료(부가세 10%):</TableCell>
-                <TableCell>₩220,000</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>특허청 전문기관(부가세 10%):</TableCell>
-                <TableCell>₩49,500</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>특허청 관납료(우선심사포함): </TableCell>
-                <TableCell>₩216,000</TableCell>
-              </TableRow>
-              <TableRow>
-              <TableCell><div className={classes.textRed}>
-              <span><PriceTooltip/> </span>
-              예상가격:</div></TableCell>
-              <TableCell><div className={classes.textRed}>{formattedPrice}</div></TableCell>
-              </TableRow>
-            </>
-          ) : (
-            <>
-              <TableRow>
-                <TableCell>출원국가(개별국출원):</TableCell>
-                <TableCell>{directNationString}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>출원국가(마드리드): </TableCell>
-                <TableCell>{madridDataString}</TableCell>
-              </TableRow>
-              <TableRow>
-               <TableCell>
-                <div className={classes.textRed}>
-                <span><PriceTooltip/></span>
-                예상가격: 
-                </div>
-                </TableCell>
-                <TableCell><div className={classes.textRed}>{formattedPrice}</div></TableCell>
-              </TableRow>
-            </>
-          )}
-              
-        </TableBody>
- 
-    </Table>
-    </Box>
-      <Button id="submitButton03"
-        onClick={handleDialogOpen}
-        variant="contained">
-        상표등록
-      </Button>
-      <Dialog
+              {markSelectData === "국내출원" ? (
+                <>
+                  <TableRow>
+                    <TableCell>패키지 수수료(부가세 10%):</TableCell>
+                    <TableCell>₩220,000</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>특허청 전문기관(부가세 10%):</TableCell>
+                    <TableCell>₩49,500</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>특허청 관납료(우선심사포함): </TableCell>
+                    <TableCell>₩216,000</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <div className={classes.textRed}>
+                        <span>
+                          <PriceTooltip />{" "}
+                        </span>
+                        예상가격:
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className={classes.textRed}>{formattedPrice}</div>
+                    </TableCell>
+                  </TableRow>
+                </>
+              ) : (
+                <>
+                  <TableRow>
+                    <TableCell>출원국가(개별국출원):</TableCell>
+                    <TableCell>{directNationString}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>출원국가(마드리드): </TableCell>
+                    <TableCell>{madridDataString}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <div className={classes.textRed}>
+                        <span>
+                          <PriceTooltip />
+                        </span>
+                        예상가격:
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className={classes.textRed}>{formattedPrice}</div>
+                    </TableCell>
+                  </TableRow>
+                </>
+              )}
+            </TableBody>
+          </Table>
+        </Box>
+        <Button
+          id="submitButton03"
+          onClick={handleDialogOpen}
+          variant="contained"
+        >
+          상표등록
+        </Button>
+        <Dialog
           open={openDialog}
           onClose={handleDialogClose}
           aria-labelledby="메일발송창"
