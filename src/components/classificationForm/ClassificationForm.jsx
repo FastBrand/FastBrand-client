@@ -1,4 +1,21 @@
-import { ToggleButton, Tooltip, Typography } from "@mui/material";
+import {
+  ToggleButton,
+  Tooltip,
+  Typography,
+  Button,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TableContainer,
+  Paper,
+  Table,
+  TableCell,
+  TableBody,
+  TableRow,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { CustomTypo, FormContainer } from "../../styles/formStyles";
 import React, { useState, useEffect } from "react";
 
@@ -174,18 +191,22 @@ const classifications = [
     description:
       "법무, 보안, 웨딩, 장례, 종교, 돌봄서비스, 개인 서비스업, 온라인 소셜네트워킹",
   },
-  {
-    id: 46,
-    name: "기타",
-    description: "기타",
-  },
 ];
 
 const ClassificationForm = ({ onClassificationataChange }) => {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedClassifications, setSelectedClassifications] = useState([]);
   const [classificationData, setClassificationData] = useState({
     sector: "",
   });
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  };
 
   const handleClassificationClick = (classificationId) => {
     setSelectedClassifications((prevSelected) => {
@@ -208,7 +229,7 @@ const ClassificationForm = ({ onClassificationataChange }) => {
   }, [classificationData, onClassificationataChange]);
 
   return (
-    <FormContainer sx={{ pb: 0 }}>
+    <FormContainer>
       <CustomTypo>
         03. 분류를 선택해주세요*
         <div
@@ -221,7 +242,21 @@ const ClassificationForm = ({ onClassificationataChange }) => {
             marginBottom: "2rem",
           }}
         >
-          다중선택이 가능하며 마우스를 대면 분류에 대한 정보를 볼 수 있습니다
+          다중선택이 가능하며 마우스를 대면 분류에 대한 정보를 볼 수 있습니다.
+          <Button
+            style={{
+              marginLeft: "10px",
+              borderRadius: "3px",
+              padding: "5px 10px",
+              fontSize: "16px",
+              backgroundColor: "#d9d9d9",
+              color: "black",
+              fontFamily: "Pretendard",
+            }}
+            onClick={handleDialogOpen}
+          >
+            상품분류전체보기
+          </Button>
         </div>
       </CustomTypo>
       <div
@@ -243,7 +278,7 @@ const ClassificationForm = ({ onClassificationataChange }) => {
               onClick={() => handleClassificationClick(classification.id)}
               style={{
                 border: selectedClassifications.includes(classification.id)
-                  ? "2px solid #857770"
+                  ? "2px solid #0992E3"
                   : "1px solid black",
                 fontFamily: "Pretendard",
                 fontWeight: selectedClassifications.includes(classification.id)
@@ -256,10 +291,10 @@ const ClassificationForm = ({ onClassificationataChange }) => {
                 backgroundColor: selectedClassifications.includes(
                   classification.id
                 )
-                  ? "#857770"
+                  ? "#0992E3"
                   : "white",
                 color: selectedClassifications.includes(classification.id)
-                  ? "#f6f6eb"
+                  ? "#fff"
                   : "black",
                 boxShadow: selectedClassifications.includes(classification.id)
                   ? "rgba(0, 0, 0, 0.2) 1.95px 1.95px 3px"
@@ -271,6 +306,64 @@ const ClassificationForm = ({ onClassificationataChange }) => {
           </Tooltip>
         ))}
       </div>
+      {dialogOpen && (
+        <Dialog
+          open={dialogOpen}
+          onClose={handleDialogClose}
+          fullWidth
+          maxWidth="md"
+          scroll="paper"
+          sx={{ fontFamily: "Pretendard" }}
+        >
+          <DialogActions>
+            <IconButton
+              edge="end"
+              color="inherit"
+              onClick={handleDialogClose}
+              sx={{
+                position: "absolute",
+                top: 5,
+                right: 15,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogActions>
+          <DialogTitle sx={{ fontFamily: "Pretendard" }}>
+            상품분류전체보기
+          </DialogTitle>
+          <DialogContent dividers>
+            <TableContainer component={Paper}>
+              <Table>
+                <TableBody style={{ fontSize: "16px" }}>
+                  {classifications.map((classification) => (
+                    <TableRow key={classification.id}>
+                      <TableCell
+                        align="center"
+                        style={{
+                          backgroundColor: "#0992E3",
+                          color: "white",
+                          fontFamily: "Pretendard",
+                        }}
+                      >
+                        {classification.name}
+                      </TableCell>
+                      <TableCell
+                        style={{
+                          fontFamily: "Pretendard",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {classification.description}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </DialogContent>
+        </Dialog>
+      )}
     </FormContainer>
   );
 };
