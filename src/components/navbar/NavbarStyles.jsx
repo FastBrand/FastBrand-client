@@ -4,12 +4,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export const NavLink = styled(Link)(({ theme }) => ({
   fontSize: "20px",
-  color: "#CBA585",
+  color: "black",
   fontWeight: 500,
   fontFamily: "Pretendard",
   cursor: "pointer",
   textDecoration: "none",
-  transition: "0.5s",
+  transition: "0.3s",
+  "&:hover": {
+    color: "#0992E3",
+  },
 }));
 
 export const NavbarLinksBox = styled("div")(({ theme }) => ({
@@ -24,7 +27,7 @@ export const NavbarLinksBox = styled("div")(({ theme }) => ({
 
 export const CustomMenuIcon = styled(MenuIcon)(({ theme }) => ({
   cursor: "pointer",
-  color: "#CBA585",
+  color: "#0992E3",
   fontSize: "2.3rem",
   [theme.breakpoints.down("sm")]: {
     fontSize: "1.8rem",
@@ -44,7 +47,7 @@ export const NavbarContainer = styled("div")(
     padding: "0 13vw",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: backgroundColor,
+    backgroundColor: "white",
     borderBottom: backgroundColor === "none" ? "none" : "1px solid #eee",
     [theme.breakpoints.down("1250")]: {
       padding: " 0 2vw",
@@ -72,21 +75,21 @@ export const NavbarLogo = styled("img")(({ theme }) => ({
 
 export const ButtonLink = styled(Link)(({ theme }) => ({
   fontSize: "20px",
-  color: "#CBA585",
+  color: "#0992E3",
   fontWeight: 600,
   fontFamily: "Pretendard",
   cursor: "pointer",
   textDecoration: "none",
   marginRight: "1rem",
   boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
-  border: "2px solid #CBA585",
+  border: "2px solid #0992E3",
   borderRadius: "3px",
   padding: "11px 15px",
   transition: "0.2s",
 
   "&:hover": {
     color: "white",
-    backgroundColor: "#CBA585",
+    backgroundColor: "#0992E3",
   },
   [theme.breakpoints.down("410")]: {
     display: "none",
