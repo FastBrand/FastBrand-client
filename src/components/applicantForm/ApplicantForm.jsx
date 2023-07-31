@@ -75,7 +75,7 @@ const ApplicantForm = ({
 
   return (
     <>
-      <Wrapper sx={{ backgroundColor: "#3E3E3F" }}>
+      <Wrapper sx={{ backgroundColor: "#3D4856" }}>
         <FileLabel sx={{ color: "white" }}>
           출원인 유형을 선택해주세요*
         </FileLabel>
