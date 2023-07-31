@@ -3,9 +3,9 @@
   font-size: 24px;
   font-weight: 500;
   background-color: transparent;
-  color: #cba585;
+  color: #0992e3;
   border-radius: 3px;
-  border: 2px solid #cba585;
+  border: 2px solid #0992e3;
   padding: 10px 50px;
   display: flex;
   margin: auto;
@@ -13,7 +13,7 @@
   box-shadow: none;
 }
 #submitButton01:hover {
-  background-color: #cba585;
+  background-color: #0992e3;
   color: white;
 }
 
@@ -22,9 +22,9 @@
   font-size: 14px;
   font-weight: 400;
   background-color: transparent;
-  color: #3e3e3f;
+  color: #3d4856;
   border-radius: 50px;
-  border: 0.5px solid #3e3e3f;
+  border: 0.5px solid #3d4856;
   padding: 8px 40px;
   display: flex;
   margin: auto;
@@ -33,6 +33,6 @@
   box-shadow: none;
 }
 #submitButton03:hover {
-  background-color: #3e3e3f;
+  background-color: #3d4856;
   color: white;
 }
