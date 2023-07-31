@@ -1,63 +1,94 @@
 import { styled } from "@mui/system";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import mainImg from "../../assets/images/메인.jpeg";
+
+export const MainImg = styled("img")(({ theme }) => ({
+  width: "55%",
+  [theme.breakpoints.down("1370")]: {
+    marginTop: "50px",
+    height: "70%",
+    width: "70%",
+  },
+  [theme.breakpoints.down("1200")]: {
+    width: "100%",
+    height: "60%",
+  },
+  [theme.breakpoints.down("750")]: {
+    marginTop: "10px",
+  },
+  [theme.breakpoints.down("600")]: {
+    marginTop: 0,
+    width: "100%",
+    height: "50%",
+  },
+  [theme.breakpoints.down("500")]: {
+    marginTop: "100px",
+    height: "30%",
+  },
+  height: "100vh",
+}));
 
 export const CustomBox = styled("div")(({ theme }) => ({
+  marginTop: "auto",
   display: "flex",
-  gap: theme.spacing(5),
+  alignItems: "center",
+  justifyContent: "center",
+  paddingBottom: "10px",
+  // gap: theme.spacing(5),
   transition: "0.2s",
-  padding: "0 13vw ",
-  [theme.breakpoints.down("md")]: {
-    padding: "0 5vw",
+  padding: "0 14vw ",
+  [theme.breakpoints.down("1370")]: {
+    padding: "0 3vw",
+    marginTop: "110px",
+    flexDirection: "column",
+    textAlign: "center",
   },
+  height: "100vh",
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
-  fontSize: "80px",
-  fontWeight: 500,
-  color: "#fff",
-  margin: theme.spacing(24, 0, 0, 0),
-  // theme.transitions.create
-}));
-
-export const BackgroundBox = styled(Box)(({ theme }) => ({
-  backgroundColor: "rgba(0, 0, 0, 0.6)",
-  backgroundBlendMode: "multiply",
-  backgroundImage: `url(${mainImg})`,
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-  height: "100vh",
-  [theme.breakpoints.down("md")]: {
-    backgroundPosition: "center",
+  fontSize: "60px",
+  fontWeight: 400,
+  [theme.breakpoints.down("1370")]: {
+    "& br": {
+      display: "none",
+    },
+  },
+  [theme.breakpoints.down("600")]: {
+    fontSize: "45px",
   },
 }));
 
 export const ButtonLink = styled(Link)(({ theme }) => ({
-  backgroundImage: "linear-gradient(to right, #CBA585 0%, #9F6A5B 30%)",
-  margin: "3px",
+  // backgroundImage: "linear-gradient(to right, #9AF288 0%, #0992E3 40%)",
+  backgroundColor: "#0992E3",
+  marginLeft: "3px",
   padding: "16px 24px",
   textAlign: "center",
   justifyContent: "center",
   transition: "0.5s",
-  backgroundSize: "200% auto",
   borderRadius: "3px",
-  fontSize: "18px",
+  fontSize: "24px",
   color: "white",
   fontWeight: "600",
   fontFamily: "Pretendard",
   cursor: "pointer",
   textDecoration: "none",
   "&:hover": {
-    backgroundPosition: "right center",
+    backgroundColor: "#00BAEF",
+  },
+  [theme.breakpoints.down("600")]: {
+    fontSize: "18px",
   },
 }));
 
 export const SubTitle = styled(Typography)(({ theme }) => ({
   fontFamily: "Pretendard",
-  fontSize: "20px",
-  color: "white",
+  fontSize: "30px",
   fontWeight: 500,
-  margin: "0 0 40px 5px",
+  padding: "0 0 40px 5px",
+  [theme.breakpoints.down("600")]: {
+    fontSize: "24px",
+  },
 }));
