@@ -17,7 +17,8 @@ input[type="file"] {
   cursor: pointer;
 
   &:hover {
-    background-color: #3e3e3f;
+    border-color: #3d4856;
+    background-color: #3d4856;
     color: white;
   }
 }
