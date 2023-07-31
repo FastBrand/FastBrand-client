@@ -58,7 +58,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             required
             fullWidth
             id="personalName_kor"
-            label="성명(한글)"
+            label="성명_한글(필수)"
             variant="standard"
             value={personalData.personalName_kor}
             onChange={(event) => handleInputChange(event, "name_kor")}
@@ -69,7 +69,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             required
             fullWidth
             id="applicantEnglishName"
-            label="성명(영어)"
+            label="성명_영어(필수)"
             sx={{ marginBottom: "1rem" }}
             variant="standard"
             value={personalData.name_eng}
@@ -78,11 +78,10 @@ const PersonalForm = ({ onPersonalChange }) => {
         </Grid>
         <Grid item xs={6}>
           <CustomTextField
-            required
             fullWidth
             id="personalSsn"
             label="생년월일"
-            helperText=" ex) 1969.00.00"
+            helperText=" ex) 0000.00.00"
             variant="standard"
             value={personalData.ssn}
             onChange={(event) => handleInputChange(event, "ssn")}
@@ -93,8 +92,8 @@ const PersonalForm = ({ onPersonalChange }) => {
             required
             fullWidth
             id="personalEmail"
-            label="이메일"
-            helperText="mark@wonjon.com"
+            label="이메일(필수)"
+            helperText="aaa@aaa.com"
             variant="standard"
             value={personalData.personalEmail}
             onChange={(event) => handleInputChange(event, "personalEmail")}
@@ -105,8 +104,8 @@ const PersonalForm = ({ onPersonalChange }) => {
             required
             fullWidth
             id="personalMobile"
-            label="휴대전화"
-            helperText="ex) 010-4006-5236"
+            label="휴대전화(필수)"
+            helperText="ex) 000-0000-0000"
             variant="standard"
             value={personalData.personalMobile}
             onChange={(event) => handleInputChange(event, "personalMobile")}
@@ -117,7 +116,7 @@ const PersonalForm = ({ onPersonalChange }) => {
             fullWidth
             id="personalPhone"
             label="유선전화"
-            helperText="ex) 02-553-1246"
+            helperText="ex) 00-000-0000"
             variant="standard"
             value={personalData.personalPhone}
             onChange={(event) => handleInputChange(event, "personalPhone")}
