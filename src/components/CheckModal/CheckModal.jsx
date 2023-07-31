@@ -135,19 +135,23 @@ function CheckModal({
     onFormattedPrice(formattedPrice);
   }, [formattedPrice]);
 
-  const handleConfirmButtonClick = () => {
-    handleSubmit();
-    sendEmail();
-    handleDialogClose();
-    handleClose();
-    alert("메일발송이 완료되었습니다.");
+  const handleConfirmButtonClick = async () => {
+    try {
+      handleDialogClose();
+      await handleSubmit();
+      await sendEmail();
+      handleClose();
+      alert("메일발송이 완료되었습니다.");
 
-    setTimeout(function () {
-      window.location.reload();
-    }, 500);
+      setTimeout(() => {
+        window.location.reload();
+      }, 300);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const sendEmail = () => {
+  const sendEmail = async () => {
     let message;
     let nationMessage = "";
     let toEmail = "";
@@ -232,33 +236,25 @@ function CheckModal({
       nationMessage: nationMessage,
     };
 
-    emailjs
-      .send(
-        "service_ntfee7r",
-        "template_5zsy56b",
-        templateParams,
-        "niIZOtG66JjWR0wjS"
-      )
-      .then((response) => {
-        console.log("이메일 전송성공", response);
-      })
-      .catch((error) => {
-        console.error("이메일 전송오류", error);
-      });
-
-    emailjs
-      .send(
-        "service_ntfee7r",
-        "template_nk4mhqd",
-        templateParams,
-        "niIZOtG66JjWR0wjS"
-      )
-      .then((response) => {
-        console.log("이메일 전송성공", response);
-      })
-      .catch((error) => {
-        console.error("이메일 전송오류", error);
-      });
+    try {
+      await Promise.all([
+        emailjs.send(
+          "service_ntfee7r",
+          "template_5zsy56b",
+          templateParams,
+          "niIZOtG66JjWR0wjS"
+        ),
+        emailjs.send(
+          "service_ntfee7r",
+          "template_nk4mhqd",
+          templateParams,
+          "niIZOtG66JjWR0wjS"
+        ),
+      ]);
+      console.log("이메일 전송성공");
+    } catch (error) {
+      console.log("이메일 전송오류", error);
+    }
   };
 
   return (

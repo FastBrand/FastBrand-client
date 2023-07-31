@@ -214,7 +214,7 @@ function DomesticMark() {
     setModalOpen(false);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit =  async () => {
     const data = {
       mark: {
         ...trademarkData,
@@ -244,19 +244,31 @@ function DomesticMark() {
 
     const formData = new FormData();
     formData.append("data", new Blob([JSONData], { type: "application/json" }));
-    formData.append("image", imageData);
-    if (applicantType.poc === "corporate") formData.append("seal", sealData);
 
-    axios
-      .post(endpoint, formData)
-      .then((response) => {
-        console.log(response);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+    if (imageData === null){
+      formData.append("image", "noData");
+    }
+    else if(imageData !== null){
+      formData.append("image", imageData);
+    }
+   
+    if (applicantType.poc === "corporate") {
+      if(sealData !== null){
+        formData.append("seal", sealData);
+      }
+      else if(sealData === null){
+        formData.append("seal", "noData");
+      }
+    }
+
+    try {
+      const response = await axios.post(endpoint, formData);
+      console.log(response);
+      console.log(data);
+  } catch (error) {
+      console.log(error);
+  }
+};
 
   return (
     <div className={classes.root}>

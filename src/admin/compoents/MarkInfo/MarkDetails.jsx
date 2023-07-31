@@ -18,13 +18,12 @@ function MarkDetail() {
     axios.get(`http://localhost:8080/api/main/info/${id}`)
       .then(response => {
         const data = response.data;
-
-        const trademarkData = data.mark.poc === "personal" ?
+          const trademarkData = data.mark.poc === "personal" ?
           {
             id: data.mark.id,
             brand_name: data.mark.brand_name,
             description: data.mark.description,
-            image: data.images[0].url,
+            image: data.images[0]?.url,
             sector: data.mark.sector,
             type: data.mark.type,
             poc: data.mark.poc,
@@ -56,7 +55,7 @@ function MarkDetail() {
             id: data.mark.id,
             brand_name: data.mark.brand_name,
             description: data.mark.description,
-            image: data.images[0].url,
+            image: data.images[0]?.url,
             sector: data.mark.sector,
             type: data.mark.type,
             poc: data.mark.poc,
@@ -82,15 +81,14 @@ function MarkDetail() {
             corporateMobile: data.corporate.corporateMobile,
             corporatePhone: data.corporate.corporatePhone,
             corporateEmail: data.corporate.corporateEmail,
-            seal: data.seals[0].url,
+            seal: data.seals[0]?.url,
             caddress: data.corporate.address,
             cdetail: data.corporate.detail,
             czipcode: data.corporate.zipcode,
             cagreement: data.corporate.agreement
           };
-
         setTrademark(trademarkData);
-      })
+        })
       .catch(error => console.log(error))
   }
 
@@ -314,6 +312,7 @@ function MarkDetail() {
         </div>
       )}
       <br></br><br></br>
+
       <div>
         <h4>상표정보</h4>
         <TableContainer component={Paper} sx={{ width: "80%" }}>
