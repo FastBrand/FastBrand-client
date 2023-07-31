@@ -20,7 +20,7 @@ export const CustomListItem = styled(ListItem)(({ theme }) => ({
   paddingTop: theme.spacing(2),
   "&:hover": {
     cursor: "pointer",
-    color: "#CBA585",
+    color: "#0992E3",
   },
   "& .MuiListItemText-primary": {
     fontSize: "35px",
