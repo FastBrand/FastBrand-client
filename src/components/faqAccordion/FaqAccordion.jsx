@@ -33,7 +33,7 @@ const FaqAccordion = () => {
             id="panel1a-header"
           >
             <Title>
-              <span style={{ color: "#CBA585" }}>Q. </span>
+              <span style={{ color: "#0992E3" }}>Q. </span>
               {faq.title}
             </Title>
           </AccordionSummary>
