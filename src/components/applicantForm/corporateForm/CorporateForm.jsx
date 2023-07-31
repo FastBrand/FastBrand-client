@@ -79,14 +79,14 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
   return (
     <>
       <FormContainer>
-        <CustomTypo>06. 출원인 정보를 입력해주세요*</CustomTypo>
+        <CustomTypo>05. 출원인 정보를 입력해주세요*</CustomTypo>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <CustomTextField
               required
               fullWidth
               id="corporateName_kor"
-              label="법인명(한글)"
+              label="법인명_한글(필수)"
               variant="standard"
               value={corporateData.name_kor}
               onChange={(event) => handleInputChange(event, "name_kor")}
@@ -97,7 +97,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               required
               fullWidth
               id="corporateName_eng"
-              label="법인명(영어)"
+              label="법인명_영어(필수)"
               sx={{ marginBottom: "1rem" }}
               variant="standard"
               value={corporateData.name_eng}
@@ -106,7 +106,6 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
           </Grid>
           <Grid item xs={6}>
             <CustomTextField
-              required
               fullWidth
               id="corporateBrn"
               label="사업자 등록번호"
@@ -117,7 +116,6 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
           </Grid>
           <Grid item xs={6}>
             <CustomTextField
-              required
               fullWidth
               id="corporateCrn"
               label="법인 등록번호"
@@ -132,7 +130,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               required
               fullWidth
               id="corporateName"
-              label="대표자 성명"
+              label="대표자 성명(필수)"
               variant="standard"
               value={corporateData.corporateName}
               onChange={(event) => handleInputChange(event, "corporateName")}
@@ -140,7 +138,6 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
           </Grid>
           <Grid item xs={6}>
             <CustomTextField
-              required
               fullWidth
               id="corporateSsn"
               label="대표자 생년월일"
@@ -155,7 +152,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               required
               fullWidth
               id="corporateMobile"
-              label="법인 대표 휴대전화"
+              label="법인 대표 휴대전화(필수)"
               helperText="ex) 000-0000-0000"
               variant="standard"
               value={corporateData.corporateMobile}
@@ -178,7 +175,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
               required
               fullWidth
               id="corporateEmail"
-              label="법인 대표 이메일"
+              label="법인 대표 이메일(필수)"
               helperText="ex) aaa@aaa.com"
               variant="standard"
               value={corporateData.corporateEmail}
@@ -213,7 +210,7 @@ const CorporateForm = ({ onCorporateChange, onSealDataChange }) => {
       <FormContainer>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <CustomTypo>07. 법인 등본상 주소를 입력해주세요</CustomTypo>
+            <CustomTypo>06. 법인 등본상 주소를 입력해주세요</CustomTypo>
           </Grid>
           <Grid item xs={8} sm={5}>
             <CustomTextField
