@@ -58,10 +58,10 @@ const TrademarkForm = ({ onTrademarkDataChange, onImageDataChange }) => {
           </Grid>
           <Grid item xs={12} md={6}>
             <CustomTextField
-              fullWidth
               required
+              fullWidth
               id="trademarkName"
-              label="상표명"
+              label="상표명(필수)"
               variant="standard"
               value={trademarkData.trademarkName}
               onChange={(event) => handleInputChange(event, "brand_name")}
@@ -70,7 +70,6 @@ const TrademarkForm = ({ onTrademarkDataChange, onImageDataChange }) => {
           <Grid item xs={12} md={6}>
             <CustomTextField
               fullWidth
-              required
               multiline
               id="trademarkDescription"
               label="상표에 대해 간단하게 설명해주세요"
