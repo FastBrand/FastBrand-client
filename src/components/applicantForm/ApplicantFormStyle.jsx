@@ -4,7 +4,7 @@ import { Radio, FormControlLabel, RadioGroup } from "@mui/material";
 export const CustomRadio = styled(Radio)({
   color: "white",
   "&.Mui-checked": {
-    color: "#CBA585",
+    color: "#00baef",
   },
 });
 
