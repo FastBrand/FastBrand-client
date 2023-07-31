@@ -4,7 +4,7 @@ import NationSelectForm from "../../components/nationSelectForm/NationSelectForm
 import TrademarkForm from "../../components/trademarkForm/TrademarkForm";
 import ClassificationForm from "../../components/classificationForm/ClassificationForm";
 import ApplicantForm from "../../components/applicantForm/ApplicantForm";
-import ManagerForm from "../../components/managerForm/ManagerForm";
+// import ManagerForm from "../../components/managerForm/ManagerForm";
 import TopButton from "../../components/topButton/TopButton";
 import CheckModal from "../../components/CheckModal/CheckModal";
 import Footer from "../../components/footer/Footer";
@@ -25,7 +25,7 @@ function DomesticMark() {
   const [sealData, setSealData] = useState(null);
   const [trademarkData, setTrademarkData] = useState({});
   const [classificationData, setClassificationData] = useState({});
-  const [managerData, setManagerData] = useState({});
+  // const [managerData, setManagerData] = useState({});
   const [applicantData, setApplicantData] = useState({});
   const [applicantType, setApplicantType] = useState({ poc: "personal" });
   const [countriesData, setcountriesData] = useState({}); //개별출원
@@ -71,34 +71,30 @@ function DomesticMark() {
     };
     // 상표
     if (!checkField(trademarkData.brand_name, "상표명을 입력해주세요.")) return;
-    if (
-      !checkField(trademarkData.description, "상표에 대한 설명을 입력해주세요.")
-    )
-      return;
     // 분류
     if (
       !checkField(classificationData.sector, "분류를 한 개 이상 선택해주세요.")
     )
       return;
-    // 담당자
-    if (!checkField(managerData.name, "담당자 성명을 입력해주세요.")) return;
-    if (!checkField(managerData.email, "담당자 이메일을 입력해주세요.")) return;
-    if (!/\S+@\S+\.\S+/.test(managerData.email)) {
-      showError("담당자 이메일을 형식에 맞게 입력해주세요.");
-      return;
-    }
-    if (!checkField(managerData.mobile, "담당자 휴대전화를 입력해주세요."))
-      return;
-    if (!/^[\d-]+$/.test(managerData.mobile)) {
-      showError("담당자 휴대전화를 형식에 맞게 입력해주세요.");
-      return;
-    }
-    if (managerData.phone && !/^[\d-]+$/.test(managerData.phone)) {
-      showError("담당자 유선전화를 형식에 맞게 입력해주세요.");
-      return;
-    }
-    if (!checkField(managerData.acc_num, "담당자 계좌번호를 입력해주세요."))
-      return;
+    // // 담당자
+    // if (!checkField(managerData.name, "담당자 성명을 입력해주세요.")) return;
+    // if (!checkField(managerData.email, "담당자 이메일을 입력해주세요.")) return;
+    // if (!/\S+@\S+\.\S+/.test(managerData.email)) {
+    //   showError("담당자 이메일을 형식에 맞게 입력해주세요.");
+    //   return;
+    // }
+    // if (!checkField(managerData.mobile, "담당자 휴대전화를 입력해주세요."))
+    //   return;
+    // if (!/^[\d-]+$/.test(managerData.mobile)) {
+    //   showError("담당자 휴대전화를 형식에 맞게 입력해주세요.");
+    //   return;
+    // }
+    // if (managerData.phone && !/^[\d-]+$/.test(managerData.phone)) {
+    //   showError("담당자 유선전화를 형식에 맞게 입력해주세요.");
+    //   return;
+    // }
+    // if (!checkField(managerData.acc_num, "담당자 계좌번호를 입력해주세요."))
+    //   return;
     // 출원국가
     if (!(markSelectData === "국내출원")) {
       if (nationDataString === "" && madridDataString === "") {
@@ -117,8 +113,8 @@ function DomesticMark() {
         !checkField(applicantData.name_eng, "출원인 성명(영어)을 입력해주세요.")
       )
         return;
-      if (!checkField(applicantData.ssn, "출원인 생년월일을 입력해주세요."))
-        return;
+      // if (!checkField(applicantData.ssn, "출원인 생년월일을 입력해주세요."))
+      //   return;
 
       if (
         !checkField(
@@ -161,14 +157,14 @@ function DomesticMark() {
         )
       )
         return;
-      if (
-        !checkField(applicantData.brn, "출원인 사업자 등록번호를 입력해주세요.")
-      )
-        return;
-      if (
-        !checkField(applicantData.crn, "출원인 법인 등록번호를 입력해주세요.")
-      )
-        return;
+      // if (
+      //   !checkField(applicantData.brn, "출원인 사업자 등록번호를 입력해주세요.")
+      // )
+      //   return;
+      // if (
+      //   !checkField(applicantData.crn, "출원인 법인 등록번호를 입력해주세요.")
+      // )
+      //   return;
       if (
         !checkField(
           applicantData.corporateName,
@@ -176,10 +172,10 @@ function DomesticMark() {
         )
       )
         return;
-      if (
-        !checkField(applicantData.ssn, "출원인 대표자 생년월일을 입력해주세요.")
-      )
-        return;
+      // if (
+      //   !checkField(applicantData.ssn, "출원인 대표자 생년월일을 입력해주세요.")
+      // )
+      //   return;
       if (
         !checkField(
           applicantData.corporateMobile,
@@ -196,6 +192,10 @@ function DomesticMark() {
         return;
       if (!/\S+@\S+\.\S+/.test(applicantData.corporateEmail)) {
         showError("출원인 법인 대표 이메일을 형식에 맞게 입력해주세요.");
+        return;
+      }
+      if (!/^[\d-]+$/.test(applicantData.corporateMobile)) {
+        showError("출원인 법인 대표 휴대전화를 형식에 맞게 입력해주세요.");
         return;
       }
     }
@@ -230,7 +230,7 @@ function DomesticMark() {
         ? { personal: { ...applicantData } }
         : { corporate: { ...applicantData } }),
       user: {
-        ...managerData,
+        managerData: "더미데이터",
         price: formatterData.toString(),
       },
     };
@@ -267,7 +267,7 @@ function DomesticMark() {
         onImageDataChange={setImageData}
       />
       <ClassificationForm onClassificationataChange={setClassificationData} />
-      <ManagerForm onManagerChange={setManagerData} />
+      {/* <ManagerForm onManagerChange={setManagerData} /> */}
 
       {markSelectData === "국내출원" ? null : (
         <NationSelectForm
@@ -298,7 +298,7 @@ function DomesticMark() {
           trademarkData={trademarkData}
           madridDataString={madridDataString}
           directNationString={directNationString}
-          managerData={managerData}
+          // managerData={managerData}
           applicantData={applicantData}
           markSelectData={markSelectData}
           classificationData={classificationData}
